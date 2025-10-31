@@ -12,7 +12,7 @@ This guide explains how to set up the local environment for grafana.
 The easiest way to get started is using the given Docker Compose file:
 
 ```bash
-docker-compose up -d
+sudo docker compose up -d
 ```
 
 This will start:
@@ -42,7 +42,7 @@ Write Access:
 
 ```bash
 # Stop all services
-docker-compose down
+sudo docker compose down
 ```
 
 # Backend for test data
