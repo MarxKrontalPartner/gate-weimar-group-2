@@ -1,22 +1,28 @@
 <template>
-  <div>
-    <h2>Sign Up</h2>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h2>Sign Up</h2>
 
-    <form @submit.prevent="signup">
-      <input v-model="username" placeholder="Username" />
-      <input v-model="password" type="password" placeholder="Password" />
-      <input v-model="password2" type="password" placeholder="Retype Password" />
-      <button type="submit">Create Account</button>
-    </form>
+      <form @submit.prevent="signup">
+        <input v-model="username" placeholder="Username" />
+        <input v-model="password" type="password" placeholder="Password" />
+        <input v-model="password2" type="password" placeholder="Confirm Password" />
+        <button type="submit">Create Account</button>
+      </form>
 
-    <p>{{ error }}</p>
+      <p class="error-message" v-if="error">{{ error }}</p>
+
+      <div class="link">
+        <p>Already have an account? <a @click="goLogin">Login</a></p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import axios from 'axios'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
 
 const router = useRouter()
 
@@ -37,4 +43,10 @@ const signup = async () => {
     error.value = err.response?.data || 'Signup failed'
   }
 }
+
+const goLogin = () => {
+  router.push('/login')
+}
 </script>
+
+<style src="../styles/login.css"></style>
