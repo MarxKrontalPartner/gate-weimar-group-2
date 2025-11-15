@@ -95,3 +95,16 @@ Data will be returned in json format.
   },
 ]
 ```
+
+## Update - Pradhyumnaa
+
+Docker and Nginx Configured (I think?). Login, Sign Up Page and Dashboard Created.
+
+```bash
+cd gate2
+sudo docker compose up --build
+```
+
+then
+
+go to http://localhost/.
