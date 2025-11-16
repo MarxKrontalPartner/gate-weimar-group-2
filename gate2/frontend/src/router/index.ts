@@ -4,6 +4,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import Dashboard from '../views/Dashboard.vue'
+import ProjectDetail from '../views/ProjectDetail.vue'
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/login' },
@@ -13,7 +14,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/dashboard',
     component: Dashboard,
     meta: { requiresAuth: true }
-  }
+  },
+  { path: '/projects/:id', component: ProjectDetail, props: true }
 ]
 
 const router = createRouter({

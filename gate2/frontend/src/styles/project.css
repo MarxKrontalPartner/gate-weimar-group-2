@@ -1,0 +1,157 @@
+.project-page {
+  padding: 24px;
+  font-family: Inter, sans-serif;
+}
+
+/* HEADER */
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.back-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.title-block {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.edit-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-input {
+  font-size: 22px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.save-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #6366f1;
+  color: white;
+  cursor: pointer;
+}
+
+.saved-tag {
+  color: #16a34a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.owner {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* DELETE PROJECT BUTTON */
+.delete-project-btn {
+  background: #ef4444;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+.delete-project-btn:hover {
+  background: #dc2626;
+}
+
+/* ADD USER SECTION */
+.add-user-section {
+  margin-bottom: 30px;
+  max-width: 320px;
+}
+
+.add-user-section input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 6px;
+}
+
+.suggestions {
+  list-style: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin: 0;
+  margin-top: -2px;
+  padding: 0;
+  overflow-y: auto;
+  max-height: 150px;
+  background: white;
+}
+
+.suggestions li {
+  padding: 8px;
+  cursor: pointer;
+}
+.suggestions li:hover {
+  background: #f3f4f6;
+}
+
+.add-btn {
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* MEMBERS TABLE */
+.members-section h2 {
+  margin-bottom: 10px;
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.members-table th,
+.members-table td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.members-table select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+}
+
+.remove-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #fee2e2;
+  color: #991b1b;
+  cursor: pointer;
+}
+
+.remove-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: 12px;
+  color: #b91c1c;
+  font-size: 14px;
+}
