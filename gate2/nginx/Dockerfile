@@ -1,5 +1,5 @@
 # --- Stage 1: Build Vue App ---
-FROM node:20 AS build
+FROM node:20.19.0 AS build
 
 WORKDIR /app
 

@@ -1,398 +1,212 @@
 <template>
-  <div class="project-page">
-    <header class="project-header">
+  <div class="flex h-screen bg-gray-50">
 
-      <!-- Back -->
-      <button class="back-btn" @click="goBack">← Back</button>
+    <!-- SIDEBAR (same as dashboard) -->
+    <aside class="w-64 bg-white border-r border-gray-100 hidden md:flex flex-col">
+      <div class="p-6 font-semibold text-lg">MKP Monitoring</div>
 
-      <!-- Title + Owner + Delete -->
-      <div class="title-block">
-        <div v-if="isEditor" class="edit-title">
-          <input v-model="projectName" class="title-input" />
-          <button class="save-btn" @click="saveName">Save</button>
+      <nav class="flex-1 p-4 space-y-2 text-gray-700">
+        <RouterLink 
+          to="/dashboard"
+          class="flex items-center gap-2 px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 font-medium"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" 
+               fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+               stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3.75 3.75h6.5v6.5h-6.5v-6.5zM13.75 3.75h6.5v6.5h-6.5v-6.5zM3.75 13.75h6.5v6.5h-6.5v-6.5zM13.75 13.75h6.5v6.5h-6.5v-6.5z" />
+          </svg>
+
+          Dashboard
+        </RouterLink>
+      </nav>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <div class="flex-1 flex flex-col">
+
+      <!-- TOPBAR (same as dashboard but with project name) -->
+      <header class="h-16 bg-white border-b border-gray-100 flex items-center justify-between px-6">
+
+        <div class="flex items-center gap-3">
+
+          <!-- PROJECT NAME -->
+          <h1 class="text-m font-semibold">{{ projectName }}</h1>
+
+          <!-- BUTTON GROUP -->
+          <div class="flex items-center gap-3 ml-10">
+
+            <!-- VIEWER BUTTON -->
+            <button
+              @click="activeTab = 'viewer'"
+              class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
+              :class="activeTab === 'viewer'
+                ? 'bg-black text-white border-black'
+                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg"
+                  class="w-3.5 h-3.5"
+                  :class="activeTab === 'viewer' ? 'text-white' : 'text-gray-500'"
+                  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 4.5c-5 0-9 3.5-10 7.5 1 4 5 7.5 10 7.5s9-3.5 10-7.5c-1-4-5-7.5-10-7.5zM12 15a3 3 0 100-6 3 3 0 000 6z"/>
+              </svg>
+              Viewer
+            </button>
+
+            <!-- EDITOR BUTTON -->
+            <button
+              v-if="isEditor"
+              @click="activeTab = 'editor'"
+              class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
+              :class="activeTab === 'editor'
+                ? 'bg-black text-white border-black'
+                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg"
+                  class="w-3.5 h-3.5"
+                  :class="activeTab === 'editor' ? 'text-white' : 'text-gray-500'"
+                  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M16.862 3.487l3.651 3.65-9.563 9.565-4.237.587.586-4.236 9.563-9.566z"/>
+              </svg>
+              Editor
+            </button>
+
+            <!-- USER MANAGEMENT BUTTON -->
+            <button
+              @click="activeTab = 'users'"
+              class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
+              :class="activeTab === 'users'
+                ? 'bg-black text-white border-black'
+                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg"
+                  class="w-3.5 h-3.5"
+                  :class="activeTab === 'users' ? 'text-white' : 'text-gray-500'"
+                  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M17 20v-1a4 4 0 00-4-4H7a4 4 0 00-4 4v1M14 10a4 4 0 11-8 0 4 4 0 018 0zM21 20v-1a4 4 0 00-3-3.87M17 10a3 3 0 110-6 3 3 0 010 6z"/>
+              </svg>
+              User Management
+            </button>
+
+          </div>
+
+
         </div>
 
-        <h1 v-else>{{ projectName }}</h1>
 
-        <p class="owner">Owner: {{ project?.owner?.username }}</p>
 
-        <!-- ⭐ Delete Project BELOW title block -->
-        <button
-          v-if="isOwner"
-          class="delete-project-btn"
-          @click="deleteProject"
-        >
-          Delete Project
-        </button>
-      </div>
-    </header>
+        <!-- PROFILE DROPDOWN -->
+        <div class="relative" ref="menu" @click.stop="toggleUserMenu">
+          <button 
+            class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor"
+                class="w-5 h-5 text-black">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 12a4 4 0 100-8 4 4 0 000 8z" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6 20a6 6 0 0112 0" />
+            </svg>
+            {{ username }}
+          </button>
 
-    <!-- ========================= -->
-    <!--       ADD USER AREA       -->
-    <!-- ========================= -->
-    <section class="members-section">
-
-      <div v-if="isEditor" class="add-member">
-        <h3>Add user</h3>
-
-        <input
-          v-model="userSearch"
-          @input="searchUsers"
-          placeholder="Search username..."
-        />
-
-        <ul v-if="userSuggestions.length" class="suggestions">
-          <li v-for="u in userSuggestions" :key="u.id" @click="selectUser(u)">
-            {{ u.username }}
-          </li>
-        </ul>
-
-        <!-- ⭐ FULL-WIDTH BUTTON BELOW INPUT -->
-        <button
-          class="add-btn-full"
-          @click="addSelectedUser"
-          :disabled="!selectedUser"
-        >
-          Add as viewer
-        </button>
-      </div>
-
-      <p v-if="error" class="error-message">{{ error }}</p>
-
-      <!-- ========================= -->
-      <!--       MEMBERS TABLE       -->
-      <!-- ========================= -->
-      <h2>Members</h2>
-
-      <table v-if="members.length" class="members-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Role</th>
-            <th v-if="isEditor">Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr v-for="m in members" :key="m.id">
-            <td>{{ m.user.username }}</td>
-
-            <td>
-              <span v-if="m.user.id === project?.owner?.id">
-                Owner
-              </span>
-
-              <select
-                v-else-if="isEditor"
-                v-model="m.role"
-                @change="changeRole(m)"
+          <transition name="fade">
+            <div 
+              v-if="userMenuOpen"
+              class="absolute right-0 mt-2 w-32 bg-white shadow-lg rounded-lg border border-gray-100 py-2 z-20"
+            >
+              <button 
+                @click="logout"
+                class="w-full text-left px-4 py-2 hover:bg-gray-100"
               >
-                <option value="editor">Editor</option>
-                <option value="viewer">Viewer</option>
-              </select>
-
-              <span v-else>{{ capitalize(m.role) }}</span>
-            </td>
-
-            <td v-if="isEditor">
-              <button
-                class="remove-btn"
-                :disabled="m.user.id === project?.owner?.id"
-                @click="removeMember(m)"
-              >
-                Remove
+                Logout
               </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+          </transition>
+        </div>
 
-      <p v-else>No members yet.</p>
-    </section>
+      </header>
+
+      <!-- EMPTY CONTENT AREA -->
+      <main class="p-8 text-gray-500 text-sm">
+        This is the project overview page. Add content here later.
+      </main>
+
+    </div>
   </div>
 </template>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 
-// --------------------
-// State
-// --------------------
 const route = useRoute();
 const router = useRouter();
 const projectId = route.params.id;
 
 const project = ref<any | null>(null);
-const projectName = ref("");
-const members = ref<any[]>([]);
-const currentUsername = localStorage.getItem("username") || "";
-const error = ref("");
+const projectName = ref("Loading...");
+const username = ref(localStorage.getItem("username") || "");
 
-const userSearch = ref("");
-const userSuggestions = ref<any[]>([]);
-const selectedUser = ref<any | null>(null);
+// DROPDOWN
+const userMenuOpen = ref(false);
+const menu = ref<HTMLElement | null>(null);
+const toggleUserMenu = () => userMenuOpen.value = !userMenuOpen.value;
 
-// --------------------
-// API Setup
-// --------------------
-const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
-});
-
-const authHeaders = () => {
-  const token = localStorage.getItem("token");
-  return token ? { Authorization: `Bearer ${token}` } : {};
-};
-
-// --------------------
-// Fetch project
-// --------------------
-const fetchProject = async () => {
-  try {
-    const res = await api.get(`/projects/${projectId}/`, {
-      headers: authHeaders(),
-    });
-    project.value = res.data;
-    projectName.value = res.data.name;
-    members.value = res.data.memberships || [];
-  } catch (e: any) {
-    error.value = e.response?.data?.detail || "Could not load project";
-  }
-};
-
-// --------------------
-// Role Checks
-// --------------------
-const isOwner = computed(
-  () => project.value?.owner?.username === currentUsername
-);
-
-const isEditor = computed(() => {
-  if (isOwner.value) return true;
-
-  return members.value.some(
-    (m) => m.user.username === currentUsername && m.role === "editor"
-  );
-});
-
-// --------------------
-// Update and Delete
-// --------------------
-const saveName = async () => {
-  try {
-    await api.patch(
-      `/projects/${projectId}/`,
-      { name: projectName.value },
-      { headers: authHeaders() }
-    );
-  } catch (e: any) {
-    error.value = e.response?.data?.detail || "Could not update name";
-  }
-};
-
-const deleteProject = async () => {
-  if (!confirm("Delete this project? This cannot be undone.")) return;
-
-  try {
-    await api.delete(`/projects/${projectId}/`, {
-      headers: authHeaders(),
-    });
-    router.push("/dashboard");
-  } catch {
-    error.value = "Could not delete project";
-  }
-};
-
-// --------------------
-// Member operations
-// --------------------
-const changeRole = async (membership: any) => {
-  await api.post(
-    `/projects/${projectId}/update_role/`,
-    { membership_id: membership.id, role: membership.role },
-    { headers: authHeaders() }
-  );
-};
-
-const removeMember = async (membership: any) => {
-  await api.post(
-    `/projects/${projectId}/remove_member/`,
-    { membership_id: membership.id },
-    { headers: authHeaders() }
-  );
-  members.value = members.value.filter((m) => m.id !== membership.id);
-};
-
-// --------------------
-// Add user to project
-// --------------------
-const searchUsers = async () => {
-  selectedUser.value = null;
-
-  if (!userSearch.value.trim()) {
-    userSuggestions.value = [];
-    return;
-  }
-
-  const res = await api.get("/users/", {
-    headers: authHeaders(),
-    params: { search: userSearch.value },
+onMounted(() => {
+  document.addEventListener("click", (e) => {
+    if (menu.value && !menu.value.contains(e.target as Node)) {
+      userMenuOpen.value = false;
+    }
   });
+});
 
-  userSuggestions.value = res.data;
+const activeTab = ref('viewer') // default
+
+// API
+const api = axios.create({ baseURL: "http://127.0.0.1:8000/api" });
+const authHeaders = () => ({ Authorization: `Bearer ${localStorage.getItem("token")}` });
+
+// LOAD PROJECT
+const fetchProject = async () => {
+  const res = await api.get(`/projects/${projectId}/`, { headers: authHeaders() });
+  project.value = res.data;
+  projectName.value = res.data.name;
 };
-
-const selectUser = (user: any) => {
-  selectedUser.value = user;
-  userSearch.value = user.username;
-  userSuggestions.value = [];
-};
-
-const addSelectedUser = async () => {
-  if (!selectedUser.value) return;
-
-  const res = await api.post(
-    `/projects/${projectId}/add_member/`,
-    { username: selectedUser.value.username },
-    { headers: authHeaders() }
-  );
-
-  members.value.push(res.data);
-  selectedUser.value = null;
-  userSearch.value = "";
-};
-
-// --------------------
-const goBack = () => router.push("/dashboard");
-const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 onMounted(fetchProject);
+
+// ROLE LOGIC
+const currentUsername = username.value;
+const isOwner = computed(() => project.value?.owner?.username === currentUsername);
+const isEditor = computed(() => {
+  if (isOwner.value) return true;
+  return project.value?.memberships?.some((m: any) =>
+    m.user.username === currentUsername && m.role === "editor"
+  );
+});
+
+// LOGOUT
+const logout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("username");
+  router.push("/login");
+};
 </script>
-
-<style scoped>
-.project-page {
-  padding: 24px;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.project-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.back-btn {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 14px;
-  color: #4b5563;
-}
-
-.title-block {
-  display: flex;
-  flex-direction: column;
-}
-
-.title-input {
-  font-size: 22px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  margin-right: 8px;
-}
-
-.save-btn {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: none;
-  background: #6366f1;
-  color: white;
-  cursor: pointer;
-}
-
-.owner {
-  font-size: 13px;
-  color: #6b7280;
-  margin-top: 2px;
-}
-
-/* Delete button neatly under owner */
-.delete-project-btn {
-  margin-top: 10px;
-  padding: 8px 12px;
-  border: none;
-  background: #fee2e2;
-  color: #b91c1c;
-  border-radius: 6px;
-  cursor: pointer;
-  width: fit-content;
-}
-.delete-project-btn:hover {
-  background: #fecaca;
-}
-
-.add-member {
-  margin-top: 24px;
-  max-width: 320px;
-}
-
-.add-member input {
-  width: 100%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-}
-
-.add-btn-full {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  background: #6366f1;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.suggestions {
-  list-style: none;
-  padding: 0;
-  margin: 4px 0 0;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  max-height: 150px;
-  overflow-y: auto;
-  background: white;
-}
-
-.suggestions li {
-  padding: 6px 8px;
-  cursor: pointer;
-}
-
-.members-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 16px;
-}
-
-.members-table th,
-.members-table td {
-  padding: 8px 10px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.remove-btn {
-  padding: 4px 8px;
-  border-radius: 4px;
-  border: none;
-  background: #fee2e2;
-  color: #991b1b;
-  cursor: pointer;
-}
-</style>
