@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="props.drawer">
+  <v-navigation-drawer v-model="props.drawer" color="background">
     <!-- content for the drawer -->
     <v-list density="compact" nav>
       <v-list-group value="monitoring">
