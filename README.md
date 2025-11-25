@@ -1,6 +1,4 @@
-# Local Development Environment Setup
-
-This guide explains how to set up the local environment for grafana.
+# GATE 2 - Monitoring Dashboard
 
 ## Prerequisites
 
@@ -14,29 +12,6 @@ The easiest way to get started is using the given Docker Compose file:
 ```bash
 sudo docker compose up -d
 ```
-
-This will start:
-
-- Grafana server
-
-The application will be available at `http://localhost:3000`
-
-Login with default credentials:
-Write Access:
-
-- Username: `admin`
-- Password: `admin`
-
-## Import Example Dashboard
-1. Open Grafana in your web browser: `http://localhost:3000`
-2. Log in with your credentials (default: admin/admin).
-3. Click on the "+" icon on the left sidebar and select "Dashboard".
-4. Click on "Import dashboard" to import the dashboard of this project.
-5. Upload the JSON file located in the `dashboards` folder of this project.
-
-### Important URLs
-
-- **Grafana**: `http://localhost:3000`
 
 ### Stopping Services
 
