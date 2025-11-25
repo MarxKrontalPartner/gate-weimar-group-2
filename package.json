@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3",
+    "vuetify": "^3.10.11"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.93.3"
+  }
+}
