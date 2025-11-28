@@ -19,6 +19,29 @@ class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def destroy(self, request, *args, **kwargs):
+        project = self.get_object()
+        if request.user != project.owner:
+            return Response({"detail": "Only the owner can delete the project."}, status=403)
+        return super().destroy(request, *args, **kwargs)
+
+
+    def retrieve(self, request, *args, **kwargs):
+        project = self.get_object()
+        user = request.user
+
+        is_owner = (project.owner == user)
+        is_member = ProjectMembership.objects.filter(
+            project=project,
+            user=user
+        ).exists()
+
+        if not (is_owner or is_member):
+            return Response({"detail": "Not allowed"}, status=403)
+
+        return super().retrieve(request, *args, **kwargs)
+
+
     def get_queryset(self):
         user = self.request.user
         owned = Project.objects.filter(owner=user)

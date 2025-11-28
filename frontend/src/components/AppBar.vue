@@ -4,6 +4,8 @@
     <v-btn icon @click="props.toggleDrawer" color="background">
       <v-icon class="text-primary">{{ drawer ? 'mdi-chevron-left' : 'mdi-menu' }}</v-icon>
     </v-btn>
+
+    <!-- LOGO (dark or light) -->
     <span width="280px" v-if="theme.global.current.value.dark">
       <v-img :src="logoDark" />
     </span>
@@ -11,20 +13,19 @@
       <v-img :src="logoLight" />
     </span>
 
-    <!-- Spacer -->
+    <!-- Spacer pushes icons to the right -->
     <v-spacer />
 
-    <!-- Toggle button to switch themes -->
-    <v-btn icon @click="toggleTheme" color="background">
-      <v-icon class="text-primary"> mdi-theme-light-dark</v-icon>
-    </v-btn>
+    <!-- HOME BUTTON -->
     <v-btn icon @click="router.push('/dashboard')" color="background">
-      <v-icon class="text-primary"> mdi-home-outline</v-icon>
+      <v-icon class="text-primary">mdi-home-outline</v-icon>
     </v-btn>
+
+    <!-- ACCOUNT MENU -->
     <v-btn icon color="background">
-      <v-icon class="text-primary"> mdi-account-circle-outline</v-icon>
+      <v-icon class="text-primary">mdi-account-circle-outline</v-icon>
       <v-menu activator="parent">
-        <v-list density="compact" :items="accountMenuItems" @click="logout"></v-list>
+        <v-list density="compact" :items="accountMenuItems" @click="logout" />
       </v-menu>
     </v-btn>
   </v-app-bar>
@@ -44,10 +45,6 @@ const props = defineProps({
 const theme = useTheme()
 const router = useRouter()
 
-function toggleTheme() {
-  theme.global.name.value = theme.global.current.value.dark ? 'mkpLightTheme' : 'mkpDarkTheme'
-}
-
 const accountMenuItems = [
   {
     title: 'Abmelden',
@@ -55,7 +52,7 @@ const accountMenuItems = [
     props: {
       prependIcon: 'mdi-logout'
     }
-  },
+  }
 ]
 
 const logout = () => {
@@ -63,7 +60,6 @@ const logout = () => {
   localStorage.removeItem("username")
   router.push("/login")
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -78,12 +74,12 @@ const logout = () => {
   min-width: 50px;
 }
 
-/* Button Hover-Effekte */
+/* Button Hover Effects */
 .v-btn:hover {
   background-color: rgba(var(--v-theme-primary), 0.15) !important;
 }
 
-/* Smooth Transition für Hover */
+/* Smooth Transition for Hover */
 .v-btn {
   transition: background-color 0.2s ease !important;
 }

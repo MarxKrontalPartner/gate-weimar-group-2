@@ -4,16 +4,13 @@ import '@mdi/font/css/materialdesignicons.css'
 import { createVuetify } from 'vuetify'
 import { MKPThemes } from '../themes'
 
-const isDarkModePreferred = window.matchMedia('(prefers-color-scheme: light)').matches
-
 export default createVuetify({
   components,
   directives,
   theme: {
-    defaultTheme: isDarkModePreferred ? 'mkpDarkTheme' : 'mkpLightTheme',
+    defaultTheme: 'mkpLightTheme',     // <-- FORCE LIGHT THEME
     themes: {
-      mkpLightTheme: MKPThemes.mkpLightTheme,
-      mkpDarkTheme: MKPThemes.mkpDarkTheme,
+      mkpLightTheme: MKPThemes.mkpLightTheme
     },
   },
   defaults: {
@@ -24,3 +21,4 @@ export default createVuetify({
     },
   },
 })
+  
