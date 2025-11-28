@@ -55,8 +55,9 @@
 
           <!-- VIEWER -->
           <div v-if="activeTab === 'viewer'">
-            Viewer mode content goes here...
+            <AgChartsVue :options="viewerChartOptions" class="w-full h-96 bg-white rounded shadow" />
           </div>
+
 
           <!-- EDITOR -->
           <div v-if="activeTab === 'editor' && isEditor">
@@ -345,4 +346,21 @@ const removeMember = async (membership: any) => {
 };
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+const viewerChartOptions = ref({
+  title: { text: "Viewer Graph Example" },
+  data: [
+    { label: "A", value: 30 },
+    { label: "B", value: 55 },
+    { label: "C", value: 42 },
+  ],
+  series: [
+    {
+      type: "line",
+      xKey: "label",
+      yKey: "value",
+    },
+  ],
+});
+
 </script>
