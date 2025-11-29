@@ -359,6 +359,18 @@ const viewerChartOptions = ref({
       type: "line",
       xKey: "label",
       yKey: "value",
+      stroke: "black",
+      label: {
+        fontWeight: "bold",
+        formatter: ({ value }) => value.toFixed(0),
+      },
+      marker: {
+        fill: "blue",
+        size: 10,
+        stroke: "blue",
+        strokeWidth: 3,
+        shape: "circle",
+      },
     },
   ],
 });
