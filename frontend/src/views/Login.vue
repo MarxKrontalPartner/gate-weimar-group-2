@@ -23,27 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import { useRouter } from "vue-router"
-import axios from "axios"
+import { useLogin } from "@/composables/useLogin"
 
-const router = useRouter()
-const username = ref("")
-const password = ref("")
-
-const login = async () => {
-  try {
-    const res = await axios.post("http://127.0.0.1:8000/api/login/", {
-      username: username.value,
-      password: password.value,
-    })
-
-    localStorage.setItem("token", res.data.access)
-    localStorage.setItem("username", username.value)
-
-    router.push("/dashboard")
-  } catch {
-    alert("Invalid credentials")
-  }
-}
+const { username, password, error, login } = useLogin()
 </script>
