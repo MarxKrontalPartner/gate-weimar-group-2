@@ -10,7 +10,8 @@
 
             <!-- TABS -->
             <div class="flex items-center gap-3 ml-10">
-
+              
+              <!-- 1. Viewer Tab -->
               <button
                 @click="activeTab = 'viewer'"
                 class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
@@ -20,6 +21,7 @@
                 Viewer
               </button>
 
+              <!-- 2. Editor Tab -->
               <button
                 v-if="isEditor"
                 @click="activeTab = 'editor'"
@@ -30,6 +32,7 @@
                 Editor
               </button>
 
+              <!-- 3. Settings Tab -->
               <button
                 v-if="isEditor"
                 @click="activeTab = 'settings'"
@@ -39,11 +42,11 @@
                   : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'">
                 Settings
               </button>
-
             </div>
           </div>
 
-          <div v-if="isEditor && activeTab === 'viewer'">
+          <!-- Add Panel Button  -->
+          <div v-if="activeTab === 'editor'">
             <button 
               @click="goToChartEditor"
               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-2"
@@ -53,32 +56,23 @@
           </div>
         </header>
 
-         <!-- MAIN CONTENT -->
+        <!-- MAIN CONTENT -->
         <main class="p-8 text-gray-800 text-sm h-full overflow-y-auto">
 
-          <!-- TAB 1: DASHBOARD VIEWER -->
+          <!-- TAB 1: VIEWER (Read Only) -->
           <div v-if="activeTab === 'viewer'" class="h-full">
-            
-            <!-- Empty State -->
             <div v-if="panels.length === 0" class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50">
-              <div class="text-gray-400 mb-4">No charts added yet</div>
-              <button 
-                v-if="isEditor"
-                @click="goToChartEditor"
-                class="text-blue-600 hover:text-blue-700 font-medium"
-              >
-                Create your first panel
-              </button>
+              <div class="text-gray-400 mb-4">No panels to display. Switch to Editor mode to add one.</div>
             </div>
 
-            <!-- Chart Grid -->
+            <!-- Read-Only Grid -->
             <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
               <div 
                 v-for="panel in panels" 
                 :key="panel.id" 
                 class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col h-[350px]"
               >
-                <ag-charts 
+                <ag-charts-vue 
                   :options="panel.chartOptions"
                   style="height: 100%; width: 100%;"
                 />
@@ -86,9 +80,53 @@
             </div>
           </div>
 
-          <!-- TAB 2: MEMBER EDITOR -->
+          <!-- TAB 2: EDITOR (Visual Edit Mode) -->
+          <div v-if="activeTab === 'editor' && isEditor" class="h-full">
+            
+            <div v-if="panels.length === 0" class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50">
+              <v-btn color="primary" @click="goToChartEditor">Create First Panel</v-btn>
+            </div>
+
+            <!-- Editable Grid -->
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
+              <div 
+                v-for="panel in panels" 
+                :key="panel.id" 
+                class="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col h-[350px] relative group hover:shadow-md transition"
+              >
+                
+                <!-- Edit Controls Overlay -->
+                <div class="absolute top-2 right-2 flex gap-1 z-10 bg-white/90 p-1 rounded-md border shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button 
+                    @click="editPanel(panel.id)"
+                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-blue-600"
+                    title="Edit Panel"
+                  >
+                    <v-icon icon="mdi-pencil" size="small"></v-icon>
+                  </button>
+                  <button 
+                    @click="handleDeletePanel(panel.id)"
+                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-red-600"
+                    title="Delete Panel"
+                  >
+                    <v-icon icon="mdi-trash-can-outline" size="small"></v-icon>
+                  </button>
+                </div>
+
+                <!-- Chart -->
+                <div class="p-4 h-full w-full">
+                   <ag-charts-vue 
+                    :options="panel.chartOptions"
+                    style="height: 100%; width: 100%;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: MEMBERS (Renamed from old Editor Tab) -->
           <ProjectEditor
-            v-if="activeTab === 'editor' && isEditor"
+            v-if="activeTab === 'members' && isEditor"
             :members="members"
             :changeRole="changeRole"
             :removeMember="removeMember"
@@ -96,7 +134,7 @@
             :isEditor="isEditor"
           />
 
-          <!-- TAB 3: SETTINGS -->
+          <!-- TAB 4: SETTINGS -->
           <ProjectSettings
             v-if="activeTab === 'settings' && isEditor"
             :project="project"
@@ -132,29 +170,47 @@
 import { onMounted, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import type { Ref } from "vue";
-
 import { AgCharts } from "ag-charts-vue3";
-import { useMockData } from "@/composables/useMockData"; // Ensure you created this file from previous response
-import ProjectEditor from "@/components/project/ProjectEditor.vue";
-import ProjectSettings from "@/components/project/ProjectSettings.vue";
+
+// Composables
+import { useMockData } from "@/composables/useMockData";
 import { useProjectDetail } from "@/composables/useProjectDetail";
 
-// ---- Router Logic ----
+// Components
+import ProjectEditor from "@/components/project/ProjectEditor.vue"; // Note: This handles MEMBERS
+import ProjectSettings from "@/components/project/ProjectSettings.vue";
+
 const router = useRouter();
 const route = useRoute();
 
-const rawId = route.params.id
-const projectId = (Array.isArray(rawId) ? rawId[0] : rawId) as string
+// Fix for ID type safety
+const rawId = route.params.id;
+const projectId = (Array.isArray(rawId) ? rawId[0] : rawId) as string;
 
-// ---- Mock Data Logic for Charts ----
-const { getProjectPanels } = useMockData();
+// Mock Data Logic
+const { getProjectPanels, deletePanelFromProject } = useMockData();
 const panels = ref<any[]>([]);
+
+const refreshPanels = () => {
+  panels.value = getProjectPanels(projectId);
+};
 
 const goToChartEditor = () => {
   router.push(`/dashboard/editor/${projectId}`);
 };
 
-// ---- EXISTING LOGIC ----
+const editPanel = (panelId: string) => {
+  console.log("Edit panel", panelId);
+  router.push(`/dashboard/editor/${projectId}?panelId=${panelId}`);
+};
+
+const handleDeletePanel = (panelId: string) => {
+  if (confirm("Are you sure you want to delete this panel?")) {
+    deletePanelFromProject(projectId, panelId);
+    refreshPanels();
+  }
+};
+
 type ProjectDetailReturn = {
   project: Ref<any | null>;
   projectName: Ref<string>;
@@ -200,13 +256,8 @@ const {
   removeMember,
 } = useProjectDetail() as ProjectDetailReturn;
 
-// ---- LIFECYCLE ----
 onMounted(async () => {
-  // 1. Fetch real project data (permissions, members)
   await fetchProject();
-  
-  // 2. Fetch mock panel data (charts)
-  panels.value = getProjectPanels(projectId);
+  refreshPanels();
 });
 </script>
-

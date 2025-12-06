@@ -91,7 +91,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { AgCharts } from 'ag-charts-vue3'
 import { createChartConfig } from '@/utils/chartFactory'
@@ -99,9 +99,9 @@ import { useMockData } from '@/composables/useMockData'
 
 const router = useRouter()
 const route = useRoute()
-const { addPanelToProject } = useMockData()
+const { addPanelToProject, updatePanelInProject, getPanel } = useMockData()
 
-// Project ID from URL (passed when navigating here)
+// Project ID from URL
 const rawId = route.params.id
 const projectId: string | number = Array.isArray(rawId)
   ? rawId[0] ?? 'default_project'
@@ -109,9 +109,24 @@ const projectId: string | number = Array.isArray(rawId)
     ? rawId
     : 'default_project'
 
+// Check if we are in EDIT MODE
+const editingPanelId = route.query.panelId as string | undefined
+const isEditMode = !!editingPanelId
+
 // State
 const selectedChart = ref('Time series')
 const panelTitle = ref('New Panel')
+
+// Load existing panel data if in edit mode
+onMounted(() => {
+  if (isEditMode) {
+    const existingPanel = getPanel(projectId, editingPanelId)
+    if (existingPanel) {
+      panelTitle.value = existingPanel.title
+      selectedChart.value = existingPanel.type
+    }
+  }
+})
 
 // Chart Configuration (Computed so it updates when Title or Type changes)
 const chartOptions = computed(() => {
@@ -125,21 +140,22 @@ const chartTypes = [
   { name: 'Gauge', icon: 'mdi-gauge' },
 ]
 
-// Apply Action
+// Save
 const handleApply = () => {
-  // 1. Construct the Panel Object
-  const newPanel = {
-    id: Date.now().toString(),
+  const panelData = {
+    id: isEditMode ? editingPanelId : Date.now().toString(),
     title: panelTitle.value,
     type: selectedChart.value,
-    gridPos: { w: 6, h: 4 }, // Default size for grid
-    chartOptions: chartOptions.value // Save the generated config
+    gridPos: { w: 6, h: 4 },
+    chartOptions: chartOptions.value
   }
 
-  // 2. Save to Mock Store
-  addPanelToProject(projectId, newPanel)
+  if (isEditMode) {
+    updatePanelInProject(projectId, panelData)
+  } else {
+    addPanelToProject(projectId, panelData)
+  }
 
-  // 3. Navigate back to the Project Detail view
   router.push(`/projects/${projectId}`)
 }
 </script>
