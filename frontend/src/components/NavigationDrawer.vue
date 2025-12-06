@@ -6,7 +6,8 @@
         <template v-slot:activator="{ props }">
           <v-list-item v-bind="props" title="Monitoring" prepend-icon="mdi-sine-wave"></v-list-item>
         </template>
-        <v-list-item title="Placeholder" value="mon_messkonzept" />
+        <v-list-item title="Dashboard" value="mon_messkonzept" />
+        <v-list-item title="Channel" value="mon_messkonzept" />
       </v-list-group>
 
     </v-list>

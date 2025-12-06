@@ -37,23 +37,56 @@
                 :class="activeTab === 'settings'
                   ? 'bg-black text-white border-black'
                   : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'">
-                Project Settings
+                Settings
               </button>
 
             </div>
           </div>
+
+          <div v-if="isEditor && activeTab === 'viewer'">
+            <button 
+              @click="goToChartEditor"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-2"
+            >
+              <span>+</span> Add Panel
+            </button>
+          </div>
         </header>
 
-        <!-- MAIN CONTENT -->
-        <main class="p-8 text-gray-800 text-sm">
+         <!-- MAIN CONTENT -->
+        <main class="p-8 text-gray-800 text-sm h-full overflow-y-auto">
 
-          <!-- VIEWER -->
-          <ProjectViewer
-            v-if="activeTab === 'viewer'"
-            :options="viewerChartOptions"
-          />
+          <!-- TAB 1: DASHBOARD VIEWER -->
+          <div v-if="activeTab === 'viewer'" class="h-full">
+            
+            <!-- Empty State -->
+            <div v-if="panels.length === 0" class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50">
+              <div class="text-gray-400 mb-4">No charts added yet</div>
+              <button 
+                v-if="isEditor"
+                @click="goToChartEditor"
+                class="text-blue-600 hover:text-blue-700 font-medium"
+              >
+                Create your first panel
+              </button>
+            </div>
 
-          <!-- EDITOR -->
+            <!-- Chart Grid -->
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
+              <div 
+                v-for="panel in panels" 
+                :key="panel.id" 
+                class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col h-[350px]"
+              >
+                <ag-charts 
+                  :options="panel.chartOptions"
+                  style="height: 100%; width: 100%;"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: MEMBER EDITOR -->
           <ProjectEditor
             v-if="activeTab === 'editor' && isEditor"
             :members="members"
@@ -63,7 +96,7 @@
             :isEditor="isEditor"
           />
 
-          <!-- SETTINGS -->
+          <!-- TAB 3: SETTINGS -->
           <ProjectSettings
             v-if="activeTab === 'settings' && isEditor"
             :project="project"
@@ -71,14 +104,11 @@
             :members="members"
             :isOwner="isOwner"
             :isEditor="isEditor"
-
             :userSearch="userSearch"
             :userSuggestions="userSuggestions"
             :selectedUser="selectedUser"
-
             :showDeleteModal="showDeleteModal"
             :deleteInput="deleteInput"
-
             :saveName="saveName"
             :searchUsers="searchUsers"
             :selectUser="selectUser"
@@ -86,7 +116,6 @@
             :changeRole="changeRole"
             :removeMember="removeMember"
             :deleteProject="deleteProject"
-
             @update:projectName="projectName = $event"
             @update:userSearch="userSearch = $event"
             @update:deleteInput="deleteInput = $event"
@@ -94,24 +123,38 @@
           />
 
         </main>
-
       </div>
     </v-main>
   </div>
 </template>
 
-
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import type { Ref } from "vue";
 
-import ProjectViewer from "@/components/project/ProjectViewer.vue";
+import { AgCharts } from "ag-charts-vue3";
+import { useMockData } from "@/composables/useMockData"; // Ensure you created this file from previous response
 import ProjectEditor from "@/components/project/ProjectEditor.vue";
 import ProjectSettings from "@/components/project/ProjectSettings.vue";
-
 import { useProjectDetail } from "@/composables/useProjectDetail";
 
-// ---- TYPE for composable return ----
+// ---- Router Logic ----
+const router = useRouter();
+const route = useRoute();
+
+const rawId = route.params.id
+const projectId = (Array.isArray(rawId) ? rawId[0] : rawId) as string
+
+// ---- Mock Data Logic for Charts ----
+const { getProjectPanels } = useMockData();
+const panels = ref<any[]>([]);
+
+const goToChartEditor = () => {
+  router.push(`/dashboard/editor/${projectId}`);
+};
+
+// ---- EXISTING LOGIC ----
 type ProjectDetailReturn = {
   project: Ref<any | null>;
   projectName: Ref<string>;
@@ -120,28 +163,21 @@ type ProjectDetailReturn = {
   userSuggestions: Ref<any[]>;
   selectedUser: Ref<any | null>;
   activeTab: Ref<string>;
-
   showDeleteModal: Ref<boolean>;
   deleteInput: Ref<string>;
-
   isOwner: Ref<boolean>;
   isEditor: Ref<boolean>;
-
   fetchProject: () => Promise<void>;
   saveName: () => Promise<void>;
   deleteProject: () => Promise<void>;
-
   searchUsers: () => Promise<void>;
   selectUser: (u: any) => void;
   addSelectedUser: () => Promise<void>;
-
   changeRole: (m: any) => Promise<void>;
   removeMember: (m: any) => Promise<void>;
-
   viewerChartOptions: Ref<any>;
 };
 
-// ---- USE COMPOSABLE WITH CAST ----
 const {
   project,
   projectName,
@@ -150,27 +186,27 @@ const {
   userSuggestions,
   selectedUser,
   activeTab,
-
   showDeleteModal,
   deleteInput,
-
   isOwner,
   isEditor,
-
   fetchProject,
   saveName,
   deleteProject,
-
   searchUsers,
   selectUser,
   addSelectedUser,
-
   changeRole,
   removeMember,
-
-  viewerChartOptions,
 } = useProjectDetail() as ProjectDetailReturn;
 
-onMounted(fetchProject);
+// ---- LIFECYCLE ----
+onMounted(async () => {
+  // 1. Fetch real project data (permissions, members)
+  await fetchProject();
+  
+  // 2. Fetch mock panel data (charts)
+  panels.value = getProjectPanels(projectId);
+});
 </script>
 

@@ -35,6 +35,8 @@ export function useDashboards() {
       )
       projects.value.push(res.data)
       closeModal()
+      
+      router.push("/dashboard/editor")
     } catch (err: any) {
       error.value = err.response?.data?.detail || "Could not create project"
     }
