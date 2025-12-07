@@ -171,17 +171,20 @@ import { onMounted, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import type { Ref } from "vue";
 import { AgCharts } from "ag-charts-vue3";
+import { createChartConfig } from "@/utils/chartFactory";
 
 // Composables
 import { useMockData } from "@/composables/useMockData";
 import { useProjectDetail } from "@/composables/useProjectDetail";
+import { useDataFetcher } from '@/composables/useDataFetcher'
 
 // Components
-import ProjectEditor from "@/components/project/ProjectEditor.vue"; // Note: This handles MEMBERS
+import ProjectEditor from "@/components/project/ProjectEditor.vue";
 import ProjectSettings from "@/components/project/ProjectSettings.vue";
 
 const router = useRouter();
 const route = useRoute();
+const { fetchData } = useDataFetcher()
 
 // Fix for ID type safety
 const rawId = route.params.id;
@@ -208,6 +211,27 @@ const handleDeletePanel = (panelId: string) => {
   if (confirm("Are you sure you want to delete this panel?")) {
     deletePanelFromProject(projectId, panelId);
     refreshPanels();
+  }
+};
+
+const timeRange = ref('24h') // Usually connected to a dropdown in the UI
+
+// Function to Hydrate Panels
+const hydratePanelsWithData = async () => {
+  for (const panel of panels.value) {
+    // 1. Check if panel has configuration
+    if (panel.queryConfig) {
+      
+      // 2. Fetch Data using the Service
+      const realData = await fetchData(panel.queryConfig, timeRange.value)
+      
+      // 3. Update Chart Options with Real Data
+      panel.chartOptions = createChartConfig(
+        panel.type, 
+        panel.title, 
+        realData
+      )
+    }
   }
 };
 
@@ -259,5 +283,6 @@ const {
 onMounted(async () => {
   await fetchProject();
   refreshPanels();
+  await hydratePanelsWithData();
 });
 </script>

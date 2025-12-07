@@ -4,9 +4,11 @@ export interface DashboardPanel {
   id: string
   title: string
   type: string
-  gridPos: { w: number; h: number } // For grid sizing
-  chartOptions: any // The AG Chart JSON config
+  gridPos: { w: number; h: number }
+  chartOptions: any
+  queryConfig?: any 
 }
+
 
 const STORAGE_KEY = 'mkp_mock_dashboards'
 
