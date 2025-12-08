@@ -2,8 +2,9 @@ name: Type check, lint and test Vue.js App
 
 on:
   pull_request:
-    branches:
-      - main
+    types:
+      - opened
+      - synchronize
   push:
     branches:
       - main
