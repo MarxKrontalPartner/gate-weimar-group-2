@@ -2,6 +2,7 @@ version: '3.9'
 
 services:
   backend:
+    pull_policy: build
     build: 
       context: ./backend
       dockerfile: Dockerfile
@@ -13,6 +14,7 @@ services:
     restart: always
 
   frontend:
+    pull_policy: build
     build:
       context: ./frontend
       dockerfile: Dockerfile
