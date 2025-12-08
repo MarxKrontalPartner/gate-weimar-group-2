@@ -1,17 +1,13 @@
 <template>
   <!-- LIGHT ONLY -->
   <div class="flex h-screen bg-gray-50">
-
     <!-- MAIN AREA -->
     <div class="flex-1 flex flex-col">
-
       <!-- PAGE CONTENT -->
       <v-main>
         <div class="p-8">
-
           <!-- GRID -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
             <!-- PROJECT CARD -->
             <div
               v-for="project in projects"
@@ -31,18 +27,14 @@
               <div class="text-4xl font-light text-indigo-600">+</div>
               <p class="mt-2 text-gray-600">New Project</p>
             </div>
-
           </div>
-
         </div>
       </v-main>
-
     </div>
   </div>
 
   <!-- CREATE PROJECT MODAL -->
   <div v-if="showCreate" class="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
-
     <div class="bg-white p-6 w-full max-w-md rounded-xl shadow-xl">
       <h2 class="text-xl font-semibold mb-4">Create Project</h2>
 
@@ -55,32 +47,21 @@
       <p v-if="error" class="text-red-600 mb-3">{{ error }}</p>
 
       <div class="flex justify-end gap-3">
-        <button @click="closeModal" class="px-4 py-2 rounded-lg bg-gray-200">
-          Cancel
-        </button>
+        <button @click="closeModal" class="px-4 py-2 rounded-lg bg-gray-200">Cancel</button>
         <button @click="createProject" class="px-4 py-2 rounded-lg bg-primary text-white">
           Create
         </button>
       </div>
     </div>
-
   </div>
 </template>
 
 <script setup lang="ts">
-import { useDashboards } from "@/composables/useDashboards"
+import { useDashboards } from '@/composables/useDashboards'
 
-const {
-  projects,
-  showCreate,
-  newProjectName,
-  error,
-  createProject,
-  closeModal,
-  openProject,
-} = useDashboards()
+const { projects, showCreate, newProjectName, error, createProject, closeModal, openProject } =
+  useDashboards()
 </script>
-
 
 <style>
 .fade-enter-active,

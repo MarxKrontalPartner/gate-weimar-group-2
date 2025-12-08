@@ -33,13 +33,13 @@
 
 <script lang="ts" setup>
 import { useTheme } from 'vuetify'
-import { useRouter } from "vue-router"
+import { useRouter } from 'vue-router'
 import logoLight from '@/assets/MKP_Logo_Webseite.svg'
 import logoDark from '@/assets/MKP_Logo_Webseite_inverted.svg'
 
 const props = defineProps({
   drawer: Boolean,
-  toggleDrawer: Function
+  toggleDrawer: Function,
 })
 
 const theme = useTheme()
@@ -50,15 +50,15 @@ const accountMenuItems = [
     title: 'Abmelden',
     value: 'logout',
     props: {
-      prependIcon: 'mdi-logout'
-    }
-  }
+      prependIcon: 'mdi-logout',
+    },
+  },
 ]
 
 const logout = () => {
-  localStorage.removeItem("token")
-  localStorage.removeItem("username")
-  router.push("/login")
+  localStorage.removeItem('token')
+  localStorage.removeItem('username')
+  router.push('/login')
 }
 </script>
 
