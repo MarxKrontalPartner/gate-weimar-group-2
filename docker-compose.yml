@@ -2,18 +2,20 @@ version: '3.9'
 
 services:
   backend:
-    build: .
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: django-backend
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - ./backend:/app
     restart: always
 
   frontend:
     build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: vue-frontend
     ports:
       - "80:80"
