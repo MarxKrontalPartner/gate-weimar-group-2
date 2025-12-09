@@ -12,7 +12,7 @@ const mkpSucces = '#84cc16'
 const white = '#F2F0EF'
 const mkpSurfaceLight = '#F8F9FA'
 
-export const MKPThemes: any = {
+export const MKPThemes = {
   mkpLightTheme: {
     dark: false,
     colors: {
@@ -55,7 +55,7 @@ export const MKPThemes: any = {
   } as ThemeDefinition,
 }
 
-export const MKPPortalTheme: any = {
+export const MKPPortalTheme = {
   dark: false,
   colors: {
     background: white,

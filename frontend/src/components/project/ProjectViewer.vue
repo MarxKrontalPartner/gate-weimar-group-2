@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import { AgCharts } from "ag-charts-vue3";
+// import { AgCharts } from 'ag-charts-vue3'
 
 defineProps<{
-  options: any;
-}>();
+  options: unknown
+}>()
 </script>

@@ -1,27 +1,27 @@
-import { ref, computed } from "vue"
-import axios from "axios"
-import { useRoute, useRouter } from "vue-router"
-
+import { ref, computed } from 'vue'
+import axios from 'axios'
+import { useRoute, useRouter } from 'vue-router'
+import type { Project, User, Membership } from '@/types/project.types'
 export function useProjectDetail() {
   const route = useRoute()
   const router = useRouter()
   const projectId = route.params.id
 
-  const project = ref<any | null>(null)
-  const projectName = ref("Loading...")
-  const members = ref<any[]>([])
-  const userSearch = ref("")
-  const userSuggestions = ref<any[]>([])
-  const selectedUser = ref<any | null>(null)
+  const project = ref<Project | null>(null)
+  const projectName = ref('Loading...')
+  const members = ref<Membership[]>([])
+  const userSearch = ref('')
+  const userSuggestions = ref<User[]>([])
+  const selectedUser = ref<User | null>(null)
 
   const showDeleteModal = ref(false)
-  const deleteInput = ref("")
+  const deleteInput = ref('')
 
-  const activeTab = ref("viewer")
+  const activeTab = ref('viewer')
 
-  const api = axios.create({ baseURL: "http://127.0.0.1:8000/api" })
+  const api = axios.create({ baseURL: 'http://127.0.0.1:8000/api' })
   const authHeaders = () => ({
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
   })
 
   // FETCH PROJECT
@@ -33,25 +33,26 @@ export function useProjectDetail() {
       project.value = res.data
       projectName.value = res.data.name
       members.value = res.data.memberships || []
-    } catch (err: any) {
-      if (err.response?.status === 403 || err.response?.status === 404) {
-        router.push("/dashboard")
+    } catch (err) {
+      if (
+        axios.isAxiosError(err) &&
+        (err.response?.status === 403 || err.response?.status === 404)
+      ) {
+        router.push('/dashboard')
       } else {
-        console.error("Unexpected error loading project:", err)
+        console.error('Unexpected error loading project:', err)
       }
     }
   }
 
   // ROLE LOGIC
-  const username = localStorage.getItem("username") || ""
+  const username = localStorage.getItem('username') || ''
 
   const isOwner = computed(() => project.value?.owner?.username === username)
 
   const isEditor = computed(() => {
     if (isOwner.value) return true
-    return members.value.some(
-      (m) => m.user.username === username && m.role === "editor"
-    )
+    return members.value.some((m) => m.user.username === username && m.role === 'editor')
   })
 
   // SAVE NAME
@@ -59,7 +60,7 @@ export function useProjectDetail() {
     await api.patch(
       `/projects/${projectId}/`,
       { name: projectName.value },
-      { headers: authHeaders() }
+      { headers: authHeaders() },
     )
   }
 
@@ -67,7 +68,7 @@ export function useProjectDetail() {
   const deleteProject = async () => {
     if (deleteInput.value !== projectName.value) return
     await api.delete(`/projects/${projectId}/`, { headers: authHeaders() })
-    router.push("/dashboard")
+    router.push('/dashboard')
   }
 
   // USER SEARCH
@@ -76,14 +77,14 @@ export function useProjectDetail() {
       userSuggestions.value = []
       return
     }
-    const res = await api.get("/users/", {
+    const res = await api.get('/users/', {
       headers: authHeaders(),
       params: { search: userSearch.value },
     })
     userSuggestions.value = res.data
   }
 
-  const selectUser = (u: any) => {
+  const selectUser = (u: User) => {
     selectedUser.value = u
     userSearch.value = u.username
     userSuggestions.value = []
@@ -94,55 +95,55 @@ export function useProjectDetail() {
     const res = await api.post(
       `/projects/${projectId}/add_member/`,
       { username: selectedUser.value.username },
-      { headers: authHeaders() }
+      { headers: authHeaders() },
     )
     members.value.push(res.data)
     selectedUser.value = null
-    userSearch.value = ""
+    userSearch.value = ''
   }
 
   // CHANGE ROLE
-  const changeRole = async (membership: any) => {
+  const changeRole = async (membership: Membership) => {
     await api.post(
       `/projects/${projectId}/update_role/`,
       { membership_id: membership.id, role: membership.role },
-      { headers: authHeaders() }
+      { headers: authHeaders() },
     )
   }
 
   // REMOVE MEMBER
-  const removeMember = async (membership: any) => {
+  const removeMember = async (membership: Membership) => {
     await api.post(
       `/projects/${projectId}/remove_member/`,
       { membership_id: membership.id },
-      { headers: authHeaders() }
+      { headers: authHeaders() },
     )
     members.value = members.value.filter((m) => m.id !== membership.id)
   }
 
   const viewerChartOptions = ref({
-    title: { text: "Viewer Graph Example" },
+    title: { text: 'Viewer Graph Example' },
     data: [
-      { label: "A", value: 30 },
-      { label: "B", value: 55 },
-      { label: "C", value: 42 },
+      { label: 'A', value: 30 },
+      { label: 'B', value: 55 },
+      { label: 'C', value: 42 },
     ],
     series: [
       {
-        type: "line",
-        xKey: "label",
-        yKey: "value",
-        stroke: "black",
+        type: 'line',
+        xKey: 'label',
+        yKey: 'value',
+        stroke: 'black',
         label: {
-          fontWeight: "bold",
+          fontWeight: 'bold',
           formatter: ({ value }: { value: number }) => value.toFixed(0),
         },
         marker: {
-          fill: "blue",
+          fill: 'blue',
           size: 10,
-          stroke: "blue",
+          stroke: 'blue',
           strokeWidth: 3,
-          shape: "circle",
+          shape: 'circle',
         },
       },
     ],

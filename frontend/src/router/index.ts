@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
-import Signup from '../views/Signup.vue'
-import Login from '../views/Login.vue'
-import Dashboard from '../views/Dashboard.vue'
-import ProjectDetail from '../views/ProjectDetail.vue'
-import DashboardEditor from '../views/DashboardEditor.vue'
+import Signup from '../views/SignupView.vue'
+import Login from '../views/LoginView.vue'
+import Dashboard from '../views/DashboardView.vue'
+import ProjectDetail from '../views/ProjectDetailView.vue'
+import Settings from '@/views/SettingsView.vue'
+import Channels from '@/views/ChannelsView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/login' },
@@ -14,15 +15,16 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/dashboard',
     component: Dashboard,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
   },
   { path: '/projects/:id', component: ProjectDetail, props: true },
-  { path: '/dashboard/editor/:id', component: DashboardEditor, meta: { requiresAuth: true } }
+  { path: '/settings', component: Settings },
+  { path: '/channels', component: Channels },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
 router.beforeEach((to, from, next) => {

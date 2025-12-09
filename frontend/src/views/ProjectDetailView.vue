@@ -2,9 +2,10 @@
   <div class="flex h-screen bg-gray-50">
     <v-main>
       <div class="flex-1 flex flex-col">
-
         <!-- TOP BAR -->
-        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
+        <header
+          class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6"
+        >
           <div class="flex items-center gap-3">
             <h1 class="text-m font-semibold">{{ projectName }}</h1>
 
@@ -15,9 +16,12 @@
               <button
                 @click="activeTab = 'viewer'"
                 class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
-                :class="activeTab === 'viewer'
-                  ? 'bg-black text-white border-black'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'">
+                :class="
+                  activeTab === 'viewer'
+                    ? 'bg-black text-white border-black'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                "
+              >
                 Viewer
               </button>
 
@@ -26,9 +30,12 @@
                 v-if="isEditor"
                 @click="activeTab = 'editor'"
                 class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
-                :class="activeTab === 'editor'
-                  ? 'bg-black text-white border-black'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'">
+                :class="
+                  activeTab === 'editor'
+                    ? 'bg-black text-white border-black'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                "
+              >
                 Editor
               </button>
 
@@ -37,9 +44,12 @@
                 v-if="isEditor"
                 @click="activeTab = 'settings'"
                 class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
-                :class="activeTab === 'settings'
-                  ? 'bg-black text-white border-black'
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'">
+                :class="
+                  activeTab === 'settings'
+                    ? 'bg-black text-white border-black'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                "
+              >
                 Settings
               </button>
             </div>
@@ -159,7 +169,6 @@
             @update:deleteInput="deleteInput = $event"
             @update:showDeleteModal="showDeleteModal = $event"
           />
-
         </main>
       </div>
     </v-main>
@@ -236,27 +245,33 @@ const hydratePanelsWithData = async () => {
 };
 
 type ProjectDetailReturn = {
-  project: Ref<any | null>;
-  projectName: Ref<string>;
-  members: Ref<any[]>;
-  userSearch: Ref<string>;
-  userSuggestions: Ref<any[]>;
-  selectedUser: Ref<any | null>;
-  activeTab: Ref<string>;
-  showDeleteModal: Ref<boolean>;
-  deleteInput: Ref<string>;
-  isOwner: Ref<boolean>;
-  isEditor: Ref<boolean>;
-  fetchProject: () => Promise<void>;
-  saveName: () => Promise<void>;
-  deleteProject: () => Promise<void>;
-  searchUsers: () => Promise<void>;
-  selectUser: (u: any) => void;
-  addSelectedUser: () => Promise<void>;
-  changeRole: (m: any) => Promise<void>;
-  removeMember: (m: any) => Promise<void>;
-  viewerChartOptions: Ref<any>;
-};
+  project: Ref<Project>
+  projectName: Ref<string>
+  members: Ref<Membership[]>
+  userSearch: Ref<string>
+  userSuggestions: Ref<User[]>
+  selectedUser: Ref<User | null>
+  activeTab: Ref<string>
+
+  showDeleteModal: Ref<boolean>
+  deleteInput: Ref<string>
+
+  isOwner: Ref<boolean>
+  isEditor: Ref<boolean>
+
+  fetchProject: () => Promise<void>
+  saveName: () => Promise<void>
+  deleteProject: () => Promise<void>
+
+  searchUsers: () => Promise<void>
+  selectUser: (u: User) => void
+  addSelectedUser: () => Promise<void>
+
+  changeRole: (m: Membership) => Promise<void>
+  removeMember: (m: Membership) => Promise<void>
+
+  viewerChartOptions: Ref<AgChartOptions>
+}
 
 const {
   project,
@@ -278,7 +293,9 @@ const {
   addSelectedUser,
   changeRole,
   removeMember,
-} = useProjectDetail() as ProjectDetailReturn;
+
+  viewerChartOptions,
+} = useProjectDetail() as ProjectDetailReturn
 
 onMounted(async () => {
   await fetchProject();

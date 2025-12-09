@@ -1,85 +1,109 @@
 # GATE 2 - Monitoring Dashboard
 
+
+## Repository Structure
+
+```text
+frontend/
+├── public/                         # Public assets
+├── src/                            # Source code
+│   └── components/                 # VUE components
+│   └── views/                      # VUE views
+└── package.json                    # Dependencies
+```
+
+```text
+backend/
+├── manage.py                       # Django management script
+├── gate2/                          # Django project settings
+├── accounts/                       # Django app account creation
+├── projects/                       # Django app for project management
+└── requirements.txt                # Python dependencies
+```
+
+
 ## Prerequisites
 
-- Docker and Docker Compose
-- WSL2 (for Windows users)
+- Docker and Docker Compose (WSL2 needed for Windows Users)
 
 ## Docker Compose
 
 The easiest way to get started is using the given Docker Compose file:
 
 ```bash
-sudo docker compose up -d
+docker compose up -d
 ```
 
 ### Stopping Services
 
 ```bash
 # Stop all services
-sudo docker compose down
+docker compose down
 ```
 
-# Backend for test data
 
-Checkout the OpenAPI Swagger UI: https://pegel-online.api.bund.dev/
-
-Example request url to find closest Pegel to Weimar:
-
-```
-https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations.json?includeTimeseries=false&includeCurrentMeasurement=false&includeCharacteristicValues=false&latitude=50.98314563623132&longitude=11.322992457260446&radius=100
-```
-
-Closest Pegel to Weimar is:
-
-```json
-{
-  "uuid": "003200ab-d138-49d9-aa52-217817941f85",
-  "number": "166640",
-  "shortname": "ILMENAU",
-  "longname": "ILMENAU",
-  "km": 12,
-  "agency": "REGIONALSTELLE SUHL",
-  "longitude": 10.928842587394035,
-  "latitude": 50.680942368697885,
-  "water": {
-    "shortname": "ILM",
-    "longname": "ILM"
-  }
-}
-```
-
-## How to get test data from ILMENAU Pegel
-Example request url to get water level data for ILMENAU Pegel:
-
-```
-https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/003200ab-d138-49d9-aa52-217817941f85/W/measurements.json?start=2022-02-06T09%3A00%3A00%2B01%3A00
-```
-
-Data will be returned in json format.
-```json
-[
-  {
-    "timestamp": "2025-09-27T01:15:00+02:00",
-    "value": 15
-  },
-  ...,
-  {
-    "timestamp": "2025-10-28T01:30:00+02:00",
-    "value": 15
-  },
-]
-```
-
-## Update - Pradhyumnaa
-
-Docker and Nginx Configured (I think?). Login, Sign Up Page and Dashboard Created.
+# Local development setup Frontend
 
 ```bash
-cd gate2
-sudo docker compose up --build
+cd frontend <- change to frontend directory
+npm install
+npm run dev
 ```
 
-then
+## Linting and Formatting
+Linting and formatting is useful to keep the code style consistent. The following commands are available:
+They are checked in the CI pipeline as well (every push to main and every pull request).
 
-go to http://localhost/.
+```bash
+npm run lint <- Lint and fix issues
+npm run lint-check <- Check for linting issues without fixing
+npm run format <- Format source code
+npm run format-check <- Check source code formatting without making changes
+npm run type-check <- Type-check the project
+```
+
+
+
+### cd command explanation
+```bash
+cd frontend <- change to frontend directory
+cd .. <- go back one directory
+cd backend <- change to backend directory
+cd ../.. <- go back two directories
+```
+
+# Local development setup Backend
+
+```bash
+cd backend <- change to backend directory
+python -m venv venv <- create virtual environment to isolate dependencies
+venv\Scripts\activate <- activate virtual environment (Windows)
+# source venv/bin/activate <- activate virtual environment (Linux/MacOS
+pip install -r requirements.txt <- install dependencies
+
+# First time setup only
+python manage.py migrate <- apply database migrations to local sqlite database
+python manage.py createsuperuser <- create admin user
+python manage.py runserver <- start development server
+```
+
+Useful Links:
+- Frontend: http://localhost:5173 (or http://localhost if using Docker)
+- Backend: http://localhost:8000/api/
+
+# How does it work?
+The frontend is built using Vue.js and communicates with the backend via RESTful API calls. The backend is built using Django and serves as the main application server, handling data storage, user authentication, and business logic. Docker Compose orchestrates both services, allowing them to run in isolated containers for easy deployment and management.
+
+## I want to develop just the frontend, how do I connect it to a running backend?
+1. Start the backend service using Docker Compose 
+```bash
+docker compose up -d backend
+```
+2. Follow the local development setup for the frontend above
+
+## I want to develop just the backend, how do I connect it to a running frontend?
+1. Start the frontend service using Docker Compose 
+```bash
+docker compose up -d frontend
+```
+2. Follow the local development setup for the backend above
