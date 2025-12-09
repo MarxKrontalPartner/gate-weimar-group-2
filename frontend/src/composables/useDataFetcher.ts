@@ -53,6 +53,9 @@ export function useDataFetcher() {
         console.log(`Fetching Live Data: ${dynamicUrl}`)
         const res = await axios.get(dynamicUrl)
         rawData = res.data
+
+        console.log(`Fetching Live Data from URL: ${dynamicUrl}`)
+        console.log("Raw Data:", rawData)
       }
 
       // Map Data to Standard Format { time, value }
