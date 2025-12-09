@@ -1,12 +1,12 @@
 export type Project = {
   id: number
   name: string
-  owner: User
+  owner: User | null
   memberships: Array<Membership>
 }
 
 export type User = {
-  id: number
+  id: number | null
   username: string
 }
 
