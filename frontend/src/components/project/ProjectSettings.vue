@@ -1,12 +1,10 @@
 <template>
   <div class="space-y-10">
-
     <!-- =========== 1. RENAME PROJECT =========== -->
     <section>
       <h2 class="text-lg font-semibold mb-3">Rename Project</h2>
 
       <div class="flex gap-3">
-
         <!-- RENAME INPUT -->
         <input
           :value="projectName"
@@ -14,12 +12,7 @@
           class="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-800 w-64"
         />
 
-        <button
-          @click="saveName"
-          class="px-4 py-2 bg-black text-white rounded-md"
-        >
-          Save
-        </button>
+        <button @click="saveName" class="px-4 py-2 bg-black text-white rounded-md">Save</button>
       </div>
     </section>
 
@@ -28,11 +21,10 @@
       <h2 class="text-lg font-semibold mb-3">Project Members</h2>
 
       <div class="max-w-md">
-
         <!-- SEARCH INPUT -->
         <input
           :value="userSearch"
-          @input="emit('update:userSearch', ($event.target as HTMLInputElement).value); searchUsers()"
+          @input="onInput"
           placeholder="Search username..."
           class="w-full px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-800"
         />
@@ -72,17 +64,11 @@
         </thead>
 
         <tbody>
-          <tr
-            v-for="m in members"
-            :key="m.id"
-            class="border-b border-gray-300"
-          >
+          <tr v-for="m in members" :key="m.id" class="border-b border-gray-300">
             <td class="py-2">{{ m.user.username }}</td>
 
             <td class="py-2">
-              <span v-if="m.user.id === project.owner.id">
-                Owner
-              </span>
+              <span v-if="m.user.id === project.owner.id"> Owner </span>
 
               <select
                 v-else-if="isEditor"
@@ -126,16 +112,11 @@
       class="fixed inset-0 bg-gray-500/30 flex items-center justify-center z-50"
     >
       <div class="bg-white p-6 rounded-lg w-96 shadow-xl">
-
-        <h2 class="text-lg font-semibold text-red-600 mb-4">
-          Confirm Project Deletion
-        </h2>
+        <h2 class="text-lg font-semibold text-red-600 mb-4">Confirm Project Deletion</h2>
 
         <p class="text-sm mb-3">To confirm deletion, please type the project name:</p>
 
-        <p class="text-sm font-semibold mb-3">
-          "{{ projectName }}"
-        </p>
+        <p class="text-sm font-semibold mb-3">"{{ projectName }}"</p>
 
         <!-- DELETE INPUT -->
         <input
@@ -156,48 +137,55 @@
             @click="deleteProject"
             :disabled="deleteInput !== projectName"
             class="px-4 py-2 rounded-md text-white"
-            :class="deleteInput === projectName ? 'bg-red-700 hover:bg-red-800' : 'bg-red-400 cursor-not-allowed'"
+            :class="
+              deleteInput === projectName
+                ? 'bg-red-700 hover:bg-red-800'
+                : 'bg-red-400 cursor-not-allowed'
+            "
           >
             Delete
           </button>
         </div>
-
       </div>
     </div>
-
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  project: any;
-  projectName: string;
-  members: any[];
+import type { Project, Membership, User } from '@/types/project.types'
+defineProps<{
+  project: Project
+  projectName: string
+  members: Membership[]
+  isOwner: boolean
+  isEditor: boolean
 
-  isOwner: boolean;
-  isEditor: boolean;
+  userSearch: string
+  userSuggestions: User[]
+  selectedUser: User | null
 
-  userSearch: string;
-  userSuggestions: any[];
-  selectedUser: any;
+  showDeleteModal: boolean
+  deleteInput: string
 
-  showDeleteModal: boolean;
-  deleteInput: string;
-
-  saveName: () => void;
-  searchUsers: () => void;
-  selectUser: (u: any) => void;
-  addSelectedUser: () => void;
-  changeRole: (m: any) => void;
-  removeMember: (m: any) => void;
-  deleteProject: () => void;
-}>();
+  saveName: () => void
+  searchUsers: () => void
+  selectUser: (u: User) => void
+  addSelectedUser: () => void
+  changeRole: (m: Membership) => void
+  removeMember: (m: Membership) => void
+  deleteProject: () => void
+}>()
 
 // -------- FIXED EMIT TYPINGS ----------
 const emit = defineEmits<{
-  (e: "update:projectName", value: string): void;
-  (e: "update:userSearch", value: string): void;
-  (e: "update:deleteInput", value: string): void;
-  (e: "update:showDeleteModal", value: boolean): void;
-}>();
+  (e: 'update:projectName', value: string): void
+  (e: 'update:userSearch', value: string): void
+  (e: 'update:deleteInput', value: string): void
+  (e: 'update:showDeleteModal', value: boolean): void
+}>()
+
+function onInput(event: Event) {
+  const target = event.target as HTMLInputElement
+  emit('update:userSearch', target.value)
+}
 </script>

@@ -50,6 +50,28 @@ npm install
 npm run dev
 ```
 
+## Linting and Formatting
+Linting and formatting is useful to keep the code style consistent. The following commands are available:
+They are checked in the CI pipeline as well (every push to main and every pull request).
+
+```bash
+npm run lint <- Lint and fix issues
+npm run lint-check <- Check for linting issues without fixing
+npm run format <- Format source code
+npm run format-check <- Check source code formatting without making changes
+npm run type-check <- Type-check the project
+```
+
+
+
+### cd command explanation
+```bash
+cd frontend <- change to frontend directory
+cd .. <- go back one directory
+cd backend <- change to backend directory
+cd ../.. <- go back two directories
+```
+
 # Local development setup Backend
 
 ```bash

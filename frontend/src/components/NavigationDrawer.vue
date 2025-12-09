@@ -1,33 +1,32 @@
 <template>
-  <v-navigation-drawer v-model="props.drawer" color="background">
+  <v-navigation-drawer
+    :model-value="drawer"
+    @update:model-value="$emit('update:drawer', $event)"
+    color="background"
+  >
     <!-- content for the drawer -->
     <v-list density="compact" nav>
       <v-list-group value="monitoring">
         <template v-slot:activator="{ props }">
           <v-list-item v-bind="props" title="Monitoring" prepend-icon="mdi-sine-wave"></v-list-item>
         </template>
-        <v-list-item title="Placeholder" value="mon_messkonzept" />
+        <v-list-item title="Dashboard" value="dashboard" prepend-icon="mdi-grid" to="/dashboard" />
+        <v-list-item
+          title="Channels"
+          value="channels"
+          prepend-icon="mdi-view-list"
+          to="/channels"
+        />
+        <v-list-item title="Settings" value="settings" prepend-icon="mdi-cog" to="/settings" />
       </v-list-group>
-
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script lang="ts" setup>
-
-const props = defineProps({
-  drawer: Boolean
+defineProps({
+  drawer: Boolean,
 })
 
-const navMenuItems = [
-  {
-    title: 'Monitoring',
-    value: 'monitoring',
-    props: {
-      prependIcon: 'mdi-sine-wave'
-    }
-  },
-]
-
-
+defineEmits(['update:drawer'])
 </script>
