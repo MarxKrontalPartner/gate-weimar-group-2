@@ -1,0 +1,42 @@
+# ========== PYTHON / DJANGO ==========
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.db.sqlite3
+env/
+venv/
+*.log
+media/
+staticfiles/
+
+# Django secret key (if exists)
+*.env
+
+# ========== VUE / NODE ==========
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
+# ========== EDITOR / OS FILES ==========
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ========== GRAFANA  ==========
+data/
+grafana/
+*.db
+plugins/
+gate2/
+
+# ========== DOCKER ==========
+*.pid
+*.sock
+logs/
+
+# sqlite
+*.sqlite
+*.sqlite3

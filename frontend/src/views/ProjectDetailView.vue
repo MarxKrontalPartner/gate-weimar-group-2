@@ -11,6 +11,7 @@
 
             <!-- TABS -->
             <div class="flex items-center gap-3 ml-10">
+              <!-- 1. Viewer Tab -->
               <button
                 @click="activeTab = 'viewer'"
                 class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
@@ -23,6 +24,7 @@
                 Viewer
               </button>
 
+              <!-- 2. Editor Tab -->
               <button
                 v-if="isEditor"
                 @click="activeTab = 'editor'"
@@ -36,6 +38,7 @@
                 Editor
               </button>
 
+              <!-- 3. Settings Tab -->
               <button
                 v-if="isEditor"
                 @click="activeTab = 'settings'"
@@ -46,20 +49,94 @@
                     : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Project Settings
+                Settings
               </button>
             </div>
+          </div>
+
+          <!-- Add Panel Button  -->
+          <div v-if="activeTab === 'editor'">
+            <button
+              @click="goToChartEditor"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-2"
+            >
+              <span>+</span> Add Panel
+            </button>
           </div>
         </header>
 
         <!-- MAIN CONTENT -->
-        <main class="p-8 text-gray-800 text-sm">
-          <!-- VIEWER -->
-          <ProjectViewer v-if="activeTab === 'viewer'" :options="viewerChartOptions" />
+        <main class="p-8 text-gray-800 text-sm h-full overflow-y-auto">
+          <!-- TAB 1: VIEWER (Read Only) -->
+          <div v-if="activeTab === 'viewer'" class="h-full">
+            <div
+              v-if="panels.length === 0"
+              class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50"
+            >
+              <div class="text-gray-400 mb-4">
+                No panels to display. Switch to Editor mode to add one.
+              </div>
+            </div>
 
-          <!-- EDITOR -->
+            <!-- Read-Only Grid -->
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
+              <div
+                v-for="panel in panels"
+                :key="panel.id"
+                class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col h-[350px]"
+              >
+                <ag-charts-vue :options="panel.chartOptions" style="height: 100%; width: 100%" />
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: EDITOR (Visual Edit Mode) -->
+          <div v-if="activeTab === 'editor' && isEditor" class="h-full">
+            <div
+              v-if="panels.length === 0"
+              class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50"
+            >
+              <v-btn color="primary" @click="goToChartEditor">Create First Panel</v-btn>
+            </div>
+
+            <!-- Editable Grid -->
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
+              <div
+                v-for="panel in panels"
+                :key="panel.id"
+                class="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col h-[350px] relative group hover:shadow-md transition"
+              >
+                <!-- Edit Controls Overlay -->
+                <div
+                  class="absolute top-2 right-2 flex gap-1 z-10 bg-white/90 p-1 rounded-md border shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <button
+                    @click="editPanel(panel.id)"
+                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-blue-600"
+                    title="Edit Panel"
+                  >
+                    <v-icon icon="mdi-pencil" size="small"></v-icon>
+                  </button>
+                  <button
+                    @click="handleDeletePanel(panel.id)"
+                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-red-600"
+                    title="Delete Panel"
+                  >
+                    <v-icon icon="mdi-trash-can-outline" size="small"></v-icon>
+                  </button>
+                </div>
+
+                <!-- Chart -->
+                <div class="p-4 h-full w-full">
+                  <ag-charts-vue :options="panel.chartOptions" style="height: 100%; width: 100%" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: MEMBERS (Renamed from old Editor Tab) -->
           <ProjectEditor
-            v-if="activeTab === 'editor' && isEditor"
+            v-if="activeTab === 'members' && isEditor"
             :members="members"
             :changeRole="changeRole"
             :removeMember="removeMember"
@@ -67,7 +144,7 @@
             :isEditor="isEditor"
           />
 
-          <!-- SETTINGS -->
+          <!-- TAB 4: SETTINGS -->
           <ProjectSettings
             v-if="activeTab === 'settings' && isEditor"
             :project="project"
@@ -99,18 +176,69 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import type { Ref } from 'vue'
+import { createChartConfig } from '@/utils/chartFactory'
 
-import ProjectViewer from '@/components/project/ProjectViewer.vue'
+// Composables
+import { useMockData, type DashboardPanel } from '@/composables/useMockData'
+import { useProjectDetail } from '@/composables/useProjectDetail'
+import { useDataFetcher } from '@/composables/useDataFetcher'
+
+// Components
 import ProjectEditor from '@/components/project/ProjectEditor.vue'
 import ProjectSettings from '@/components/project/ProjectSettings.vue'
-
-import { useProjectDetail } from '@/composables/useProjectDetail'
 import type { Project, Membership, User } from '@/types/project.types'
-import type { AgChartOptions } from 'ag-charts-community'
 
-// ---- TYPE for composable return ----
+const router = useRouter()
+const route = useRoute()
+const { fetchData } = useDataFetcher()
+
+// Fix for ID type safety
+const rawId = route.params.id
+const projectId = (Array.isArray(rawId) ? rawId[0] : rawId) as string
+
+// Mock Data Logic
+const { getProjectPanels, deletePanelFromProject } = useMockData()
+const panels = ref<DashboardPanel[]>([])
+
+const refreshPanels = () => {
+  panels.value = getProjectPanels(projectId)
+}
+
+const goToChartEditor = () => {
+  router.push(`/dashboard/editor/${projectId}`)
+}
+
+const editPanel = (panelId: string) => {
+  console.log('Edit panel', panelId)
+  router.push(`/dashboard/editor/${projectId}?panelId=${panelId}`)
+}
+
+const handleDeletePanel = (panelId: string) => {
+  if (confirm('Are you sure you want to delete this panel?')) {
+    deletePanelFromProject(projectId, panelId)
+    refreshPanels()
+  }
+}
+
+const timeRange = ref('24h') // Usually connected to a dropdown in the UI
+
+// Function to Hydrate Panels
+const hydratePanelsWithData = async () => {
+  for (const panel of panels.value) {
+    // 1. Check if panel has configuration
+    if (panel.queryConfig) {
+      // 2. Fetch Data using the Service
+      const realData = await fetchData(panel.queryConfig, timeRange.value)
+
+      // 3. Update Chart Options with Real Data
+      panel.chartOptions = createChartConfig(panel.type, panel.title, realData)
+    }
+  }
+}
+
 type ProjectDetailReturn = {
   project: Ref<Project>
   projectName: Ref<string>
@@ -137,10 +265,9 @@ type ProjectDetailReturn = {
   changeRole: (m: Membership) => Promise<void>
   removeMember: (m: Membership) => Promise<void>
 
-  viewerChartOptions: Ref<AgChartOptions>
+  // viewerChartOptions: Ref<AgChartOptions>
 }
 
-// ---- USE COMPOSABLE WITH CAST ----
 const {
   project,
   projectName,
@@ -149,26 +276,25 @@ const {
   userSuggestions,
   selectedUser,
   activeTab,
-
   showDeleteModal,
   deleteInput,
-
   isOwner,
   isEditor,
-
   fetchProject,
   saveName,
   deleteProject,
-
   searchUsers,
   selectUser,
   addSelectedUser,
-
   changeRole,
   removeMember,
 
-  viewerChartOptions,
+  // viewerChartOptions,
 } = useProjectDetail() as ProjectDetailReturn
 
-onMounted(fetchProject)
+onMounted(async () => {
+  await fetchProject()
+  refreshPanels()
+  await hydratePanelsWithData()
+})
 </script>
