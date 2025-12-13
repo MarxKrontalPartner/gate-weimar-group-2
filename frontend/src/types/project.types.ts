@@ -15,3 +15,10 @@ export type Membership = {
   user: User
   id: number
 }
+
+export interface ChartDataPoint {
+  time?: Date
+  value: number
+  label?: string
+  [key: string]: unknown
+}

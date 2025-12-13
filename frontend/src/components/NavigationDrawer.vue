@@ -18,8 +18,6 @@
           to="/channels"
         />
         <v-list-item title="Settings" value="settings" prepend-icon="mdi-cog" to="/settings" />
-        <v-list-item title="Dashboard" value="mon_messkonzept" />
-        <v-list-item title="Channel" value="mon_messkonzept" />
       </v-list-group>
     </v-list>
   </v-navigation-drawer>
