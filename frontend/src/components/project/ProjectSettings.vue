@@ -153,7 +153,7 @@
 
 <script setup lang="ts">
 import type { Project, Membership, User } from '@/types/project.types'
-defineProps<{
+const props = defineProps<{
   project: Project
   projectName: string
   members: Membership[]
@@ -168,12 +168,12 @@ defineProps<{
   deleteInput: string
 
   saveName: () => void
-  searchUsers: () => void
+  searchUsers: () => Promise<void>
   selectUser: (u: User) => void
-  addSelectedUser: () => void
-  changeRole: (m: Membership) => void
-  removeMember: (m: Membership) => void
-  deleteProject: () => void
+  addSelectedUser: () => Promise<void>
+  changeRole: (m: Membership) => Promise<void>
+  removeMember: (m: Membership) => Promise<void>
+  deleteProject: () => Promise<void>
 }>()
 
 // -------- FIXED EMIT TYPINGS ----------
@@ -184,8 +184,9 @@ const emit = defineEmits<{
   (e: 'update:showDeleteModal', value: boolean): void
 }>()
 
-function onInput(event: Event) {
+async function onInput(event: Event) {
   const target = event.target as HTMLInputElement
   emit('update:userSearch', target.value)
+  await props.searchUsers()
 }
 </script>
