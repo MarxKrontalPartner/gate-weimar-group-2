@@ -3,7 +3,9 @@
     <v-main>
       <div class="flex-1 flex flex-col">
         <!-- TOP BAR -->
-        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
+        <header
+          class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6"
+        >
           <div class="flex items-center gap-3">
             <h1 class="text-m font-semibold">{{ projectName }}</h1>
 
@@ -110,8 +112,12 @@
                         <span class="font-medium">Station:</span>
                         {{ getPanelInfo(panel).stationName }}
                       </div>
-                      <div><span class="font-medium">UUID:</span> {{ getPanelInfo(panel).uuid }}</div>
-                      <div><span class="font-medium">River:</span> {{ getPanelInfo(panel).river }}</div>
+                      <div>
+                        <span class="font-medium">UUID:</span> {{ getPanelInfo(panel).uuid }}
+                      </div>
+                      <div>
+                        <span class="font-medium">River:</span> {{ getPanelInfo(panel).river }}
+                      </div>
                       <div>
                         <span class="font-medium">Timeseries:</span>
                         {{ getPanelInfo(panel).timeseries }}
@@ -147,7 +153,13 @@
                   <div class="flex items-center gap-2">
                     <v-tooltip location="bottom">
                       <template #activator="{ props }">
-                        <v-btn v-bind="props" icon variant="text" size="small" class="text-gray-600">
+                        <v-btn
+                          v-bind="props"
+                          icon
+                          variant="text"
+                          size="small"
+                          class="text-gray-600"
+                        >
                           <v-icon icon="mdi-information-outline" size="small" />
                         </v-btn>
                       </template>
@@ -158,10 +170,12 @@
                           {{ getPanelInfo(expandedPanel).stationName }}
                         </div>
                         <div>
-                          <span class="font-medium">UUID:</span> {{ getPanelInfo(expandedPanel).uuid }}
+                          <span class="font-medium">UUID:</span>
+                          {{ getPanelInfo(expandedPanel).uuid }}
                         </div>
                         <div>
-                          <span class="font-medium">River:</span> {{ getPanelInfo(expandedPanel).river }}
+                          <span class="font-medium">River:</span>
+                          {{ getPanelInfo(expandedPanel).river }}
                         </div>
                         <div>
                           <span class="font-medium">Timeseries:</span>
@@ -439,8 +453,12 @@ const hydratePanelsWithData = async () => {
           })
         } catch {
           meta = null
-        }panel.chartOptions = buildPegelChartOptions(panel, realData, meta) as DashboardPanel['chartOptions']
-
+        }
+        panel.chartOptions = buildPegelChartOptions(
+          panel,
+          realData,
+          meta,
+        ) as DashboardPanel['chartOptions']
       } else {
         panel.chartOptions = createChartConfig(panel.type, panel.title, realData)
       }

@@ -102,7 +102,9 @@
 
                 <!-- Station dropdown (must always show shortname, not UUID) -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Station</label>
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                    >Station</label
+                  >
                   <v-autocomplete
                     v-model="selectedStationUuid"
                     :items="stationsForDropdown"
@@ -315,7 +317,11 @@ const hasNoData = computed(() => previewData.value.length === 0)
 const riverFilteredStations = computed<StationOption[]>(() => {
   const q = riverSearch.value.trim().toLowerCase()
   if (!q) return stations.value
-  return stations.value.filter((s) => String(s.water ?? '').toLowerCase().includes(q))
+  return stations.value.filter((s) =>
+    String(s.water ?? '')
+      .toLowerCase()
+      .includes(q),
+  )
 })
 
 const stationFilteredStations = computed<StationOption[]>(() => {
@@ -404,14 +410,12 @@ const trySelectStationFromSearch = (): void => {
 
   const matches = base.filter((s) => String(s.shortname).toLowerCase().includes(q))
   if (matches.length === 1) {
-  const onlyMatch = matches[0]
-  if (onlyMatch) {
-    applyStationSelection(String(onlyMatch.uuid))
+    const onlyMatch = matches[0]
+    if (onlyMatch) {
+      applyStationSelection(String(onlyMatch.uuid))
+    }
   }
 }
-
-}
-
 
 // 1) Selecting station in dropdown -> UUID + API station set
 watch(
@@ -459,9 +463,6 @@ watch(
   },
   { flush: 'sync' },
 )
-
-
-
 
 // Load existing panel data if in edit mode
 onMounted(async () => {
@@ -530,16 +531,12 @@ const chartOptions = computed(() => {
         : 'Temperature'
 
   const defaultUnit =
-    pegelTimeseries.value === 'W'
-      ? 'cm'
-      : pegelTimeseries.value === 'Q'
-        ? 'm³/s'
-        : '°C'
+    pegelTimeseries.value === 'W' ? 'cm' : pegelTimeseries.value === 'Q' ? 'm³/s' : '°C'
 
   const titleText = pegelMeta.value?.longname ?? defaultTitle
   const unitText = pegelMeta.value?.unit ?? defaultUnit
- const stationLabel = selectedStationName.value || pegelStation.value.trim()
-const subtitleText = `${stationLabel} · ${pegelTimeseries.value} · ${pegelPeriod.value}`
+  const stationLabel = selectedStationName.value || pegelStation.value.trim()
+  const subtitleText = `${stationLabel} · ${pegelTimeseries.value} · ${pegelPeriod.value}`
 
   const baseSeries = Array.isArray((base as Record<string, unknown>).series)
     ? ((base as Record<string, unknown>).series as unknown[])
