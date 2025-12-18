@@ -437,11 +437,10 @@ const hydratePanelsWithData = async () => {
             station: panel.queryConfig.station,
             timeseries: panel.queryConfig.timeseries as PegelTimeseries,
           })
-        } catch (e) {
+        } catch {
           meta = null
-        }
+        }panel.chartOptions = buildPegelChartOptions(panel, realData, meta) as DashboardPanel['chartOptions']
 
-        panel.chartOptions = buildPegelChartOptions(panel, realData, meta) as any
       } else {
         panel.chartOptions = createChartConfig(panel.type, panel.title, realData)
       }
