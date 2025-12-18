@@ -45,96 +45,133 @@
                   <span class="text-blue-600 font-medium">Loading Data...</span>
                 </div>
 
-                <ag-charts-vue
-                  v-if="chartOptions"
-                  :options="chartOptions"
-                  style="height: 100%; width: 100%"
-                />
+                <!-- Chart OR No Data Message -->
+                <div class="h-full w-full flex items-center justify-center">
+                  <template v-if="!hasNoData">
+                    <ag-charts-vue :options="chartOptions" style="height: 100%; width: 100%" />
+                  </template>
+
+                  <template v-else>
+                    <div class="text-center text-gray-500 px-6">
+                      <p class="text-sm font-medium">No data available</p>
+                      <p class="text-xs mt-1">
+                        <strong>{{ selectedStationName || pegelStation }}</strong>
+                        and timeseries <strong>{{ pegelTimeseries }}</strong>
+                      </p>
+                    </div>
+                  </template>
+                </div>
               </div>
             </div>
 
-            <!-- BOTTOM TABS: QUERY CONFIGURATION -->
-            <div
-              class="bg-white border-t border-gray-200 h-72 flex flex-col shrink-0 overflow-y-auto"
-            >
-              <div class="border-b px-4">
-                <button
-                  class="px-4 py-2 text-sm font-medium border-b-2 border-blue-600 text-blue-600"
-                >
-                  Query
-                </button>
-                <button class="px-4 py-2 text-sm font-medium text-gray-500">Transform</button>
-              </div>
+            <!-- BOTTOM: QUERY CONFIGURATION -->
+            <div class="p-6">
+              <div class="grid grid-cols-12 gap-6">
+                <!-- River search (water field in JSON) -->
+                <div class="col-span-4">
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">River</label>
+                  <v-text-field
+                    v-model="riverSearch"
+                    density="compact"
+                    variant="outlined"
+                    hide-details
+                    clearable
+                    placeholder="Type river name (water)..."
+                    @click:clear="clearRiverSearch"
+                  />
+                  <p v-if="riverNeedsStationSelection" class="text-xs text-red-600 mt-1">
+                    Select a station (by name) or enter a UUID after filtering by river.
+                  </p>
+                </div>
 
-              <div class="p-6">
-                <div class="grid grid-cols-12 gap-6">
-                  <!-- Source Type -->
-                  <div class="col-span-3">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                      >Source Type</label
-                    >
-                    <v-select
-                      v-model="queryConfig.sourceType"
-                      :items="['STATIC_JSON', 'REST_API']"
-                      density="compact"
-                      variant="outlined"
-                      hide-details
-                    ></v-select>
-                  </div>
+                <!-- Station search (separate input) -->
+                <div class="col-span-4">
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                    >Search Station</label
+                  >
+                  <v-text-field
+                    v-model="stationSearch"
+                    density="compact"
+                    variant="outlined"
+                    hide-details
+                    clearable
+                    placeholder="Type station shortname..."
+                    @click:clear="clearStationSearch"
+                  />
+                </div>
 
-                  <!-- URL Input -->
-                  <div class="col-span-9">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
-                      {{
-                        queryConfig.sourceType === 'STATIC_JSON'
-                          ? 'File Path (/public)'
-                          : 'API Endpoint URL'
-                      }}
-                    </label>
-                    <v-text-field
-                      v-model="queryConfig.url"
-                      density="compact"
-                      variant="outlined"
-                      hide-details
-                      placeholder="e.g. https://api.example.com/data"
-                    ></v-text-field>
-                    <p
-                      v-if="queryConfig.sourceType === 'REST_API'"
-                      class="text-xs text-gray-400 mt-1"
-                    >
-                      Tip: Input the api here.
-                      <!-- We will append  <code>?start=ISO_DATE</code> automatically. -->
-                    </p>
-                  </div>
-
-                  <!-- Field Mapping -->
-                  <div class="col-span-12 grid grid-cols-2 gap-6">
-                    <div>
-                      <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                        >Time Field (X-Axis)</label
-                      >
-                      <v-text-field
-                        v-model="queryConfig.mapping.x"
-                        density="compact"
-                        variant="outlined"
-                        hide-details
-                        placeholder="e.g. timestamp"
-                      ></v-text-field>
-                    </div>
-                    <div>
-                      <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                        >Value Field (Y-Axis)</label
-                      >
-                      <v-text-field
-                        v-model="queryConfig.mapping.y"
-                        density="compact"
-                        variant="outlined"
-                        hide-details
-                        placeholder="e.g. value"
-                      ></v-text-field>
-                    </div>
+                <!-- Station dropdown (must always show shortname, not UUID) -->
+                <div class="col-span-4">
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Station</label>
+                  <v-autocomplete
+                    v-model="selectedStationUuid"
+                    :items="stationsForDropdown"
+                    item-title="shortname"
+                    item-value="uuid"
+                    density="compact"
+                    variant="outlined"
+                    hide-details
+                    clearable
+                    placeholder="Select station..."
+                  />
+                  <div v-if="selectedStationName" class="text-xs text-gray-500 mt-1">
+                    Selected: <span class="font-medium">{{ selectedStationName }}</span>
                   </div>
                 </div>
+
+                <!-- UUID input -->
+                <div class="col-span-4">
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">UUID</label>
+                  <v-text-field
+                    v-model="stationUuidInput"
+                    density="compact"
+                    variant="outlined"
+                    hide-details
+                    placeholder="Enter station UUID"
+                  />
+                </div>
+
+                <!-- Timeseries -->
+                <div class="col-span-4">
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                    >Timeseries</label
+                  >
+                  <v-select
+                    v-model="pegelTimeseries"
+                    :items="[
+                      { title: 'W (Water Level)', value: 'W' },
+                      { title: 'Q (Discharge)', value: 'Q' },
+                      { title: 'T (Temperature)', value: 'T' },
+                    ]"
+                    item-title="title"
+                    item-value="value"
+                    density="compact"
+                    variant="outlined"
+                    hide-details
+                  />
+                </div>
+
+                <!-- Period -->
+                <div class="col-span-4">
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Period</label>
+                  <v-select
+                    v-model="pegelPeriod"
+                    :items="[
+                      { title: '1 day', value: 'P1D' },
+                      { title: '3 days', value: 'P3D' },
+                      { title: '7 days', value: 'P7D' },
+                      { title: '14 days', value: 'P14D' },
+                      { title: '30 days', value: 'P30D' },
+                    ]"
+                    item-title="title"
+                    item-value="value"
+                    density="compact"
+                    variant="outlined"
+                    hide-details
+                  />
+                </div>
+
+                <!-- INFO section removed (as requested) -->
               </div>
             </div>
           </div>
@@ -143,7 +180,6 @@
           <div
             class="w-80 bg-white border-l border-gray-200 overflow-y-auto flex flex-col shrink-0"
           >
-            <!-- Same Sidebar Code as before -->
             <div class="p-4 border-b border-gray-100">
               <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
                 Visualization
@@ -195,11 +231,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
 import { createChartConfig } from '@/utils/chartFactory'
 import { useMockData } from '@/composables/useMockData'
-import { useDataFetcher, type QueryConfig } from '@/composables/useDataFetcher'
+import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
+
+import type { ChartDataPoint } from '@/types/project.types'
+import type {
+  PegelPeriod,
+  PegelTimeseries,
+  PegelTimeseriesMeta,
+  QueryConfig,
+} from '@/composables/useDataFetcher'
+
+const pegelStation = ref<string>('ILMENAU') // UUID used for API (or station id)
+const pegelTimeseries = ref<PegelTimeseries>('W')
+const pegelPeriod = ref<PegelPeriod>('P7D')
+
+const pegelMeta = ref<PegelTimeseriesMeta | null>(null)
 
 const router = useRouter()
 const route = useRoute()
@@ -223,59 +274,300 @@ const selectedChart = ref('Time series')
 const panelTitle = ref('New Panel')
 
 // Query Configuration State
-const queryConfig = ref<QueryConfig>({
-  sourceType: 'STATIC_JSON',
-  url: '/mock_sensor_data.json', // Default example
-  mapping: { x: 'timestamp', y: 'value' },
+const queryConfig = computed<QueryConfig>(() => ({
+  sourceType: 'PEGEL',
+  station: pegelStation.value.trim(),
+  timeseries: pegelTimeseries.value,
+  period: pegelPeriod.value,
+}))
+
+type StationOption = {
+  shortname: string
+  uuid: string
+  water?: string
+  [key: string]: unknown
+}
+
+const stations = ref<StationOption[]>([])
+
+// Inputs
+const riverSearch = ref<string>('')
+const stationSearch = ref<string>('')
+
+const selectedStationUuid = ref<string>('') // dropdown stores uuid
+const stationUuidInput = ref<string>('') // manual uuid input
+
+const selectedStation = computed<StationOption | null>(() => {
+  const uuid = selectedStationUuid.value
+  if (!uuid) return null
+  return stations.value.find((s) => String(s.uuid) === uuid) ?? null
 })
 
-const previewData = ref<Record<string, unknown>[]>([]) // Holds the data for the editor preview
+const selectedStationName = computed<string>(() => {
+  const s = selectedStation.value
+  return s ? String(s.shortname) : ''
+})
+
+const previewData = ref<ChartDataPoint[]>([])
+const hasNoData = computed(() => previewData.value.length === 0)
+
+// River + station filtering
+const riverFilteredStations = computed<StationOption[]>(() => {
+  const q = riverSearch.value.trim().toLowerCase()
+  if (!q) return stations.value
+  return stations.value.filter((s) => String(s.water ?? '').toLowerCase().includes(q))
+})
+
+const stationFilteredStations = computed<StationOption[]>(() => {
+  const q = stationSearch.value.trim().toLowerCase()
+  const base = riverFilteredStations.value
+
+  if (!q) return base
+  return base.filter((s) => String(s.shortname).toLowerCase().includes(q))
+})
+
+// IMPORTANT: Ensure dropdown ALWAYS includes the selected station item,
+// so Vuetify displays shortname instead of raw UUID.
+const stationsForDropdown = computed<StationOption[]>(() => {
+  const list = stationFilteredStations.value
+  const sel = selectedStationUuid.value
+  if (!sel) return list
+
+  const already = list.some((s) => String(s.uuid) === sel)
+  if (already) return list
+
+  const selected = stations.value.find((s) => String(s.uuid) === sel)
+  return selected ? [selected, ...list] : list
+})
+
+// Validation: if river is filled, user must select station or enter UUID
+const riverNeedsStationSelection = computed(() => {
+  const river = riverSearch.value.trim()
+  if (!river) return false
+  const hasStation = !!selectedStationUuid.value
+  const hasUuid = stationUuidInput.value.trim().length > 0
+  const hasStationSearch = stationSearch.value.trim().length > 0
+  // If river is set, at least one of station selection / uuid / station search must be used
+  return !hasStation && !hasUuid && !hasStationSearch
+})
+
+const loadPegelMeta = async (): Promise<void> => {
+  try {
+    pegelMeta.value = await fetchPegelTimeseriesMeta({
+      station: pegelStation.value.trim(),
+      timeseries: pegelTimeseries.value,
+    })
+  } catch (e) {
+    console.warn('Failed to load Pegel meta', e)
+    pegelMeta.value = null
+  }
+}
+
+const loadStations = async (): Promise<void> => {
+  const res = await fetch('/stations.json')
+  stations.value = (await res.json()) as StationOption[]
+}
+
+const clearStationSearch = (): void => {
+  stationSearch.value = ''
+}
+
+const clearRiverSearch = (): void => {
+  riverSearch.value = ''
+}
+
+// Prevent watcher ping-pong loops
+const isSyncingStation = ref(false)
+
+const applyStationSelection = (uuid: string): void => {
+  const id = uuid.trim()
+  if (!id) return
+
+  isSyncingStation.value = true
+  selectedStationUuid.value = id
+  stationUuidInput.value = id
+  pegelStation.value = id
+  isSyncingStation.value = false
+}
+
+const trySelectStationFromSearch = (): void => {
+  const q = stationSearch.value.trim().toLowerCase()
+  if (!q) return
+
+  const base = riverFilteredStations.value
+
+  const exact = base.find((s) => String(s.shortname).toLowerCase() === q)
+  if (exact) {
+    applyStationSelection(String(exact.uuid))
+    return
+  }
+
+  const matches = base.filter((s) => String(s.shortname).toLowerCase().includes(q))
+  if (matches.length === 1) {
+  const onlyMatch = matches[0]
+  if (onlyMatch) {
+    applyStationSelection(String(onlyMatch.uuid))
+  }
+}
+
+}
+
+
+// 1) Selecting station in dropdown -> UUID + API station set
+watch(
+  selectedStationUuid,
+  (uuid) => {
+    if (isSyncingStation.value) return
+    if (!uuid) return
+
+    isSyncingStation.value = true
+    stationUuidInput.value = uuid
+    pegelStation.value = uuid
+    isSyncingStation.value = false
+  },
+  { flush: 'sync' },
+)
+
+// 2) Typing UUID -> selects station name if found, and sets API station anyway
+watch(
+  stationUuidInput,
+  (uuidRaw) => {
+    if (isSyncingStation.value) return
+    const uuid = uuidRaw.trim()
+    if (!uuid) return
+
+    isSyncingStation.value = true
+    pegelStation.value = uuid
+
+    const match = stations.value.find((s) => String(s.uuid) === uuid)
+    if (match) {
+      selectedStationUuid.value = String(match.uuid)
+    } else {
+      selectedStationUuid.value = ''
+    }
+    isSyncingStation.value = false
+  },
+  { flush: 'sync' },
+)
+
+// 3) Typing station name in Search Station -> auto-select matching station (and reflect UUID)
+watch(
+  stationSearch,
+  () => {
+    if (isSyncingStation.value) return
+    trySelectStationFromSearch()
+  },
+  { flush: 'sync' },
+)
+
+
+
 
 // Load existing panel data if in edit mode
 onMounted(async () => {
+  await loadStations()
+
   if (isEditMode) {
     const existingPanel = getPanel(projectId, editingPanelId)
     if (existingPanel) {
       panelTitle.value = existingPanel.title
       selectedChart.value = existingPanel.type
 
-      // Load saved query config
-      if (existingPanel.queryConfig) {
-        queryConfig.value = existingPanel.queryConfig
+      if (existingPanel.queryConfig && existingPanel.queryConfig.sourceType === 'PEGEL') {
+        const qc = existingPanel.queryConfig
+        pegelStation.value = qc.station
+        pegelTimeseries.value = qc.timeseries
+        pegelPeriod.value = qc.period
+
+        // sync UI fields from saved UUID
+        stationUuidInput.value = qc.station
+        const match = stations.value.find((s) => String(s.uuid) === qc.station)
+        if (match) {
+          selectedStationUuid.value = String(match.uuid)
+        }
       }
 
-      // Trigger fetch for preview
+      await loadPegelMeta()
       await refreshPreview()
     }
   } else {
-    // Fetch default mock data on new panel load
+    stationUuidInput.value = pegelStation.value
+
+    const match = stations.value.find((s) => String(s.uuid) === pegelStation.value)
+    if (match) {
+      selectedStationUuid.value = String(match.uuid)
+    }
+
+    await loadPegelMeta()
     await refreshPreview()
   }
 })
 
-// Function to fetch data based on current config
-const refreshPreview = async () => {
+const refreshPreview = async (): Promise<void> => {
   previewData.value = await fetchData(queryConfig.value, '24h')
 }
 
-// Watch for changes in Query Config to update preview automatically
+watch([pegelStation, pegelTimeseries], () => {
+  void loadPegelMeta()
+})
+
 watch(
-  queryConfig,
+  [pegelStation, pegelTimeseries, pegelPeriod],
   () => {
-    refreshPreview()
+    void refreshPreview()
   },
-  { deep: true },
+  { immediate: true },
 )
 
-// Chart Configuration (Computed so it updates when Title or Type changes)
 const chartOptions = computed(() => {
-  const transformedData = previewData.value.map((item) => ({
-    time: item[queryConfig.value.mapping.x] as Date,
-    value: Number(item[queryConfig.value.mapping.y]) || 0,
-    label: item.label as string | undefined,
-    ...item,
-  }))
-  return createChartConfig(selectedChart.value, panelTitle.value, transformedData)
+  const base = createChartConfig(selectedChart.value, panelTitle.value, previewData.value)
+
+  const defaultTitle =
+    pegelTimeseries.value === 'W'
+      ? 'Water Level'
+      : pegelTimeseries.value === 'Q'
+        ? 'Discharge'
+        : 'Temperature'
+
+  const defaultUnit =
+    pegelTimeseries.value === 'W'
+      ? 'cm'
+      : pegelTimeseries.value === 'Q'
+        ? 'm³/s'
+        : '°C'
+
+  const titleText = pegelMeta.value?.longname ?? defaultTitle
+  const unitText = pegelMeta.value?.unit ?? defaultUnit
+ const stationLabel = selectedStationName.value || pegelStation.value.trim()
+const subtitleText = `${stationLabel} · ${pegelTimeseries.value} · ${pegelPeriod.value}`
+
+  const baseSeries = Array.isArray((base as Record<string, unknown>).series)
+    ? ((base as Record<string, unknown>).series as unknown[])
+    : []
+
+  return {
+    ...base,
+    title: { text: titleText },
+    subtitle: { text: subtitleText },
+    axes: [
+      { type: 'time', position: 'bottom', title: { text: 'Time' } },
+      { type: 'number', position: 'left', title: { text: `${titleText} (${unitText})` } },
+    ],
+    series: baseSeries.map((s) => {
+      const seriesObj = s as Record<string, unknown>
+      return {
+        ...seriesObj,
+        marker: { enabled: false },
+        strokeWidth: 2,
+        tooltip: {
+          renderer: ({ datum }: { datum: ChartDataPoint }) => ({
+            title: datum.time instanceof Date ? datum.time.toLocaleString() : 'Time',
+            content: `${datum.value} ${unitText}`,
+          }),
+        },
+      }
+    }),
+  }
 })
 
 const chartTypes = [
@@ -285,7 +577,6 @@ const chartTypes = [
   { name: 'Gauge', icon: 'mdi-gauge' },
 ]
 
-// Save
 const handleApply = () => {
   const panelData = {
     id: isEditMode ? editingPanelId : Date.now().toString(),

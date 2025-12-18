@@ -1,0 +1,6824 @@
+[
+  {
+    "shortname": "AALBUDE",
+    "uuid": "8ba772ed-e45b-4be8-b91d-0c6c92de59e4",
+    "water": "PEENE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ABBENFLETH SPERRWERK",
+    "uuid": "28ec91e8-90c0-44d1-8fd2-b0b64c00c43b",
+    "water": "BSE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "ACHLEITEN",
+    "uuid": "c389c9e2-a5d8-4104-a4cf-510ade44f143",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ACHTHÖFENER FLETH SIEL",
+    "uuid": "86d07669-4670-48a1-8f30-7d7b26224ad6",
+    "water": "OSTE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "AFFOLDERN",
+    "uuid": "ab9d5a42-2b8d-491b-9fd1-8120df23c8e6",
+    "water": "EDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "AHLDEN",
+    "uuid": "522286e2-b2b3-4d0d-9a11-01b3ea418c76",
+    "water": "ALLER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "AHSEN SCHLEUSE OW",
+    "uuid": "2813f196-3404-4ac2-92be-e288fe1607af",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "AHSEN SCHLEUSE UW",
+    "uuid": "7703d54d-ca33-44b9-b519-c618bae5bcc7",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "AKEN",
+    "uuid": "094b96e5-caeb-46d3-a8ee-d44182add069",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "ALBERTSHEIM",
+    "uuid": "3af7d65c-c732-49e9-be05-fe3b5f88657c",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Aldingen Schleuse UP",
+    "uuid": "dfdfb4ff-370c-4795-a44e-0c2503674932",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ALKEN",
+    "uuid": "16578824-88de-4700-ab09-f61dbb1182bd",
+    "water": "MOSEL",
+    "has_W": false,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q"
+  },
+  {
+    "shortname": "ALLENDORF",
+    "uuid": "5b58af00-6817-4214-b151-34830ac563cc",
+    "water": "WERRA",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ALSLEBEN OP",
+    "uuid": "9fb9abce-e1ac-4c11-94b2-a32d63f6fb40",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ALSLEBEN UP",
+    "uuid": "93ddc1e6-072c-45f6-99c0-d7d7df9d39cf",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ALTENGAMME",
+    "uuid": "2ee12b9a-f7fd-4856-82b9-6bdd850c2bba",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ALTHAGEN",
+    "uuid": "b8d05bf9-2ef2-416d-ba70-b5dba74fe777",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ANDERNACH",
+    "uuid": "5735892a-ec65-4b29-97c5-50939aa9584e",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "ANDERTEN",
+    "uuid": "98daae03-5aaa-4284-9717-7d52da4fe063",
+    "water": "MLK",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "ANDERTEN OW",
+    "uuid": "bc20d819-1782-4588-885d-129f21a27cf9",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ANDERTEN UW",
+    "uuid": "dd41a7d6-9b11-4ec4-9518-388266750cfa",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ANKLAM",
+    "uuid": "22fd01e0-090b-476b-80aa-f4586e259785",
+    "water": "PEENE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ARTLENBURG",
+    "uuid": "b3492c68-8373-4769-9b29-22f66635a478",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ARTLENBURG-ESK",
+    "uuid": "7fec2f4f-6a2e-47ec-8f3c-016c581e4bbd",
+    "water": "ESK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ASTHEIM",
+    "uuid": "3de69bf8-dcbb-4afb-a15b-a8683a6a689c",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "AUHEIM BRÜCKE DFH",
+    "uuid": "da453ad0-5f1d-417c-baa3-74ae297f0b7a",
+    "water": "MAIN",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "AWK STROHBRÜCK",
+    "uuid": "0e192297-1224-4465-b1c7-a476cc17f74d",
+    "water": "NOK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Bad Ems Schleuse UP",
+    "uuid": "c005afb9-175d-4c7a-a9c3-7766f929d81f",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Bad Ems Wehr OP",
+    "uuid": "f2295e77-acc0-4c24-b762-90391a38059d",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BAD ESSEN",
+    "uuid": "6760b547-a7e7-408a-b3aa-529fe376bfcd",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BAHNITZ OP",
+    "uuid": "6c76e98e-44ca-4d25-91e7-b07c68577c5e",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BAHNITZ UP",
+    "uuid": "1ebd0f94-cc06-445c-8e73-43fe2b8c72dc",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BAKE A",
+    "uuid": "e8daa3e2-77d1-4cfa-9ac9-501e7b2b4b0a",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BAKE Z",
+    "uuid": "104fdc24-1dc6-4cb7-b44f-10bd02e13f40",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BAMBERG",
+    "uuid": "ff02f181-491c-4925-ad13-07edd2ddb3f1",
+    "water": "MDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BANZKOW OP",
+    "uuid": "a9320108-ad58-41b8-b7b5-f52163a23927",
+    "water": "STW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "BANZKOW UP",
+    "uuid": "69fb4730-4866-4838-9b18-2c0ee9dce80d",
+    "water": "STW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BARBY",
+    "uuid": "939f82ec-15a9-49c8-8828-dc2f8a2d49e2",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "BARDOWICK OP",
+    "uuid": "07830b68-c5b8-42dd-bf48-7176802130d0",
+    "water": "ILMENAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BARDOWICK UP",
+    "uuid": "a238b70f-1198-4b2f-8c03-41f3503e5389",
+    "water": "ILMENAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BARHÖFT",
+    "uuid": "09227288-8c72-4b12-88fe-8765d1b2b400",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BARKOW OP",
+    "uuid": "06d86c6b-5ed0-475f-805a-a3ceb59af083",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BARTH",
+    "uuid": "00c33ed9-6bea-45b4-8728-7edc7e43e2f3",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Basel-Rheinhalle",
+    "uuid": "94f6eff1-4f3f-4850-82e0-a086198e9ffd",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Beihingen Wehr UP",
+    "uuid": "8a2e3048-7bb0-4d8e-bf8a-3fc85a2d4b89",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BELUM",
+    "uuid": "a9e93be0-cb0e-4418-ba3c-94e7869f6199",
+    "water": "OSTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BELUM PEGEL",
+    "uuid": "9427fafc-7146-4be1-a71e-4e4658236037",
+    "water": "OSTE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "BENESOV",
+    "uuid": "b2e89aef-c870-4c73-9112-0115b9120458",
+    "water": "Ploucnice",
+    "has_W": false,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q"
+  },
+  {
+    "shortname": "BERENBUSCH",
+    "uuid": "d2c8f60e-fda4-4744-9017-9c727fdcfe1f",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERGESHÖVEDE",
+    "uuid": "ade3a084-8680-47b5-9d2e-288cb6c5f9d5",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-CHARLOTTENBURG OP",
+    "uuid": "63a222c0-bd45-4af8-b9a7-27f9443a1936",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-CHARLOTTENBURG UP",
+    "uuid": "d89eb759-58c4-43f4-9fe4-e6a21af23f5c",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-KÖPENICK",
+    "uuid": "47d3e815-c556-4e1b-93de-9fe07329fb00",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-MÜHLENDAMM OP",
+    "uuid": "6dc4e4a0-2c10-4c27-a08f-a0ca0aa13df2",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-MÜHLENDAMM UP",
+    "uuid": "09e15cf6-f155-4b76-b92f-6c260839121c",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-OBERSCHLEUSE OP",
+    "uuid": "24ce3282-39dd-4f2f-ba80-9676e59de7c7",
+    "water": "LWK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-OBERSCHLEUSE UP",
+    "uuid": "c42ad3df-cfe3-4dca-9dcf-dbbaac569a2f",
+    "water": "LWK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-PLÖTZENSEE OP",
+    "uuid": "ee52ce62-212c-4735-b438-26fbdc37e3e2",
+    "water": "BSK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-PLÖTZENSEE UP",
+    "uuid": "45721a68-566c-4e2a-a6c7-a7595982a779",
+    "water": "BSK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-SCHMÖCKWITZ",
+    "uuid": "6b595707-8c47-4bc7-a803-dbc327775c26",
+    "water": "DAW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-SPANDAU OP",
+    "uuid": "e607a4b6-85cc-4f12-a53d-116cb6eef4f5",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-SPANDAU UP",
+    "uuid": "2c68509c-bf1e-4866-9ec4-b26b231e5e04",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-UNTERSCHLEUSE OP",
+    "uuid": "503ad891-c9de-428c-b682-434510ed9de8",
+    "water": "LWK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERLIN-UNTERSCHLEUSE UP",
+    "uuid": "d198c901-fe4e-4c3f-9323-d6a771f51960",
+    "water": "LWK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERNBURG OP",
+    "uuid": "e7f52bd2-f0cb-4194-aa85-4ad76a3a0671",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BERNBURG UP",
+    "uuid": "501aa608-ea81-4690-a491-6602114c14af",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Besigheim Schleuse UP",
+    "uuid": "57db82c7-2785-44d0-bede-21de0686a6be",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Besigheim SKA",
+    "uuid": "46d8ed02-73fd-4958-8e2e-006c047d0576",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Besigheim Wehr UP",
+    "uuid": "42c11b7a-d5ff-4372-b5ee-3b755ea4cb6f",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BEVENSEN",
+    "uuid": "b8997708-53d0-4932-8fbf-265083e11517",
+    "water": "ESK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BHV ALTER LEUCHTTURM",
+    "uuid": "d3f822a0-e201-4a61-8913-589c74818ae0",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BINGEN",
+    "uuid": "0309cd61-90c9-470e-99d4-2ee4fb2c5f84",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BISCHOFSWERDER OP",
+    "uuid": "16a780aa-475d-41dc-a8ec-20488415b6d7",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BISCHOFSWERDER UP",
+    "uuid": "74134dc6-8e26-4195-9cdc-c22aa0a3558c",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BLANKENESE UF",
+    "uuid": "bacb459b-0f24-4233-bb35-cd224a51678e",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BLECKEDE",
+    "uuid": "6aa1cd8e-e528-4bcb-ba8e-705b6dcb7da2",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BLEXEN ABZ",
+    "uuid": "99dd338d-ef7d-43fd-a4e0-a9103406f0ad",
+    "water": "WESER",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "BOBZIN OP",
+    "uuid": "faefa284-84cf-4c1e-aa73-dccdc3de729d",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Bodenheim",
+    "uuid": "f6be7857-56b3-4db3-84e5-89e0c45985ed",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BODENWERDER",
+    "uuid": "5310aed3-784c-4290-bfff-806c75b831d9",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BOIZENBURG",
+    "uuid": "33e0bce0-13df-4ffc-be9d-f1a79e795e1c",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BONAFORTH",
+    "uuid": "23721dfd-9b89-4b69-af80-063229917f27",
+    "water": "FULDA",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "BONN",
+    "uuid": "593647aa-9fea-43ec-a7d6-6476a76ae868",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "BOPPARD",
+    "uuid": "2ff6379d-d168-4022-8da0-16846d45ef9b",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BORGFELD",
+    "uuid": "aac49cf2-5d3f-4c69-9847-027fecaeef30",
+    "water": "WÜMME",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BORGSDORF",
+    "uuid": "1b2e2996-c2ef-4d9c-9052-ced8cb7bc226",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "BORKUM FISCHERBALJE",
+    "uuid": "8727ebfd-e2e1-43da-ab3d-fee48cff9acc",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BORKUM SÜDSTRAND",
+    "uuid": "478f21e9-906b-4c6f-a009-b5eabb052746",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BRAKE",
+    "uuid": "7febef93-09ce-49e9-9643-ecb3076ce9a7",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BRAMSCHE",
+    "uuid": "bec8a6a5-c3de-4322-856a-870ceb992fe4",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BRANDENBURG OP",
+    "uuid": "16d180c2-63aa-486b-8966-81a6041360bc",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BRANDENBURG UP",
+    "uuid": "f8806fa4-cc2c-46e8-9b87-6231da0e3ddd",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BRAUBACH",
+    "uuid": "d6dc44d1-63ac-4871-b175-60ac4040069a",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BREDEREICHE OP",
+    "uuid": "308f5979-4ab8-48ab-b618-081aa285559e",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BREDEREICHE UP",
+    "uuid": "470acd2a-f3e7-4fd2-96b0-e90344ee51bf",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BREISACH",
+    "uuid": "9da1ad2b-88db-4cbb-8132-eddfab07d5ba",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BREITENBERG",
+    "uuid": "24c6a014-864b-4d53-bd05-0b49106f5412",
+    "water": "STÖR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BREMERVÖRDE UW",
+    "uuid": "cf8a3ea2-d5d2-4bf2-ba6b-cf1309d18bb1",
+    "water": "OSTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BROKDORF",
+    "uuid": "610ab204-d3c4-4a11-a38b-e31461fdcf27",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BROXTEN",
+    "uuid": "1125a391-6586-4951-865f-3a2c72f2c81a",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BRUNSBÜTTEL MPM",
+    "uuid": "d4f5f719-8c52-4f8d-945d-1c31404cc628",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BUNTHAUS",
+    "uuid": "ae1b91d0-e746-4f65-9f64-2d2e23603a82",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BURG",
+    "uuid": "831ad501-d2fe-4782-ab83-4f1c8e0b15ff",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BUROW",
+    "uuid": "a68cf527-a458-4d84-8171-7756813ca72c",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BUTTELERHÖRNE",
+    "uuid": "b3d88ca6-ea13-4540-a623-c02e43800a3b",
+    "water": "HUNTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BUXTEHUDE",
+    "uuid": "8a08c920-c911-43e5-90dd-27d4d4e757d0",
+    "water": "ESTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BÜSSAU UP",
+    "uuid": "bf7bb8e8-e81f-4655-9e84-28738feae936",
+    "water": "ELK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "BÜSUM",
+    "uuid": "5287a3e1-c540-4ab1-b52e-880d124cbc43",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "CALBE GRIZEHNE",
+    "uuid": "8d1fdc5b-b63a-4745-baeb-5e266d247e99",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "CALBE OP",
+    "uuid": "184200bc-cdb6-4116-a7cf-ac986c2d4fb8",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "CALBE UP",
+    "uuid": "46a3350b-f3e6-4f5d-a297-2652c43bfac8",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Cannstatt Schleuse UP",
+    "uuid": "7068d262-f466-44e1-9bfa-832fcc16c433",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "CELLE",
+    "uuid": "b475386c-30cc-453a-b3b7-1d17ace13595",
+    "water": "ALLER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "COCHEM",
+    "uuid": "768df4e9-ed5a-4141-901b-e25ac404d559",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "COSWIG",
+    "uuid": "1ce53a59-33b9-40dc-9b17-3cd2a2414607",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Cramberg Schleuse OP",
+    "uuid": "24fe419b-ed78-45d0-af54-05108098854a",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Cramberg Schleuse UP",
+    "uuid": "3abb36d1-d5b1-41a6-bd59-5b943d828c58",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "CRANZ",
+    "uuid": "e6b42536-6bf8-42e3-8ef5-7d1a283a8608",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "CUXHAVEN STEUBENHÖFT",
+    "uuid": "aad49293-242a-43ad-a8b1-e91d7792c4b2",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DAGEBÜLL",
+    "uuid": "6233e901-2600-4b54-ae06-7b987934e99e",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DALUM",
+    "uuid": "ad357e52-0978-4583-91e6-bc03a222f655",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DALWIGKSTHAL",
+    "uuid": "f0f78cc4-1ab4-4548-abed-63c65a267a8a",
+    "water": "ORKE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DAMNATZ",
+    "uuid": "c233674f-259a-4304-b81f-dce1f415d85b",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DATTELN SCHLEUSE OW",
+    "uuid": "4dd743e9-3040-4f11-8c7c-d5c5789d80b4",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DATTELN SCHLEUSE UW",
+    "uuid": "06c498e3-786a-48be-83be-6a6293ea3b8c",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Dausenau Schleuse OP",
+    "uuid": "9ceb358c-bb9d-4807-b081-49cd048f5c72",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Dausenau Schleuse UP",
+    "uuid": "eae91991-768c-4713-8cca-3b18d4af885e",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DEGGENDORF",
+    "uuid": "53d40547-8a09-4b25-988c-2e6d8d8d98ee",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Deizisau Schleuse UP",
+    "uuid": "c5b6243d-5b7e-4ec6-be61-2009085388d0",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DEMMIN",
+    "uuid": "b7e238e8-29ec-4522-8252-b2cae7d4f58e",
+    "water": "PEENE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DESSAU",
+    "uuid": "1edc5fa4-88af-47f5-95a4-0e77a06fe8b1",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DETERSHAGEN",
+    "uuid": "a7b1eda9-bed4-4456-8e54-529828cdcbf9",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Detzem OP",
+    "uuid": "c40912fd-8217-41d0-be2d-3e4073f0df35",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Detzem UP",
+    "uuid": "dc344605-c507-4054-b4e3-293cf0602bc4",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DIEMELTALSPERRE",
+    "uuid": "5cdc6555-87d7-4fcd-834d-cbbe24c9d08b",
+    "water": "DIEMEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Diemitz OP",
+    "uuid": "d6426c42-3af0-4173-94a8-a7b56a5c5026",
+    "water": "MHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Diemitz UP",
+    "uuid": "6b3b55e2-edb4-4945-82f4-523a8c4d5cfb",
+    "water": "MHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Diez Hafen",
+    "uuid": "eadedeb6-c31e-483f-b6c4-ca0153359ad7",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Diez Schleuse OP",
+    "uuid": "ea62ec5f-9a88-4e6a-9062-847bf8347e51",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Diez Schleuse UP",
+    "uuid": "31750a0f-24a8-4bc3-9e84-f058c05b70d8",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DONNERSCHLEUSE OP",
+    "uuid": "45634232-36ac-416c-806d-5f64201dae2c",
+    "water": "ELK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DORNBUSCH BRÜCKE",
+    "uuid": "5b94e4b9-cc96-433f-abf7-08287137ec54",
+    "water": "WSE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "DORSTEN SCHLEUSE OW",
+    "uuid": "6610cf2e-7bfd-4686-b9ac-b105f492d708",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DORSTEN SCHLEUSE UW",
+    "uuid": "5db8ab4b-315b-466e-b9d5-5ba5a19f5f08",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DRAKENBURG",
+    "uuid": "5b83cad2-ed64-42cf-87dd-98e27988c31a",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DRESDEN",
+    "uuid": "70272185-b2b3-4178-96b8-43bea330dcae",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "DREYE",
+    "uuid": "cbfdddd1-9e32-4de2-adca-7b32241c265d",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DREYSCHLOOT",
+    "uuid": "d4df3617-8209-4bcd-948e-fa723beb6666",
+    "water": "LEDA",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DUISBURG-MEIDERICH SCHLEUSE OW",
+    "uuid": "f18e81da-1fec-4308-a881-6defa7c6d18b",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DUISBURG-MEIDERICH SCHLEUSE UW",
+    "uuid": "48780245-36f2-453e-b430-5fa838851d6d",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DUISBURG-RUHRORT",
+    "uuid": "c0f51e35-d0e8-4318-afaf-c5fcbc29f4c1",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "DUKEGAT",
+    "uuid": "7753c1fa-34d8-4d09-a7c7-38024079117c",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DWARSGAT",
+    "uuid": "ad3b53f8-8c1b-439f-a0df-9f24827026d5",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DÖMITZ",
+    "uuid": "6e3ea719-48b1-408a-bc55-0986c1e94cd5",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DÖMITZ OP",
+    "uuid": "ec8188ee-f4e4-4f5e-91ae-472e765060cd",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DÖMITZ UP",
+    "uuid": "ad3a51da-2e25-4818-b96f-6a6d8a20d803",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DÖRVERDEN",
+    "uuid": "e7c7cbaa-9a85-4033-be0f-b5bebcce0760",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "DÜSSELDORF",
+    "uuid": "8f7e5f92-1153-4f93-acba-ca48670c8ca9",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "EBERSWALDE OP",
+    "uuid": "3cd46cc7-b94d-424f-a860-c389dd9992a4",
+    "water": "FiK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ECKERNFÖRDE",
+    "uuid": "1faa9b2c-c269-4662-af70-ef11da27cc1c",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EDERTALSPERRE",
+    "uuid": "c6e9f744-4dbf-4e8e-a219-cab051ec610c",
+    "water": "EDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EICHHORST OP",
+    "uuid": "42805eb1-aca9-4f32-a373-24a9cf839aed",
+    "water": "WbG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EICHHORST UP",
+    "uuid": "5c4c2d52-6c0d-4aa2-beed-6ce47e3e2bd7",
+    "water": "WbG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EIDER-SPERRWERK AP",
+    "uuid": "04acd7e5-3cbc-4cdd-b4a9-f452e868f4d6",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EIDER-SPERRWERK BP",
+    "uuid": "8ac85e6c-6167-496c-b16f-fa94f81cd94a",
+    "water": "EIDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EISENHÜTTENSTADT",
+    "uuid": "8675aa70-cfbc-471a-8566-dcc851f201d3",
+    "water": "ODER",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "EISENHÜTTENSTADT SCHL. OP",
+    "uuid": "df242a51-7ed5-4205-be60-47e0e1f46fad",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EISENHÜTTENSTADT SCHL. UP",
+    "uuid": "9c336515-b238-4a1a-947f-dabe47f4b502",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EITZE",
+    "uuid": "47174d8f-1b8e-4599-8a59-b580dd55bc87",
+    "water": "ALLER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ELDENA OP",
+    "uuid": "0fab94c7-d51c-4b5a-a2ab-694c13efb024",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ELMSHORN HAFEN",
+    "uuid": "136febf6-1371-4118-a9b8-4275444bda5d",
+    "water": "KRÜCKAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ELSFLETH",
+    "uuid": "eba772d4-509e-4fe7-ba51-d9a29b190432",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ELSFLETH OHRT",
+    "uuid": "531da758-b2f5-471d-9d9f-a78576081079",
+    "water": "HUNTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ELSTER",
+    "uuid": "c093b557-4954-4f05-8f5c-6c6d7916c62d",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EMDEN NEUE SEESCHLEUSE",
+    "uuid": "edfdf747-be92-462f-87ed-53d228a33172",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "EMMERICH",
+    "uuid": "9598e4cb-0849-401e-bba0-689234b27644",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "EMSHÖRN",
+    "uuid": "c8af067c-ba6a-4a76-86d8-1ce8e532ef8b",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ENKIRCH OP",
+    "uuid": "87207dcd-5f3d-4672-a660-5a3b1563baa4",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ENKIRCH UP",
+    "uuid": "ee861944-647f-4242-bf61-60f9b9d75fb7",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ERLAU",
+    "uuid": "99619dc5-9c88-45e9-a97d-653c41cda8a1",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Esslingen Schleuse UP",
+    "uuid": "130a3761-e060-482e-944c-f2a75d6744b7",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Esslingen Wehr OP",
+    "uuid": "31c32a38-aced-410c-b6a0-87506d14361f",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ESTE INNERES SPERRWERK AP",
+    "uuid": "227b83f7-1302-4d7e-8d70-899036ff4ce2",
+    "water": "ESTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ESTE INNERES SPERRWERK BP",
+    "uuid": "5fea1a12-326f-4919-ac9a-02f9fa11ab57",
+    "water": "ESTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FAHRENHOLZ OP",
+    "uuid": "c33c3667-b8c5-484a-8ea0-b92933b5a9f0",
+    "water": "ILMENAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FAHRENHOLZ UP",
+    "uuid": "bb62b28f-9947-42b1-92e4-743a1e0c4a76",
+    "water": "ILMENAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FANKEL OP",
+    "uuid": "68198b48-8a0f-4fa3-85fe-3aad94233a10",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FANKEL UP",
+    "uuid": "583420a8-8903-485e-8c35-003814506838",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FARGE",
+    "uuid": "cca92e6d-e2c3-4c5f-be56-5b8682b353eb",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FAULBACH",
+    "uuid": "a919f57f-8378-42d8-82f8-b87eaf008641",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Feudenheim Schleuse UP",
+    "uuid": "48a939b9-a3cf-49f5-a804-94b45f4eb8dc",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FINDENWIRUNSHIER OP",
+    "uuid": "a5902c55-6ff4-4bbe-88a1-ebba45b03cec",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FLAESHEIM SCHLEUSE OW",
+    "uuid": "f833a494-961b-42d3-9843-e4e61607b5be",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FLAESHEIM SCHLEUSE UW",
+    "uuid": "a7ffcc9e-fecd-431c-8044-e004682d023f",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FLENSBURG",
+    "uuid": "9e19c411-f728-4a43-a057-39d4155c71cc",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FRANKFURT OSTHAFEN",
+    "uuid": "66ff3eb4-513b-478b-abd2-2f5126ea66fd",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "FRANKFURT1 (ODER)",
+    "uuid": "bffdf7f2-6200-42a2-a4bc-a8111e27e043",
+    "water": "ODER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FREIBURG SPERRWERK",
+    "uuid": "d3e21e8a-99ce-4033-8db6-9d0f0648beb3",
+    "water": "Freiburger Hafenpriel",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "Fremersdorf",
+    "uuid": "fe72ee98-88e9-4d19-aba1-f97f61b7d4de",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "FRIEDRICHSFELD SCHLEUSE OW",
+    "uuid": "e3409c98-72d7-425b-9e2d-da54f75b3be8",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FRIEDRICHSFELD SCHLEUSE UW",
+    "uuid": "a98b4a84-e51f-4d03-86d9-3b8bdac10e69",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FRIEDRICHSTADT STRASSENBRÜCKE",
+    "uuid": "721313e7-935a-4bb8-8c6d-0e014211b2ec",
+    "water": "EIDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FRIEDRICHSTADT TREENE",
+    "uuid": "795ce865-3ac4-43b8-88d5-049a34e4359e",
+    "water": "TREENE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FRIEDRICHSTHAL",
+    "uuid": "314945d6-b499-40cf-bb21-d76cf4547e3a",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FUESTRUP",
+    "uuid": "3a8ed45f-28e7-4263-8437-d926c6a194f4",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Fürfurt Schleuse UP",
+    "uuid": "34af0fca-d2c6-4243-a924-9ce1b3b6452d",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FÜRSTENBERG OP",
+    "uuid": "2c95f83d-4669-4553-a18d-3f493176d34d",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FÜRSTENBERG UP",
+    "uuid": "a5830277-af1d-4c64-be72-00591f36216c",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FÜRSTENWALDE OP",
+    "uuid": "53088d32-226a-49b7-962d-a5879c3aba29",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "FÜRSTENWALDE UP",
+    "uuid": "e7440532-8033-44d6-99b4-037a05da0c54",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GARTZ",
+    "uuid": "44bb934c-4250-4e1b-ad70-0fbd8bb3eadd",
+    "water": "WOD",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GARWITZ UP",
+    "uuid": "12499527-9476-45ed-80a2-b2b729742414",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GARZ OP",
+    "uuid": "4c8282c1-c9c5-40c2-b379-95495ce0deee",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GARZ UP",
+    "uuid": "914ce0a4-d900-4bf9-bace-47a6f73e7bed",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GEESTHACHT",
+    "uuid": "44f7e955-c97d-45c8-9ed7-19406806fb4c",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GELSENKIRCHEN SCHLEUSE OW",
+    "uuid": "5b9f8134-8bf0-4b51-a548-72a36303bbc2",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GELSENKIRCHEN SCHLEUSE UW",
+    "uuid": "427318d0-ee8d-4d9b-89f1-e8a8685b5d8c",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GENTHIN",
+    "uuid": "e9e7f20c-9f74-41fd-b054-cad59fca2cd4",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GEVERSDORF BRÜCKE",
+    "uuid": "f44e7220-892e-40b5-8ef4-3da129c2a6ae",
+    "water": "OSTE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "Giessen Klärwerk",
+    "uuid": "4b386a6a-996e-4a4a-a440-15d6b40226d4",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "GLÜCKSTADT",
+    "uuid": "1f1bbed7-c1fa-45b4-90d3-df94b50ad631",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GNEVSDORF EP",
+    "uuid": "3079c709-9d83-4c59-bf91-6bed2d5ea372",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GNEVSDORF OP",
+    "uuid": "ab53a592-0f5a-43e2-9133-bf3169b0f274",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "GORLEBEN",
+    "uuid": "ac507f42-1593-49ea-865f-10b2523617c7",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GRABOW OP",
+    "uuid": "db4a69b2-65ba-4dd8-8b3e-eadf2cc241c6",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GRAFENBRÜCK OP",
+    "uuid": "547422fb-364e-4870-9977-c7782f0712e2",
+    "water": "FiK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GRAUERORT REEDE",
+    "uuid": "7398029b-c6a1-484f-b1f6-1afe568ee1e2",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GREBENAU",
+    "uuid": "acd63934-e40d-4650-a094-01cea45432be",
+    "water": "FULDA",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "GREIFSWALD OIE",
+    "uuid": "087b6386-0957-4b47-af7d-ecd62f6d63ce",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GREIFSWALD-WIECK",
+    "uuid": "6b53ef42-5bd9-4366-ace3-442e307bec60",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GREVENMACHER UP",
+    "uuid": "69308142-f78e-4877-9af8-e7221b01d303",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GROSS ROSENBURG",
+    "uuid": "2203fce7-9d1e-4586-84ab-0797468863a1",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GROSSE TRÄNKE WEHR OP",
+    "uuid": "81630fdd-5949-412b-a2e0-d3da8bc8bcda",
+    "water": "MGS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GROSSE TRÄNKE WEHR UP",
+    "uuid": "cfad4ee5-580f-4df2-918b-bc89c615ad0b",
+    "water": "MGS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GROSSE WESERBRÜCKE",
+    "uuid": "b26bfc88-eb8a-45b9-9dd0-0e41949a2648",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GRÖNHUDE",
+    "uuid": "15859426-834c-429e-9c41-2e097b717b1d",
+    "water": "STÖR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GRÜTZ OP",
+    "uuid": "5553e209-1b44-47f5-917d-2c6951ecc044",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GRÜTZ UP",
+    "uuid": "c62aa674-db07-4251-a50b-1676c11a9a25",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Gundelsheim UP",
+    "uuid": "fc1072e4-61d4-4e89-bc70-c7e8860fd208",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GUNTERSHAUSEN",
+    "uuid": "213a585d-d665-4be7-96a4-78a992b9614d",
+    "water": "FULDA",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Guttenbach Schleuse UP",
+    "uuid": "bd36404b-ec92-43c0-8d28-3f2c246d51fc",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GW-PWDRFP 01",
+    "uuid": "4a4daad2-0e96-4070-914e-a1c4f6b7a3e5",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "GW-PWDRFP 02",
+    "uuid": "e1217d07-91f8-4019-b3a2-0c0d69316ab8",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "GW-PWDRFP 03",
+    "uuid": "6cb287c2-2fb2-4845-b11f-e78bd5db2ce3",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "GW-PWDRFP 04",
+    "uuid": "6e19aeca-d37a-4b00-9354-c6dd90f12de2",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "GW-PWDRFP 05",
+    "uuid": "a1341b43-9c62-4e71-87cc-61a0d4d1b105",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "GW-PWDRFP 06",
+    "uuid": "69fc0432-e9dc-400c-8c21-0c26e85df884",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "GW-PWDRFP 07",
+    "uuid": "f6dc9514-bdaf-4817-b3bf-34cd4b5c3e18",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "GW-PWDRFP 08",
+    "uuid": "bc9f369e-5fd4-466c-8d97-ddb1ecd2aed2",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "GW-PWDRFP 09",
+    "uuid": "18216ff8-18aa-4a71-bd32-e7479ccc439d",
+    "water": "DYHRMOOR",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "Güdingen OP",
+    "uuid": "4270b713-dd98-46e8-b317-5ce54fefdd06",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Güdingen UP",
+    "uuid": "13c69cb9-ef9c-459c-a48b-74c1ba4994f7",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GÜLPE OP",
+    "uuid": "f112a50a-d94a-49d3-a140-0a0402baf0d3",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "GÜRITZ OP",
+    "uuid": "956ce5ff-1fc8-461e-ab2e-0ac70758bb46",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HAHLEN",
+    "uuid": "ac970eb0-f5cf-4db0-90f0-e281f5d4775c",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HAHNÖFER SAND WEST SIEL",
+    "uuid": "81c95d3a-3193-4e9c-a411-adf97c751a43",
+    "water": "ELBE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "HALDENSLEBEN",
+    "uuid": "90d92801-c13c-4b1a-8885-83d1a07d6db8",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HAMBURG ST. PAULI",
+    "uuid": "d488c5cc-4de9-4631-8ce1-0db0e700b546",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HAMBURG-HARBURG",
+    "uuid": "706e5110-c5e2-4915-9989-c071fcb492ec",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HAMELN WEHRBERGEN",
+    "uuid": "fa886080-4271-4684-9999-1b6862a20ac1",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HAMM OW",
+    "uuid": "4dbce62d-a015-4011-afcd-423bb8d4b7a1",
+    "water": "DHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HAMM UW",
+    "uuid": "4ef9dd9c-b32b-43fc-bc5e-3849d4ab7ecc",
+    "water": "DHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HANAU BRÜCKE DFH",
+    "uuid": "07374faf-2039-4430-ae6d-adc0e0784c4b",
+    "water": "MAIN",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "HANN. LIST",
+    "uuid": "27dfd137-3b88-42e8-9baf-6bee76e0717c",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HANN.MUENDEN",
+    "uuid": "227e53ca-4dd9-482b-be62-52fdc62a4b4e",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Hanweiler",
+    "uuid": "eeaba884-d4c5-4a83-88fb-adcd79adbc50",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HASEHUBBRÜCKE",
+    "uuid": "04572010-1db2-4338-8562-b3dca5e715c5",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Hattingen",
+    "uuid": "c0594fb5-77ff-4287-9b8d-7ff326afe9ff",
+    "water": "RUHR",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "HAVELBERG EP",
+    "uuid": "bb6fd2f0-458a-4ea5-aa58-e1c1a2fbd56d",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HAVELBERG STADT",
+    "uuid": "c203d5fb-96d7-4643-b2ef-b13b1d88c75b",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "HAVELBERG UP",
+    "uuid": "ce086a21-29c2-444c-b53d-f3b70b086b2f",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HECHTHAUSEN",
+    "uuid": "e5e02890-87bd-4fab-b590-ffa557c3532e",
+    "water": "OSTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Heidelberg UP",
+    "uuid": "827b2685-47ec-44df-a90f-980f5e0c1591",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Heilbronn Schleuse UP",
+    "uuid": "f77df170-d23a-451c-9c43-b1580ccd3e2c",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HEILIGENHAFEN",
+    "uuid": "06219dd9-a2c4-463c-9619-623b3c026cbc",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HELDRA",
+    "uuid": "5c735fa8-270e-42c3-b22f-b27418db10cf",
+    "water": "WERRA",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "HELGOLAND BINNENHAFEN",
+    "uuid": "c0ec139b-13b4-4f86-bee3-06665ad81a40",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HELGOLAND SÜDHAFEN",
+    "uuid": "0d8233b8-36c9-4a24-ad77-a4e7c617932f",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HELMINGHAUSEN",
+    "uuid": "33092c28-201a-4210-89c9-ce68cad61ed1",
+    "water": "DIEMEL",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "HENRICHENBURG OW",
+    "uuid": "70bee932-1c14-42f8-b4df-9a85589ca80e",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HENRICHENBURG UW",
+    "uuid": "e6b68bc2-6814-4bbf-b37e-44a0b7807c2d",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HERBRUM HAFENDAMM",
+    "uuid": "8177a148-5674-4b8f-8ded-050907f640f3",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HERNE OW",
+    "uuid": "ac6c4362-1fb1-4b7a-9406-016bed804804",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HERNE UW",
+    "uuid": "b9975ea1-5b45-4e27-abb8-4c3f7878b1f7",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Herrendurchstich",
+    "uuid": "8c9aba65-b16c-436a-93e3-fff59abcc002",
+    "water": "TRAVE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "HERRENHAUSEN",
+    "uuid": "8134af78-3100-4679-bf1d-be82410df429",
+    "water": "LEINE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HERZHAUSEN",
+    "uuid": "855205e7-1cc9-4c5f-a2c2-7d5d84011708",
+    "water": "ITTER EDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Hessigheim Schleuse UP",
+    "uuid": "23517de9-9b81-4a34-ab82-adff6443c235",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HETLINGEN",
+    "uuid": "599c23b1-4550-41e3-a7e7-3056989927f1",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Hilkenbrook",
+    "uuid": "58ccd6f0-2e67-4e01-8a04-9d1cbd2f7cb9",
+    "water": "KÜSTENKANAL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HIMMELPFORT OP",
+    "uuid": "bcdfa310-d887-49bf-a562-1e439759044a",
+    "water": "LyG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HIMMELPFORT UP",
+    "uuid": "9592d736-26af-46e5-84fd-e43e89b66566",
+    "water": "LyG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Hirschhorn Schleuse UP",
+    "uuid": "acf505dd-60c9-4a57-a483-556ed0b2794f",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HITZACKER",
+    "uuid": "a26e57c9-1cb8-4fca-ba80-9e02abc81df8",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Hofen Schleuse UP",
+    "uuid": "cf2af1a4-41a9-4a48-871b-f241daad04cc",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HOFKIRCHEN",
+    "uuid": "616dd98e-816d-4e17-b8cd-57b163dbc8a2",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "HOHENSAATEN OST AP",
+    "uuid": "e0d0cc73-d3ef-41ff-a158-4692b62ed3f9",
+    "water": "VKH",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HOHENSAATEN WEST AP",
+    "uuid": "99309d3e-58d6-4200-b212-c8499467b4ce",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "HOHENSAATEN WEST BP",
+    "uuid": "3404a6e5-8dfe-42b1-90f6-c0c3741b6ac8",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HOHENSAATEN-FINOW",
+    "uuid": "f7a639a4-b824-445c-b158-108ebd70cc9a",
+    "water": "ODER",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "HOHNSTORF",
+    "uuid": "d9289367-c8aa-4b6a-b1ad-857fec94c6bb",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Hollerich Schleuse OP",
+    "uuid": "cedc9b0c-274a-44f1-8e68-5d035bc90c94",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Hollerich Schleuse UP",
+    "uuid": "9beb7290-7585-4578-998e-9c7c11d7365e",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HOLLERSIEL",
+    "uuid": "2eacef2f-7a8f-413a-a2c7-f1da4cf22742",
+    "water": "HUNTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HOOKSIELPLATE",
+    "uuid": "fac30fe9-a39c-445a-84de-637a199f1dfa",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Horkheim Schleuse UP",
+    "uuid": "b76bf04c-45e7-40c7-8940-3e1419c6da15",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Horkheim Wehr UP",
+    "uuid": "d9b441a5-a585-4ac4-ae65-351a5fce3aa5",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HORNEBURG",
+    "uuid": "3244d787-f884-40ae-9752-ad3507309edc",
+    "water": "LÜHE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HOYA",
+    "uuid": "86f66699-29b6-4b94-85cb-d241e832230a",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HUNDSMÜHLEN",
+    "uuid": "cf6ac249-f20a-400b-8543-31f2d2fe23f0",
+    "water": "KÜSTENKANAL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HUNTEBRÜCK",
+    "uuid": "2e1d458b-f78f-41dc-bebd-e0512578610a",
+    "water": "HUNTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HUSUM",
+    "uuid": "e114aeec-c8d9-4d20-8fe1-8822058cb38b",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HÖRNUM",
+    "uuid": "733755fd-628f-4130-a694-aaba340531ba",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HÖRSTEL",
+    "uuid": "6c7c180f-6dc1-4c4d-97bd-814080df8bcf",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HÖXTER",
+    "uuid": "763633e7-3b4b-470a-978e-f9e456e4df7c",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HÜNXE SCHLEUSE OW",
+    "uuid": "5c1b6183-eaaf-436c-b863-8a191d9e1f5a",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "HÜNXE SCHLEUSE UW",
+    "uuid": "14699a51-aaa5-4ae4-98a6-d35aa9a80ec3",
+    "water": "WDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "IFFEZHEIM",
+    "uuid": "b02be240-1364-4c97-8bb6-675d7d842332",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "ILMENAU",
+    "uuid": "003200ab-d138-49d9-aa52-217817941f85",
+    "water": "ILM",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ILMENAU SPERRWERK AP",
+    "uuid": "6b05e8dc-3089-497a-a602-f40c4283d8bb",
+    "water": "ILMENAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "INGOLSTADT LUITPOLDSTRASSE",
+    "uuid": "824a046b-9ca3-4db8-993d-e755122854e0",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "INTSCHEDE",
+    "uuid": "78d69798-f956-4222-8d2b-f9f630fb9e36",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ITZEHOE HAFEN",
+    "uuid": "d863cbc3-5e5e-4095-855c-026f0850dd58",
+    "water": "STÖR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "JADE-WESER-PORT",
+    "uuid": "33bdec83-6184-4ca5-a075-f44185aef302",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "JARMEN",
+    "uuid": "a3328262-207d-4e65-96d8-202368ca0cb8",
+    "water": "PEENE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KACHLET SCHLEUSE UP",
+    "uuid": "0fd56e0a-e32e-4b56-9cda-e0ce93d715c4",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KACHLET WEHR UP",
+    "uuid": "560cf185-0052-4e40-832b-7792b52dd343",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KADE",
+    "uuid": "e4f29379-6fd3-4501-afc5-bc5a41cb6e93",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Kalkofen neu",
+    "uuid": "64f735fd-88b6-42ea-9cdd-dc18d3806c34",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Kalkofen Schleuse OP",
+    "uuid": "a7034573-06b3-4490-bb7e-6aa70724a0ba",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KANALBRÜCKE",
+    "uuid": "32b997c2-d97c-452a-a5c1-ee4592a15b4c",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KANNENBURG OP",
+    "uuid": "a869dd39-dcf7-46f2-b9bf-b210816109ac",
+    "water": "TlG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KANNENBURG UP",
+    "uuid": "4457a320-1f99-4352-8a43-ff24109d99ea",
+    "water": "TlG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Kanzem OP",
+    "uuid": "8486572c-715d-421f-9fb0-a5714d9e394c",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Kanzem UP",
+    "uuid": "17a33d45-2c12-4c91-8204-ec87680d77c4",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KAPPELN",
+    "uuid": "b09f2243-60f0-469a-8f3b-0ea6abc83267",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KARLSHAFEN",
+    "uuid": "1e51195c-f9d7-4cff-9db1-d92bb855005c",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KARLSHAGEN",
+    "uuid": "f53bb77f-e55a-468f-b7be-b66baf7e3e5b",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KARNIN",
+    "uuid": "da893bbd-965a-49b7-a661-707a1ba899d1",
+    "water": "OSPH",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KAUB",
+    "uuid": "1d26e504-7f9e-480a-b52c-5932be6549ab",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "KEHL-KRONENHOF",
+    "uuid": "23af9b02-5c82-4f6e-acb8-f92a06e5e4da",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "KELHEIMWINZER",
+    "uuid": "c9409937-b794-4b69-b36b-38467daab09a",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KERSDORF OP",
+    "uuid": "b577a043-b6b8-4db8-80e7-8abbb565c8c5",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KERSDORF UP",
+    "uuid": "b2204ea2-eb50-439f-a64d-98062ea1d21f",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KETZIN",
+    "uuid": "d2d025a2-e691-4986-b9c4-923e7f1a47c3",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "KIEL-HOLTENAU",
+    "uuid": "3ad4013f-644b-47f5-a641-44b332bfecb2",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KIENITZ",
+    "uuid": "6298a8f9-7c77-4605-a55a-278c61cc8f50",
+    "water": "ODER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KIETZ",
+    "uuid": "16258271-ec03-4542-873c-1642c8b654c9",
+    "water": "ODER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KLEIN LAASCH WEHR OP",
+    "uuid": "25530a3e-d0a8-456f-b7ea-6a3886843279",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KLEINHEUBACH",
+    "uuid": "355b02d2-c578-46d9-a56b-8046d470cb95",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "KLEINMACHNOW OP",
+    "uuid": "bb23b276-2c1c-4cde-bc9c-9d90d5a04890",
+    "water": "TeK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KLEINMACHNOW UP",
+    "uuid": "38414157-862e-428a-ae2c-77ff79871227",
+    "water": "TeK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KLEINOSTHEIM_WUK",
+    "uuid": "3ef81fc0-33dc-4f67-8bb8-3f66975292d5",
+    "water": "MAIN",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "KLOSTER",
+    "uuid": "905e7328-b8aa-4b08-9c22-c864101e462b",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KNOCK",
+    "uuid": "438b565e-f293-43c8-8771-377e555ed5ec",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KOBLENZ",
+    "uuid": "4c7d796a-39f2-4f26-97a9-3aad01713e29",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KOBLENZ OP",
+    "uuid": "3f64ff08-ca37-4567-ba64-a387a9358d0c",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KOBLENZ UP",
+    "uuid": "9dbcac54-db55-4d24-88b2-74a0d75a68c4",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Koblenz-Lützel DFH",
+    "uuid": "896aed46-8290-49b0-a6f8-90d53027cd1f",
+    "water": "MOSEL",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "Kochendorf Schleuse UP",
+    "uuid": "8f695e71-5747-4fba-8962-c3873f549b89",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KOLLMAR",
+    "uuid": "3ed90357-4b01-4119-b1c5-bd2c62871e7b",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KONSTANZ",
+    "uuid": "aa9179c1-17ef-4c61-a48a-74193fa7bfdf",
+    "water": "BODENSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KONSTANZ-RHEIN",
+    "uuid": "e020e651-e422-46d3-ae28-34887c5a4a8e",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KOSEROW",
+    "uuid": "c0f33a36-cac4-4e47-a3f5-d1863c2f0f99",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KOTTHAUSEN",
+    "uuid": "36243256-7786-4e69-922f-50785d8904bf",
+    "water": "ITTER_DIEMEL",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "KRAUTSAND REEDE",
+    "uuid": "8c20b4dc-1540-4b14-8c88-0e1d87de22c4",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KROTZENBURG",
+    "uuid": "27eed51b-c0a4-417e-926b-bb4194bfb341",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KRÜCKAU-SPERRWERK AP",
+    "uuid": "a653eb04-de2e-47f7-8e2c-09277cfe95ae",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KRÜCKAU-SPERRWERK BP",
+    "uuid": "53c277c3-7ddb-4281-9937-97dcfe3753fa",
+    "water": "KRÜCKAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KUMMERSDORF OP",
+    "uuid": "9e4adf71-ed15-453a-b50e-de03d2077e04",
+    "water": "SKG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KUMMERSDORF UP",
+    "uuid": "2d9f473e-f2b6-4f50-bb4d-96362230a976",
+    "water": "SKG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "KÖLN",
+    "uuid": "a6ee8177-107b-47dd-bcfd-30960ccc6e9c",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Lahnstein Schleuse OP",
+    "uuid": "664d68ea-c4f0-4975-8856-a04d3e4c241f",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Lahnstein Schleuse UP",
+    "uuid": "6b6b31e2-e5c7-4c85-8405-b8d0b6e158c4",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LANGBALLIGAU",
+    "uuid": "5a33bf14-6bdc-4666-b2e3-ac78e3083e2a",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LANGEOOG",
+    "uuid": "a0c1dcb6-7812-48e6-8c01-f7edad7a2caf",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Lauffen",
+    "uuid": "8559d1a0-4a03-410a-8910-44a089a07df8",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Lauffen Schleuse UP",
+    "uuid": "2f7cb553-73a0-4fb8-816e-af276ca4ccb7",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LAUTERBACH",
+    "uuid": "91922b9b-ef7b-4aae-95a1-9d6a9e61969a",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LEDASPERRWERK UP",
+    "uuid": "5e6ae93a-7856-4005-bc77-fc6e4f5ad630",
+    "water": "LEDA",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LEERORT",
+    "uuid": "abb23dad-0880-41ab-8d2d-dd33e11f148f",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LEESENBRÜCK OP",
+    "uuid": "f099ce74-1a3d-4d47-9810-75c2b1b178b6",
+    "water": "FiK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Lehmen OP",
+    "uuid": "d0abe01a-f5e4-4d04-9518-d1c75fcd1706",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Lehmen UP",
+    "uuid": "dc1bb420-ec60-4bc3-bce2-b3869a2513df",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LEHNITZ OP",
+    "uuid": "c8a1cf0a-9441-47aa-8c64-64e8962a9bd4",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LEHNITZ UP",
+    "uuid": "5bb1f56d-7c56-4b01-9da0-2a08a0aaedeb",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LEMWERDER UNTERFEUER",
+    "uuid": "b8b8c069-0993-4a45-a226-a6c8c18185ab",
+    "water": "WESER",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "LENZEN",
+    "uuid": "c80a4f21-528c-4771-98d7-10cd591699a4",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LETZTER HELLER",
+    "uuid": "59219312-9e87-4b8c-8dde-325af733d282",
+    "water": "WERRA",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "LEUCHTTURM ALTE WESER",
+    "uuid": "c6772c3c-a6bb-4728-9250-a408ab3856bd",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Leun neu",
+    "uuid": "32807065-b887-49f0-935a-80033e5f3cb0",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "LEWITZ OP",
+    "uuid": "7bbd90ad-98e9-4415-8040-23500f2e01e7",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LEXFÄHRE OBERWASSER",
+    "uuid": "86c5688f-2fac-4d58-a245-ad8ce14cafbf",
+    "water": "EIDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LEXFÄHRE UNTERWASSER",
+    "uuid": "7f01fbd8-653c-40ba-8ed0-57386a9b4557",
+    "water": "EIDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LIEBENAU",
+    "uuid": "3a24863b-fdec-455c-82da-ea8c7ae6f97a",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LIEBENWALDE OP",
+    "uuid": "3f8ceb6d-e95d-46e6-b523-3d15fe706049",
+    "water": "MZK",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "LIEBENWALDE UP",
+    "uuid": "a1cf60be-8149-445d-a7a6-e7c7e7051944",
+    "water": "MZK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LIEPE OP",
+    "uuid": "6f81b35f-8339-4012-8029-ca193403e52c",
+    "water": "FiK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LIEPE UP",
+    "uuid": "79d783d3-e423-4c6d-b914-d7b7d161a89f",
+    "water": "FiK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Limburg Schleuse UP",
+    "uuid": "89038b42-8181-48df-a0cd-2ca3913f2d68",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LINGEN-DARME",
+    "uuid": "200363fc-cdc5-4c22-a271-a25d1ba880ed",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Lisdorf OP",
+    "uuid": "3675f292-b4e7-44dc-b12f-470f4a08145b",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Lisdorf UP",
+    "uuid": "1cc71bb2-99e5-4479-8ae9-8375568ed22c",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LIST AUF SYLT",
+    "uuid": "5e92d73f-e4ea-42c1-9f98-91536c17cdff",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LOHNDE",
+    "uuid": "516c4814-d70b-47bf-99bf-a76844b94e5e",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LOUNY",
+    "uuid": "18e6fa6e-2564-4057-8503-05213e49e57a",
+    "water": "EGER",
+    "has_W": false,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q"
+  },
+  {
+    "shortname": "LT ALTE WESER (RADAR)",
+    "uuid": "e0d7d4b2-7a72-429f-a858-f1e6f5ff40ae",
+    "water": "WESER",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "LT KIEL",
+    "uuid": "736437d7-0f6f-41b7-bc69-5ed721da4f85",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LÜBBECKE",
+    "uuid": "c2aa9164-1073-4271-82ef-44344fbe456e",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LÜBECK-BAUHOF",
+    "uuid": "f4f9f7fb-eeff-46dc-9727-04d8aa56240a",
+    "water": "TRAVE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LÜDINGHAUSEN",
+    "uuid": "f5bc4a51-004f-4e5e-99b9-e6ae888d57de",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LÜHORT",
+    "uuid": "8d18d129-07f1-4c4d-adba-a985016be0b0",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LÜHORT LFK",
+    "uuid": "259dcb4a-2366-45a6-a448-b06a8941ae16",
+    "water": "LÜHE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "LÜNE",
+    "uuid": "d7a8df36-2978-45b8-99d1-76d84cf34c01",
+    "water": "ILMENAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LÜNEBURG",
+    "uuid": "f348f2f6-37c2-41c2-8d53-fd06a18acce0",
+    "water": "ESK",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "LÜNEBURG OW",
+    "uuid": "c7364d1e-6139-4575-84cb-b420d21275c4",
+    "water": "ESK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "LÜNEBURG UW",
+    "uuid": "d18033cd-9cf6-4800-9176-57758bb444dc",
+    "water": "ESK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MAGDEBURG-BUCKAU",
+    "uuid": "b8567c1e-8610-4c2b-a240-65e8a74919fa",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MAGDEBURG-RO NWS",
+    "uuid": "ea3e14ca-2872-47e7-a10c-8b2e0b46bdba",
+    "water": "RVK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MAGDEBURG-STROMBRÜCKE",
+    "uuid": "ccccb57f-a2f9-4183-ae88-5710d3afaefd",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "MAINFLINGEN",
+    "uuid": "4627475d-ccda-4d53-8f13-28527c49eaf5",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "MAINZ",
+    "uuid": "a37a9aa3-45e9-4d90-9df6-109f3a28a5af",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "MALCHOW WEHR OP",
+    "uuid": "bccaacb3-a9a5-44aa-b05b-3f29c3c6e38a",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "MALLISS OP",
+    "uuid": "497c29ee-32b2-4535-ac5f-3881a106c793",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "MALLISS UP",
+    "uuid": "a64918a6-e6f5-495e-ad2d-a8e3655c9424",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MANNHEIM",
+    "uuid": "57090802-c51a-4d09-8340-b4453cd0e1f5",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Mannheim Neckar",
+    "uuid": "25582d3f-dc5f-4c70-bd08-e84fd13201ca",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Marbach Schleuse UP",
+    "uuid": "456974a8-8cc8-4349-ba9f-b272ee6dcf3b",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Marbach Wehr UP",
+    "uuid": "a73a9cb4-5bc2-4d42-b7cd-191d5e1ee307",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Marburg",
+    "uuid": "4e7a6cfa-7548-4f7f-a97a-eb0694881003",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MARIENLEUCHTE",
+    "uuid": "8effc15d-8583-4ac6-9f42-1b63c47f92b0",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MARIENTHAL OP",
+    "uuid": "60b6ecb0-4ed5-4b8a-b875-07ae33a92b07",
+    "water": "WtG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MARIENTHAL UP",
+    "uuid": "23636a08-775b-4101-a1af-1b57fb466d81",
+    "water": "WtG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MARKLENDORF",
+    "uuid": "8b4f9f7c-3376-4dd8-95c1-de55b1be4dfd",
+    "water": "ALLER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MAXAU",
+    "uuid": "b6c6d5c8-e2d5-4469-8dd8-fa972ef7eaea",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Mehring AMS",
+    "uuid": "4c1b6f17-18ce-4c79-83cd-4148163c45ad",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MEHRUM",
+    "uuid": "be05603a-83e4-48d4-90d9-e074b7d34dcd",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MEISSEN",
+    "uuid": "24440872-5bd2-4fb3-8554-907b49816c49",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MELLUMPLATE",
+    "uuid": "c8b9a2b6-b783-417f-8479-3a0d732fb901",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MESCHERIN",
+    "uuid": "46e61953-4bdd-4045-a14e-a83948514c8a",
+    "water": "WOD",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Mettlach OP",
+    "uuid": "f71ba9d8-8889-4a41-89b0-226a954f6d4f",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Mettlach UP",
+    "uuid": "50881379-70ca-4e85-9bf2-752a7e5aea8c",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MINDEN",
+    "uuid": "6d3a3e2a-713c-4232-9b70-834a2c0e9705",
+    "water": "MLK",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "MINSENER OOG",
+    "uuid": "4a2501bf-cb57-46bb-87d3-d6808286b31b",
+    "water": "NORDSEE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "MIROW OP",
+    "uuid": "ab13c115-6924-4d88-822c-0704b8df4767",
+    "water": "MHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MIROW UP",
+    "uuid": "19cc3b9a-546b-43dd-96a3-b0bf903672d2",
+    "water": "MHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MITTELGRUND",
+    "uuid": "3ff99b92-4396-4fa7-af73-02b9c015dcad",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MÖLLN",
+    "uuid": "46644438-83d6-4da8-a2a1-1deb2cb67561",
+    "water": "ELK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MÜDEN OP",
+    "uuid": "a5c880a3-c4cb-41c6-a8be-ca9c3f23a295",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MÜDEN UP",
+    "uuid": "edc67ca3-b597-402a-9037-ff39ee816452",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MÜGGENDORF",
+    "uuid": "48f2661f-f9cb-4093-9d57-da2418ed656e",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MÜHLBERG",
+    "uuid": "16b9b4e7-be14-41fd-941e-6755c97276cc",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MÜNSTER OW",
+    "uuid": "ccd3e8f1-39e9-4e09-aa41-625afda84460",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "MÜNSTER UW",
+    "uuid": "ed260406-bdd6-42ef-bf2a-1246eea392f9",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Nassau Schleuse OP",
+    "uuid": "29cb44a2-5004-4419-b419-51c77add55cc",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Nassau Schleuse UP",
+    "uuid": "3a90a346-e825-4d38-a67a-27351276cc3c",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Neckarsteinach Schleuse UP",
+    "uuid": "d64d07f7-495f-454c-b2e6-f94a287a48c4",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Neckarzimmern Schleuse UP",
+    "uuid": "f00c7183-ab6c-4497-ac33-218d4944f46c",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEU DARCHAU",
+    "uuid": "67d6e882-b60c-40d3-975c-a6d7a2b4e40a",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "NEU KALLISS OP",
+    "uuid": "30739ff3-9d71-4e38-991c-0f7a2f54ed2d",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUBURG OP",
+    "uuid": "541c508a-00bf-4a9d-bd47-17fda98b349d",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUE MÜHLE SCHLEUSE OP",
+    "uuid": "0e0dbcc9-0a7d-494a-bc92-52e56a7fffe2",
+    "water": "DAW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUE MÜHLE SCHLEUSE UP",
+    "uuid": "c9a6c3bf-02d4-4945-83e8-b7c6cf9701fa",
+    "water": "DAW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUENDORF HAFEN",
+    "uuid": "492f85b8-e5c6-439e-8e14-08ca78f10dce",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUENSEER SCHLEUSENFLETH SIEL",
+    "uuid": "04790e03-4353-4e80-beef-b3ed439484bc",
+    "water": "OSTE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "NEUHAUS OP",
+    "uuid": "963bdc26-34ad-43c8-b653-bbaa3466276a",
+    "water": "NSK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUHAUS UP",
+    "uuid": "bf48cefd-0d00-4186-a366-343c25f43615",
+    "water": "NSK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUSTADT",
+    "uuid": "dda39817-d01d-467f-a6a3-7487011a45d1",
+    "water": "LEINE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUSTADT",
+    "uuid": "3f0b6b74-80a9-4576-a3cb-ea967dfc349f",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUSTADT GLEWE OP",
+    "uuid": "c4381eb3-d21f-4bd1-bc1c-66c03b7d8bcf",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NEUWERBEN EP",
+    "uuid": "c13fc7d0-beb1-42a3-b831-4816d7649059",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Neuwied Stadt",
+    "uuid": "dc407f1e-e25f-4995-9feb-5bacc8658149",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Niederbiel Schleuse Kanal OP",
+    "uuid": "57c8e437-560c-4a5b-a9a0-b8e109804546",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIEDERBLOCKLAND",
+    "uuid": "36e85829-2fb3-41a0-8a1b-aa9e76431b47",
+    "water": "WÜMME",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIEDERFINOW SHW OP",
+    "uuid": "414dd4ee-b38b-489f-a1fe-19b1d62f3202",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIEDERFINOW SHW UP",
+    "uuid": "4eec6b25-6b02-4448-b5db-10843c8d6175",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIEGRIPP AP",
+    "uuid": "3adf88fd-fd7a-41d0-84f5-1143c98a6564",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIEGRIPP BP",
+    "uuid": "e506460f-4577-4405-8cc3-cc36a4bb516d",
+    "water": "NVK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIENBRÜGGE",
+    "uuid": "864a8111-d0c1-4b74-b94e-515f0869355e",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIENBURG",
+    "uuid": "38497786-6c29-47f4-93de-d96001629496",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIENBURG (Saale)",
+    "uuid": "ace7d4b0-33e5-46db-a41d-2fa7a321f67a",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NIERSTEIN-OPPENHEIM",
+    "uuid": "d28e7ed1-3317-41c5-bec6-725369ed1171",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NOK BREIHOLZ",
+    "uuid": "4a904d59-d48f-4878-af7b-cbd955f342e0",
+    "water": "NOK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NOK BRUNSBÜTTEL",
+    "uuid": "85fc0dac-a53f-4638-880d-40b24bb282f3",
+    "water": "NOK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NOK DÜKERSWISCH",
+    "uuid": "3954300d-f112-4fe6-8d0a-b06496372e36",
+    "water": "NOK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NOK KIEL AUSSEN",
+    "uuid": "6dc44585-5b88-45d7-9c64-7c845408b698",
+    "water": "NOK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NOK KIEL BINNEN",
+    "uuid": "8af24d6a-eecd-434e-9f1a-60ab6bc05490",
+    "water": "NOK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NOK KÖNIGSFÖRDE",
+    "uuid": "d0ec2790-a870-405e-bb61-2dcc3cf47467",
+    "water": "NOK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NOK RENDSBURG",
+    "uuid": "8c8afb56-88ea-483a-a7d4-033c22f53497",
+    "water": "NOK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NORDENHAM",
+    "uuid": "06e6b715-eb03-46ce-adf4-6cafca6368eb",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NORDERNEY RIFFGAT",
+    "uuid": "c0244c0e-6ae6-40cb-a967-4039b2a0ce7c",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NORDFELD OBERWASSER",
+    "uuid": "61394669-3f1b-44e5-ae37-50fd2512f4fa",
+    "water": "EIDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "NORDFELD UNTERWASSER",
+    "uuid": "cb93548e-c1ce-43f6-b3a1-6903f8835b33",
+    "water": "EIDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Oberesslingen Schleuse UP",
+    "uuid": "cbfae6bc-7978-4aac-9207-7939c8080507",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Oberesslingen Wehr UP",
+    "uuid": "9de0843a-2b79-40e5-b312-31d86e91ce4d",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OBERHAUSEN SCHLEUSE OW",
+    "uuid": "e251f943-ce2f-4003-b208-e2797aa72202",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OBERHAUSEN SCHLEUSE UW",
+    "uuid": "12f63015-c66a-4e89-a69b-ddd069872d40",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OBERNAU",
+    "uuid": "3c7cfb10-c866-404b-b11c-0d79986f865a",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OBERNDORF",
+    "uuid": "e476bcad-b898-4f68-9c26-4f1a1159dff6",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Obertürkheim Schleuse UP",
+    "uuid": "80e002d8-bc6a-4685-9aab-88edbfc069e0",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OBERWINTER",
+    "uuid": "b45359df-c020-4314-adb1-d1921db642da",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OESTRICH",
+    "uuid": "665be0fe-5e38-43f6-8b04-02a93bdbeeb4",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OHv km 1.467 (Blaues Wunder)",
+    "uuid": "8b51c505-9b1c-40d0-957f-7461473602e1",
+    "water": "OHV",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OHV KM 3.014 (HOCHSPANNUNG)",
+    "uuid": "eea7e3dc-d158-4173-ae7d-d322dd917aa4",
+    "water": "OHV",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OLDENBURG-DRIELAKE",
+    "uuid": "1b51e55e-088a-44c3-a633-b1bee44422d7",
+    "water": "HUNTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OSLEBSHAUSEN",
+    "uuid": "c1f059dd-5063-468a-9dfa-0360fe0b030d",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OSLOSS",
+    "uuid": "6c5b6422-126d-4bf0-8856-7b86d74ea1b3",
+    "water": "ESK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OSTE-SPERRWERK AP",
+    "uuid": "8c3295dc-fe73-45bc-9a7b-679d4aaad0cf",
+    "water": "OSTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OSTE-SPERRWERK BP",
+    "uuid": "7cb4566b-c584-4167-8736-f52ca7fd837d",
+    "water": "OSTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OSTERIFF MPM",
+    "uuid": "eb90bd3f-5405-412d-81e0-7a58be52dcef",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OTTENHEIM",
+    "uuid": "787e5d63-61e2-48cc-acf0-633e2bf923f2",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OTTERNDORF MPM",
+    "uuid": "5140295e-b93e-4081-a920-642d89c7ca8b",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "OVER",
+    "uuid": "b02ce5c0-64e9-4d24-90b9-269a28a1e9f9",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PAPENBURG",
+    "uuid": "ec4a598d-773d-44c1-935e-2053b54e45a3",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PARCHIM GÜTE",
+    "uuid": "3dec3921-6f01-4801-b648-a7f3ee33acd3",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PAREY EP",
+    "uuid": "25ca1bef-4f8e-4523-89f5-7d8593e46370",
+    "water": "PVK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PAREY UP",
+    "uuid": "bafddcbf-4108-431e-9f57-568be08fd538",
+    "water": "PVK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PASSAU DONAU",
+    "uuid": "9f12c405-35ac-4d90-9b7b-023be355867e",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PASSAU ILZSTADT",
+    "uuid": "33ceb441-23bc-4ca6-9fcd-ac35d41ef117",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PASSAU LUITPOLDBRÜCKE DFH",
+    "uuid": "4520c1a8-174c-4b95-9ca3-fe1e3f9d874a",
+    "water": "DONAU",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "PASSAU STEINBACHBRÜCKE DFH",
+    "uuid": "3199ce09-cd9b-4be2-82bc-f03bb81438e5",
+    "water": "DONAU",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "PELLWORM ANLEGER",
+    "uuid": "2852b9ab-d30e-4d04-ae06-3e946f48a0b1",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PERL",
+    "uuid": "c263ea53-ca4d-41f5-b3f5-6178fec302aa",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "PETERSHAGEN",
+    "uuid": "9aae4921-bda4-4081-b67b-2e0c5ab8bc54",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PFATTER",
+    "uuid": "f768173a-7a22-40f7-90a3-4676da7e5010",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PFELLING",
+    "uuid": "7fe63a95-8ff6-4cff-9a29-a124136516b5",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "PHILIPPSBURG",
+    "uuid": "88e972e1-88a0-4eb9-847c-0925e5999a46",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PINNAU-SPERRWERK AP",
+    "uuid": "391bbba5-83d4-4791-b07e-65ab29b423f6",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PINNAU-SPERRWERK BP",
+    "uuid": "26259e8f-7d2d-47e0-8851-0257542b63b3",
+    "water": "PINNAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PIRNA",
+    "uuid": "85d686f1-55b2-4d36-8dba-3207b50901a7",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PLAU OP",
+    "uuid": "3ffddb2c-4c17-47d1-a7de-e1663d4031b7",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "PLAU UP",
+    "uuid": "506e6b03-1209-4650-8b3b-3cd2d4724b5f",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PLAUE OP",
+    "uuid": "aa97c894-ed26-4fdd-945f-db9667979268",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PLAUE UP",
+    "uuid": "9829cab0-746b-4d10-9124-79ddda0a843e",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Pleidelsheim Schleuse UP",
+    "uuid": "6e183f4b-a506-4706-aeed-cf33b34e76ad",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PLITTERSDORF",
+    "uuid": "6b774802-fcb5-49ae-8ecb-ecaf1a278b1c",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Plochingen",
+    "uuid": "be7ce40e-5fff-42df-8386-b42694ca86da",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "POGUM",
+    "uuid": "5d1e4350-0f39-4428-84c3-6f8f0bbe80d4",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Poppenweiler Schleuse UP",
+    "uuid": "f4854a4c-490a-43df-bc06-d2711ddf9b70",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PORTA",
+    "uuid": "6b1b5c70-a23f-46de-954d-02bdc5bf2ecc",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "POTSDAM",
+    "uuid": "5e10e1e7-9115-4bd7-ad57-e2062f516891",
+    "water": "PHv",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PREDMERICE",
+    "uuid": "8122b09b-a174-41d9-9a38-c0a5223366b8",
+    "water": "Jizera",
+    "has_W": false,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q"
+  },
+  {
+    "shortname": "PRELOUC",
+    "uuid": "8e326085-c879-4704-95b4-c1fc19874176",
+    "water": "ELBE",
+    "has_W": false,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q"
+  },
+  {
+    "shortname": "Prerow",
+    "uuid": "7d50c68c-3558-481d-bbe3-830f6f534a05",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "PRETZSCH-MAUKEN",
+    "uuid": "f3dc8f07-c2bb-4b92-b0b0-4e01a395a2c6",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "QUITZÖBEL OP",
+    "uuid": "863359dd-3171-4641-97bb-b21f06859072",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "QUITZÖBEL UP",
+    "uuid": "2d93f2be-6d57-4716-a775-92fb5a63f88f",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RAGÖSE OP",
+    "uuid": "b6bbe4f8-aa59-414a-8292-2d3919590a20",
+    "water": "FiK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RATHENOW OP",
+    "uuid": "43ca90f5-3b4c-4b35-86ac-cab0fe1c2ce5",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RATHENOW UP",
+    "uuid": "4de8a51c-4c6a-4334-92dd-0b1cbb8e0573",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RATZDORF",
+    "uuid": "ca3f535b-4a32-4dd7-a56b-2ac20dea4472",
+    "water": "ODER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RAUNHEIM",
+    "uuid": "db1684c1-7ffc-4e8a-b8cf-8240a0d03519",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "RECHTENFLETH",
+    "uuid": "116572da-c036-4486-ac18-a92932424e30",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RECKE",
+    "uuid": "7af19499-8bc8-4a91-964d-88618ea8998a",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "REES",
+    "uuid": "2f025389-fac8-4557-94d3-7d0428878c86",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "REGENSBURG EISERNE BRÜCKE",
+    "uuid": "eebd633a-3af0-4b79-83d5-b6490765e06c",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Rehlingen OP",
+    "uuid": "0ede0e75-8897-41fe-a89a-6b552538d935",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Rehlingen UP",
+    "uuid": "eb28e62a-5009-4e07-9d63-225e31abe62d",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "REITHÖRNE",
+    "uuid": "c9df61c4-2a0b-47bd-8b51-fef7f430e528",
+    "water": "HUNTE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RETHEM",
+    "uuid": "5aaed954-de4e-4528-8f65-f3f530bc8325",
+    "water": "ALLER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RHEDE",
+    "uuid": "16508b11-4349-48f7-be51-1227b7888585",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RHEINE UNTERSCHLEUSE",
+    "uuid": "50a449ba-af4c-42c7-b2c4-9a3eda37e1e3",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RHEINWEILER",
+    "uuid": "06b978dd-8c4d-48ac-a0c8-2c16681ed281",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "RIEDENBURG_UP",
+    "uuid": "4a69e82e-97a3-4573-8aeb-b695c1eaa0b1",
+    "water": "MDK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RIESA",
+    "uuid": "b04b739d-7ffa-41ee-9eb9-95cb1b4ef508",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "RINTELN",
+    "uuid": "005dfdae-efcc-410a-bf1c-24096e0c2866",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RISCHMÜHLE OP",
+    "uuid": "31dfddc7-80a5-45ff-907b-7bf2c1d825c5",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RISCHMÜHLE UP",
+    "uuid": "cde0f9b6-6b13-4de9-adfe-cad1fe085e30",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RITTERHUDE",
+    "uuid": "f49855d8-371f-4bdf-8ade-ed6b475e6b27",
+    "water": "HAMME",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ROBBENSÜDSTEERT",
+    "uuid": "78029185-9dfc-4b1b-8695-45ebc2a09cf4",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Rockenau Schleuse UP",
+    "uuid": "5ab4f00f-24bd-4695-96b0-d013dc723c9c",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Rockenau SKA",
+    "uuid": "4c00a166-7d6d-48d7-b4dc-673b96b4041e",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "RODENBERGER AUE-OST",
+    "uuid": "6288de60-38be-4291-9ff6-dcf6c0f58cea",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RODENBERGER AUE-WEST",
+    "uuid": "eb24b5a3-5102-429b-93a9-15656fee850f",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ROGÄTZ",
+    "uuid": "133f0f6c-2ca1-4798-9360-5b5f417dd839",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ROSSLAU",
+    "uuid": "e97116a4-7d30-4671-8ba1-cdce0a153d1d",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ROSTOCK MÜHLENDAMM OW",
+    "uuid": "ca0e4a68-bd50-494c-bd45-abb33c5e1b0a",
+    "water": "WARNOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ROSTOCK MÜHLENDAMM UW",
+    "uuid": "4a0061f0-7355-4a95-9c70-f05c8920d790",
+    "water": "WARNOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ROTENBURG",
+    "uuid": "d1ba62a4-767b-49ba-9ce8-ab17537b2fe1",
+    "water": "FULDA",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "ROTHENBURG OP",
+    "uuid": "5a7e1d4a-53aa-4f9f-a59b-50e01b7260c7",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ROTHENBURG UP",
+    "uuid": "e70e39ec-e476-4991-a39d-7d0e009556ef",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ROTHENSEE",
+    "uuid": "e30f2e83-b80b-4b96-8f39-fa60317afcc7",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Roßdorf",
+    "uuid": "a36c123d-6940-464c-b972-8c330c944de4",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "RUDEN",
+    "uuid": "1fa822e6-fb0c-4331-83f1-749972046dca",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RUHLSDORF OP",
+    "uuid": "6629a4ca-4e2e-40b8-a66c-964d906c6911",
+    "water": "FiK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RUHRWEHR OW",
+    "uuid": "12a3037f-cbf3-49d3-8da5-77fb38730bba",
+    "water": "RUHR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Runkel Schleuse UP",
+    "uuid": "b85b17cc-0569-45b2-9c84-07b57f0c442f",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RUSBEND",
+    "uuid": "c1f06401-9488-4a27-b932-59cce52c5819",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RUST",
+    "uuid": "5389b878-fad5-4f37-bb87-e6cb36b7078b",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RUTHENSTROM-SPERRWERK",
+    "uuid": "752a8c5a-5f2a-4575-af2f-d825cffc6eb3",
+    "water": "RuS",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "RUWER",
+    "uuid": "abd34ee6-a578-4639-b73d-fa4e08f40345",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RÖPZIG",
+    "uuid": "4626f6bc-494b-4a51-8c10-b47a32e87790",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "RÜHEN",
+    "uuid": "4ed5f6da-b7a0-4431-ab1f-1a26e69a21bc",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Rühle",
+    "uuid": "15456f75-fb0b-48ad-8887-544ff0108dd3",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Saarbrücken OP",
+    "uuid": "a1f437ff-6d45-43b4-bf7d-d45c9fd8fbcb",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Saarbrücken UP",
+    "uuid": "e0bbdb2e-e4e9-4a85-aa42-8db7885e5593",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SACHSENHAUSEN OP",
+    "uuid": "adbd3144-1774-45e8-8eb7-60f01a712426",
+    "water": "OrK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SACHSENHAUSEN UP",
+    "uuid": "0a6fe221-9fc9-46e0-802f-9c367a32ed72",
+    "water": "OrK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SANDAU",
+    "uuid": "f4c55f77-ab80-4e00-bed3-aa6631aba074",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SANKT ALDEGUND OP",
+    "uuid": "e4d6a271-c0a9-44cd-8066-7f7311fb0b99",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SANKT ALDEGUND UP",
+    "uuid": "20640279-2334-4acd-afb5-c8f3afc18379",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Sankt Arnual",
+    "uuid": "a9ca43e9-ef92-4f1c-ac02-a6c8ccad7b9f",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "SANKT GOAR",
+    "uuid": "550eb7e9-172e-48e4-ae1e-d1b761b42223",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SASSNITZ",
+    "uuid": "9e7b2a4d-cfe8-4524-8a1e-c196ea897e9f",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHARHÖRN",
+    "uuid": "f0197bcf-6846-4c0a-9659-0c2626a9bcf0",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHARLEUK",
+    "uuid": "e32b0a28-8cd5-4053-bc86-fff9c6469106",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Scheidt Schleuse OP",
+    "uuid": "15a50d2b-d662-4368-a6c9-297a37305d3b",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Scheidt Schleuse UP",
+    "uuid": "7dfe4776-c0d4-459f-ad15-72d44ab7d2c6",
+    "water": "LAHN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHILLIG",
+    "uuid": "b1cda5a0-115f-4976-a0a6-9d427ff6dceb",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHLEIMÜNDE SP",
+    "uuid": "70d4f87f-4489-455a-a435-d6df9e09a87e",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHLESWIG",
+    "uuid": "09370c05-1041-4395-a5d4-b8db6e59c4c8",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHLEUSE ROTHENSEE UP",
+    "uuid": "4e4fac1a-6fb4-4ce2-a041-bdc4a668d95d",
+    "water": "RVK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHLOSSBRÜCKE MÜLHEIM",
+    "uuid": "36fb2c81-5fc0-4f2c-8f37-347c822a4b59",
+    "water": "RUHR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHMITTLOTHEIM",
+    "uuid": "d2155fa6-b03d-468c-884e-ccf6fefc40bd",
+    "water": "EDER",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "SCHNACKENBURG",
+    "uuid": "550e3885-a9d1-4e55-bd25-34228bd6d988",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Schoden OP",
+    "uuid": "2ce9a933-07ea-4a67-b6e6-735bc6a3868c",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Schoden SKA",
+    "uuid": "efccb5e1-4f8b-4c26-a5d4-a7c02bd93c0d",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Schoden UP",
+    "uuid": "6bb310e3-5c89-439b-85e2-54a44a70cc67",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHULAU",
+    "uuid": "f3c6ee73-5561-4068-96ec-364016e7d9ef",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHWABELWEIS",
+    "uuid": "7644f1d7-3198-4313-9340-abefd459a4f3",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "Schwabenheim Schleuse UP",
+    "uuid": "ec9d3a4d-029f-475e-acbf-03352252b54f",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHWARMSTEDT",
+    "uuid": "8e16bd66-c49b-406a-930e-4dccfb330ff5",
+    "water": "LEINE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHWEDT SCHLEUSE AP",
+    "uuid": "aac1846d-a0ea-46f3-984d-b3938b0cb82d",
+    "water": "SQF",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHWEDT SCHLEUSE BP",
+    "uuid": "4ee515f9-8cfb-4835-8460-8dde0b978fbe",
+    "water": "HOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHWEDT-ODERBRÜCKE",
+    "uuid": "e28babaa-7801-49a2-9c28-58701549ce5d",
+    "water": "ODER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHWEINFURT NEUER HAFEN",
+    "uuid": "42ecae60-eeb3-4b41-9721-46b3f12d04b8",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "SCHWERIN WERDERBRÜCKE",
+    "uuid": "680d5966-273f-4254-aabe-5d4e00e12a24",
+    "water": "STW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHWINGE-SPERRWERK",
+    "uuid": "cc57198c-b40f-4c11-ad50-fceae4669a3e",
+    "water": "Schwinge",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "SCHÖNA",
+    "uuid": "7cb7461b-3530-4c01-8978-7f676b8f71ed",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "SCHÖNEBECK",
+    "uuid": "90bcb315-f080-41a8-a0ac-6122331bb4cf",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHÖNEWORTH SIEL",
+    "uuid": "f973fb71-4a44-4603-8b13-25002dd6dbd8",
+    "water": "ELBE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "SCHÖNWALDE OP",
+    "uuid": "d8ef9f21-479e-4504-8bf7-aef2dbe6184d",
+    "water": "HvK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHÖNWALDE UP",
+    "uuid": "b6650b13-582b-4d54-adac-991ac140e039",
+    "water": "HvK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SCHÖPFSTELLE",
+    "uuid": "fed4c295-7a01-463c-998e-70ebad8cd2cc",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SEEMANNSHÖFT",
+    "uuid": "816affba-0118-4668-887f-fb882ed573b2",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SEHNDE",
+    "uuid": "ab0d9117-83f3-412d-bce5-b3e698246c0b",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Serrig OP",
+    "uuid": "928b840c-8926-4847-8818-e7e667dc3aae",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Serrig UP",
+    "uuid": "707ef20a-440d-4599-8dca-385eb5c3d020",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SPEYER",
+    "uuid": "2cb8ae5b-c5c9-4fa8-bac0-bb724f2754f4",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "SPIEKEROOG",
+    "uuid": "662c4b5e-0241-456d-ac7d-9f62fd95c0d1",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STADERSAND",
+    "uuid": "80f0fc4d-9fc7-449d-9d68-ee89333f0eff",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STADTBREDIMUS UP",
+    "uuid": "dfdf753b-75bd-46f0-8cde-15545be9bfba",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STAHLBRODE",
+    "uuid": "340707f4-5d35-4898-8b34-95ea3f4206b3",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STECHER OP",
+    "uuid": "516fbf8c-dc08-4808-b39b-1fa65a462180",
+    "water": "FiK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STEINBACH",
+    "uuid": "1ed983c3-114c-4fcc-a1db-61d336cf045f",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "STOLZENAU",
+    "uuid": "edfa125a-1e46-4c7e-9f3a-568ae013a4df",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STORKAU",
+    "uuid": "de4cc1db-51cb-4b62-bee2-9750cbe4f5c4",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STORKOW OP",
+    "uuid": "4e6a3d17-1855-4458-b3fc-e71921a4da7b",
+    "water": "SKG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STORKOW UP",
+    "uuid": "b89b68fd-0d40-4941-9ee1-e4f7a56351a0",
+    "water": "SKG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STRALSUND",
+    "uuid": "b9163121-2747-4d2b-bcf5-ab5ff7396e56",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STROHAUSER PLATE OST",
+    "uuid": "7e530482-0a13-4728-99db-a376304398b8",
+    "water": "WESER",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "STÖR-SPERRWERK AP",
+    "uuid": "d9acdbec-61ff-4308-978a-2f4d1c2c4059",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STÖR-SPERRWERK BP",
+    "uuid": "e5b8e9f3-f0cc-4ad7-8707-577ee1b25b3e",
+    "water": "STÖR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "STÜTZKOW",
+    "uuid": "30bff0df-8333-49ec-8fd7-a2d4c0db1cb1",
+    "water": "ODER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SÜLFELD",
+    "uuid": "9dfb4b0b-daa6-4a90-9a82-60734d3d2f04",
+    "water": "MLK",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "SÜLFELD OW",
+    "uuid": "a8604e8f-9330-4431-8cf6-0a68fc793c82",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "SÜLFELD UW",
+    "uuid": "892183d6-3a28-4347-afb4-bc89602ca927",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TANGERMÜNDE",
+    "uuid": "13e91b77-90f3-41a5-a320-641748e9c311",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "TEMPLIN OP",
+    "uuid": "71357738-c8e2-4cb7-a41a-365659bb8d58",
+    "water": "TlG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TEMPLIN UP",
+    "uuid": "5918b484-597f-4a1c-8262-0d0cbbb7986d",
+    "water": "TlG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TERBORG",
+    "uuid": "244cae8b-ce75-4c2d-a66e-cb804f8335a2",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "THIESSOW",
+    "uuid": "d1c9bb3c-2929-46a8-a338-adfddf0ef524",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "THUNE",
+    "uuid": "42b865fb-5dd8-4204-a7aa-260704d69e21",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TIECKOW",
+    "uuid": "2d1fa45a-8928-4ad0-b564-e74f7189681c",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "TIMMENDORF POEL",
+    "uuid": "d22c341b-80c2-436d-98e1-8a2575bc975a",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TORGAU",
+    "uuid": "83bbaedb-5d81-4bc6-9f66-3bd700c99c1f",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "TRAVEMÜNDE",
+    "uuid": "c7383149-1f77-430d-8bef-c5667be3846b",
+    "water": "TRAVE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Trier OP",
+    "uuid": "9d2b4126-6ac3-4693-ae6a-e4dc88e150f3",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TRIER UP",
+    "uuid": "3bec53ca-444e-4014-a7b0-07b3591e954b",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TROTHA OP",
+    "uuid": "ea6870dc-507e-4ec4-a38c-cd8a5e8b7025",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TROTHA UP",
+    "uuid": "33193e2b-1203-4681-a23d-f87b9fab4b60",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "TRUNSTADT",
+    "uuid": "a77aad00-caa0-44a2-95cb-8afd9c4ff00c",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "TRÜBENGRABEN POLDER",
+    "uuid": "ddb249c5-360b-4c4f-a7f6-1f6822d236c8",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "TWIELENFLETH SIEL",
+    "uuid": "6d43098c-632d-4e89-996f-98b1c99e5630",
+    "water": "ELBE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "TYNISTE",
+    "uuid": "04cbc946-8ee9-4521-ac52-557642cad52c",
+    "water": "Orlice",
+    "has_W": false,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q"
+  },
+  {
+    "shortname": "TÖNNING",
+    "uuid": "00e386ac-e35c-4a6e-80dd-f8cd8a9e7a62",
+    "water": "EIDER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "UECKERMÜNDE",
+    "uuid": "c1588dcc-e314-4097-a54c-c0ffbe79209f",
+    "water": "OSPH",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "UELZEN",
+    "uuid": "3eba7da6-fbd6-431c-91d3-522ec49275f0",
+    "water": "ESK",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "UELZEN OW",
+    "uuid": "728bd3e3-23f2-41c6-8ac5-4cfa223a5a7e",
+    "water": "ESK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "UELZEN UW",
+    "uuid": "0d0082cf-0b4b-4c8b-8e97-5d37b511916b",
+    "water": "ESK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "UETERSEN",
+    "uuid": "575da86f-d975-4837-b6f5-6f19c3a5e4b6",
+    "water": "PINNAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Untertürkheim Schleuse UP",
+    "uuid": "a5ca02fb-9a83-4da5-80f0-0e7007350af8",
+    "water": "NECKAR",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VEGESACK",
+    "uuid": "3f3b4445-9a6a-44c3-8575-d86ce30e2de0",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VELSDORF",
+    "uuid": "36f80081-9353-4ab1-8e61-07a5509f1cea",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VERSEN TRENNSPITZE",
+    "uuid": "0024cc40-d690-468d-84f9-4e9bf45d9108",
+    "water": "DEK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VERSEN WEHR OP",
+    "uuid": "86f8dbab-6a64-408b-a5d5-69e69f01db2f",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VERSEN WEHRDURCHSTICH",
+    "uuid": "6de43652-2db9-4627-a255-9cb1f8efb820",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VILSHOFEN",
+    "uuid": "e6d68ab7-5c27-4f25-896f-11dbf04056cd",
+    "water": "DONAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VLOTHO",
+    "uuid": "2f56e265-cd67-4ea1-8529-549b6ccf273a",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VOCKERODE",
+    "uuid": "ae93f2a5-612e-4514-b5fd-9c8aecdd73c7",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "VORSFELDE",
+    "uuid": "dbb2bb9f-0f80-4df4-9d5c-98af2ee41826",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VOßWINKEL OP",
+    "uuid": "09b422f7-3c5e-42f1-8680-ffd8fe381b86",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VOßWINKEL UP",
+    "uuid": "2bcef51a-5104-469d-bbbc-f16a0dfd4206",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "VRANANY",
+    "uuid": "12deef85-1779-4b4f-9ba6-8467dc9d9866",
+    "water": "MOLDAU",
+    "has_W": false,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q"
+  },
+  {
+    "shortname": "Wachendorf",
+    "uuid": "88698229-ada0-4c89-b006-675ef1f63bc8",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WAHMBECK",
+    "uuid": "314ef522-a060-4033-ba14-8169dd26bb8d",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WALTROP",
+    "uuid": "facc5c16-f700-4248-9893-a395bffaf2e4",
+    "water": "DHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WANGEROOGE NORD",
+    "uuid": "c41d42b1-5b0d-47c9-ba53-d58d3d109b64",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WANGEROOGE OST",
+    "uuid": "26656fda-cacf-4e92-9935-3ae6e717fe5b",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WANGEROOGE WEST",
+    "uuid": "70039212-c8a8-43fc-82a5-150d95831772",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WANNE EICKEL SCHLEUSE OW",
+    "uuid": "05ca0e33-5c71-4368-b824-2243fcff656c",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WANNE EICKEL SCHLEUSE UW",
+    "uuid": "23045f8b-e7e8-4534-8162-b7dba81764db",
+    "water": "RHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WARBER GRABEN",
+    "uuid": "2f1080ba-97a2-40b3-af4e-3ac3d53d27de",
+    "water": "MLK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WAREN",
+    "uuid": "bd317edd-214a-4e11-a9dc-3cc71a2907c3",
+    "water": "MEW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WARNAU POLDER",
+    "uuid": "fbb1c6c1-9fa9-4315-8e31-3499bf00bfef",
+    "water": "UHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WARNEMÜNDE",
+    "uuid": "220ff4c6-83da-4a1b-9c13-dfee5a2a8798",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WASSERHORST",
+    "uuid": "76844306-4c37-4a6f-aac4-9e518e96306f",
+    "water": "LESUM",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WEENER",
+    "uuid": "aa6af4e6-a44f-46c4-abf6-449f8a68bab1",
+    "water": "EMS",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WEHR GEESTHACHT UP",
+    "uuid": "0f7f58a8-411f-43d9-b42a-e897e63c4faa",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WENDISCH RIETZ OP",
+    "uuid": "a9299f0c-9eb8-4369-a260-4be929e72736",
+    "water": "SKG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WENDISCH RIETZ UP",
+    "uuid": "c1d6f464-f38a-4e38-9f74-4c5d22a42c88",
+    "water": "SKG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WERNSDORF OP",
+    "uuid": "9d7cc90a-7380-4dbf-8641-3201dfcbc75d",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WERNSDORF UP",
+    "uuid": "1b8ac909-8377-4887-ab70-748de2dd9775",
+    "water": "SOW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WERRIES OW",
+    "uuid": "d31767ef-2cf8-4046-9881-d5651d81ade8",
+    "water": "DHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WERTHEIM",
+    "uuid": "0e065a22-9a0b-4f1d-b813-22fe6321bb1a",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WESEL",
+    "uuid": "f33c3cc9-dc4b-4b77-baa9-5a5f10704398",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "WESENBERG OP",
+    "uuid": "7909d3f7-ef5d-4321-b76d-712d9b0a0c68",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WESENBERG UP",
+    "uuid": "da3b5de9-bb1d-4545-a172-fa29301d552e",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WESER",
+    "uuid": "8bccd43b-ed6f-4ed8-ae6e-80ad7e330658",
+    "water": "MLK",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "WESERWEHR OW",
+    "uuid": "c42ff4c7-f4c6-4568-8b5c-0b556bd55926",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WESERWEHR UW",
+    "uuid": "aeb9ed1c-6c01-4829-94e4-e530dbf79821",
+    "water": "WESER",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Westspange",
+    "uuid": "1e237d42-66cb-4145-ab99-c8fde205b281",
+    "water": "SAAR",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "WETTIN OP",
+    "uuid": "632a133b-fcc2-467f-8f9c-1ec63144f8d6",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WETTIN UP",
+    "uuid": "af82bc24-a355-4247-9532-b305eb57e16f",
+    "water": "SAALE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WHV ALTER VORHAFEN",
+    "uuid": "f85bd17b-06c7-49bd-8bfc-ee2bf3ffea99",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WHV NEUER VORHAFEN",
+    "uuid": "f77317d9-654f-4f51-925e-004c592049da",
+    "water": "JADE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WILHELMSBRÜCKE",
+    "uuid": "7deedc21-2878-40cc-ab47-f6da0d9002f1",
+    "water": "DIEMEL",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "WINCHERINGEN",
+    "uuid": "bb5560fc-7995-40a2-b92f-3d828c67dcfa",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Wintrich OP",
+    "uuid": "cb4789e4-0c13-45ff-8173-c3803f5e6e93",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Wintrich UP",
+    "uuid": "a392113c-d040-4b36-b47d-9099275bb308",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WISCHHAFEN SPERRWERK",
+    "uuid": "e0747660-6d75-476a-be0f-73865bf47363",
+    "water": "WSE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "WISMAR-BAUMHAUS",
+    "uuid": "95a0ab45-a9ac-4f9a-93e9-b0ffa1c57b5f",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WITTDÜN",
+    "uuid": "9c4c11f2-0548-4555-beac-ecfd36f9bd74",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WITTENBERG",
+    "uuid": "070b1eb4-3872-4e07-b2e5-e25fd9251b93",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "WITTENBERGE",
+    "uuid": "cbf3cd49-91bd-49cc-8926-ccc6c0e7eca4",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "WITTENBERGGÜTE",
+    "uuid": "d634b809-286e-4c68-aa5b-49932bf34a97",
+    "water": "ELBE",
+    "has_W": false,
+    "has_Q": false,
+    "has_T": false,
+    "codes": ""
+  },
+  {
+    "shortname": "WITTINGEN",
+    "uuid": "9cf795ce-8bdf-494b-b8c6-ef1bfb89c08b",
+    "water": "ESK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WITTORF OP",
+    "uuid": "eb3d4195-8c73-46b6-87e9-ef0de83edddf",
+    "water": "ILMENAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WITTORF UP",
+    "uuid": "308c39b6-475f-42c3-857f-7cf257426fa1",
+    "water": "ILMENAU",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WITTOWER FÄHRE",
+    "uuid": "4b348b56-b08c-4522-9042-49c1edb45d0d",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WOLFSBRUCH OP",
+    "uuid": "4d00c13e-e689-4dfc-85e6-a3fc8596ac8b",
+    "water": "RBG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WOLFSBRUCH UP",
+    "uuid": "3d43a8d7-e599-4fc4-bf62-65eb0794685e",
+    "water": "RBG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WOLGAST",
+    "uuid": "b327e35c-5dad-4b79-9cef-60fbd504eb37",
+    "water": "OSTSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WOLTERSDORF OP",
+    "uuid": "2ae6cc12-5491-4f59-94c5-ccdbcb7474c8",
+    "water": "RÜG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WOLTERSDORF UP",
+    "uuid": "99989609-7bd8-4f91-bd55-ad31fbf55ee4",
+    "water": "RÜG",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WORMS",
+    "uuid": "844a620f-f3b8-4b6b-8e3c-783ae2aa232a",
+    "water": "RHEIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "WUSTERWITZ OP",
+    "uuid": "c6a12d34-c78f-44a2-a7ff-4b8d88f316cc",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WUSTERWITZ UP",
+    "uuid": "3bfcf759-27b3-4042-b59a-f6c8ed9e533e",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "WÜRZBURG",
+    "uuid": "915d76e1-3bf9-4e37-9a9a-4d144cd771cc",
+    "water": "MAIN",
+    "has_W": true,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q,W"
+  },
+  {
+    "shortname": "ZEHDENICK OP",
+    "uuid": "a9b8e24c-012a-48dc-a823-d48c1637cb42",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ZEHDENICK UP",
+    "uuid": "721d7dbf-c947-405c-8dba-e672a091f4c0",
+    "water": "OHW",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ZEHNERLOCH",
+    "uuid": "e574d0af-5c63-4306-b1d3-43b7359de06d",
+    "water": "NORDSEE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Zeltingen OP",
+    "uuid": "8b802863-402e-4bb9-8d39-976d27519796",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ZELTINGEN UP",
+    "uuid": "d867e7e9-feb9-4d36-8757-4afd865e697b",
+    "water": "MOSEL",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ZERBEN OP",
+    "uuid": "64c37072-db97-4e08-8981-c67f0282de5c",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "ZERBEN UP",
+    "uuid": "532d8718-6ec7-4f12-bb2f-bde2dec50182",
+    "water": "EHK",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  },
+  {
+    "shortname": "Ziegelhausen AMS",
+    "uuid": "3944c1fd-39f5-47b1-bb6e-323db05d70e8",
+    "water": "NECKAR",
+    "has_W": false,
+    "has_Q": true,
+    "has_T": false,
+    "codes": "Q"
+  },
+  {
+    "shortname": "ZOLLENSPIEKER",
+    "uuid": "3de8ea26-ab29-4e46-adad-06198ba2e0b7",
+    "water": "ELBE",
+    "has_W": true,
+    "has_Q": false,
+    "has_T": false,
+    "codes": "W"
+  }
+]

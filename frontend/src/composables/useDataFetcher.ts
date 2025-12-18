@@ -1,16 +1,47 @@
 import { ref } from 'vue'
 import axios from 'axios'
+import type { ChartDataPoint } from '@/types/project.types'
 
-export interface QueryConfig {
-  sourceType: 'STATIC_JSON' | 'REST_API'
-  url: string
-  mapping: {
-    x: string
-    y: string
-  }
+export type PegelTimeseries = 'W' | 'Q' | 'T'
+export type PegelPeriod = 'P1D' | 'P3D' | 'P7D' | 'P14D' | 'P30D'
+
+export type QueryConfig =
+  | {
+      sourceType: 'PEGEL'
+      station: string
+      timeseries: PegelTimeseries
+      period: PegelPeriod
+    }
+  | {
+      sourceType: 'STATIC_JSON' | 'REST_API'
+      url: string
+      mapping: { x: string; y: string }
+    }
+
+export interface PegelTimeseriesMeta {
+  longname: string
+  shortname: string
+  unit: string
 }
 
 type ApiDataItem = Record<string, unknown>
+
+const PEGEL_BASE_URL = 'https://www.pegelonline.wsv.de/webservices/rest-api/v2'
+
+export async function fetchPegelTimeseriesMeta(args: {
+  station: string
+  timeseries: PegelTimeseries
+}): Promise<PegelTimeseriesMeta> {
+  const { station, timeseries } = args
+
+  const url = `${PEGEL_BASE_URL}/stations/${encodeURIComponent(station)}/${timeseries}.json`
+
+  const res = await axios.get<PegelTimeseriesMeta>(url, {
+    headers: { accept: 'application/json' },
+  })
+
+  return res.data
+}
 
 export function useDataFetcher() {
   const loading = ref(false)
@@ -30,50 +61,56 @@ export function useDataFetcher() {
   }
 
   const fetchData = async (config: QueryConfig | undefined, timeRange: string = '24h') => {
-    if (!config || !config.url) return []
+    if (!config) return []
 
     loading.value = true
     error.value = null
-    let rawData = []
 
     try {
+      // ✅ NEW: Pegel source
+      if (config.sourceType === 'PEGEL') {
+        const url = new URL(
+          `https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/${encodeURIComponent(
+            config.station,
+          )}/${config.timeseries}/measurements.json`,
+        )
+        url.searchParams.set('start', config.period)
+
+        const res = await axios.get<Array<{ timestamp: string; value: number }>>(url.toString(), {
+          headers: { accept: 'application/json' },
+        })
+
+        const points: ChartDataPoint[] = res.data.map((d) => ({
+          time: new Date(d.timestamp),
+          value: Number(d.value),
+        }))
+
+        return points
+      }
+
+      // ✅ Keep old logic (optional, even if you hide it in UI)
+      if (!('url' in config) || !config.url) return []
+
+      let rawData: ApiDataItem[] = []
+
       if (config.sourceType === 'STATIC_JSON') {
-        // Fetch local file from /public
-        const res = await axios.get(config.url)
+        const res = await axios.get<ApiDataItem[]>(config.url)
         rawData = res.data
       } else if (config.sourceType === 'REST_API') {
-        // Handle Dynamic URL Construction
         const startISO = getStartTimeISO(timeRange)
-
-        // Check if URL already has params
         const separator = config.url.includes('?') ? '&' : '?'
-
-        // Append dynamic start time
         const dynamicUrl = `${config.url}${separator}start=${encodeURIComponent(startISO)}`
-
-        console.log(`Fetching Live Data: ${dynamicUrl}`)
-        const res = await axios.get(dynamicUrl)
+        const res = await axios.get<ApiDataItem[]>(dynamicUrl)
         rawData = res.data
-
-        console.log(`Fetching Live Data from URL: ${dynamicUrl}`)
-        console.log('Raw Data:', rawData)
       }
 
-      // Map Data to Standard Format { time, value }
-      const mappedData = rawData.map((item: ApiDataItem) => ({
+      return rawData.map((item) => ({
         time: new Date(String(item[config.mapping.x])),
-        value: item[config.mapping.y],
+        value: Number(item[config.mapping.y]),
       }))
-
-      return mappedData
     } catch (err: unknown) {
       console.error('Data Fetch Error:', err)
-
-      if (err instanceof Error) {
-        error.value = err.message
-      } else {
-        error.value = 'Failed to fetch data'
-      }
+      error.value = err instanceof Error ? err.message : 'Failed to fetch data'
       return []
     } finally {
       loading.value = false

@@ -3,9 +3,7 @@
     <v-main>
       <div class="flex-1 flex flex-col">
         <!-- TOP BAR -->
-        <header
-          class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6"
-        >
+        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6">
           <div class="flex items-center gap-3">
             <h1 class="text-m font-semibold">{{ projectName }}</h1>
 
@@ -83,9 +81,115 @@
               <div
                 v-for="panel in panels"
                 :key="panel.id"
-                class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col h-[350px]"
+                class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col h-[350px] cursor-pointer hover:shadow-md transition"
+                @click="openPanel(panel)"
               >
-                <ag-charts-vue :options="panel.chartOptions" style="height: 100%; width: 100%" />
+                <!-- Header row with title + info icon -->
+                <div class="flex items-center justify-between mb-2">
+                  <div class="text-sm font-semibold text-gray-800 truncate">
+                    {{ panel.title }}
+                  </div>
+
+                  <v-tooltip location="bottom">
+                    <template #activator="{ props }">
+                      <!-- stop click so it doesn't open modal when clicking the icon -->
+                      <v-btn
+                        v-bind="props"
+                        icon
+                        variant="text"
+                        size="small"
+                        class="text-gray-500"
+                        @click.stop
+                      >
+                        <v-icon icon="mdi-information-outline" size="small" />
+                      </v-btn>
+                    </template>
+
+                    <div class="text-xs leading-5">
+                      <div>
+                        <span class="font-medium">Station:</span>
+                        {{ getPanelInfo(panel).stationName }}
+                      </div>
+                      <div><span class="font-medium">UUID:</span> {{ getPanelInfo(panel).uuid }}</div>
+                      <div><span class="font-medium">River:</span> {{ getPanelInfo(panel).river }}</div>
+                      <div>
+                        <span class="font-medium">Timeseries:</span>
+                        {{ getPanelInfo(panel).timeseries }}
+                      </div>
+                    </div>
+                  </v-tooltip>
+                </div>
+
+                <!-- Chart -->
+                <div class="flex-1 min-h-0">
+                  <ag-charts-vue :options="panel.chartOptions" style="height: 100%; width: 100%" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Fullscreen Modal -->
+            <div v-if="expandedPanel" class="fixed inset-0 z-50 flex items-center justify-center">
+              <!-- overlay (click closes) -->
+              <div
+                class="absolute inset-0 bg-black/40 backdrop-blur-sm"
+                @click="closeExpanded"
+              ></div>
+
+              <!-- modal content -->
+              <div
+                class="relative z-10 w-[95vw] max-w-6xl bg-white rounded-xl shadow-xl border border-gray-200"
+              >
+                <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+                  <div class="text-sm font-semibold text-gray-900 truncate">
+                    {{ expandedPanel.title }}
+                  </div>
+
+                  <div class="flex items-center gap-2">
+                    <v-tooltip location="bottom">
+                      <template #activator="{ props }">
+                        <v-btn v-bind="props" icon variant="text" size="small" class="text-gray-600">
+                          <v-icon icon="mdi-information-outline" size="small" />
+                        </v-btn>
+                      </template>
+
+                      <div class="text-xs leading-5">
+                        <div>
+                          <span class="font-medium">Station:</span>
+                          {{ getPanelInfo(expandedPanel).stationName }}
+                        </div>
+                        <div>
+                          <span class="font-medium">UUID:</span> {{ getPanelInfo(expandedPanel).uuid }}
+                        </div>
+                        <div>
+                          <span class="font-medium">River:</span> {{ getPanelInfo(expandedPanel).river }}
+                        </div>
+                        <div>
+                          <span class="font-medium">Timeseries:</span>
+                          {{ getPanelInfo(expandedPanel).timeseries }}
+                        </div>
+                      </div>
+                    </v-tooltip>
+
+                    <v-btn
+                      icon
+                      variant="text"
+                      size="small"
+                      class="text-gray-600"
+                      @click="closeExpanded"
+                    >
+                      <v-icon icon="mdi-close" size="small" />
+                    </v-btn>
+                  </div>
+                </div>
+
+                <div class="p-4">
+                  <div class="h-[70vh] w-full">
+                    <ag-charts-vue
+                      :options="expandedPanel.chartOptions"
+                      style="height: 100%; width: 100%"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -184,12 +288,13 @@ import { createChartConfig } from '@/utils/chartFactory'
 // Composables
 import { useMockData, type DashboardPanel } from '@/composables/useMockData'
 import { useProjectDetail } from '@/composables/useProjectDetail'
-import { useDataFetcher } from '@/composables/useDataFetcher'
+import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
 
 // Components
 import ProjectEditor from '@/components/project/ProjectEditor.vue'
 import ProjectSettings from '@/components/project/ProjectSettings.vue'
-import type { Project, Membership, User } from '@/types/project.types'
+import type { Project, Membership, User, ChartDataPoint } from '@/types/project.types'
+import type { PegelTimeseries, PegelTimeseriesMeta } from '@/composables/useDataFetcher'
 
 const router = useRouter()
 const route = useRoute()
@@ -225,6 +330,97 @@ const handleDeletePanel = (panelId: string) => {
 
 const timeRange = ref('24h') // Usually connected to a dropdown in the UI
 
+// ---- NEW: Load stations.json for stationName + river in viewer tooltip ----
+type StationOption = {
+  shortname: string
+  uuid: string
+  water?: string
+  [key: string]: unknown
+}
+
+const stations = ref<StationOption[]>([])
+
+const loadStations = async (): Promise<void> => {
+  const res = await fetch('/stations.json')
+  stations.value = (await res.json()) as StationOption[]
+}
+
+const findStationByUuid = (uuid: string): StationOption | undefined => {
+  return stations.value.find((s) => String(s.uuid) === uuid)
+}
+
+const getPanelInfo = (panel: DashboardPanel) => {
+  const qc = panel.queryConfig
+  if (qc && qc.sourceType === 'PEGEL') {
+    const st = findStationByUuid(qc.station)
+    return {
+      stationName: st ? String(st.shortname) : qc.station,
+      uuid: qc.station,
+      river: st ? String(st.water ?? '-') : '-',
+      timeseries: qc.timeseries,
+    }
+  }
+
+  return {
+    stationName: '-',
+    uuid: '-',
+    river: '-',
+    timeseries: '-',
+  }
+}
+
+// ---- NEW: Build viewer chartOptions exactly like editor (axes + tooltip + marker) ----
+const buildPegelChartOptions = (
+  panel: DashboardPanel,
+  data: ChartDataPoint[],
+  meta: PegelTimeseriesMeta | null,
+): unknown => {
+  const base = createChartConfig(panel.type, panel.title, data)
+
+  const qc = panel.queryConfig
+  if (!qc || qc.sourceType !== 'PEGEL') return base
+
+  const defaultTitle =
+    qc.timeseries === 'W' ? 'Water Level' : qc.timeseries === 'Q' ? 'Discharge' : 'Temperature'
+
+  const defaultUnit = qc.timeseries === 'W' ? 'cm' : qc.timeseries === 'Q' ? 'm³/s' : '°C'
+
+  const station = findStationByUuid(qc.station)
+  const stationLabel = station ? String(station.shortname) : qc.station
+
+  const titleText = meta?.longname ?? defaultTitle
+  const unitText = meta?.unit ?? defaultUnit
+  const subtitleText = `${stationLabel} · ${qc.timeseries} · ${qc.period}`
+
+  const baseSeries = Array.isArray((base as Record<string, unknown>).series)
+    ? ((base as Record<string, unknown>).series as unknown[])
+    : []
+
+  return {
+    ...base,
+    title: { text: titleText },
+    subtitle: { text: subtitleText },
+    axes: [
+      { type: 'time', position: 'bottom', title: { text: 'Time' } },
+      { type: 'number', position: 'left', title: { text: `${titleText} (${unitText})` } },
+    ],
+    series: baseSeries.map((s) => {
+      const seriesObj = s as Record<string, unknown>
+      return {
+        ...seriesObj,
+        marker: { enabled: false },
+        strokeWidth: 2,
+        tooltip: {
+          renderer: ({ datum }: { datum: ChartDataPoint }) => ({
+            title: datum.time instanceof Date ? datum.time.toLocaleString() : 'Time',
+            content: `${datum.value} ${unitText}`,
+          }),
+        },
+      }
+    }),
+  }
+}
+
 // Function to Hydrate Panels
 const hydratePanelsWithData = async () => {
   for (const panel of panels.value) {
@@ -233,8 +429,22 @@ const hydratePanelsWithData = async () => {
       // 2. Fetch Data using the Service
       const realData = await fetchData(panel.queryConfig, timeRange.value)
 
-      // 3. Update Chart Options with Real Data
-      panel.chartOptions = createChartConfig(panel.type, panel.title, realData)
+      // ---- NEW: If PEGEL, apply same chart styling as editor ----
+      if (panel.queryConfig.sourceType === 'PEGEL') {
+        let meta: PegelTimeseriesMeta | null = null
+        try {
+          meta = await fetchPegelTimeseriesMeta({
+            station: panel.queryConfig.station,
+            timeseries: panel.queryConfig.timeseries as PegelTimeseries,
+          })
+        } catch (e) {
+          meta = null
+        }
+
+        panel.chartOptions = buildPegelChartOptions(panel, realData, meta) as any
+      } else {
+        panel.chartOptions = createChartConfig(panel.type, panel.title, realData)
+      }
     }
   }
 }
@@ -292,8 +502,20 @@ const {
   // viewerChartOptions,
 } = useProjectDetail() as ProjectDetailReturn
 
+// ---- NEW: Expanded panel modal state ----
+const expandedPanel = ref<DashboardPanel | null>(null)
+
+const openPanel = (panel: DashboardPanel) => {
+  expandedPanel.value = panel
+}
+
+const closeExpanded = () => {
+  expandedPanel.value = null
+}
+
 onMounted(async () => {
   await fetchProject()
+  await loadStations()
   refreshPanels()
   await hydratePanelsWithData()
 })
