@@ -1,0 +1,108 @@
+{
+  "login": {
+    "title": "Anmeldung",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "button" : "Anmelden",
+    "noaccount": "Sie haben noch kein Konto? ",
+    "signup": "Registrieren"
+  },
+
+  "appBar": {
+    "accountMenu": {
+      "logout": "Abmelden"
+    }
+  },
+
+    "signup": {
+    "title": "Registrieren",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "button": "Konto erstellen",
+    "haveaccount": "Bereits ein Konto?",
+    "login": "Anmelden"
+  },
+
+    "navigationdrawer": {
+    "monitoring": "Überwachung",
+    "channels": "Kanäle",
+    "settings": "Einstellungen",
+    "dashboard": "Dashboard"
+  },
+
+  "panelEditor": {
+  "untitledPanel": "Unbenanntes Panel",
+  "draft": "Entwurf",
+  "updatePanel": "Panel aktualisieren",
+  "applyToDashboard": "Zum Dashboard hinzufügen",
+  "loadingData": "Lade Daten...",
+  "tabs": {
+    "query": "Abfrage",
+    "transform": "Transformieren"
+  },
+  "sourceType": "Quellentyp",
+  "filePath": "Dateipfad (/public)",
+  "apiEndpoint": "API-Endpunkt-URL",
+  "urlPlaceholder": "z.B. https://api.example.com/data",
+  "apiTip": "Tipp: API hier eingeben.",
+  "timeField": "Zeitfeld (X-Achse)",
+  "timeFieldPlaceholder": "z.B. timestamp",
+  "valueField": "Wertfeld (Y-Achse)",
+  "valueFieldPlaceholder": "z.B. value",
+  "visualization": "Visualisierung",
+  "panelOptions": "Panel-Optionen",
+  "panelTitle": "Panel-Titel"
+},
+"common": {
+  "cancel": "Abbrechen"
+},
+  
+  "projectView": {
+  "tabs": {
+    "viewer": "Betrachter",
+    "editor": "Editor",
+    "settings": "Einstellungen",
+    "members": "Mitglieder"
+  },
+  "addPanel": "Panel hinzufügen",
+  "noPanelsViewer": "Keine Panels vorhanden. Wechseln Sie in den Editor-Modus, um eines hinzuzufügen.",
+  "createFirstPanel": "Erstes Panel erstellen",
+  "editPanel": "Panel bearbeiten",
+  "deletePanel": "Panel löschen",
+  "deleteConfirm": "Sind Sie sicher, dass Sie dieses Panel löschen möchten?"
+  },
+
+  "settings": {
+    "title": "Einstellungen",
+    "tabs": {
+      "general": "Allgemein",
+      "users": "Benutzer",
+      "security": "Sicherheit"
+    },
+    "general": {
+      "title": "Allgemein",
+      "language": "Sprache",
+      "theme": "Design"
+    },
+    "languages": {
+      "english": "Englisch",
+      "german": "Deutsch"
+    },
+    "themes": {
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
+    "users": {
+      "title": "Benutzer",
+      "description": "Steuern Sie, wer auf die Anwendung zugreifen kann."
+    },
+    "security": {
+      "title": "Sicherheit",
+      "description": "Verwalten Sie Anmelde- und Sicherheitseinstellungen."
+    },
+    "buttons": {
+      "save": "Speichern"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "button" : "Login",
+    "noaccount": "Don't have an account? ",
+    "signup": "Sign up"
+  },
+
+  "appBar": {
+    "accountMenu": {
+      "logout": "Logout"
+    }
+  },
+
+  "signup": {
+    "title": "Sign Up",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "button" : "Create Account",
+    "haveaccount": "Already have an account? ",
+    "login": "Login"
+  },
+
+  "navigationdrawer" : {
+    "monitoring": "Monitoring",
+    "channels": "Channels",
+    "settings": "Settings",
+    "dashboard": "Dashboard"
+  },
+
+  "panelEditor": {
+  "untitledPanel": "Untitled Panel",
+  "draft": "Draft",
+  "updatePanel": "Update Panel",
+  "applyToDashboard": "Apply to Dashboard",
+  "loadingData": "Loading Data...",
+  "tabs": {
+    "query": "Query",
+    "transform": "Transform"
+  },
+  "sourceType": "Source Type",
+  "filePath": "File Path (/public)",
+  "apiEndpoint": "API Endpoint URL",
+  "urlPlaceholder": "e.g. https://api.example.com/data",
+  "apiTip": "Tip: Input the api here.",
+  "timeField": "Time Field (X-Axis)",
+  "timeFieldPlaceholder": "e.g. timestamp",
+  "valueField": "Value Field (Y-Axis)",
+  "valueFieldPlaceholder": "e.g. value",
+  "visualization": "Visualization",
+  "panelOptions": "Panel Options",
+  "panelTitle": "Panel Title"
+},
+"common": {
+  "cancel": "Cancel"
+},
+
+  "projectView": {
+  "tabs": {
+    "viewer": "Viewer",
+    "editor": "Editor",
+    "settings": "Settings",
+    "members": "Members"
+  },
+  "addPanel": "Add Panel",
+  "noPanelsViewer": "No panels to display. Switch to Editor mode to add one.",
+  "createFirstPanel": "Create First Panel",
+  "editPanel": "Edit Panel",
+  "deletePanel": "Delete Panel",
+  "deleteConfirm": "Are you sure you want to delete this panel?"
+  },
+  
+  "settings": {
+    "title": "Settings",
+    "tabs": {
+      "general": "General",
+      "users": "Users",
+      "security": "Security"
+    },
+    "general": {
+      "title": "General",
+      "language": "Language",
+      "theme": "Theme"
+    },
+    "languages": {
+      "english": "English",
+      "german": "German"
+    },
+    "themes": {
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "users": {
+      "title": "Users",
+      "description": "Control who can access the application."
+    },
+    "security": {
+      "title": "Security",
+      "description": "Manage login and security preferences."
+    },
+    "buttons": {
+      "save": "Save"
+    }
+  }
+}

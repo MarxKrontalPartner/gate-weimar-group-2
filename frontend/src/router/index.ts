@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: { requiresAuth: true },
   },
   { path: '/projects/:id', component: ProjectDetail, props: true },
-  { path: '/settings', component: Settings },
+  { path: '/settings', component: Settings, meta: { requiresAuth: true } },
   { path: '/channels', component: Channels },
   { path: '/dashboard/editor/:id', component: DashboardEditor, meta: { requiresAuth: true } },
 ]

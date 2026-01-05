@@ -21,7 +21,7 @@
                     : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Viewer
+                {{ $t('projectView.tabs.viewer') }}
               </button>
 
               <!-- 2. Editor Tab -->
@@ -35,7 +35,7 @@
                     : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Editor
+                {{ $t('projectView.tabs.editor') }}
               </button>
 
               <!-- 3. Settings Tab -->
@@ -49,7 +49,7 @@
                     : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Settings
+                {{ $t('projectView.tabs.settings') }}
               </button>
             </div>
           </div>
@@ -60,7 +60,7 @@
               @click="goToChartEditor"
               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-2"
             >
-              <span>+</span> Add Panel
+              <span>+</span> {{ $t('projectView.addPanel') }}
             </button>
           </div>
         </header>
@@ -74,7 +74,7 @@
               class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50"
             >
               <div class="text-gray-400 mb-4">
-                No panels to display. Switch to Editor mode to add one.
+                {{ $t('projectView.noPanelsViewer') }}
               </div>
             </div>
 
@@ -96,7 +96,7 @@
               v-if="panels.length === 0"
               class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50"
             >
-              <v-btn color="primary" @click="goToChartEditor">Create First Panel</v-btn>
+              <v-btn color="primary" @click="goToChartEditor">{{ $t('projectView.createFirstPanel') }}</v-btn>
             </div>
 
             <!-- Editable Grid -->
@@ -113,14 +113,14 @@
                   <button
                     @click="editPanel(panel.id)"
                     class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-blue-600"
-                    title="Edit Panel"
+                    :title="$t('projectView.editPanel')"
                   >
                     <v-icon icon="mdi-pencil" size="small"></v-icon>
                   </button>
                   <button
                     @click="handleDeletePanel(panel.id)"
                     class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-red-600"
-                    title="Delete Panel"
+                    :title="$t('projectView.deletePanel')"
                   >
                     <v-icon icon="mdi-trash-can-outline" size="small"></v-icon>
                   </button>
@@ -185,6 +185,7 @@ import { createChartConfig } from '@/utils/chartFactory'
 import { useMockData, type DashboardPanel } from '@/composables/useMockData'
 import { useProjectDetail } from '@/composables/useProjectDetail'
 import { useDataFetcher } from '@/composables/useDataFetcher'
+import { useI18n } from 'vue-i18n'
 
 // Components
 import ProjectEditor from '@/components/project/ProjectEditor.vue'
@@ -203,6 +204,9 @@ const projectId = (Array.isArray(rawId) ? rawId[0] : rawId) as string
 const { getProjectPanels, deletePanelFromProject } = useMockData()
 const panels = ref<DashboardPanel[]>([])
 
+// Use useI18n for script
+const { t } = useI18n()
+
 const refreshPanels = () => {
   panels.value = getProjectPanels(projectId)
 }
@@ -217,7 +221,7 @@ const editPanel = (panelId: string) => {
 }
 
 const handleDeletePanel = (panelId: string) => {
-  if (confirm('Are you sure you want to delete this panel?')) {
+  if (confirm(t('projectView.deleteConfirm'))) {
     deletePanelFromProject(projectId, panelId)
     refreshPanels()
   }

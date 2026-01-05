@@ -25,7 +25,7 @@
     <v-btn icon color="background">
       <v-icon class="text-primary">mdi-account-circle-outline</v-icon>
       <v-menu activator="parent">
-        <v-list density="compact" :items="accountMenuItems" @click="logout" />
+        <v-list density="compact" :items="accountMenuItems($t)" @click="logout" />
       </v-menu>
     </v-btn>
   </v-app-bar>
@@ -45,9 +45,9 @@ const props = defineProps({
 const theme = useTheme()
 const router = useRouter()
 
-const accountMenuItems = [
+const accountMenuItems = (t: any) => [
   {
-    title: 'Abmelden',
+    title: t('appBar.accountMenu.logout'),
     value: 'logout',
     props: {
       prependIcon: 'mdi-logout',

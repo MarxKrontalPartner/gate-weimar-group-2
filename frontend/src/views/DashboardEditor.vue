@@ -8,22 +8,22 @@
         >
           <div class="flex items-center gap-2">
             <span class="text-lg font-medium text-gray-700">{{
-              panelTitle || 'Untitled Panel'
+              panelTitle ||  $t('panelEditor.untitledPanel')
             }}</span>
-            <v-chip size="x-small" variant="outlined" class="ml-2">Draft</v-chip>
+            <v-chip size="x-small" variant="outlined" class="ml-2">{{ $t('panelEditor.draft') }}</v-chip>
           </div>
           <div class="flex items-center gap-3">
             <button
               @click="router.back()"
               class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition"
             >
-              Cancel
+              {{ $t('common.cancel') }}
             </button>
             <button
               @click="handleApply"
               class="px-4 py-2 text-sm font-medium bg-blue-700 text-white rounded shadow-sm hover:bg-blue-800 transition"
             >
-              {{ isEditMode ? 'Update Panel' : 'Apply to Dashboard' }}
+              {{ isEditMode ? $t('panelEditor.updatePanel') : $t('panelEditor.applyToDashboard') }}
             </button>
           </div>
         </div>
@@ -42,7 +42,7 @@
                   v-if="isLoadingData"
                   class="absolute inset-0 bg-white/80 z-10 flex items-center justify-center"
                 >
-                  <span class="text-blue-600 font-medium">Loading Data...</span>
+                  <span class="text-blue-600 font-medium">{{ $t('panelEditor.loadingData') }}</span>
                 </div>
 
                 <ag-charts-vue
@@ -61,9 +61,9 @@
                 <button
                   class="px-4 py-2 text-sm font-medium border-b-2 border-blue-600 text-blue-600"
                 >
-                  Query
+                  {{ $t('panelEditor.tabs.query') }}
                 </button>
-                <button class="px-4 py-2 text-sm font-medium text-gray-500">Transform</button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-500">{{ $t('panelEditor.tabs.transform') }}</button>
               </div>
 
               <div class="p-6">
@@ -71,7 +71,7 @@
                   <!-- Source Type -->
                   <div class="col-span-3">
                     <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                      >Source Type</label
+                      >{{ $t('panelEditor.sourceType') }}</label
                     >
                     <v-select
                       v-model="queryConfig.sourceType"
@@ -87,8 +87,8 @@
                     <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
                       {{
                         queryConfig.sourceType === 'STATIC_JSON'
-                          ? 'File Path (/public)'
-                          : 'API Endpoint URL'
+                          ? $t('panelEditor.filePath')
+                          : $t('panelEditor.apiEndpoint')
                       }}
                     </label>
                     <v-text-field
@@ -96,13 +96,13 @@
                       density="compact"
                       variant="outlined"
                       hide-details
-                      placeholder="e.g. https://api.example.com/data"
+                      :placeholder="$t('panelEditor.urlPlaceholder')"
                     ></v-text-field>
                     <p
                       v-if="queryConfig.sourceType === 'REST_API'"
                       class="text-xs text-gray-400 mt-1"
                     >
-                      Tip: Input the api here.
+                      {{ $t('panelEditor.apiTip') }}
                       <!-- We will append  <code>?start=ISO_DATE</code> automatically. -->
                     </p>
                   </div>
@@ -111,26 +111,26 @@
                   <div class="col-span-12 grid grid-cols-2 gap-6">
                     <div>
                       <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                        >Time Field (X-Axis)</label
+                        >{{ $t('panelEditor.timeField') }}</label
                       >
                       <v-text-field
                         v-model="queryConfig.mapping.x"
                         density="compact"
                         variant="outlined"
                         hide-details
-                        placeholder="e.g. timestamp"
+                        :placeholder="$t('panelEditor.timeFieldPlaceholder')"
                       ></v-text-field>
                     </div>
                     <div>
                       <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                        >Value Field (Y-Axis)</label
+                        >{{ $t('panelEditor.valueField') }}</label
                       >
                       <v-text-field
                         v-model="queryConfig.mapping.y"
                         density="compact"
                         variant="outlined"
                         hide-details
-                        placeholder="e.g. value"
+                        :placeholder="$t('panelEditor.valueFieldPlaceholder')"
                       ></v-text-field>
                     </div>
                   </div>
@@ -146,7 +146,7 @@
             <!-- Same Sidebar Code as before -->
             <div class="p-4 border-b border-gray-100">
               <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
-                Visualization
+                {{ $t('panelEditor.visualization') }}
               </h3>
               <div class="grid grid-cols-2 gap-2">
                 <div
@@ -175,10 +175,10 @@
 
             <div class="p-4 border-b border-gray-100">
               <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
-                Panel Options
+                {{ $t('panelEditor.panelOptions') }}
               </h3>
               <div class="mb-4">
-                <label class="text-xs text-gray-500 mb-1 block">Panel Title</label>
+                <label class="text-xs text-gray-500 mb-1 block">{{ $t('panelEditor.panelTitle') }}</label>
                 <v-text-field
                   v-model="panelTitle"
                   density="compact"
