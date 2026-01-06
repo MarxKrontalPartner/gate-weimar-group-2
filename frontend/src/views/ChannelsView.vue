@@ -6,7 +6,7 @@
       <v-main>
         <div class="p-8">
           <h1 class="text-2xl font-semibold mb-4">Channels</h1>
-          <p>This is the channels page. Channels content will go here.</p>
+          <p>This is the channels page. Channels content will go here</p>
         </div>
       </v-main>
     </div>
