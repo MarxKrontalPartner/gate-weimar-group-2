@@ -269,7 +269,8 @@ const { fetchData, loading: isLoadingData } = useDataFetcher()
  * ✅ NEW: type guards for query params (keeps TS + lint happy)
  * Allows deep-link: /dashboard/editor/default_project?station=<uuid>&timeseries=W&period=P7D
  */
-const isPegelTimeseries = (v: unknown): v is PegelTimeseries => v === 'W' || v === 'Q' || v === 'T'
+const isPegelTimeseries = (v: unknown): v is PegelTimeseries =>
+  v === 'W' || v === 'Q' || v === 'T'
 
 const isPegelPeriod = (v: unknown): v is PegelPeriod =>
   v === 'P1D' || v === 'P3D' || v === 'P7D' || v === 'P14D' || v === 'P30D'
@@ -282,16 +283,17 @@ const getQueryString = (v: unknown): string => {
   return typeof v === 'string' ? v.trim() : ''
 }
 
-// Project ID from URL
+/**
+ * ✅ FIX (required): Normalize projectId as STRING always
+ * This prevents panels from being saved under numeric key vs string key (e.g. 1 vs "1").
+ */
 const rawId = route.params.id
-const projectId: string | number = Array.isArray(rawId)
-  ? (rawId[0] ?? 'default_project')
-  : rawId !== undefined
-    ? rawId
-    : 'default_project'
+const projectId = String(
+  Array.isArray(rawId) ? rawId[0] ?? 'default_project' : rawId ?? 'default_project',
+)
 
-// Check if we are in EDIT MODE
-const editingPanelId = route.query.panelId as string | undefined
+// ✅ FIX (required): Normalize panelId query safely
+const editingPanelId = getQueryString(route.query.panelId) || undefined
 const isEditMode = !!editingPanelId
 
 // State
