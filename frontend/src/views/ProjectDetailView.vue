@@ -563,4 +563,5 @@ onMounted(async () => {
   refreshPanels()
   await hydratePanelsWithData()
 })
+
 </script>
