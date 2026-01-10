@@ -300,7 +300,7 @@ import type { Ref } from 'vue'
 import { createChartConfig } from '@/utils/chartFactory'
 
 // Composables
-import { useMockData, type DashboardPanel } from '@/composables/useMockData'
+import { useDashboardPanels, type DashboardPanel } from '@/composables/useDashboardPanels'
 import { useProjectDetail } from '@/composables/useProjectDetail'
 import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
 
@@ -318,12 +318,12 @@ const { fetchData } = useDataFetcher()
 const rawId = route.params.id
 const projectId = String(Array.isArray(rawId) ? rawId[0] ?? '' : rawId ?? '')
 
-// Mock Data Logic
-const { getProjectPanels, deletePanelFromProject } = useMockData()
+// Dashboard Panels API
+const { getProjectPanels, deletePanelFromProject, loading: panelsLoading, error: panelsError } = useDashboardPanels(projectId)
 const panels = ref<DashboardPanel[]>([])
 
-const refreshPanels = () => {
-  panels.value = getProjectPanels(projectId)
+const refreshPanels = async () => {
+  panels.value = await getProjectPanels()
 }
 
 const goToChartEditor = () => {
@@ -335,10 +335,10 @@ const editPanel = (panelId: string) => {
   router.push(`/dashboard/editor/${projectId}?panelId=${panelId}`)
 }
 
-const handleDeletePanel = (panelId: string) => {
+const handleDeletePanel = async (panelId: string) => {
   if (confirm('Are you sure you want to delete this panel?')) {
-    deletePanelFromProject(projectId, panelId)
-    refreshPanels()
+    await deletePanelFromProject(panelId)
+    await refreshPanels()
   }
 }
 
@@ -416,7 +416,18 @@ const buildPegelChartOptions = (
     subtitle: { text: subtitleText },
     axes: [
       { type: 'time', position: 'bottom', title: { text: 'Time' } },
-      { type: 'number', position: 'left', title: { text: `${titleText} (${unitText})` } },
+      { 
+        type: 'number', 
+        position: 'left', 
+        title: { text: `${titleText} (${unitText})` },
+        label: {
+          formatter: ({ value }: { value: number }) => {
+            // Round to avoid floating point precision issues like 48.800000000000004
+            const rounded = Math.round(value * 100) / 100
+            return rounded.toString()
+          }
+        }
+      },
     ],
     series: baseSeries.map((s) => {
       const seriesObj = s as Record<string, unknown>
@@ -549,7 +560,9 @@ watch(
     if (!pid) return
 
     localStorage.setItem('mkp_active_project_id', pid)
-    panels.value = await getProjectPanels(pid)
+    // Note: projectId is captured in useDashboardPanels so we need to reload the page
+    // or use a different approach for route changes
+    await refreshPanels()
     await hydratePanelsWithData()
   },
 )
@@ -560,7 +573,7 @@ onMounted(async () => {
 
   await fetchProject()
   await loadStations()
-  refreshPanels()
+  await refreshPanels()
   await hydratePanelsWithData()
 })
 

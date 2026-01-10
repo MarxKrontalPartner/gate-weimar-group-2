@@ -236,7 +236,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { createChartConfig } from '@/utils/chartFactory'
-import { useMockData } from '@/composables/useMockData'
+import { useDashboardPanels } from '@/composables/useDashboardPanels'
 import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
 
 import type { ChartDataPoint } from '@/types/project.types'
@@ -258,7 +258,6 @@ const pegelMeta = ref<PegelTimeseriesMeta | null>(null)
 
 const router = useRouter()
 const route = useRoute()
-const { addPanelToProject, updatePanelInProject, getPanel } = useMockData()
 const { fetchData, loading: isLoadingData } = useDataFetcher()
 
 /**
@@ -287,6 +286,9 @@ const rawId = route.params.id
 const projectId = String(
   Array.isArray(rawId) ? rawId[0] ?? 'default_project' : rawId ?? 'default_project',
 )
+
+// Dashboard Panels API
+const { addPanelToProject, updatePanelInProject, getPanel } = useDashboardPanels(projectId)
 
 // Check if we are in EDIT MODE
 const editingPanelId = route.query.panelId as string | undefined
@@ -530,7 +532,7 @@ onMounted(async () => {
   }
 
   if (isEditMode) {
-    const existingPanel = getPanel(projectId, editingPanelId)
+    const existingPanel = await getPanel(editingPanelId)
     if (existingPanel) {
       panelTitle.value = existingPanel.title
       selectedChart.value = existingPanel.type
@@ -635,7 +637,7 @@ const chartTypes = [
   { name: 'Gauge', icon: 'mdi-gauge' },
 ]
 
-const handleApply = () => {
+const handleApply = async () => {
   const panelData = {
     id: isEditMode ? editingPanelId : Date.now().toString(),
     title: panelTitle.value,
@@ -646,9 +648,9 @@ const handleApply = () => {
   }
 
   if (isEditMode) {
-    updatePanelInProject(projectId, panelData)
+    await updatePanelInProject(panelData)
   } else {
-    addPanelToProject(projectId, panelData)
+    await addPanelToProject(panelData)
   }
   router.push(`/projects/${projectId}`)
 }
