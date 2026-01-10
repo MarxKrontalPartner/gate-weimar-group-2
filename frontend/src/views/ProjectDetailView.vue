@@ -294,7 +294,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import type { Ref } from 'vue'
 import { createChartConfig } from '@/utils/chartFactory'
@@ -316,7 +316,7 @@ const { fetchData } = useDataFetcher()
 
 // Fix for ID type safety
 const rawId = route.params.id
-const projectId = (Array.isArray(rawId) ? rawId[0] : rawId) as string
+const projectId = String(Array.isArray(rawId) ? rawId[0] ?? '' : rawId ?? '')
 
 // Dashboard Panels API
 const { getProjectPanels, deletePanelFromProject, loading: panelsLoading, error: panelsError } = useDashboardPanels(projectId)
@@ -491,8 +491,6 @@ type ProjectDetailReturn = {
 
   changeRole: (m: Membership) => Promise<void>
   removeMember: (m: Membership) => Promise<void>
-
-  // viewerChartOptions: Ref<AgChartOptions>
 }
 
 const {
@@ -515,8 +513,6 @@ const {
   addSelectedUser,
   changeRole,
   removeMember,
-
-  // viewerChartOptions,
 } = useProjectDetail() as ProjectDetailReturn
 
 // ---- NEW: Expanded panel modal state ----
@@ -530,7 +526,38 @@ const closeExpanded = () => {
   expandedPanel.value = null
 }
 
+/**
+ * ✅ FIX (required): Vue reuses the same component instance.
+ * After returning from editor -> viewer, onMounted does NOT run again.
+ * So we refresh panels whenever route changes.
+ */
+watch(
+  () => route.fullPath,
+  async () => {
+    refreshPanels()
+    await hydratePanelsWithData()
+  },
+)
+
+/**
+ * ✅ FIX (required): When changing project id, also refresh and update active project id.
+ */
+watch(
+  () => route.params.id,
+  async (newId) => {
+    const pid = String(Array.isArray(newId) ? newId[0] ?? '' : newId ?? '')
+    if (!pid) return
+
+    localStorage.setItem('mkp_active_project_id', pid)
+    panels.value = getProjectPanels(pid)
+    await hydratePanelsWithData()
+  },
+)
+
 onMounted(async () => {
+  // ✅ remember current project for Channels page
+  localStorage.setItem('mkp_active_project_id', projectId)
+
   await fetchProject()
   await loadStations()
   await refreshPanels()
