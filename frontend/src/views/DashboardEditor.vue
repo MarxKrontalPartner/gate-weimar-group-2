@@ -237,7 +237,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { createChartConfig } from '@/utils/chartFactory'
-import { useMockData } from '@/composables/useMockData'
+import { useDashboardPanels } from '@/composables/useDashboardPanels'
 import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
 
 import type { ChartDataPoint } from '@/types/project.types'
@@ -256,8 +256,6 @@ const pegelMeta = ref<PegelTimeseriesMeta | null>(null)
 
 const router = useRouter()
 const route = useRoute()
-const { addPanelToProject, updatePanelInProject, getPanel } = useMockData()
-const { fetchData, loading: isLoadingData } = useDataFetcher()
 
 // Project ID from URL
 const rawId = route.params.id
@@ -266,6 +264,9 @@ const projectId: string | number = Array.isArray(rawId)
   : rawId !== undefined
     ? rawId
     : 'default_project'
+
+const { addPanelToProject, updatePanelInProject, getPanel } = useDashboardPanels(projectId)
+const { fetchData, loading: isLoadingData } = useDataFetcher()
 
 // Check if we are in EDIT MODE
 const editingPanelId = route.query.panelId as string | undefined
@@ -469,7 +470,7 @@ onMounted(async () => {
   await loadStations()
 
   if (isEditMode) {
-    const existingPanel = getPanel(projectId, editingPanelId)
+    const existingPanel = await getPanel(editingPanelId)
     if (existingPanel) {
       panelTitle.value = existingPanel.title
       selectedChart.value = existingPanel.type
@@ -574,7 +575,7 @@ const chartTypes = [
   { name: 'Gauge', icon: 'mdi-gauge' },
 ]
 
-const handleApply = () => {
+const handleApply = async () => {
   const panelData = {
     id: isEditMode ? editingPanelId : Date.now().toString(),
     title: panelTitle.value,
@@ -585,9 +586,9 @@ const handleApply = () => {
   }
 
   if (isEditMode) {
-    updatePanelInProject(projectId, panelData)
+    await updatePanelInProject(panelData)
   } else {
-    addPanelToProject(projectId, panelData)
+    await addPanelToProject(panelData)
   }
   router.push(`/projects/${projectId}`)
 }
