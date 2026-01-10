@@ -549,7 +549,7 @@ watch(
     if (!pid) return
 
     localStorage.setItem('mkp_active_project_id', pid)
-    panels.value = getProjectPanels(pid)
+    panels.value = await getProjectPanels(pid)
     await hydratePanelsWithData()
   },
 )
