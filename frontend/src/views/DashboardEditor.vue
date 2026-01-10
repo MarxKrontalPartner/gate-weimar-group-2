@@ -7,7 +7,9 @@
           class="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0"
         >
           <div class="flex items-center gap-2">
-            <span class="text-lg font-medium text-gray-700">{{ panelTitle || 'Untitled Panel' }}</span>
+            <span class="text-lg font-medium text-gray-700">{{
+              panelTitle || 'Untitled Panel'
+            }}</span>
             <v-chip size="x-small" variant="outlined" class="ml-2">Draft</v-chip>
           </div>
           <div class="flex items-center gap-3">
@@ -102,7 +104,9 @@
 
                 <!-- Station dropdown (must always show shortname, not UUID) -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Station</label>
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                    >Station</label
+                  >
                   <v-autocomplete
                     v-model="selectedStationUuid"
                     :items="stationsForDropdown"
@@ -177,7 +181,9 @@
           </div>
 
           <!-- RIGHT: VISUAL SETTINGS -->
-          <div class="w-80 bg-white border-l border-gray-200 overflow-y-auto flex flex-col shrink-0">
+          <div
+            class="w-80 bg-white border-l border-gray-200 overflow-y-auto flex flex-col shrink-0"
+          >
             <div class="p-4 border-b border-gray-100">
               <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
                 Visualization
@@ -199,9 +205,7 @@
                   <span
                     :class="[
                       'text-xs mt-2',
-                      selectedChart === type.name
-                        ? 'text-blue-700 font-medium'
-                        : 'text-gray-500',
+                      selectedChart === type.name ? 'text-blue-700 font-medium' : 'text-gray-500',
                     ]"
                   >
                     {{ type.name }}
@@ -264,8 +268,7 @@ const { fetchData, loading: isLoadingData } = useDataFetcher()
  * ✅ NEW: type guards for query params (keeps TS + lint happy)
  * Allows deep-link: /dashboard/editor/default_project?station=<uuid>&timeseries=W&period=P7D
  */
-const isPegelTimeseries = (v: unknown): v is PegelTimeseries =>
-  v === 'W' || v === 'Q' || v === 'T'
+const isPegelTimeseries = (v: unknown): v is PegelTimeseries => v === 'W' || v === 'Q' || v === 'T'
 
 const isPegelPeriod = (v: unknown): v is PegelPeriod =>
   v === 'P1D' || v === 'P3D' || v === 'P7D' || v === 'P14D' || v === 'P30D'
@@ -284,7 +287,7 @@ const getQueryString = (v: unknown): string => {
  */
 const rawId = route.params.id
 const projectId = String(
-  Array.isArray(rawId) ? rawId[0] ?? 'default_project' : rawId ?? 'default_project',
+  Array.isArray(rawId) ? (rawId[0] ?? 'default_project') : (rawId ?? 'default_project'),
 )
 
 // Dashboard Panels API

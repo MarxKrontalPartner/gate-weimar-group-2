@@ -269,7 +269,7 @@ const deriveAvailability = (
   }
 }
 
-const isNotNull = <T>(v: T | null): v is T => v !== null
+const isNotNull = <T,>(v: T | null): v is T => v !== null
 const getValue = (r: Record<string, unknown>, key: string): unknown => r[key]
 
 /**
@@ -284,11 +284,9 @@ const loadStationsFromPublic = async (): Promise<StationRow[]> => {
 
   for (const url of jsonCandidates) {
     try {
-      // eslint-disable-next-line no-await-in-loop
       const res = await fetch(url)
       if (!res.ok) continue
 
-      // eslint-disable-next-line no-await-in-loop
       const raw = (await res.json()) as Array<Record<string, unknown>>
 
       const parsed = raw
@@ -353,7 +351,6 @@ const loadStationsFromPublic = async (): Promise<StationRow[]> => {
 
   let data: ArrayBuffer | null = null
   for (const url of excelCandidates) {
-    // eslint-disable-next-line no-await-in-loop
     data = await tryFetchArrayBuffer(url)
     if (data) break
   }

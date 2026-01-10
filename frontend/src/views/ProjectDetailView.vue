@@ -316,10 +316,10 @@ const { fetchData } = useDataFetcher()
 
 // Fix for ID type safety
 const rawId = route.params.id
-const projectId = String(Array.isArray(rawId) ? rawId[0] ?? '' : rawId ?? '')
+const projectId = String(Array.isArray(rawId) ? (rawId[0] ?? '') : (rawId ?? ''))
 
 // Dashboard Panels API
-const { getProjectPanels, deletePanelFromProject, loading: panelsLoading, error: panelsError } = useDashboardPanels(projectId)
+const { getProjectPanels, deletePanelFromProject } = useDashboardPanels(projectId)
 const panels = ref<DashboardPanel[]>([])
 
 const refreshPanels = async () => {
@@ -416,17 +416,17 @@ const buildPegelChartOptions = (
     subtitle: { text: subtitleText },
     axes: [
       { type: 'time', position: 'bottom', title: { text: 'Time' } },
-      { 
-        type: 'number', 
-        position: 'left', 
+      {
+        type: 'number',
+        position: 'left',
         title: { text: `${titleText} (${unitText})` },
         label: {
           formatter: ({ value }: { value: number }) => {
             // Round to avoid floating point precision issues like 48.800000000000004
             const rounded = Math.round(value * 100) / 100
             return rounded.toString()
-          }
-        }
+          },
+        },
       },
     ],
     series: baseSeries.map((s) => {
@@ -556,7 +556,7 @@ watch(
 watch(
   () => route.params.id,
   async (newId) => {
-    const pid = String(Array.isArray(newId) ? newId[0] ?? '' : newId ?? '')
+    const pid = String(Array.isArray(newId) ? (newId[0] ?? '') : (newId ?? ''))
     if (!pid) return
 
     localStorage.setItem('mkp_active_project_id', pid)
@@ -576,5 +576,4 @@ onMounted(async () => {
   await refreshPanels()
   await hydratePanelsWithData()
 })
-
 </script>
