@@ -300,7 +300,7 @@ import type { Ref } from 'vue'
 import { createChartConfig } from '@/utils/chartFactory'
 
 // Composables
-import { useDashboardPanels, type DashboardPanel } from '@/composables/useDashboardPanels'
+import { useMockData, type DashboardPanel } from '@/composables/useMockData'
 import { useProjectDetail } from '@/composables/useProjectDetail'
 import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
 
@@ -318,12 +318,12 @@ const { fetchData } = useDataFetcher()
 const rawId = route.params.id
 const projectId = String(Array.isArray(rawId) ? rawId[0] ?? '' : rawId ?? '')
 
-// Dashboard Panels API
-const { getProjectPanels, deletePanelFromProject, loading: panelsLoading, error: panelsError } = useDashboardPanels(projectId)
+// Mock Data Logic
+const { getProjectPanels, deletePanelFromProject } = useMockData()
 const panels = ref<DashboardPanel[]>([])
 
-const refreshPanels = async () => {
-  panels.value = await getProjectPanels()
+const refreshPanels = () => {
+  panels.value = getProjectPanels(projectId)
 }
 
 const goToChartEditor = () => {
@@ -335,10 +335,10 @@ const editPanel = (panelId: string) => {
   router.push(`/dashboard/editor/${projectId}?panelId=${panelId}`)
 }
 
-const handleDeletePanel = async (panelId: string) => {
+const handleDeletePanel = (panelId: string) => {
   if (confirm('Are you sure you want to delete this panel?')) {
-    await deletePanelFromProject(panelId)
-    await refreshPanels()
+    deletePanelFromProject(projectId, panelId)
+    refreshPanels()
   }
 }
 
@@ -560,7 +560,7 @@ onMounted(async () => {
 
   await fetchProject()
   await loadStations()
-  await refreshPanels()
+  refreshPanels()
   await hydratePanelsWithData()
 })
 </script>

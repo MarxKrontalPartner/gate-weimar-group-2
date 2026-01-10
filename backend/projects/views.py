@@ -1,12 +1,10 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.exceptions import PermissionDenied
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
 
-from .models import Project, ProjectMembership, DashboardPanel
-from .serializers import ProjectSerializer, ProjectMembershipSerializer, UserSerializer, DashboardPanelSerializer
+from .models import Project, ProjectMembership
+from .serializers import ProjectSerializer, ProjectMembershipSerializer, UserSerializer
 
 
 def is_project_editor(user, project: Project) -> bool:
@@ -159,54 +157,3 @@ class UserSearchViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         q = self.request.query_params.get("search", "")
         return User.objects.filter(username__icontains=q).order_by("username")[:10]
-
-
-class DashboardPanelViewSet(viewsets.ModelViewSet):
-    """
-    CRUD endpoints for dashboard panels within a project.
-    Nested under /api/projects/{project_pk}/panels/
-    """
-    serializer_class = DashboardPanelSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_project(self):
-        project_id = self.kwargs.get("project_pk")
-        project = get_object_or_404(Project, pk=project_id)
-        user = self.request.user
-        
-        # Check if user has access to the project
-        is_owner = project.owner == user
-        is_member = ProjectMembership.objects.filter(project=project, user=user).exists()
-        
-        if not (is_owner or is_member):
-            raise PermissionDenied("Not allowed")
-        
-        return project
-
-    def get_queryset(self):
-        project = self.get_project()
-        return DashboardPanel.objects.filter(project=project).order_by("created_at")
-
-    def perform_create(self, serializer):
-        project = self.get_project()
-        if not is_project_editor(self.request.user, project):
-            raise PermissionDenied("Only editors can create panels")
-        serializer.save(project=project)
-
-    def perform_update(self, serializer):
-        project = self.get_project()
-        if not is_project_editor(self.request.user, project):
-            raise PermissionDenied("Only editors can update panels")
-        serializer.save()
-
-    def perform_destroy(self, instance):
-        project = self.get_project()
-        if not is_project_editor(self.request.user, project):
-            raise PermissionDenied("Only editors can delete panels")
-        instance.delete()
-
-    def get_object(self):
-        # Lookup by panel_id instead of pk
-        project = self.get_project()
-        panel_id = self.kwargs.get("pk")
-        return get_object_or_404(DashboardPanel, project=project, panel_id=panel_id)
