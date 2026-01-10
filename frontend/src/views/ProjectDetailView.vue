@@ -531,9 +531,13 @@ const closeExpanded = () => {
 }
 
 onMounted(async () => {
+  // ✅ NEW: remember current project for Channels page
+  localStorage.setItem('mkp_active_project_id', projectId)
+
   await fetchProject()
   await loadStations()
   refreshPanels()
   await hydratePanelsWithData()
 })
+
 </script>

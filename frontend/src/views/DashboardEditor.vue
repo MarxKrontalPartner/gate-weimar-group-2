@@ -7,21 +7,21 @@
           class="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0"
         >
           <div class="flex items-center gap-2">
-            <span class="text-lg font-medium text-gray-700">{{
-              panelTitle || 'Untitled Panel'
-            }}</span>
+            <span class="text-lg font-medium text-gray-700">{{ panelTitle || 'Untitled Panel' }}</span>
             <v-chip size="x-small" variant="outlined" class="ml-2">Draft</v-chip>
           </div>
           <div class="flex items-center gap-3">
             <button
               @click="router.back()"
               class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition"
+              type="button"
             >
               Cancel
             </button>
             <button
               @click="handleApply"
               class="px-4 py-2 text-sm font-medium bg-blue-700 text-white rounded shadow-sm hover:bg-blue-800 transition"
+              type="button"
             >
               {{ isEditMode ? 'Update Panel' : 'Apply to Dashboard' }}
             </button>
@@ -86,9 +86,9 @@
 
                 <!-- Station search (separate input) -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                    >Search Station</label
-                  >
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
+                    Search Station
+                  </label>
                   <v-text-field
                     v-model="stationSearch"
                     density="compact"
@@ -102,9 +102,7 @@
 
                 <!-- Station dropdown (must always show shortname, not UUID) -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                    >Station</label
-                  >
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Station</label>
                   <v-autocomplete
                     v-model="selectedStationUuid"
                     :items="stationsForDropdown"
@@ -135,9 +133,9 @@
 
                 <!-- Timeseries -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                    >Timeseries</label
-                  >
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
+                    Timeseries
+                  </label>
                   <v-select
                     v-model="pegelTimeseries"
                     :items="[
@@ -179,9 +177,7 @@
           </div>
 
           <!-- RIGHT: VISUAL SETTINGS -->
-          <div
-            class="w-80 bg-white border-l border-gray-200 overflow-y-auto flex flex-col shrink-0"
-          >
+          <div class="w-80 bg-white border-l border-gray-200 overflow-y-auto flex flex-col shrink-0">
             <div class="p-4 border-b border-gray-100">
               <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
                 Visualization
@@ -203,10 +199,13 @@
                   <span
                     :class="[
                       'text-xs mt-2',
-                      selectedChart === type.name ? 'text-blue-700 font-medium' : 'text-gray-500',
+                      selectedChart === type.name
+                        ? 'text-blue-700 font-medium'
+                        : 'text-gray-500',
                     ]"
-                    >{{ type.name }}</span
                   >
+                    {{ type.name }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -248,6 +247,9 @@ import type {
   QueryConfig,
 } from '@/composables/useDataFetcher'
 
+/**
+ * Query state used to build the Pegel request
+ */
 const pegelStation = ref<string>('ILMENAU') // UUID used for API (or station id)
 const pegelTimeseries = ref<PegelTimeseries>('W')
 const pegelPeriod = ref<PegelPeriod>('P7D')
@@ -258,6 +260,23 @@ const router = useRouter()
 const route = useRoute()
 const { addPanelToProject, updatePanelInProject, getPanel } = useMockData()
 const { fetchData, loading: isLoadingData } = useDataFetcher()
+
+/**
+ * ✅ NEW: type guards for query params (keeps TS + lint happy)
+ * Allows deep-link: /dashboard/editor/default_project?station=<uuid>&timeseries=W&period=P7D
+ */
+const isPegelTimeseries = (v: unknown): v is PegelTimeseries => v === 'W' || v === 'Q' || v === 'T'
+
+const isPegelPeriod = (v: unknown): v is PegelPeriod =>
+  v === 'P1D' || v === 'P3D' || v === 'P7D' || v === 'P14D' || v === 'P30D'
+
+/**
+ * ✅ NEW: safely read query param as string (Vue router can return string | string[])
+ */
+const getQueryString = (v: unknown): string => {
+  if (Array.isArray(v)) return String(v[0] ?? '').trim()
+  return typeof v === 'string' ? v.trim() : ''
+}
 
 // Project ID from URL
 const rawId = route.params.id
@@ -417,6 +436,30 @@ const trySelectStationFromSearch = (): void => {
   }
 }
 
+// ✅ NEW: apply route query defaults (Channels -> Editor)
+const applyQueryDefaultsFromRoute = (): void => {
+  const qStation = getQueryString(route.query.station)
+  const qTimeseries = getQueryString(route.query.timeseries)
+  const qPeriod = getQueryString(route.query.period)
+
+  if (qStation.length > 0) {
+    pegelStation.value = qStation
+    stationUuidInput.value = qStation
+
+    // Sync dropdown selection if station exists in stations.json
+    const match = stations.value.find((s) => String(s.uuid) === qStation)
+    selectedStationUuid.value = match ? String(match.uuid) : ''
+  }
+
+  if (qTimeseries.length > 0 && isPegelTimeseries(qTimeseries)) {
+    pegelTimeseries.value = qTimeseries
+  }
+
+  if (qPeriod.length > 0 && isPegelPeriod(qPeriod)) {
+    pegelPeriod.value = qPeriod
+  }
+}
+
 // 1) Selecting station in dropdown -> UUID + API station set
 watch(
   selectedStationUuid,
@@ -464,9 +507,25 @@ watch(
   { flush: 'sync' },
 )
 
+// ✅ NEW: if query params change while on editor, update (non-edit mode only)
+watch(
+  () => route.query,
+  () => {
+    if (!isEditMode) applyQueryDefaultsFromRoute()
+  },
+)
+
 // Load existing panel data if in edit mode
 onMounted(async () => {
   await loadStations()
+
+  /**
+   * ✅ NEW: Apply query params when opening from Channels page.
+   * Edit mode ALWAYS wins over query params (so we only apply when not editing).
+   */
+  if (!isEditMode) {
+    applyQueryDefaultsFromRoute()
+  }
 
   if (isEditMode) {
     const existingPanel = getPanel(projectId, editingPanelId)
