@@ -236,6 +236,13 @@
                     <v-icon icon="mdi-pencil" size="small"></v-icon>
                   </button>
                   <button
+                    @click="handleDuplicatePanel(panel)"
+                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-green-600"
+                    title="Duplicate Panel"
+                  >
+                    <v-icon icon="mdi-content-copy" size="small"></v-icon>
+                  </button>
+                  <button
                     @click="handleDeletePanel(panel.id)"
                     class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-red-600"
                     title="Delete Panel"
@@ -319,7 +326,7 @@ const rawId = route.params.id
 const projectId = String(Array.isArray(rawId) ? (rawId[0] ?? '') : (rawId ?? ''))
 
 // Dashboard Panels API
-const { getProjectPanels, deletePanelFromProject } = useDashboardPanels(projectId)
+const { getProjectPanels, deletePanelFromProject, addPanelToProject } = useDashboardPanels(projectId)
 const panels = ref<DashboardPanel[]>([])
 
 const refreshPanels = async () => {
@@ -339,6 +346,23 @@ const handleDeletePanel = async (panelId: string) => {
   if (confirm('Are you sure you want to delete this panel?')) {
     await deletePanelFromProject(panelId)
     await refreshPanels()
+  }
+}
+
+const handleDuplicatePanel = async (panel: DashboardPanel) => {
+  // Create a copy of the panel with a new ID and updated title
+  const duplicatedPanel: DashboardPanel = {
+    ...panel,
+    id: Date.now().toString(), // Generate new unique ID
+    title: `${panel.title} (Copy)`,
+    chartOptions: { ...panel.chartOptions },
+    queryConfig: panel.queryConfig ? { ...panel.queryConfig } : undefined,
+  }
+
+  const success = await addPanelToProject(duplicatedPanel)
+  if (success) {
+    await refreshPanels()
+    await hydratePanelsWithData()
   }
 }
 
