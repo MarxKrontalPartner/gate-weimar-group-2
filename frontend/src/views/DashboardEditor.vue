@@ -636,8 +636,6 @@ const chartOptions = computed(() => {
 const chartTypes = [
   { name: 'Time series', icon: 'mdi-chart-line' },
   { name: 'Bar chart', icon: 'mdi-chart-bar' },
-  { name: 'Stat', icon: 'mdi-numeric' },
-  { name: 'Gauge', icon: 'mdi-gauge' },
 ]
 
 const handleApply = async () => {
