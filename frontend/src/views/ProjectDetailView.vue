@@ -326,7 +326,8 @@ const rawId = route.params.id
 const projectId = String(Array.isArray(rawId) ? (rawId[0] ?? '') : (rawId ?? ''))
 
 // Dashboard Panels API
-const { getProjectPanels, deletePanelFromProject, addPanelToProject } = useDashboardPanels(projectId)
+const { getProjectPanels, deletePanelFromProject, addPanelToProject } =
+  useDashboardPanels(projectId)
 const panels = ref<DashboardPanel[]>([])
 
 const refreshPanels = async () => {

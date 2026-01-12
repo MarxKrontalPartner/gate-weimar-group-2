@@ -16,7 +16,11 @@
           @click="saveName"
           :disabled="!projectName.trim() || projectName === project.name"
           class="px-4 py-2 rounded-md text-white transition"
-          :class="projectName.trim() && projectName !== project.name ? 'bg-black hover:bg-gray-800' : 'bg-gray-400 cursor-not-allowed'"
+          :class="
+            projectName.trim() && projectName !== project.name
+              ? 'bg-black hover:bg-gray-800'
+              : 'bg-gray-400 cursor-not-allowed'
+          "
         >
           Save
         </button>
@@ -55,7 +59,11 @@
           @click="addSelectedUser"
           :disabled="!selectedUser"
           class="mt-3 w-full px-4 py-2 rounded-md text-white transition-all duration-200"
-          :class="selectedUser ? 'bg-black hover:bg-gray-800 hover:shadow-md' : 'bg-gray-400 cursor-not-allowed'"
+          :class="
+            selectedUser
+              ? 'bg-black hover:bg-gray-800 hover:shadow-md'
+              : 'bg-gray-400 cursor-not-allowed'
+          "
         >
           Add as viewer
         </button>
@@ -92,7 +100,11 @@
             <td v-if="isEditor" class="py-2">
               <button
                 class="px-3 py-1 rounded-md text-white transition"
-                :class="m.user.id === project.owner.id ? 'bg-gray-400 cursor-not-allowed' : 'bg-red-600 hover:bg-red-700'"
+                :class="
+                  m.user.id === project.owner.id
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-red-600 hover:bg-red-700'
+                "
                 :disabled="m.user.id === project.owner.id"
                 @click="removeMember(m)"
               >

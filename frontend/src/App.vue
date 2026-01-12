@@ -16,7 +16,7 @@ watch(
   () => {
     token.value = localStorage.getItem('token')
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 // Check if user is authenticated
@@ -54,4 +54,3 @@ const toggleDrawer = () => {
 </template>
 
 <style scoped></style>
-
