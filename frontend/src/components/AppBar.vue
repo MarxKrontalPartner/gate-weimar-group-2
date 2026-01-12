@@ -1,7 +1,8 @@
 <template>
   <!-- App Bar with primary color -->
   <v-app-bar elevation="2">
-    <v-btn icon @click="props.toggleDrawer" color="background">
+    <!-- Only show menu button when sidebar is available -->
+    <v-btn v-if="showMenuButton" icon @click="props.toggleDrawer" color="background">
       <v-icon class="text-primary">{{ drawer ? 'mdi-chevron-left' : 'mdi-menu' }}</v-icon>
     </v-btn>
 
@@ -16,13 +17,13 @@
     <!-- Spacer pushes icons to the right -->
     <v-spacer />
 
-    <!-- HOME BUTTON -->
-    <v-btn icon @click="router.push('/dashboard')" color="background">
+    <!-- HOME BUTTON (only show when authenticated) -->
+    <v-btn v-if="showMenuButton" icon @click="router.push('/dashboard')" color="background">
       <v-icon class="text-primary">mdi-home-outline</v-icon>
     </v-btn>
 
-    <!-- ACCOUNT MENU -->
-    <v-btn icon color="background">
+    <!-- ACCOUNT MENU (only show when authenticated) -->
+    <v-btn v-if="showMenuButton" icon color="background">
       <v-icon class="text-primary">mdi-account-circle-outline</v-icon>
       <v-menu activator="parent">
         <v-list density="compact" :items="accountMenuItems" @click="logout" />
@@ -40,6 +41,10 @@ import logoDark from '@/assets/MKP_Logo_Webseite_inverted.svg'
 const props = defineProps({
   drawer: Boolean,
   toggleDrawer: Function,
+  showMenuButton: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 const theme = useTheme()
