@@ -16,12 +16,14 @@
             <button
               @click="router.back()"
               class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition"
+              type="button"
             >
               {{ $t('common.cancel') }}
             </button>
             <button
               @click="handleApply"
               class="px-4 py-2 text-sm font-medium bg-blue-700 text-white rounded shadow-sm hover:bg-blue-800 transition"
+              type="button"
             >
               {{ isEditMode ? $t('panelEditor.updatePanel') : $t('panelEditor.applyToDashboard') }}
             </button>
@@ -143,9 +145,9 @@
 
                 <!-- Station search (separate input) -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                    >Search Station</label
-                  >
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
+                    Search Station
+                  </label>
                   <v-text-field
                     v-model="stationSearch"
                     density="compact"
@@ -219,9 +221,9 @@
 
                 <!-- Timeseries -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                    >Timeseries</label
-                  >
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
+                    Timeseries
+                  </label>
                   <v-select
                     v-model="pegelTimeseries"
                     :items="[
@@ -289,8 +291,9 @@
                       'text-xs mt-2',
                       selectedChart === type.name ? 'text-blue-700 font-medium' : 'text-gray-500',
                     ]"
-                    >{{ type.name }}</span
                   >
+                    {{ type.name }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -321,7 +324,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { createChartConfig } from '@/utils/chartFactory'
-import { useMockData } from '@/composables/useMockData'
+import { useDashboardPanels } from '@/composables/useDashboardPanels'
 import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
 
 import type { ChartDataPoint } from '@/types/project.types'
@@ -332,6 +335,9 @@ import type {
   QueryConfig,
 } from '@/composables/useDataFetcher'
 
+/**
+ * Query state used to build the Pegel request
+ */
 const pegelStation = ref<string>('ILMENAU') // UUID used for API (or station id)
 const pegelTimeseries = ref<PegelTimeseries>('W')
 const pegelPeriod = ref<PegelPeriod>('P7D')
@@ -340,16 +346,36 @@ const pegelMeta = ref<PegelTimeseriesMeta | null>(null)
 
 const router = useRouter()
 const route = useRoute()
-const { addPanelToProject, updatePanelInProject, getPanel } = useMockData()
 const { fetchData, loading: isLoadingData } = useDataFetcher()
 
-// Project ID from URL
+/**
+ * ✅ NEW: type guards for query params (keeps TS + lint happy)
+ * Allows deep-link: /dashboard/editor/default_project?station=<uuid>&timeseries=W&period=P7D
+ */
+const isPegelTimeseries = (v: unknown): v is PegelTimeseries => v === 'W' || v === 'Q' || v === 'T'
+
+const isPegelPeriod = (v: unknown): v is PegelPeriod =>
+  v === 'P1D' || v === 'P3D' || v === 'P7D' || v === 'P14D' || v === 'P30D'
+
+/**
+ * ✅ NEW: safely read query param as string (Vue router can return string | string[])
+ */
+const getQueryString = (v: unknown): string => {
+  if (Array.isArray(v)) return String(v[0] ?? '').trim()
+  return typeof v === 'string' ? v.trim() : ''
+}
+
+/**
+ * ✅ FIX (required): Normalize projectId as STRING always
+ * This prevents panels from being saved under numeric key vs string key (e.g. 1 vs "1").
+ */
 const rawId = route.params.id
-const projectId: string | number = Array.isArray(rawId)
-  ? (rawId[0] ?? 'default_project')
-  : rawId !== undefined
-    ? rawId
-    : 'default_project'
+const projectId = String(
+  Array.isArray(rawId) ? (rawId[0] ?? 'default_project') : (rawId ?? 'default_project'),
+)
+
+// Dashboard Panels API
+const { addPanelToProject, updatePanelInProject, getPanel } = useDashboardPanels(projectId)
 
 // Check if we are in EDIT MODE
 const editingPanelId = route.query.panelId as string | undefined
@@ -501,6 +527,30 @@ const trySelectStationFromSearch = (): void => {
   }
 }
 
+// ✅ NEW: apply route query defaults (Channels -> Editor)
+const applyQueryDefaultsFromRoute = (): void => {
+  const qStation = getQueryString(route.query.station)
+  const qTimeseries = getQueryString(route.query.timeseries)
+  const qPeriod = getQueryString(route.query.period)
+
+  if (qStation.length > 0) {
+    pegelStation.value = qStation
+    stationUuidInput.value = qStation
+
+    // Sync dropdown selection if station exists in stations.json
+    const match = stations.value.find((s) => String(s.uuid) === qStation)
+    selectedStationUuid.value = match ? String(match.uuid) : ''
+  }
+
+  if (qTimeseries.length > 0 && isPegelTimeseries(qTimeseries)) {
+    pegelTimeseries.value = qTimeseries
+  }
+
+  if (qPeriod.length > 0 && isPegelPeriod(qPeriod)) {
+    pegelPeriod.value = qPeriod
+  }
+}
+
 // 1) Selecting station in dropdown -> UUID + API station set
 watch(
   selectedStationUuid,
@@ -548,12 +598,28 @@ watch(
   { flush: 'sync' },
 )
 
+// ✅ NEW: if query params change while on editor, update (non-edit mode only)
+watch(
+  () => route.query,
+  () => {
+    if (!isEditMode) applyQueryDefaultsFromRoute()
+  },
+)
+
 // Load existing panel data if in edit mode
 onMounted(async () => {
   await loadStations()
 
+  /**
+   * ✅ NEW: Apply query params when opening from Channels page.
+   * Edit mode ALWAYS wins over query params (so we only apply when not editing).
+   */
+  if (!isEditMode) {
+    applyQueryDefaultsFromRoute()
+  }
+
   if (isEditMode) {
-    const existingPanel = getPanel(projectId, editingPanelId)
+    const existingPanel = await getPanel(editingPanelId)
     if (existingPanel) {
       panelTitle.value = existingPanel.title
       selectedChart.value = existingPanel.type
@@ -654,11 +720,9 @@ const chartOptions = computed(() => {
 const chartTypes = [
   { name: 'Time series', icon: 'mdi-chart-line' },
   { name: 'Bar chart', icon: 'mdi-chart-bar' },
-  { name: 'Stat', icon: 'mdi-numeric' },
-  { name: 'Gauge', icon: 'mdi-gauge' },
 ]
 
-const handleApply = () => {
+const handleApply = async () => {
   const panelData = {
     id: isEditMode ? editingPanelId : Date.now().toString(),
     title: panelTitle.value,
@@ -669,9 +733,9 @@ const handleApply = () => {
   }
 
   if (isEditMode) {
-    updatePanelInProject(projectId, panelData)
+    await updatePanelInProject(panelData)
   } else {
-    addPanelToProject(projectId, panelData)
+    await addPanelToProject(panelData)
   }
   router.push(`/projects/${projectId}`)
 }

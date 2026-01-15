@@ -236,6 +236,13 @@
                     <v-icon icon="mdi-pencil" size="small"></v-icon>
                   </button>
                   <button
+                    @click="handleDuplicatePanel(panel)"
+                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-green-600"
+                    title="Duplicate Panel"
+                  >
+                    <v-icon icon="mdi-content-copy" size="small"></v-icon>
+                  </button>
+                  <button
                     @click="handleDeletePanel(panel.id)"
                     class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-red-600"
                     :title="$t('projectView.deletePanel')"
@@ -294,13 +301,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import type { Ref } from 'vue'
 import { createChartConfig } from '@/utils/chartFactory'
 
 // Composables
-import { useMockData, type DashboardPanel } from '@/composables/useMockData'
+import { useDashboardPanels, type DashboardPanel } from '@/composables/useDashboardPanels'
 import { useProjectDetail } from '@/composables/useProjectDetail'
 import { useDataFetcher, fetchPegelTimeseriesMeta } from '@/composables/useDataFetcher'
 import { useI18n } from 'vue-i18n'
@@ -317,17 +324,19 @@ const { fetchData } = useDataFetcher()
 
 // Fix for ID type safety
 const rawId = route.params.id
-const projectId = (Array.isArray(rawId) ? rawId[0] : rawId) as string
+const projectId = String(Array.isArray(rawId) ? (rawId[0] ?? '') : (rawId ?? ''))
 
-// Mock Data Logic
-const { getProjectPanels, deletePanelFromProject } = useMockData()
+// Dashboard Panels API
+const { getProjectPanels, deletePanelFromProject, addPanelToProject } =
+  useDashboardPanels(projectId)
 const panels = ref<DashboardPanel[]>([])
+
 
 // Use useI18n for script
 const { t } = useI18n()
 
-const refreshPanels = () => {
-  panels.value = getProjectPanels(projectId)
+const refreshPanels = async () => {
+  panels.value = await getProjectPanels()
 }
 
 const goToChartEditor = () => {
@@ -339,10 +348,27 @@ const editPanel = (panelId: string) => {
   router.push(`/dashboard/editor/${projectId}?panelId=${panelId}`)
 }
 
-const handleDeletePanel = (panelId: string) => {
+const handleDeletePanel = async (panelId: string) => {
   if (confirm(t('projectView.deleteConfirm'))) {
-    deletePanelFromProject(projectId, panelId)
-    refreshPanels()
+    await deletePanelFromProject(panelId)
+    await refreshPanels()
+  }
+}
+
+const handleDuplicatePanel = async (panel: DashboardPanel) => {
+  // Create a copy of the panel with a new ID and updated title
+  const duplicatedPanel: DashboardPanel = {
+    ...panel,
+    id: Date.now().toString(), // Generate new unique ID
+    title: `${panel.title} (Copy)`,
+    chartOptions: { ...panel.chartOptions },
+    queryConfig: panel.queryConfig ? { ...panel.queryConfig } : undefined,
+  }
+
+  const success = await addPanelToProject(duplicatedPanel)
+  if (success) {
+    await refreshPanels()
+    await hydratePanelsWithData()
   }
 }
 
@@ -420,7 +446,18 @@ const buildPegelChartOptions = (
     subtitle: { text: subtitleText },
     axes: [
       { type: 'time', position: 'bottom', title: { text: 'Time' } },
-      { type: 'number', position: 'left', title: { text: `${titleText} (${unitText})` } },
+      {
+        type: 'number',
+        position: 'left',
+        title: { text: `${titleText} (${unitText})` },
+        label: {
+          formatter: ({ value }: { value: number }) => {
+            // Round to avoid floating point precision issues like 48.800000000000004
+            const rounded = Math.round(value * 100) / 100
+            return rounded.toString()
+          },
+        },
+      },
     ],
     series: baseSeries.map((s) => {
       const seriesObj = s as Record<string, unknown>
@@ -495,8 +532,6 @@ type ProjectDetailReturn = {
 
   changeRole: (m: Membership) => Promise<void>
   removeMember: (m: Membership) => Promise<void>
-
-  // viewerChartOptions: Ref<AgChartOptions>
 }
 
 const {
@@ -519,8 +554,6 @@ const {
   addSelectedUser,
   changeRole,
   removeMember,
-
-  // viewerChartOptions,
 } = useProjectDetail() as ProjectDetailReturn
 
 // ---- NEW: Expanded panel modal state ----
@@ -534,10 +567,43 @@ const closeExpanded = () => {
   expandedPanel.value = null
 }
 
+/**
+ * ✅ FIX (required): Vue reuses the same component instance.
+ * After returning from editor -> viewer, onMounted does NOT run again.
+ * So we refresh panels whenever route changes.
+ */
+watch(
+  () => route.fullPath,
+  async () => {
+    refreshPanels()
+    await hydratePanelsWithData()
+  },
+)
+
+/**
+ * ✅ FIX (required): When changing project id, also refresh and update active project id.
+ */
+watch(
+  () => route.params.id,
+  async (newId) => {
+    const pid = String(Array.isArray(newId) ? (newId[0] ?? '') : (newId ?? ''))
+    if (!pid) return
+
+    localStorage.setItem('mkp_active_project_id', pid)
+    // Note: projectId is captured in useDashboardPanels so we need to reload the page
+    // or use a different approach for route changes
+    await refreshPanels()
+    await hydratePanelsWithData()
+  },
+)
+
 onMounted(async () => {
+  // ✅ remember current project for Channels page
+  localStorage.setItem('mkp_active_project_id', projectId)
+
   await fetchProject()
   await loadStations()
-  refreshPanels()
+  await refreshPanels()
   await hydratePanelsWithData()
 })
 </script>

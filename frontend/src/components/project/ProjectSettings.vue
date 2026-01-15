@@ -12,7 +12,18 @@
           class="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-800 w-64"
         />
 
-        <button @click="saveName" class="px-4 py-2 bg-black text-white rounded-md">Save</button>
+        <button
+          @click="saveName"
+          :disabled="!projectName.trim() || projectName === project.name"
+          class="px-4 py-2 rounded-md text-white transition"
+          :class="
+            projectName.trim() && projectName !== project.name
+              ? 'bg-black hover:bg-gray-800'
+              : 'bg-gray-400 cursor-not-allowed'
+          "
+        >
+          Save
+        </button>
       </div>
     </section>
 
@@ -47,7 +58,12 @@
         <button
           @click="addSelectedUser"
           :disabled="!selectedUser"
-          class="mt-3 w-full px-4 py-2 bg-black disabled:bg-gray-400 text-white rounded-md"
+          class="mt-3 w-full px-4 py-2 rounded-md text-white transition-all duration-200"
+          :class="
+            selectedUser
+              ? 'bg-black hover:bg-gray-800 hover:shadow-md'
+              : 'bg-gray-400 cursor-not-allowed'
+          "
         >
           Add as viewer
         </button>
@@ -83,7 +99,12 @@
 
             <td v-if="isEditor" class="py-2">
               <button
-                class="px-3 py-1 bg-red-600 text-white rounded-md"
+                class="px-3 py-1 rounded-md text-white transition"
+                :class="
+                  m.user.id === project.owner.id
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-red-600 hover:bg-red-700'
+                "
                 :disabled="m.user.id === project.owner.id"
                 @click="removeMember(m)"
               >

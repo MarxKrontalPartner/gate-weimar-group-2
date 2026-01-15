@@ -133,60 +133,6 @@ export const createChartConfig = (
         ],
       }
 
-    case 'Stat':
-    case 'Gauge':
-      /**
-       * STAT/GAUGE LOGIC:
-       * These charts show a SINGLE value (Snapshot).
-       * If we have a history array (realData), we take the LAST item (most recent).
-       */
-      let currentValue = 0
-      let maxValue = 200 // Arbitrary visualization max
-
-      if (isUsingRealData && chartData && chartData.length > 0) {
-        // Take the most recent value from the API array
-        const lastItem = chartData[chartData.length - 1]
-        if (lastItem) {
-          currentValue = Number(lastItem.value)
-          // Set visual max to 1.5x of current (or fixed if you prefer)
-          maxValue = currentValue > 0 ? currentValue * 1.5 : 100
-        }
-      } else if (chartData && Array.isArray(chartData) && chartData.length > 0) {
-        // Dummy data fallback
-        const lastItem = chartData[chartData.length - 1]
-        if (lastItem && typeof lastItem === 'object' && 'value' in lastItem) {
-          currentValue = Number(lastItem.value)
-        }
-      }
-
-      // Create specific data structure for the Donut/Gauge
-      const gaugeData = [
-        { label: 'Current', value: currentValue },
-        { label: 'Remaining', value: Math.max(0, maxValue - currentValue) },
-      ]
-
-      return {
-        ...commonOptions,
-        data: gaugeData, // Override the history data with the computed snapshot
-        series: [
-          {
-            type: 'pie',
-            angleKey: 'value',
-            innerRadiusRatio: 0.7, // Makes it a Donut
-            fills: ['#6366f1', '#f3f4f6'], // Indigo-500 vs Gray-100
-            strokeWidth: 0,
-            // Show the Value in the center
-            title: {
-              text: currentValue.toFixed(1), // 1 decimal place
-              fontSize: 24,
-              fontWeight: 'bold',
-              color: '#1f2937',
-            },
-          },
-        ],
-        legend: { enabled: false }, // Hide legend for cleaner look
-      }
-
     default:
       return commonOptions
   }
