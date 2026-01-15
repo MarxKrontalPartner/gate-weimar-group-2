@@ -76,7 +76,7 @@
                 </button>
                 <button class="px-4 py-2 text-sm font-medium text-gray-500">{{ $t('panelEditor.tabs.transform') }}</button>
               </div>
-
+            
               <div class="p-6">
                 <div class="grid grid-cols-12 gap-6">
                   <!-- Source Type -->
@@ -116,6 +116,11 @@
                       {{ $t('panelEditor.apiTip') }}
                       <!-- We will append  <code>?start=ISO_DATE</code> automatically. -->
                     </p>
+                  </div>
+                </div>
+              </div>
+            </div>    
+            
             <!-- BOTTOM: QUERY CONFIGURATION -->
             <div class="p-6">
               <div class="grid grid-cols-12 gap-6">

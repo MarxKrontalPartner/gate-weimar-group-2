@@ -302,9 +302,8 @@ import { createChartConfig } from '@/utils/chartFactory'
 // Composables
 import { useMockData, type DashboardPanel } from '@/composables/useMockData'
 import { useProjectDetail } from '@/composables/useProjectDetail'
-import { useDataFetcher } from '@/composables/useDataFetcher'
+import { useDataFetcher, fetchPegelTimeseriesMeta } from '@/composables/useDataFetcher'
 import { useI18n } from 'vue-i18n'
-import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
 
 // Components
 import ProjectEditor from '@/components/project/ProjectEditor.vue'
