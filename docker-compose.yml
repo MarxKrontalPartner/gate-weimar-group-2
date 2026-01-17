@@ -1,9 +1,6 @@
-version: '3.9'
-
 services:
   backend:
-    pull_policy: build
-    build: 
+    build:
       context: ./backend
       dockerfile: Dockerfile
     container_name: django-backend
@@ -11,10 +8,13 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
+      - sqlite_data:/app/data
+    environment:
+      - DEBUG=1
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,backend
     restart: always
 
   frontend:
-    pull_policy: build
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -24,3 +24,6 @@ services:
     depends_on:
       - backend
     restart: always
+
+volumes:
+  sqlite_data:
