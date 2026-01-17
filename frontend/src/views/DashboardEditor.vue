@@ -315,6 +315,55 @@
                       placeholder="value"
                     />
                   </div>
+
+                  <!-- Period Filter for JSON files -->
+                  <div class="col-span-4">
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.period') }}</label
+                    >
+                    <v-select
+                      v-model="jsonFilterDays"
+                      :items="[
+                        { title: '1 day', value: 1 },
+                        { title: '3 days', value: 3 },
+                        { title: '7 days', value: 7 },
+                        { title: '30 days', value: 30 },
+                        { title: 'Custom', value: 0 },
+                      ]"
+                      item-title="title"
+                      item-value="value"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      :theme="isDark ? 'mkpDarkTheme' : 'mkpLightTheme'"
+                      :menu-props="{ theme: isDark ? 'mkpDarkTheme' : 'mkpLightTheme' }"
+                      @update:model-value="(v: number) => jsonFilterMode = v === 0 ? 'custom' : 'preset'"
+                    />
+                  </div>
+
+                  <!-- Custom Days Input (shown when Custom selected) -->
+                  <div v-if="jsonFilterMode === 'custom'" class="col-span-4">
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.customDays') || 'Custom Days' }}</label
+                    >
+                    <v-text-field
+                      v-model.number="jsonFilterCustom"
+                      type="number"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      placeholder="Enter number of days"
+                      min="1"
+                    />
+                  </div>
                 </template>
 
                 <!-- INFO section removed (as requested) -->
@@ -489,14 +538,21 @@ const jsonFileOptions = ref<JsonFileOption[]>([])
 const jsonUrl = ref<string>('/data/my-timeseries.json')
 const jsonMappingX = ref<string>('timestamp')
 const jsonMappingY = ref<string>('value')
+const jsonFilterDays = ref<number>(7) // Default to 7 days
+const jsonFilterCustom = ref<number>(0) // Custom days input
+const jsonFilterMode = ref<'preset' | 'custom'>('preset')
 
 // Query Configuration State
 const queryConfig = computed<QueryConfig>(() => {
   if (dataSourceType.value === 'STATIC_JSON') {
+    const days = jsonFilterMode.value === 'custom' && jsonFilterCustom.value > 0
+      ? jsonFilterCustom.value
+      : jsonFilterDays.value
     return {
       sourceType: 'STATIC_JSON',
       url: jsonUrl.value,
       mapping: { x: jsonMappingX.value, y: jsonMappingY.value },
+      filterDays: days,
     }
   }
   return {
@@ -774,6 +830,17 @@ onMounted(async () => {
           jsonUrl.value = qc.url
           jsonMappingX.value = qc.mapping.x
           jsonMappingY.value = qc.mapping.y
+          if (qc.filterDays) {
+            // Check if it's a preset value or custom
+            if ([1, 3, 7, 30].includes(qc.filterDays)) {
+              jsonFilterDays.value = qc.filterDays
+              jsonFilterMode.value = 'preset'
+            } else {
+              jsonFilterDays.value = 0
+              jsonFilterCustom.value = qc.filterDays
+              jsonFilterMode.value = 'custom'
+            }
+          }
         }
       }
 
@@ -812,7 +879,7 @@ watch(
 )
 
 // Watch JSON datasource fields
-watch([dataSourceType, jsonUrl, jsonMappingX, jsonMappingY], () => {
+watch([dataSourceType, jsonUrl, jsonMappingX, jsonMappingY, jsonFilterDays, jsonFilterCustom], () => {
   void refreshPreview()
 })
 
@@ -828,7 +895,6 @@ const chartOptions = computed(() => {
     return {
       ...base,
       title: { text: panelTitle.value || 'JSON Data' },
-      subtitle: { text: `Source: ${jsonUrl.value}` },
       axes: [
         { type: 'time', position: 'bottom', title: { text: jsonMappingX.value } },
         { type: 'number', position: 'left', title: { text: jsonMappingY.value } },
