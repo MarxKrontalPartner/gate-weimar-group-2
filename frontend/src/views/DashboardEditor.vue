@@ -341,7 +341,9 @@
                       hide-details
                       :theme="isDark ? 'mkpDarkTheme' : 'mkpLightTheme'"
                       :menu-props="{ theme: isDark ? 'mkpDarkTheme' : 'mkpLightTheme' }"
-                      @update:model-value="(v: number) => jsonFilterMode = v === 0 ? 'custom' : 'preset'"
+                      @update:model-value="
+                        (v: number) => (jsonFilterMode = v === 0 ? 'custom' : 'preset')
+                      "
                     />
                   </div>
 
@@ -545,9 +547,10 @@ const jsonFilterMode = ref<'preset' | 'custom'>('preset')
 // Query Configuration State
 const queryConfig = computed<QueryConfig>(() => {
   if (dataSourceType.value === 'STATIC_JSON') {
-    const days = jsonFilterMode.value === 'custom' && jsonFilterCustom.value > 0
-      ? jsonFilterCustom.value
-      : jsonFilterDays.value
+    const days =
+      jsonFilterMode.value === 'custom' && jsonFilterCustom.value > 0
+        ? jsonFilterCustom.value
+        : jsonFilterDays.value
     return {
       sourceType: 'STATIC_JSON',
       url: jsonUrl.value,
@@ -879,9 +882,12 @@ watch(
 )
 
 // Watch JSON datasource fields
-watch([dataSourceType, jsonUrl, jsonMappingX, jsonMappingY, jsonFilterDays, jsonFilterCustom], () => {
-  void refreshPreview()
-})
+watch(
+  [dataSourceType, jsonUrl, jsonMappingX, jsonMappingY, jsonFilterDays, jsonFilterCustom],
+  () => {
+    void refreshPreview()
+  },
+)
 
 const chartOptions = computed(() => {
   const base = createChartConfig(selectedChart.value, panelTitle.value, previewData.value)

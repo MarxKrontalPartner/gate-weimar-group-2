@@ -7,17 +7,17 @@ export type PegelPeriod = 'P1D' | 'P3D' | 'P7D' | 'P14D' | 'P30D'
 
 export type QueryConfig =
   | {
-    sourceType: 'PEGEL'
-    station: string
-    timeseries: PegelTimeseries
-    period: PegelPeriod
-  }
+      sourceType: 'PEGEL'
+      station: string
+      timeseries: PegelTimeseries
+      period: PegelPeriod
+    }
   | {
-    sourceType: 'STATIC_JSON' | 'REST_API'
-    url: string
-    mapping: { x: string; y: string }
-    filterDays?: number // Optional: filter data to last N days
-  }
+      sourceType: 'STATIC_JSON' | 'REST_API'
+      url: string
+      mapping: { x: string; y: string }
+      filterDays?: number // Optional: filter data to last N days
+    }
 
 export interface PegelTimeseriesMeta {
   longname: string
