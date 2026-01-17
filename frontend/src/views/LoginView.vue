@@ -1,7 +1,16 @@
 <template>
-  <div :class="['min-h-screen flex items-center justify-center px-4', isDark ? 'bg-gray-900' : 'bg-gray-100']">
-    <div :class="['w-full max-w-md shadow-lg rounded-2xl p-8', isDark ? 'bg-gray-800' : 'bg-white']">
-      <h1 :class="['text-2xl font-semibold text-center mb-6', isDark ? 'text-white' : '']">{{ $t('login.title') }}</h1>
+  <div
+    :class="[
+      'min-h-screen flex items-center justify-center px-4',
+      isDark ? 'bg-gray-900' : 'bg-gray-100',
+    ]"
+  >
+    <div
+      :class="['w-full max-w-md shadow-lg rounded-2xl p-8', isDark ? 'bg-gray-800' : 'bg-white']"
+    >
+      <h1 :class="['text-2xl font-semibold text-center mb-6', isDark ? 'text-white' : '']">
+        {{ $t('login.title') }}
+      </h1>
 
       <div class="space-y-4">
         <input
@@ -10,7 +19,9 @@
           :placeholder="$t('login.username')"
           :class="[
             'w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none',
-            isDark ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'
+            isDark
+              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+              : 'border-gray-300',
           ]"
         />
         <input
@@ -19,12 +30,20 @@
           :placeholder="$t('login.password')"
           :class="[
             'w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none',
-            isDark ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'
+            isDark
+              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+              : 'border-gray-300',
           ]"
         />
 
         <!-- Error Message -->
-        <p v-if="error" :class="['text-sm text-center py-2 px-3 rounded-lg', isDark ? 'text-red-400 bg-red-900/30' : 'text-red-600 bg-red-50']">
+        <p
+          v-if="error"
+          :class="[
+            'text-sm text-center py-2 px-3 rounded-lg',
+            isDark ? 'text-red-400 bg-red-900/30' : 'text-red-600 bg-red-50',
+          ]"
+        >
           {{ error }}
         </p>
 
@@ -38,7 +57,9 @@
 
       <p :class="['text-center mt-4', isDark ? 'text-gray-400' : 'text-gray-600']">
         {{ $t('login.noaccount') }}
-        <RouterLink to="/signup" class="text-indigo-500 hover:underline">{{ $t('login.signup') }}</RouterLink>
+        <RouterLink to="/signup" class="text-indigo-500 hover:underline">{{
+          $t('login.signup')
+        }}</RouterLink>
       </p>
     </div>
   </div>
@@ -54,5 +75,3 @@ const isDark = computed(() => theme.global.current.value.dark)
 
 const { username, password, error, login } = useLogin()
 </script>
-
-

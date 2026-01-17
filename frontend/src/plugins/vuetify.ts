@@ -5,9 +5,8 @@ import { createVuetify } from 'vuetify'
 import { MKPThemes } from '../themes'
 
 // Load saved theme from localStorage, default to light theme
-const savedTheme = typeof window !== 'undefined'
-  ? localStorage.getItem('app_theme') || 'light'
-  : 'light'
+const savedTheme =
+  typeof window !== 'undefined' ? localStorage.getItem('app_theme') || 'light' : 'light'
 
 // Map saved preference to Vuetify theme names
 const defaultTheme = savedTheme === 'dark' ? 'mkpDarkTheme' : 'mkpLightTheme'

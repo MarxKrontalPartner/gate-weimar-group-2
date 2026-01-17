@@ -37,7 +37,12 @@
             <v-list-item-title class="flex items-center gap-2">
               <span>{{ lang.flag }}</span>
               <span>{{ lang.name }}</span>
-              <v-icon v-if="currentLanguage === lang.code" size="small" class="ml-auto text-blue-600">mdi-check</v-icon>
+              <v-icon
+                v-if="currentLanguage === lang.code"
+                size="small"
+                class="ml-auto text-blue-600"
+                >mdi-check</v-icon
+              >
             </v-list-item-title>
           </v-list-item>
         </v-list>
@@ -91,7 +96,7 @@ const isDark = ref(false)
 
 onMounted(() => {
   currentLanguage.value = localStorage.getItem('app_language') || 'en'
-  
+
   // Load saved theme
   const savedTheme = localStorage.getItem('app_theme') || 'light'
   isDark.value = savedTheme === 'dark'
@@ -149,4 +154,3 @@ const logout = () => {
   transition: background-color 0.2s ease !important;
 }
 </style>
-

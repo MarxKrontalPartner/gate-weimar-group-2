@@ -2,7 +2,9 @@
   <div class="space-y-10">
     <!-- =========== 1. RENAME PROJECT =========== -->
     <section>
-      <h2 class="text-lg font-semibold mb-3">{{ $t('projectDetails.settings.sections.rename') }}</h2>
+      <h2 class="text-lg font-semibold mb-3">
+        {{ $t('projectDetails.settings.sections.rename') }}
+      </h2>
 
       <div class="flex gap-3">
         <!-- RENAME INPUT -->
@@ -30,7 +32,9 @@
 
     <!-- =========== 2. USER MANAGEMENT =========== -->
     <section>
-      <h2 class="text-lg font-semibold mb-3">{{ $t('projectDetails.settings.sections.members') }}</h2>
+      <h2 class="text-lg font-semibold mb-3">
+        {{ $t('projectDetails.settings.sections.members') }}
+      </h2>
 
       <div class="max-w-md">
         <!-- SEARCH INPUT -->
@@ -85,7 +89,9 @@
             <td class="py-2">{{ m.user.username }}</td>
 
             <td class="py-2">
-              <span v-if="m.user.id === project.owner.id"> {{ $t('projectDetails.settings.roles.owner') }} </span>
+              <span v-if="m.user.id === project.owner.id">
+                {{ $t('projectDetails.settings.roles.owner') }}
+              </span>
 
               <select
                 v-else-if="isEditor"
@@ -119,7 +125,9 @@
 
     <!-- =========== 3. DELETE PROJECT =========== -->
     <section v-if="isOwner">
-      <h2 class="text-lg font-semibold mb-3 text-red-600">{{ $t('projectDetails.settings.sections.delete') }}</h2>
+      <h2 class="text-lg font-semibold mb-3 text-red-600">
+        {{ $t('projectDetails.settings.sections.delete') }}
+      </h2>
       <button
         @click="emit('update:showDeleteModal', true)"
         class="px-4 py-2 bg-red-700 text-white rounded-md hover:bg-red-800"
@@ -134,7 +142,9 @@
       class="fixed inset-0 bg-gray-500/30 flex items-center justify-center z-50"
     >
       <div class="bg-white p-6 rounded-lg w-96 shadow-xl">
-        <h2 class="text-lg font-semibold text-red-600 mb-4">{{ $t('projectDetails.settings.deleteModal.title') }}</h2>
+        <h2 class="text-lg font-semibold text-red-600 mb-4">
+          {{ $t('projectDetails.settings.deleteModal.title') }}
+        </h2>
 
         <p class="text-sm mb-3">{{ $t('projectDetails.settings.deleteModal.confirmMessage') }}</p>
 

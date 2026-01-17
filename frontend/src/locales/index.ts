@@ -3,9 +3,8 @@ import en from './en.json'
 import de from './de.json'
 
 // Load saved language from localStorage, default to 'en' if not set
-const savedLanguage = typeof window !== 'undefined'
-  ? localStorage.getItem('app_language') || 'en'
-  : 'en'
+const savedLanguage =
+  typeof window !== 'undefined' ? localStorage.getItem('app_language') || 'en' : 'en'
 
 const i18n = createI18n({
   legacy: false,
@@ -13,8 +12,8 @@ const i18n = createI18n({
   fallbackLocale: 'en',
   messages: {
     en,
-    de
-  }
+    de,
+  },
 })
 
 export default i18n

@@ -1,7 +1,16 @@
 <template>
-  <div :class="['min-h-screen flex items-center justify-center px-4', isDark ? 'bg-gray-900' : 'bg-gray-100']">
-    <div :class="['w-full max-w-md shadow-lg rounded-2xl p-8', isDark ? 'bg-gray-800' : 'bg-white']">
-      <h1 :class="['text-2xl font-semibold text-center mb-6', isDark ? 'text-white' : '']">{{ $t('signup.title') }}</h1>
+  <div
+    :class="[
+      'min-h-screen flex items-center justify-center px-4',
+      isDark ? 'bg-gray-900' : 'bg-gray-100',
+    ]"
+  >
+    <div
+      :class="['w-full max-w-md shadow-lg rounded-2xl p-8', isDark ? 'bg-gray-800' : 'bg-white']"
+    >
+      <h1 :class="['text-2xl font-semibold text-center mb-6', isDark ? 'text-white' : '']">
+        {{ $t('signup.title') }}
+      </h1>
 
       <form @submit.prevent="signup" class="space-y-4">
         <input
@@ -10,7 +19,9 @@
           :placeholder="$t('signup.username')"
           :class="[
             'w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none',
-            isDark ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'
+            isDark
+              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+              : 'border-gray-300',
           ]"
         />
 
@@ -20,7 +31,9 @@
           :placeholder="$t('signup.password')"
           :class="[
             'w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none',
-            isDark ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'
+            isDark
+              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+              : 'border-gray-300',
           ]"
         />
 
@@ -30,7 +43,9 @@
           :placeholder="$t('signup.confirmPassword')"
           :class="[
             'w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none',
-            isDark ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'border-gray-300'
+            isDark
+              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+              : 'border-gray-300',
           ]"
         />
 
@@ -48,7 +63,9 @@
 
       <p :class="['text-center mt-4', isDark ? 'text-gray-400' : 'text-gray-600']">
         {{ $t('signup.haveaccount') }}
-        <RouterLink to="/login" class="text-indigo-500 hover:underline">{{ $t('signup.login') }}</RouterLink>
+        <RouterLink to="/login" class="text-indigo-500 hover:underline">{{
+          $t('signup.login')
+        }}</RouterLink>
       </p>
     </div>
   </div>

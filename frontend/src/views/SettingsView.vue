@@ -5,14 +5,21 @@
         <div class="p-8 h-full flex flex-col gap-6">
           <!-- Page Title -->
           <div>
-            <h1 :class="['text-2xl font-semibold', isDark ? 'text-white' : '']">{{ $t('settings.title') }}</h1>
+            <h1 :class="['text-2xl font-semibold', isDark ? 'text-white' : '']">
+              {{ $t('settings.title') }}
+            </h1>
             <p :class="['text-sm mt-1', isDark ? 'text-gray-400' : 'text-gray-600']">
               {{ $t('settings.description') || 'Configure your application preferences' }}
             </p>
           </div>
 
           <!-- Content -->
-          <div :class="['border rounded-lg shadow-sm p-6 max-w-3xl', isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200']">
+          <div
+            :class="[
+              'border rounded-lg shadow-sm p-6 max-w-3xl',
+              isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+            ]"
+          >
             <!-- General Settings -->
             <section class="space-y-5">
               <h2 :class="['text-lg font-medium', isDark ? 'text-white' : 'text-gray-800']">
@@ -23,7 +30,11 @@
                 <label :class="['block text-sm mb-1', isDark ? 'text-gray-400' : 'text-gray-600']">
                   {{ $t('settings.general.language') }}
                 </label>
-                <select v-model="selectedLanguage" :class="['input', isDark ? 'input-dark' : '']" @change="changeLanguage">
+                <select
+                  v-model="selectedLanguage"
+                  :class="['input', isDark ? 'input-dark' : '']"
+                  @change="changeLanguage"
+                >
                   <option value="en">{{ $t('settings.languages.english') }}</option>
                   <option value="de">{{ $t('settings.languages.german') }}</option>
                 </select>
@@ -33,7 +44,11 @@
                 <label :class="['block text-sm mb-1', isDark ? 'text-gray-400' : 'text-gray-600']">
                   {{ $t('settings.general.theme') }}
                 </label>
-                <select v-model="selectedTheme" :class="['input', isDark ? 'input-dark' : '']" @change="changeTheme">
+                <select
+                  v-model="selectedTheme"
+                  :class="['input', isDark ? 'input-dark' : '']"
+                  @change="changeTheme"
+                >
                   <option value="light">{{ $t('settings.themes.light') }}</option>
                   <option value="dark">{{ $t('settings.themes.dark') }}</option>
                 </select>
@@ -107,4 +122,3 @@ const changeTheme = () => {
   color: white;
 }
 </style>
-
