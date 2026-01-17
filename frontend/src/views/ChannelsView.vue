@@ -1,19 +1,19 @@
 <template>
-  <div class="flex h-screen bg-gray-50">
+  <div :class="['flex h-screen', isDark ? 'bg-gray-900' : 'bg-gray-50']">
     <div class="flex-1 flex flex-col">
       <v-main>
         <div class="p-8 h-full flex flex-col gap-6">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <h1 class="text-2xl font-semibold">{{ $t('channels.title') }}</h1>
-              <p class="text-sm text-gray-600 mt-1">
+              <h1 :class="['text-2xl font-semibold', isDark ? 'text-white' : '']">{{ $t('channels.title') }}</h1>
+              <p :class="['text-sm mt-1', isDark ? 'text-gray-400' : 'text-gray-600']">
                 {{ $t('channels.description') }}
               </p>
             </div>
 
             <div class="flex items-center gap-4">
               <div class="flex items-center gap-2">
-                <span class="text-sm text-gray-700">{{ $t('channels.selectByRiver') }}</span>
+                <span :class="['text-sm', isDark ? 'text-gray-300' : 'text-gray-700']">{{ $t('channels.selectByRiver') }}</span>
                 <v-switch v-model="selectByRiver" density="compact" hide-details inset />
               </div>
 
@@ -29,10 +29,10 @@
           </div>
 
           <!-- STATION SECTION -->
-          <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex-1 min-h-0">
+          <div :class="['border rounded-lg shadow-sm p-5 flex-1 min-h-0', isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200']">
             <div class="flex items-center justify-between gap-4 flex-wrap">
               <div class="min-w-[260px] flex-1">
-                <label class="text-xs font-bold text-gray-500 uppercase block mb-2">{{ $t('channels.stationLabel') }}</label>
+                <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('channels.stationLabel') }}</label>
                 <v-text-field
                   v-model="stationSearch"
                   density="compact"
@@ -44,25 +44,25 @@
               </div>
 
               <div class="min-w-[260px]">
-                <label class="text-xs font-bold text-gray-500 uppercase block mb-2">{{ $t('channels.selectedLabel') }}</label>
+                <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('channels.selectedLabel') }}</label>
 
                 <!-- River + Station + Reading -->
-                <div class="text-sm text-gray-700">
+                <div :class="['text-sm', isDark ? 'text-gray-300' : 'text-gray-700']">
                   <span class="font-medium">{{ selectedStationRiver || '—' }}</span>
-                  <span class="text-gray-500"> · </span>
+                  <span :class="isDark ? 'text-gray-500' : 'text-gray-500'"> · </span>
                   <span class="font-medium">{{ selectedStation?.shortname || '—' }}</span>
-                  <span class="text-gray-500"> · </span>
+                  <span :class="isDark ? 'text-gray-500' : 'text-gray-500'"> · </span>
                   <span class="font-medium">{{ selectedTimeseries || '—' }}</span>
                 </div>
 
-                <p v-if="selectionError" class="text-xs text-red-600 mt-1">{{ selectionError }}</p>
+                <p v-if="selectionError" class="text-xs text-red-500 mt-1">{{ selectionError }}</p>
               </div>
             </div>
 
             <div class="mt-5 h-[calc(100%-88px)] overflow-y-auto pr-1">
-              <div v-if="loading" class="text-sm text-gray-600">{{ $t('channels.loadingStations') }}</div>
+              <div v-if="loading" :class="['text-sm', isDark ? 'text-gray-400' : 'text-gray-600']">{{ $t('channels.loadingStations') }}</div>
 
-              <div v-else-if="filteredStations.length === 0" class="text-sm text-gray-600">
+              <div v-else-if="filteredStations.length === 0" :class="['text-sm', isDark ? 'text-gray-400' : 'text-gray-600']">
                 {{ $t('channels.noStationsFound') }}
               </div>
 
@@ -75,20 +75,21 @@
                   v-for="st in filteredStations"
                   :key="st.uuid"
                   :class="[
-                    'border rounded-md p-3 bg-white shadow-sm transition cursor-pointer',
+                    'border rounded-md p-3 shadow-sm transition cursor-pointer',
+                    isDark ? 'bg-gray-700' : 'bg-white',
                     st.uuid === selectedStationUuid
                       ? 'border-blue-500 ring-1 ring-blue-200'
-                      : 'border-gray-200',
+                      : isDark ? 'border-gray-600' : 'border-gray-200',
                     shakeStationUuid === st.uuid ? 'shake' : '',
                   ]"
                   @click="handleStationClick(st.uuid)"
                 >
                   <div class="flex items-start justify-between gap-2">
                     <div class="min-w-0">
-                      <div class="text-[13px] font-semibold text-gray-900 truncate">
+                      <div :class="['text-[13px] font-semibold truncate', isDark ? 'text-white' : 'text-gray-900']">
                         {{ st.shortname }}
                       </div>
-                      <div class="text-[11px] text-gray-500 truncate">{{ st.water || '—' }}</div>
+                      <div :class="['text-[11px] truncate', isDark ? 'text-gray-400' : 'text-gray-500']">{{ st.water || '—' }}</div>
                     </div>
                   </div>
 
@@ -106,8 +107,8 @@
                     </button>
                   </div>
 
-                  <div class="mt-2 text-[11px] text-gray-500">
-                    <span class="font-medium text-gray-700">Available:</span>
+                  <div :class="['mt-2 text-[11px]', isDark ? 'text-gray-400' : 'text-gray-500']">
+                    <span :class="['font-medium', isDark ? 'text-gray-300' : 'text-gray-700']">Available:</span>
                     <span class="ml-1">{{ availableLabel(st) }}</span>
                   </div>
                 </div>
@@ -123,14 +124,14 @@
           :width="360"
           :temporary="false"
           :permanent="selectByRiver"
-          class="border-l border-gray-200"
+          :class="isDark ? 'border-l border-gray-700' : 'border-l border-gray-200'"
         >
           <div class="p-5">
             <div class="flex items-center justify-between">
-              <h2 class="text-sm font-semibold text-gray-900">{{ $t('channels.riversTitle') }}</h2>
+              <h2 :class="['text-sm font-semibold', isDark ? 'text-white' : 'text-gray-900']">{{ $t('channels.riversTitle') }}</h2>
 
               <button
-                class="text-sm text-gray-600 hover:text-gray-900"
+                :class="['text-sm', isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900']"
                 type="button"
                 @click="riverDrawer = false"
               >
@@ -191,6 +192,7 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useTheme } from 'vuetify'
 
 type PegelTimeseries = 'W' | 'Q' | 'T'
 
@@ -206,6 +208,8 @@ type StationRow = {
 const router = useRouter()
 
 const { t } = useI18n()
+const theme = useTheme()
+const isDark = computed(() => theme.global.current.value.dark)
 
 const loading = ref(false)
 const stations = ref<StationRow[]>([])
