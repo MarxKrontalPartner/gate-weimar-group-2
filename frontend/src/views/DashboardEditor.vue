@@ -1,31 +1,37 @@
 <template>
-  <div class="flex h-screen bg-gray-50">
+  <div :class="['flex h-screen', isDark ? 'bg-gray-900' : 'bg-gray-50']">
     <div class="flex-1 flex flex-col">
       <v-main class="h-full flex flex-col">
         <!-- HEADER -->
         <div
-          class="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0"
+          :class="[
+            'border-b px-6 py-3 flex items-center justify-between shrink-0',
+            isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+          ]"
         >
           <div class="flex items-center gap-2">
-            <span class="text-lg font-medium text-gray-700">{{
-              panelTitle || 'Untitled Panel'
+            <span :class="['text-lg font-medium', isDark ? 'text-white' : 'text-gray-700']">{{
+              panelTitle || $t('panelEditor.untitledPanel')
             }}</span>
             <v-chip size="x-small" variant="outlined" class="ml-2">Draft</v-chip>
           </div>
           <div class="flex items-center gap-3">
             <button
               @click="router.back()"
-              class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition"
+              :class="[
+                'px-4 py-2 text-sm font-medium transition',
+                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900',
+              ]"
               type="button"
             >
-              Cancel
+              {{ $t('common.cancel') }}
             </button>
             <button
               @click="handleApply"
               class="px-4 py-2 text-sm font-medium bg-blue-700 text-white rounded shadow-sm hover:bg-blue-800 transition"
               type="button"
             >
-              {{ isEditMode ? 'Update Panel' : 'Apply to Dashboard' }}
+              {{ isEditMode ? $t('panelEditor.updatePanel') : $t('panelEditor.applyToDashboard') }}
             </button>
           </div>
         </div>
@@ -33,18 +39,24 @@
         <!-- WORKSPACE -->
         <div class="flex-1 flex overflow-hidden">
           <!-- LEFT: PREVIEW -->
-          <div class="flex-1 flex flex-col bg-slate-50 min-w-0">
+          <div :class="['flex-1 flex flex-col min-w-0', isDark ? 'bg-gray-850' : 'bg-slate-50']">
             <div class="flex-1 p-6 overflow-y-auto">
               <!-- Chart Container -->
               <div
-                class="bg-white border border-gray-200 rounded-lg h-96 shadow-sm overflow-hidden relative"
+                :class="[
+                  'border rounded-lg h-96 shadow-sm overflow-hidden relative',
+                  isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+                ]"
               >
                 <!-- Loading Overlay -->
                 <div
                   v-if="isLoadingData"
-                  class="absolute inset-0 bg-white/80 z-10 flex items-center justify-center"
+                  :class="[
+                    'absolute inset-0 z-10 flex items-center justify-center',
+                    isDark ? 'bg-gray-800/80' : 'bg-white/80',
+                  ]"
                 >
-                  <span class="text-blue-600 font-medium">Loading Data...</span>
+                  <span class="text-blue-500 font-medium">{{ $t('panelEditor.loadingData') }}</span>
                 </div>
 
                 <!-- Chart OR No Data Message -->
@@ -54,11 +66,16 @@
                   </template>
 
                   <template v-else>
-                    <div class="text-center text-gray-500 px-6">
-                      <p class="text-sm font-medium">No data available</p>
+                    <div :class="['text-center px-6', isDark ? 'text-gray-400' : 'text-gray-500']">
+                      <p class="text-sm font-medium">{{ $t('panelEditor.noDataAvailable') }}</p>
                       <p class="text-xs mt-1">
                         <strong>{{ selectedStationName || pegelStation }}</strong>
-                        and timeseries <strong>{{ pegelTimeseries }}</strong>
+                        {{
+                          $t('panelEditor.noDataMessage', {
+                            station: selectedStationName || pegelStation,
+                            timeseries: pegelTimeseries,
+                          })
+                        }}
                       </p>
                     </div>
                   </template>
@@ -71,13 +88,17 @@
               <div class="grid grid-cols-12 gap-6">
                 <!-- Datasource Type Selector -->
                 <div class="col-span-12">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                    >Data Source</label
+                  <label
+                    :class="[
+                      'text-xs font-bold uppercase block mb-2',
+                      isDark ? 'text-gray-400' : 'text-gray-500',
+                    ]"
+                    >{{ $t('panelEditor.dataSource') }}</label
                   >
                   <v-select
                     v-model="dataSourceType"
                     :items="[
-                      { title: 'Pegel Online', value: 'PEGEL' },
+                      { title: 'Pegel Data', value: 'PEGEL' },
                       { title: 'JSON File', value: 'STATIC_JSON' },
                     ]"
                     item-title="title"
@@ -85,8 +106,8 @@
                     density="compact"
                     variant="outlined"
                     hide-details
-                    theme="light"
-                    :menu-props="{ theme: 'mkpLightTheme', class: 'mkp-dropdown-list' }"
+                    :theme="isDark ? 'mkpDarkTheme' : 'mkpLightTheme'"
+                    :menu-props="{ theme: isDark ? 'mkpDarkTheme' : 'mkpLightTheme' }"
                   />
                 </div>
 
@@ -94,8 +115,12 @@
                 <template v-if="dataSourceType === 'PEGEL'">
                   <!-- River search (water field in JSON) -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                      >River</label
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.river') }}</label
                     >
                     <v-text-field
                       v-model="riverSearch"
@@ -103,34 +128,42 @@
                       variant="outlined"
                       hide-details
                       clearable
-                      placeholder="Type river name (water)..."
+                      :placeholder="$t('panelEditor.searchRiver')"
                       @click:clear="clearRiverSearch"
                     />
-                    <p v-if="riverNeedsStationSelection" class="text-xs text-red-600 mt-1">
-                      Select a station (by name) or enter a UUID after filtering by river.
+                    <p v-if="riverNeedsStationSelection" class="text-xs text-red-500 mt-1">
+                      {{ $t('panelEditor.selectRiverFirst') }}
                     </p>
                   </div>
 
                   <!-- Station search (separate input) -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
-                      Search Station
-                    </label>
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.searchStation') }}</label
+                    >
                     <v-text-field
                       v-model="stationSearch"
                       density="compact"
                       variant="outlined"
                       hide-details
                       clearable
-                      placeholder="Type station shortname..."
+                      :placeholder="$t('panelEditor.searchStationPlaceholder')"
                       @click:clear="clearStationSearch"
                     />
                   </div>
 
                   <!-- Station dropdown (must always show shortname, not UUID) -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                      >Station</label
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.station') }}</label
                     >
                     <v-autocomplete
                       v-model="selectedStationUuid"
@@ -141,10 +174,16 @@
                       variant="outlined"
                       hide-details
                       clearable
-                      placeholder="Select station..."
+                      :placeholder="$t('panelEditor.selectStation')"
+                      :theme="isDark ? 'mkpDarkTheme' : 'mkpLightTheme'"
+                      :menu-props="{ theme: isDark ? 'mkpDarkTheme' : 'mkpLightTheme' }"
                     />
-                    <div v-if="selectedStationName" class="text-xs text-gray-500 mt-1">
-                      Selected: <span class="font-medium">{{ selectedStationName }}</span>
+                    <div
+                      v-if="selectedStationName"
+                      :class="['text-xs mt-1', isDark ? 'text-gray-400' : 'text-gray-500']"
+                    >
+                      {{ $t('panelEditor.selected') }}
+                      <span class="font-medium">{{ selectedStationName }}</span>
                     </div>
                   </div>
 
@@ -162,8 +201,13 @@
 
                   <!-- Timeseries -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
-                      Timeseries
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                    >
+                      {{ $t('panelEditor.timeseries') }}
                     </label>
                     <v-select
                       v-model="pegelTimeseries"
@@ -177,13 +221,19 @@
                       density="compact"
                       variant="outlined"
                       hide-details
+                      :theme="isDark ? 'mkpDarkTheme' : 'mkpLightTheme'"
+                      :menu-props="{ theme: isDark ? 'mkpDarkTheme' : 'mkpLightTheme' }"
                     />
                   </div>
 
                   <!-- Period -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                      >Period</label
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.period') }}</label
                     >
                     <v-select
                       v-model="pegelPeriod"
@@ -199,6 +249,8 @@
                       density="compact"
                       variant="outlined"
                       hide-details
+                      :theme="isDark ? 'mkpDarkTheme' : 'mkpLightTheme'"
+                      :menu-props="{ theme: isDark ? 'mkpDarkTheme' : 'mkpLightTheme' }"
                     />
                   </div>
                 </template>
@@ -207,8 +259,12 @@
                 <template v-if="dataSourceType === 'STATIC_JSON'">
                   <!-- JSON File Selector -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                      >Select JSON File</label
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.selectJsonFile') }}</label
                     >
                     <v-select
                       v-model="jsonUrl"
@@ -218,16 +274,20 @@
                       density="compact"
                       variant="outlined"
                       hide-details
-                      theme="light"
-                      :menu-props="{ theme: 'mkpLightTheme', class: 'mkp-dropdown-list' }"
+                      :theme="isDark ? 'mkpDarkTheme' : 'mkpLightTheme'"
+                      :menu-props="{ theme: isDark ? 'mkpDarkTheme' : 'mkpLightTheme' }"
                       placeholder="Select a JSON file..."
                     />
                   </div>
 
                   <!-- X-axis Field Mapping -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                      >X-axis Field (Time)</label
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.xAxisField') }}</label
                     >
                     <v-text-field
                       v-model="jsonMappingX"
@@ -240,8 +300,12 @@
 
                   <!-- Y-axis Field Mapping -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                      >Y-axis Field (Value)</label
+                    <label
+                      :class="[
+                        'text-xs font-bold uppercase block mb-2',
+                        isDark ? 'text-gray-400' : 'text-gray-500',
+                      ]"
+                      >{{ $t('panelEditor.yAxisField') }}</label
                     >
                     <v-text-field
                       v-model="jsonMappingY"
@@ -260,11 +324,19 @@
 
           <!-- RIGHT: VISUAL SETTINGS -->
           <div
-            class="w-80 bg-white border-l border-gray-200 overflow-y-auto flex flex-col shrink-0"
+            :class="[
+              'w-80 border-l overflow-y-auto flex flex-col shrink-0',
+              isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+            ]"
           >
-            <div class="p-4 border-b border-gray-100">
-              <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
-                Visualization
+            <div :class="['p-4 border-b', isDark ? 'border-gray-700' : 'border-gray-100']">
+              <h3
+                :class="[
+                  'text-xs font-bold uppercase tracking-wide mb-3',
+                  isDark ? 'text-white' : 'text-gray-900',
+                ]"
+              >
+                {{ $t('panelEditor.visualization') }}
               </h3>
               <div class="grid grid-cols-2 gap-2">
                 <div
@@ -272,18 +344,32 @@
                   :key="type.name"
                   @click="selectedChart = type.name"
                   :class="[
-                    'cursor-pointer border rounded p-3 flex flex-col items-center justify-center transition hover:bg-blue-50',
-                    selectedChart === type.name ? 'border-blue-500 bg-blue-50' : 'border-gray-200',
+                    'cursor-pointer border rounded p-3 flex flex-col items-center justify-center transition',
+                    selectedChart === type.name
+                      ? 'border-blue-500 bg-blue-50'
+                      : isDark
+                        ? 'border-gray-600 hover:bg-gray-700'
+                        : 'border-gray-200 hover:bg-blue-50',
                   ]"
                 >
                   <v-icon
                     :icon="type.icon"
-                    :class="selectedChart === type.name ? 'text-blue-600' : 'text-gray-400'"
+                    :class="
+                      selectedChart === type.name
+                        ? 'text-blue-600'
+                        : isDark
+                          ? 'text-gray-400'
+                          : 'text-gray-400'
+                    "
                   ></v-icon>
                   <span
                     :class="[
                       'text-xs mt-2',
-                      selectedChart === type.name ? 'text-blue-700 font-medium' : 'text-gray-500',
+                      selectedChart === type.name
+                        ? 'text-blue-700 font-medium'
+                        : isDark
+                          ? 'text-gray-300'
+                          : 'text-gray-500',
                     ]"
                   >
                     {{ type.name }}
@@ -292,12 +378,20 @@
               </div>
             </div>
 
-            <div class="p-4 border-b border-gray-100">
-              <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
-                Panel Options
+            <div :class="['p-4 border-b', isDark ? 'border-gray-700' : 'border-gray-100']">
+              <h3
+                :class="[
+                  'text-xs font-bold uppercase tracking-wide mb-3',
+                  isDark ? 'text-white' : 'text-gray-900',
+                ]"
+              >
+                {{ $t('panelEditor.panelOptions') }}
               </h3>
               <div class="mb-4">
-                <label class="text-xs text-gray-500 mb-1 block">Panel Title</label>
+                <label
+                  :class="['text-xs mb-1 block', isDark ? 'text-gray-400' : 'text-gray-500']"
+                  >{{ $t('panelEditor.panelTitle') }}</label
+                >
                 <v-text-field
                   v-model="panelTitle"
                   density="compact"
@@ -316,6 +410,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useTheme } from 'vuetify'
+import { useI18n } from 'vue-i18n'
 
 import { createChartConfig } from '@/utils/chartFactory'
 import { useDashboardPanels } from '@/composables/useDashboardPanels'
@@ -328,6 +424,10 @@ import type {
   PegelTimeseriesMeta,
   QueryConfig,
 } from '@/composables/useDataFetcher'
+
+useI18n()
+const theme = useTheme()
+const isDark = computed(() => theme.global.current.value.dark)
 
 /**
  * Query state used to build the Pegel request

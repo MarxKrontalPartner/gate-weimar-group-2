@@ -1,0 +1,218 @@
+{
+  "login": {
+    "title": "Anmeldung",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "button": "Anmelden",
+    "noaccount": "Sie haben noch kein Konto? ",
+    "signup": "Registrieren"
+  },
+  "appBar": {
+    "accountMenu": {
+      "logout": "Abmelden"
+    }
+  },
+  "signup": {
+    "title": "Registrieren",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "button": "Konto erstellen",
+    "haveaccount": "Bereits ein Konto?",
+    "login": "Anmelden"
+  },
+  "navigationdrawer": {
+    "monitoring": "Überwachung",
+    "channels": "Kanäle",
+    "settings": "Einstellungen",
+    "dashboard": "Dashboard"
+  },
+  "panelEditor": {
+    "untitledPanel": "Unbenanntes Panel",
+    "loadingData": "Lade Daten...",
+    "updatePanel": "Panel aktualisieren",
+    "applyToDashboard": "Zum Dashboard hinzufügen",
+    "dataSource": "Datenquelle",
+    "river": "Fluss",
+    "searchRiver": "Flussname eingeben (water)...",
+    "selectRiverFirst": "Wählen Sie eine Station (nach Namen) oder geben Sie eine UUID ein, nachdem Sie nach Fluss gefiltert haben.",
+    "searchStation": "Station suchen",
+    "searchStationPlaceholder": "Stations-Kurzname eingeben...",
+    "station": "Station",
+    "selectStation": "Station auswählen...",
+    "selected": "Ausgewählt:",
+    "uuid": "UUID",
+    "uuidPlaceholder": "Stations-UUID eingeben",
+    "timeseries": "Zeitreihe",
+    "period": "Zeitraum",
+    "selectJsonFile": "JSON-Datei auswählen",
+    "xAxisField": "X-Achsen-Feld (Zeit)",
+    "yAxisField": "Y-Achsen-Feld (Wert)",
+    "visualization": "Visualisierung",
+    "panelOptions": "Panel-Optionen",
+    "panelTitle": "Panel-Titel",
+    "noDataAvailable": "Keine Daten verfügbar",
+    "noDataMessage": "Station und Zeitreihe"
+  },
+  "timeseries": {
+    "W": "Wasserstand",
+    "Q": "Abfluss",
+    "T": "Temperatur"
+  },
+  "periods": {
+    "P1D": "1 Tag",
+    "P3D": "3 Tage",
+    "P7D": "7 Tage",
+    "P14D": "14 Tage",
+    "P30D": "30 Tage"
+  },
+  "common": {
+    "cancel": "Abbrechen",
+    "close": "Schließen"
+  },
+  "_comment": "DashboardView translations",
+  "dashboard": {
+    "owner": "Besitzer",
+    "newProject": "Neues Projekt",
+    "createProject": "Projekt erstellen",
+    "projectNamePlaceholder": "Projektname",
+    "createButton": "Erstellen"
+  },
+  "projectView": {
+    "tabs": {
+      "viewer": "Betrachter",
+      "editor": "Editor",
+      "settings": "Einstellungen",
+      "members": "Mitglieder"
+    },
+    "addPanel": "Panel hinzufügen",
+    "noPanelsViewer": "Keine Panels vorhanden. Wechseln Sie in den Editor-Modus, um eines hinzuzufügen.",
+    "createFirstPanel": "Erstes Panel erstellen",
+    "editPanel": "Panel bearbeiten",
+    "deletePanel": "Panel löschen",
+    "deleteConfirm": "Sind Sie sicher, dass Sie dieses Panel löschen möchten?"
+  },
+  "projectDetails": {
+    "tabs": {
+      "viewer": "Betrachter",
+      "editor": "Editor",
+      "members": "Mitglieder",
+      "settings": "Einstellungen"
+    },
+    "buttons": {
+      "addPanel": "Panel hinzufügen",
+      "createFirstPanel": "Erstes Panel erstellen"
+    },
+    "messages": {
+      "noPanels": "Keine Panels zum Anzeigen. Wechseln Sie in den Editor-Modus, um eines hinzuzufügen."
+    },
+    "confirmations": {
+      "deletePanel": "Sind Sie sicher, dass Sie dieses Panel löschen möchten?"
+    },
+    "labels": {
+      "station": "Station",
+      "river": "Fluss",
+      "timeseries": "Zeitreihe",
+      "copySuffix": "(Kopie)"
+    },
+    "chartTitles": {
+      "W": "Wasserstand",
+      "Q": "Abfluss",
+      "T": "Temperatur"
+    },
+    "chartLabels": {
+      "time": "Zeit"
+    },
+    "tooltips": {
+      "editPanel": "Panel bearbeiten",
+      "duplicatePanel": "Panel duplizieren",
+      "deletePanel": "Panel löschen"
+    },
+    "settings": {
+      "sections": {
+        "rename": "Projekt umbenennen",
+        "members": "Projektmitglieder",
+        "delete": "Projekt löschen"
+      },
+      "searchPlaceholder": "Benutzername suchen...",
+      "table": {
+        "username": "Benutzername",
+        "role": "Rolle",
+        "actions": "Aktionen"
+      },
+      "roles": {
+        "owner": "Besitzer",
+        "editor": "Editor",
+        "viewer": "Betrachter"
+      },
+      "buttons": {
+        "save": "Speichern",
+        "addAsViewer": "Als Betrachter hinzufügen",
+        "remove": "Entfernen",
+        "deleteProject": "Projekt endgültig löschen",
+        "cancel": "Abbrechen",
+        "delete": "Löschen"
+      },
+      "deleteModal": {
+        "title": "Projektlöschung bestätigen",
+        "confirmMessage": "Zur Bestätigung der Löschung geben Sie bitte den Projektnamen ein:",
+        "inputPlaceholder": "Projektnamen hier eingeben"
+      }
+    }
+  },
+  "channels": {
+    "title": "Kanäle",
+    "description": "Wählen Sie eine Station und eine verfügbare Messung (W, Q oder T). Optional nach Fluss filtern.",
+    "selectByRiver": "Nach Fluss auswählen",
+    "visualizeButton": "Visualisieren",
+    "stationLabel": "Station",
+    "searchStationPlaceholder": "Station nach Namen suchen...",
+    "selectedLabel": "Ausgewählt",
+    "loadingStations": "Lade Stationen…",
+    "noStationsFound": "Keine Stationen gefunden.",
+    "availableLabel": "Verfügbar:",
+    "riversTitle": "Flüsse",
+    "searchRiverPlaceholder": "Fluss suchen…",
+    "allRiversButton": "Alle Flüsse",
+    "errors": {
+      "readingNotAvailable": "Die ausgewählte Messung ist für diese Station nicht verfügbar. Bitte wählen Sie eine verfügbare Messung.",
+      "readingNotAvailableShort": "Diese Messung ist für diese Station nicht verfügbar.",
+      "selectStationAndReading": "Bitte wählen Sie eine Station und eine verfügbare Messung (W, Q oder T).",
+      "noValidStations": "Stationsdatei geladen, aber keine gültigen Zeilen gefunden. Stellen Sie sicher, dass Zeilen mindestens Kurzname und UUID enthalten.",
+      "failedToLoadStations": "Stationen konnten nicht von /public geladen werden. Fügen Sie stations.json oder stations.xlsx hinzu (oder in /public/stations/)."
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "description": "Konfigurieren Sie Ihre Anwendungseinstellungen",
+    "tabs": {
+      "general": "Allgemein",
+      "users": "Benutzer",
+      "security": "Sicherheit"
+    },
+    "general": {
+      "title": "Allgemein",
+      "language": "Sprache",
+      "theme": "Design"
+    },
+    "languages": {
+      "english": "Englisch",
+      "german": "Deutsch"
+    },
+    "themes": {
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
+    "users": {
+      "title": "Benutzer",
+      "description": "Steuern Sie, wer auf die Anwendung zugreifen kann."
+    },
+    "security": {
+      "title": "Sicherheit",
+      "description": "Verwalten Sie Anmelde- und Sicherheitseinstellungen."
+    },
+    "buttons": {
+      "save": "Speichern"
+    }
+  }
+}

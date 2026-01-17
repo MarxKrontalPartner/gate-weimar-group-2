@@ -1,13 +1,16 @@
 <template>
-  <div class="flex h-screen bg-gray-50">
+  <div :class="['flex h-screen', isDark ? 'bg-gray-900' : 'bg-gray-50']">
     <v-main>
       <div class="flex-1 flex flex-col">
         <!-- TOP BAR -->
         <header
-          class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6"
+          :class="[
+            'h-16 border-b flex items-center justify-between px-6',
+            isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+          ]"
         >
           <div class="flex items-center gap-3">
-            <h1 class="text-m font-semibold">{{ projectName }}</h1>
+            <h1 :class="['text-m font-semibold', isDark ? 'text-white' : '']">{{ projectName }}</h1>
 
             <!-- TABS -->
             <div class="flex items-center gap-3 ml-10">
@@ -17,11 +20,13 @@
                 class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
                 :class="
                   activeTab === 'viewer'
-                    ? 'bg-black text-white border-black'
-                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : isDark
+                      ? 'bg-gray-700 text-gray-300 border-gray-600 hover:bg-gray-600'
+                      : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Viewer
+                {{ $t('projectDetails.tabs.viewer') }}
               </button>
 
               <!-- 2. Editor Tab -->
@@ -31,11 +36,13 @@
                 class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
                 :class="
                   activeTab === 'editor'
-                    ? 'bg-black text-white border-black'
-                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : isDark
+                      ? 'bg-gray-700 text-gray-300 border-gray-600 hover:bg-gray-600'
+                      : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Editor
+                {{ $t('projectDetails.tabs.editor') }}
               </button>
 
               <!-- 3. Settings Tab -->
@@ -45,11 +52,13 @@
                 class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition"
                 :class="
                   activeTab === 'settings'
-                    ? 'bg-black text-white border-black'
-                    : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                    ? 'bg-blue-600 text-white border-blue-600'
+                    : isDark
+                      ? 'bg-gray-700 text-gray-300 border-gray-600 hover:bg-gray-600'
+                      : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Settings
+                {{ $t('projectDetails.tabs.settings') }}
               </button>
             </div>
           </div>
@@ -60,21 +69,29 @@
               @click="goToChartEditor"
               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-2"
             >
-              <span>+</span> Add Panel
+              <span>+</span> {{ $t('projectDetails.buttons.addPanel') }}
             </button>
           </div>
         </header>
 
         <!-- MAIN CONTENT -->
-        <main class="p-8 text-gray-800 text-sm h-full overflow-y-auto">
+        <main
+          :class="[
+            'p-8 text-sm h-full overflow-y-auto',
+            isDark ? 'text-gray-300' : 'text-gray-800',
+          ]"
+        >
           <!-- TAB 1: VIEWER (Read Only) -->
           <div v-if="activeTab === 'viewer'" class="h-full">
             <div
               v-if="panels.length === 0"
-              class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50"
+              :class="[
+                'flex flex-col items-center justify-center h-96 border-2 border-dashed rounded-xl',
+                isDark ? 'border-gray-700 bg-gray-800/50' : 'border-gray-200 bg-gray-50/50',
+              ]"
             >
-              <div class="text-gray-400 mb-4">
-                No panels to display. Switch to Editor mode to add one.
+              <div :class="['mb-4', isDark ? 'text-gray-500' : 'text-gray-400']">
+                {{ $t('projectDetails.messages.noPanels') }}
               </div>
             </div>
 
@@ -83,12 +100,20 @@
               <div
                 v-for="panel in panels"
                 :key="panel.id"
-                class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col h-[350px] cursor-pointer hover:shadow-md transition"
+                :class="[
+                  'p-4 rounded-xl shadow-sm border flex flex-col h-[350px] cursor-pointer hover:shadow-md transition',
+                  isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100',
+                ]"
                 @click="openPanel(panel)"
               >
                 <!-- Header row with title + info icon -->
                 <div class="flex items-center justify-between mb-2">
-                  <div class="text-sm font-semibold text-gray-800 truncate">
+                  <div
+                    :class="[
+                      'text-sm font-semibold truncate',
+                      isDark ? 'text-white' : 'text-gray-800',
+                    ]"
+                  >
                     {{ panel.title }}
                   </div>
 
@@ -109,17 +134,20 @@
 
                     <div class="text-xs leading-5">
                       <div>
-                        <span class="font-medium">Station:</span>
+                        <span class="font-medium">{{ $t('projectDetails.labels.station') }}:</span>
                         {{ getPanelInfo(panel).stationName }}
                       </div>
                       <div>
                         <span class="font-medium">UUID:</span> {{ getPanelInfo(panel).uuid }}
                       </div>
                       <div>
-                        <span class="font-medium">River:</span> {{ getPanelInfo(panel).river }}
+                        <span class="font-medium">{{ $t('projectDetails.labels.river') }}:</span>
+                        {{ getPanelInfo(panel).river }}
                       </div>
                       <div>
-                        <span class="font-medium">Timeseries:</span>
+                        <span class="font-medium"
+                          >{{ $t('projectDetails.labels.timeseries') }}:</span
+                        >
                         {{ getPanelInfo(panel).timeseries }}
                       </div>
                     </div>
@@ -143,10 +171,23 @@
 
               <!-- modal content -->
               <div
-                class="relative z-10 w-[95vw] max-w-6xl bg-white rounded-xl shadow-xl border border-gray-200"
+                :class="[
+                  'relative z-10 w-[95vw] max-w-6xl rounded-xl shadow-xl border',
+                  isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+                ]"
               >
-                <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-                  <div class="text-sm font-semibold text-gray-900 truncate">
+                <div
+                  :class="[
+                    'flex items-center justify-between px-4 py-3 border-b',
+                    isDark ? 'border-gray-700' : 'border-gray-100',
+                  ]"
+                >
+                  <div
+                    :class="[
+                      'text-sm font-semibold truncate',
+                      isDark ? 'text-white' : 'text-gray-900',
+                    ]"
+                  >
                     {{ expandedPanel.title }}
                   </div>
 
@@ -166,7 +207,9 @@
 
                       <div class="text-xs leading-5">
                         <div>
-                          <span class="font-medium">Station:</span>
+                          <span class="font-medium"
+                            >{{ $t('projectDetails.labels.station') }}:</span
+                          >
                           {{ getPanelInfo(expandedPanel).stationName }}
                         </div>
                         <div>
@@ -174,11 +217,13 @@
                           {{ getPanelInfo(expandedPanel).uuid }}
                         </div>
                         <div>
-                          <span class="font-medium">River:</span>
+                          <span class="font-medium">{{ $t('projectDetails.labels.river') }}:</span>
                           {{ getPanelInfo(expandedPanel).river }}
                         </div>
                         <div>
-                          <span class="font-medium">Timeseries:</span>
+                          <span class="font-medium"
+                            >{{ $t('projectDetails.labels.timeseries') }}:</span
+                          >
                           {{ getPanelInfo(expandedPanel).timeseries }}
                         </div>
                       </div>
@@ -212,9 +257,14 @@
           <div v-if="activeTab === 'editor' && isEditor" class="h-full">
             <div
               v-if="panels.length === 0"
-              class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50"
+              :class="[
+                'flex flex-col items-center justify-center h-96 border-2 border-dashed rounded-xl',
+                isDark ? 'border-gray-700 bg-gray-800/50' : 'border-gray-200 bg-gray-50/50',
+              ]"
             >
-              <v-btn color="primary" @click="goToChartEditor">Create First Panel</v-btn>
+              <v-btn color="primary" @click="goToChartEditor">{{
+                $t('projectDetails.buttons.createFirstPanel')
+              }}</v-btn>
             </div>
 
             <!-- Editable Grid -->
@@ -222,30 +272,51 @@
               <div
                 v-for="panel in panels"
                 :key="panel.id"
-                class="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col h-[350px] relative group hover:shadow-md transition"
+                :class="[
+                  'rounded-xl shadow-sm border flex flex-col h-[350px] relative group hover:shadow-md transition',
+                  isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+                ]"
               >
                 <!-- Edit Controls Overlay -->
                 <div
-                  class="absolute top-2 right-2 flex gap-1 z-10 bg-white/90 p-1 rounded-md border shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                  :class="[
+                    'absolute top-2 right-2 flex gap-1 z-10 p-1 rounded-md border shadow-sm opacity-0 group-hover:opacity-100 transition-opacity',
+                    isDark ? 'bg-gray-700/90 border-gray-600' : 'bg-white/90 border-gray-200',
+                  ]"
                 >
                   <button
                     @click="editPanel(panel.id)"
-                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-blue-600"
-                    title="Edit Panel"
+                    :class="[
+                      'p-1.5 rounded hover:text-blue-500',
+                      isDark
+                        ? 'hover:bg-gray-600 text-gray-400'
+                        : 'hover:bg-gray-100 text-gray-600',
+                    ]"
+                    :title="$t('projectDetails.tooltips.editPanel')"
                   >
                     <v-icon icon="mdi-pencil" size="small"></v-icon>
                   </button>
                   <button
                     @click="handleDuplicatePanel(panel)"
-                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-green-600"
-                    title="Duplicate Panel"
+                    :class="[
+                      'p-1.5 rounded hover:text-green-500',
+                      isDark
+                        ? 'hover:bg-gray-600 text-gray-400'
+                        : 'hover:bg-gray-100 text-gray-600',
+                    ]"
+                    :title="$t('projectDetails.tooltips.duplicatePanel')"
                   >
                     <v-icon icon="mdi-content-copy" size="small"></v-icon>
                   </button>
                   <button
                     @click="handleDeletePanel(panel.id)"
-                    class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-red-600"
-                    title="Delete Panel"
+                    :class="[
+                      'p-1.5 rounded hover:text-red-500',
+                      isDark
+                        ? 'hover:bg-gray-600 text-gray-400'
+                        : 'hover:bg-gray-100 text-gray-600',
+                    ]"
+                    :title="$t('projectDetails.tooltips.deletePanel')"
                   >
                     <v-icon icon="mdi-trash-can-outline" size="small"></v-icon>
                   </button>
@@ -301,10 +372,11 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import type { Ref } from 'vue'
 import { createChartConfig } from '@/utils/chartFactory'
+import { useTheme } from 'vuetify'
 
 // Composables
 import { useDashboardPanels, type DashboardPanel } from '@/composables/useDashboardPanels'
@@ -316,6 +388,13 @@ import ProjectEditor from '@/components/project/ProjectEditor.vue'
 import ProjectSettings from '@/components/project/ProjectSettings.vue'
 import type { Project, Membership, User, ChartDataPoint } from '@/types/project.types'
 import type { PegelTimeseries, PegelTimeseriesMeta } from '@/composables/useDataFetcher'
+
+// locales
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
+const theme = useTheme()
+const isDark = computed(() => theme.global.current.value.dark)
 
 const router = useRouter()
 const route = useRoute()
@@ -344,7 +423,7 @@ const editPanel = (panelId: string) => {
 }
 
 const handleDeletePanel = async (panelId: string) => {
-  if (confirm('Are you sure you want to delete this panel?')) {
+  if (confirm(t('projectDetails.confirmations.deletePanel'))) {
     await deletePanelFromProject(panelId)
     await refreshPanels()
   }
@@ -355,7 +434,7 @@ const handleDuplicatePanel = async (panel: DashboardPanel) => {
   const duplicatedPanel: DashboardPanel = {
     ...panel,
     id: Date.now().toString(), // Generate new unique ID
-    title: `${panel.title} (Copy)`,
+    title: `${panel.title} ${t('projectDetails.labels.copySuffix')}`,
     chartOptions: { ...panel.chartOptions },
     queryConfig: panel.queryConfig ? { ...panel.queryConfig } : undefined,
   }
@@ -420,7 +499,11 @@ const buildPegelChartOptions = (
   if (!qc || qc.sourceType !== 'PEGEL') return base
 
   const defaultTitle =
-    qc.timeseries === 'W' ? 'Water Level' : qc.timeseries === 'Q' ? 'Discharge' : 'Temperature'
+    qc.timeseries === 'W'
+      ? t('projectDetails.chartTitles.W')
+      : qc.timeseries === 'Q'
+        ? t('projectDetails.chartTitles.Q')
+        : t('projectDetails.chartTitles.T')
 
   const defaultUnit = qc.timeseries === 'W' ? 'cm' : qc.timeseries === 'Q' ? 'm³/s' : '°C'
 
@@ -440,7 +523,7 @@ const buildPegelChartOptions = (
     title: { text: titleText },
     subtitle: { text: subtitleText },
     axes: [
-      { type: 'time', position: 'bottom', title: { text: 'Time' } },
+      { type: 'time', position: 'bottom', title: { text: t('projectDetails.chartLabels.time') } },
       {
         type: 'number',
         position: 'left',
@@ -462,7 +545,10 @@ const buildPegelChartOptions = (
         strokeWidth: 2,
         tooltip: {
           renderer: ({ datum }: { datum: ChartDataPoint }) => ({
-            title: datum.time instanceof Date ? datum.time.toLocaleString() : 'Time',
+            title:
+              datum.time instanceof Date
+                ? datum.time.toLocaleString()
+                : t('projectDetails.chartLabels.time'),
             content: `${datum.value} ${unitText}`,
           }),
         },
