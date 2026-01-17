@@ -52,7 +52,8 @@
     "panelOptions": "Panel Options",
     "panelTitle": "Panel Title",
     "noDataAvailable": "No data available",
-    "noDataMessage": "Station and Timeseries"
+    "noDataMessage": "Station and Timeseries",
+    "customDays": "Custom Days"
   },
   "timeseries": {
     "W": "Water Level",

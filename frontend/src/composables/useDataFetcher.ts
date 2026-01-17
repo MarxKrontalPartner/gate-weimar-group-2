@@ -16,6 +16,7 @@ export type QueryConfig =
       sourceType: 'STATIC_JSON' | 'REST_API'
       url: string
       mapping: { x: string; y: string }
+      filterDays?: number // Optional: filter data to last N days
     }
 
 export interface PegelTimeseriesMeta {
@@ -103,11 +104,20 @@ export function useDataFetcher() {
         const res = await axios.get<ApiDataItem[]>(dynamicUrl)
         rawData = res.data
       }
-
-      return rawData.map((item) => ({
+      // Map to ChartDataPoint
+      let points = rawData.map((item) => ({
         time: new Date(String(item[config.mapping.x])),
         value: Number(item[config.mapping.y]),
       }))
+
+      // Filter by filterDays if specified
+      if (config.filterDays && config.filterDays > 0) {
+        const now = new Date()
+        const cutoffDate = new Date(now.getTime() - config.filterDays * 24 * 60 * 60 * 1000)
+        points = points.filter((p) => p.time >= cutoffDate)
+      }
+
+      return points
     } catch (err: unknown) {
       console.error('Data Fetch Error:', err)
       error.value = err instanceof Error ? err.message : 'Failed to fetch data'

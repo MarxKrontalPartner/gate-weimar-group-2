@@ -52,7 +52,8 @@
     "panelOptions": "Panel-Optionen",
     "panelTitle": "Panel-Titel",
     "noDataAvailable": "Keine Daten verfügbar",
-    "noDataMessage": "Station und Zeitreihe"
+    "noDataMessage": "Station und Zeitreihe",
+    "customDays": "Benutzerdefinierte Tage"
   },
   "timeseries": {
     "W": "Wasserstand",
