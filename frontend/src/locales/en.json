@@ -1,0 +1,216 @@
+{
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "button" : "Login",
+    "noaccount": "Don't have an account? ",
+    "signup": "Sign up"
+  },
+
+  "appBar": {
+    "accountMenu": {
+      "logout": "Logout"
+    }
+  },
+
+  "signup": {
+    "title": "Sign Up",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "button" : "Create Account",
+    "haveaccount": "Already have an account? ",
+    "login": "Login"
+  },
+
+  "navigationdrawer" : {
+    "monitoring": "Monitoring",
+    "channels": "Channels",
+    "settings": "Settings",
+    "dashboard": "Dashboard"
+  },
+
+    "panelEditor": {
+    "untitledPanel": "Untitled Panel",
+    "loadingData": "Loading data...",
+    "updatePanel": "Update Panel",
+    "applyToDashboard": "Apply to Dashboard",
+    "river": "River",
+    "searchRiver": "Type river name (water)...",
+    "selectRiverFirst": "Select a station (by name) or enter a UUID after filtering by river.",
+    "searchStation": "Search Station",
+    "searchStationPlaceholder": "Type station shortname...",
+    "station": "Station",
+    "selectStation": "Select station...",
+    "selected": "Selected:",
+    "uuid": "UUID",
+    "uuidPlaceholder": "Enter station UUID",
+    "timeseries": "Timeseries",
+    "period": "Period",
+    "visualization": "Visualization",
+    "panelOptions": "Panel Options",
+    "panelTitle": "Panel Title",
+    "noDataAvailable": "No data available",
+    "noDataMessage": "Station and Timeseries"
+  },
+  "timeseries": {
+    "W": "Water Level",
+    "Q": "Discharge",
+    "T": "Temperature"
+  },
+  "periods": {
+    "P1D": "1 day",
+    "P3D": "3 days",
+    "P7D": "7 days",
+    "P14D": "14 days",
+    "P30D": "30 days"
+  },
+
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+
+  "_comment": "DashboardView translations",
+  "dashboard": {
+    "owner": "Owner",
+    "newProject": "New Project",
+    "createProject": "Create Project",
+    "projectNamePlaceholder": "Project name",
+    "createButton": "Create"
+  },
+
+    "projectDetails": {
+    "tabs": {
+      "viewer": "Viewer",
+      "editor": "Editor",
+      "members": "Members",
+      "settings": "Settings"
+    },
+    "buttons": {
+      "addPanel": "Add Panel",
+      "createFirstPanel": "Create First Panel"
+    },
+    "messages": {
+      "noPanels": "No panels to display. Switch to Editor mode to add one."
+    },
+    "confirmations": {
+      "deletePanel": "Are you sure you want to delete this panel?"
+    },
+    "labels": {
+      "station": "Station",
+      "river": "River",
+      "timeseries": "Timeseries",
+      "copySuffix": "(Copy)" 
+    },
+    "chartTitles": {
+      "W": "Water Level",
+      "Q": "Discharge", 
+      "T": "Temperature"
+    },
+    
+    "chartLabels": {
+      "time": "Time"
+    },
+    "tooltips": {
+      "editPanel": "Edit Panel",
+      "duplicatePanel": "Duplicate Panel",
+      "deletePanel": "Delete Panel"
+    },
+        "settings": {
+      "sections": {
+        "rename": "Rename Project",
+        "members": "Project Members",
+        "delete": "Delete Project"
+      },
+      
+      "searchPlaceholder": "Search username...",
+      
+      "table": {
+        "username": "Username",
+        "role": "Role",
+        "actions": "Actions"
+      },
+      
+      "roles": {
+        "owner": "Owner",
+        "editor": "Editor",
+        "viewer": "Viewer"
+      },
+      
+      "buttons": {
+        "save": "Save",
+        "addAsViewer": "Add as viewer",
+        "remove": "Remove",
+        "deleteProject": "Delete Project Permanently",
+        "cancel": "Cancel",
+        "delete": "Delete"
+      },
+      
+      "deleteModal": {
+        "title": "Confirm Project Deletion",
+        "confirmMessage": "To confirm deletion, please type the project name:",
+        "inputPlaceholder": "Type project name here"
+      }
+    }
+  },
+  
+    "channels": {
+    "title": "Channels",
+    "description": "Select a station and one available reading (W, Q, or T). Optionally filter by river.",
+    "selectByRiver": "Select by river",
+    "visualizeButton": "Visualize",
+    "stationLabel": "Station",
+    "searchStationPlaceholder": "Search station by name...",
+    "selectedLabel": "Selected",
+    "loadingStations": "Loading stations…",
+    "noStationsFound": "No stations found.",
+    "availableLabel": "Available:",
+    
+    "riversTitle": "Rivers",
+    "searchRiverPlaceholder": "Search river…",
+    "allRiversButton": "All rivers",
+    
+    "errors": {
+      "readingNotAvailable": "Selected reading is not available for this station. Please pick an available one.",
+      "readingNotAvailableShort": "That reading is not available for this station.",
+      "selectStationAndReading": "Please select a station and one available reading (W, Q, or T).",
+      "noValidStations": "Stations file loaded but no valid rows found. Ensure rows contain at least shortname + uuid.",
+      "failedToLoadStations": "Failed to load stations from /public. Add stations.json or stations.xlsx (or inside /public/stations/)."
+    }
+  },
+
+  "settings": {
+    "title": "Settings",
+    "tabs": {
+      "general": "General",
+      "users": "Users",
+      "security": "Security"
+    },
+    "general": {
+      "title": "General",
+      "language": "Language",
+      "theme": "Theme"
+    },
+    "languages": {
+      "english": "English",
+      "german": "German"
+    },
+    "themes": {
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "users": {
+      "title": "Users",
+      "description": "Control who can access the application."
+    },
+    "security": {
+      "title": "Security",
+      "description": "Manage login and security preferences."
+    },
+    "buttons": {
+      "save": "Save"
+    }
+  }
+}

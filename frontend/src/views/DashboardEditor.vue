@@ -8,7 +8,7 @@
         >
           <div class="flex items-center gap-2">
             <span class="text-lg font-medium text-gray-700">{{
-              panelTitle || 'Untitled Panel'
+              panelTitle ||  $t('panelEditor.untitledPanel')
             }}</span>
             <v-chip size="x-small" variant="outlined" class="ml-2">Draft</v-chip>
           </div>
@@ -18,14 +18,14 @@
               class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition"
               type="button"
             >
-              Cancel
+              {{ $t('common.cancel') }}
             </button>
             <button
               @click="handleApply"
               class="px-4 py-2 text-sm font-medium bg-blue-700 text-white rounded shadow-sm hover:bg-blue-800 transition"
               type="button"
             >
-              {{ isEditMode ? 'Update Panel' : 'Apply to Dashboard' }}
+              {{ isEditMode ? $t('panelEditor.updatePanel') : $t('panelEditor.applyToDashboard') }}
             </button>
           </div>
         </div>
@@ -44,7 +44,7 @@
                   v-if="isLoadingData"
                   class="absolute inset-0 bg-white/80 z-10 flex items-center justify-center"
                 >
-                  <span class="text-blue-600 font-medium">Loading Data...</span>
+                  <span class="text-blue-600 font-medium">{{ $t('panelEditor.loadingData') }}</span>
                 </div>
 
                 <!-- Chart OR No Data Message -->
@@ -55,10 +55,13 @@
 
                   <template v-else>
                     <div class="text-center text-gray-500 px-6">
-                      <p class="text-sm font-medium">No data available</p>
+                      <p class="text-sm font-medium">{{ $t('panelEditor.noDataAvailable') }}</p>
                       <p class="text-xs mt-1">
                         <strong>{{ selectedStationName || pegelStation }}</strong>
-                        and timeseries <strong>{{ pegelTimeseries }}</strong>
+                              {{ $t('panelEditor.noDataMessage', { 
+                                station: selectedStationName || pegelStation, 
+                                timeseries: pegelTimeseries 
+                              }) }}
                       </p>
                     </div>
                   </template>
@@ -71,25 +74,25 @@
               <div class="grid grid-cols-12 gap-6">
                 <!-- River search (water field in JSON) -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">River</label>
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">{{ $t('panelEditor.river') }}</label>
                   <v-text-field
                     v-model="riverSearch"
                     density="compact"
                     variant="outlined"
                     hide-details
                     clearable
-                    placeholder="Type river name (water)..."
+                    :placeholder="$t('panelEditor.searchRiver')"
                     @click:clear="clearRiverSearch"
                   />
                   <p v-if="riverNeedsStationSelection" class="text-xs text-red-600 mt-1">
-                    Select a station (by name) or enter a UUID after filtering by river.
+                    {{ $t('panelEditor.selectRiverFirst') }}
                   </p>
                 </div>
 
                 <!-- Station search (separate input) -->
                 <div class="col-span-4">
                   <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
-                    Search Station
+                    {{ $t('panelEditor.searchStation') }}
                   </label>
                   <v-text-field
                     v-model="stationSearch"
@@ -97,7 +100,7 @@
                     variant="outlined"
                     hide-details
                     clearable
-                    placeholder="Type station shortname..."
+                    :placeholder="$t('panelEditor.searchStationPlaceholder')"
                     @click:clear="clearStationSearch"
                   />
                 </div>
@@ -105,7 +108,7 @@
                 <!-- Station dropdown (must always show shortname, not UUID) -->
                 <div class="col-span-4">
                   <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                    >Station</label
+                    >{{ $t('panelEditor.station') }}</label
                   >
                   <v-autocomplete
                     v-model="selectedStationUuid"
@@ -116,37 +119,33 @@
                     variant="outlined"
                     hide-details
                     clearable
-                    placeholder="Select station..."
+                    :placeholder="$t('panelEditor.selectStation')"
                   />
                   <div v-if="selectedStationName" class="text-xs text-gray-500 mt-1">
-                    Selected: <span class="font-medium">{{ selectedStationName }}</span>
+                    {{ $t('panelEditor.selected') }} <span class="font-medium">{{ selectedStationName }}</span>
                   </div>
                 </div>
 
                 <!-- UUID input -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">UUID</label>
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">{{ $t('panelEditor.uuid') }}</label>
                   <v-text-field
                     v-model="stationUuidInput"
                     density="compact"
                     variant="outlined"
                     hide-details
-                    placeholder="Enter station UUID"
+                    :placeholder="$t('panelEditor.uuidPlaceholder')"
                   />
                 </div>
 
                 <!-- Timeseries -->
                 <div class="col-span-4">
                   <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
-                    Timeseries
+                    {{ $t('panelEditor.timeseries') }}
                   </label>
                   <v-select
                     v-model="pegelTimeseries"
-                    :items="[
-                      { title: 'W (Water Level)', value: 'W' },
-                      { title: 'Q (Discharge)', value: 'Q' },
-                      { title: 'T (Temperature)', value: 'T' },
-                    ]"
+                    :items="timeseriesOptions"
                     item-title="title"
                     item-value="value"
                     density="compact"
@@ -157,16 +156,10 @@
 
                 <!-- Period -->
                 <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Period</label>
+                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">{{ $t('panelEditor.period') }}</label>
                   <v-select
                     v-model="pegelPeriod"
-                    :items="[
-                      { title: '1 day', value: 'P1D' },
-                      { title: '3 days', value: 'P3D' },
-                      { title: '7 days', value: 'P7D' },
-                      { title: '14 days', value: 'P14D' },
-                      { title: '30 days', value: 'P30D' },
-                    ]"
+                    :items="periodOptions"
                     item-title="title"
                     item-value="value"
                     density="compact"
@@ -186,7 +179,7 @@
           >
             <div class="p-4 border-b border-gray-100">
               <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
-                Visualization
+                {{ $t('panelEditor.visualization') }}
               </h3>
               <div class="grid grid-cols-2 gap-2">
                 <div
@@ -216,10 +209,10 @@
 
             <div class="p-4 border-b border-gray-100">
               <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
-                Panel Options
+                {{ $t('panelEditor.panelOptions') }}
               </h3>
               <div class="mb-4">
-                <label class="text-xs text-gray-500 mb-1 block">Panel Title</label>
+                <label class="text-xs text-gray-500 mb-1 block">{{ $t('panelEditor.panelTitle') }}</label>
                 <v-text-field
                   v-model="panelTitle"
                   density="compact"
@@ -243,6 +236,8 @@ import { createChartConfig } from '@/utils/chartFactory'
 import { useDashboardPanels } from '@/composables/useDashboardPanels'
 import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
 
+import { useI18n } from 'vue-i18n'
+
 import type { ChartDataPoint } from '@/types/project.types'
 import type {
   PegelPeriod,
@@ -263,6 +258,8 @@ const pegelMeta = ref<PegelTimeseriesMeta | null>(null)
 const router = useRouter()
 const route = useRoute()
 const { fetchData, loading: isLoadingData } = useDataFetcher()
+
+const { t, locale } = useI18n()
 
 /**
  * ✅ NEW: type guards for query params (keeps TS + lint happy)
@@ -410,6 +407,22 @@ const clearRiverSearch = (): void => {
 
 // Prevent watcher ping-pong loops
 const isSyncingStation = ref(false)
+
+// Computed properties for i18n dropdown options
+const timeseriesOptions = computed(() => [
+  { title: t('timeseries.W'), value: 'W' },
+  { title: t('timeseries.Q'), value: 'Q' },
+  { title: t('timeseries.T'), value: 'T' },
+])
+
+const periodOptions = computed(() => [
+  { title: t('periods.P1D'), value: 'P1D' },
+  { title: t('periods.P3D'), value: 'P3D' },
+  { title: t('periods.P7D'), value: 'P7D' },
+  { title: t('periods.P14D'), value: 'P14D' },
+  { title: t('periods.P30D'), value: 'P30D' },
+])
+
 
 const applyStationSelection = (uuid: string): void => {
   const id = uuid.trim()

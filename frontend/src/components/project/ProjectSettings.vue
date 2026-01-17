@@ -2,13 +2,14 @@
   <div class="space-y-10">
     <!-- =========== 1. RENAME PROJECT =========== -->
     <section>
-      <h2 class="text-lg font-semibold mb-3">Rename Project</h2>
+      <h2 class="text-lg font-semibold mb-3">{{ $t('projectDetails.settings.sections.rename') }}</h2>
 
       <div class="flex gap-3">
         <!-- RENAME INPUT -->
         <input
           :value="projectName"
           @input="emit('update:projectName', ($event.target as HTMLInputElement).value)"
+          :placeholder="$t('projectDetails.settings.projectNamePlaceholder')"
           class="px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-800 w-64"
         />
 
@@ -22,21 +23,21 @@
               : 'bg-gray-400 cursor-not-allowed'
           "
         >
-          Save
+          {{ $t('projectDetails.settings.buttons.save') }}
         </button>
       </div>
     </section>
 
     <!-- =========== 2. USER MANAGEMENT =========== -->
     <section>
-      <h2 class="text-lg font-semibold mb-3">Project Members</h2>
+      <h2 class="text-lg font-semibold mb-3">{{ $t('projectDetails.settings.sections.members') }}</h2>
 
       <div class="max-w-md">
         <!-- SEARCH INPUT -->
         <input
           :value="userSearch"
           @input="onInput"
-          placeholder="Search username..."
+          :placeholder="$t('projectDetails.settings.searchPlaceholder')"
           class="w-full px-3 py-2 rounded-md bg-white border border-gray-300 text-gray-800"
         />
 
@@ -65,7 +66,7 @@
               : 'bg-gray-400 cursor-not-allowed'
           "
         >
-          Add as viewer
+          {{ $t('projectDetails.settings.buttons.addAsViewer') }}
         </button>
       </div>
 
@@ -73,9 +74,9 @@
       <table class="w-full mt-6 border-collapse">
         <thead>
           <tr class="text-left border-b border-gray-300">
-            <th class="py-2">Username</th>
-            <th class="py-2">Role</th>
-            <th v-if="isEditor" class="py-2">Actions</th>
+            <th class="py-2">{{ $t('projectDetails.settings.table.username') }}</th>
+            <th class="py-2">{{ $t('projectDetails.settings.table.role') }}</th>
+            <th v-if="isEditor" class="py-2">{{ $t('projectDetails.settings.table.actions') }}</th>
           </tr>
         </thead>
 
@@ -84,7 +85,7 @@
             <td class="py-2">{{ m.user.username }}</td>
 
             <td class="py-2">
-              <span v-if="m.user.id === project.owner.id"> Owner </span>
+              <span v-if="m.user.id === project.owner.id"> {{ $t('projectDetails.settings.roles.owner') }} </span>
 
               <select
                 v-else-if="isEditor"
@@ -92,8 +93,8 @@
                 @change="changeRole(m)"
                 class="bg-white border border-gray-300 text-gray-800 rounded-md px-2 py-1"
               >
-                <option value="editor">Editor</option>
-                <option value="viewer">Viewer</option>
+                <option value="editor">{{ $t('projectDetails.settings.roles.editor') }}</option>
+                <option value="viewer">{{ $t('projectDetails.settings.roles.viewer') }}</option>
               </select>
             </td>
 
@@ -108,7 +109,7 @@
                 :disabled="m.user.id === project.owner.id"
                 @click="removeMember(m)"
               >
-                Remove
+                {{ $t('projectDetails.settings.buttons.remove') }}
               </button>
             </td>
           </tr>
@@ -118,12 +119,12 @@
 
     <!-- =========== 3. DELETE PROJECT =========== -->
     <section v-if="isOwner">
-      <h2 class="text-lg font-semibold mb-3 text-red-600">Delete Project</h2>
+      <h2 class="text-lg font-semibold mb-3 text-red-600">{{ $t('projectDetails.settings.sections.delete') }}</h2>
       <button
         @click="emit('update:showDeleteModal', true)"
         class="px-4 py-2 bg-red-700 text-white rounded-md hover:bg-red-800"
       >
-        Delete Project Permanently
+        {{ $t('projectDetails.settings.buttons.deleteProject') }}
       </button>
     </section>
 
@@ -133,9 +134,9 @@
       class="fixed inset-0 bg-gray-500/30 flex items-center justify-center z-50"
     >
       <div class="bg-white p-6 rounded-lg w-96 shadow-xl">
-        <h2 class="text-lg font-semibold text-red-600 mb-4">Confirm Project Deletion</h2>
+        <h2 class="text-lg font-semibold text-red-600 mb-4">{{ $t('projectDetails.settings.deleteModal.title') }}</h2>
 
-        <p class="text-sm mb-3">To confirm deletion, please type the project name:</p>
+        <p class="text-sm mb-3">{{ $t('projectDetails.settings.deleteModal.confirmMessage') }}</p>
 
         <p class="text-sm font-semibold mb-3">"{{ projectName }}"</p>
 
@@ -151,7 +152,7 @@
             @click="emit('update:showDeleteModal', false)"
             class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
           >
-            Cancel
+            {{ $t('projectDetails.settings.buttons.cancel') }}
           </button>
 
           <button
@@ -164,7 +165,7 @@
                 : 'bg-red-400 cursor-not-allowed'
             "
           >
-            Delete
+            {{ $t('projectDetails.settings.buttons.delete') }}
           </button>
         </div>
       </div>

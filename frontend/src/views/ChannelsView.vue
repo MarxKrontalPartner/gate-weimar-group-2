@@ -5,15 +5,15 @@
         <div class="p-8 h-full flex flex-col gap-6">
           <div class="flex items-start justify-between gap-4">
             <div>
-              <h1 class="text-2xl font-semibold">Channels</h1>
+              <h1 class="text-2xl font-semibold">{{ $t('channels.title') }}</h1>
               <p class="text-sm text-gray-600 mt-1">
-                Select a station and one available reading (W, Q, or T). Optionally filter by river.
+                {{ $t('channels.description') }}
               </p>
             </div>
 
             <div class="flex items-center gap-4">
               <div class="flex items-center gap-2">
-                <span class="text-sm text-gray-700">Select by river</span>
+                <span class="text-sm text-gray-700">{{ $t('channels.selectByRiver') }}</span>
                 <v-switch v-model="selectByRiver" density="compact" hide-details inset />
               </div>
 
@@ -23,7 +23,7 @@
                 @click="handleVisualize"
                 type="button"
               >
-                Visualize
+                {{ $t('channels.visualizeButton') }}
               </button>
             </div>
           </div>
@@ -32,19 +32,19 @@
           <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex-1 min-h-0">
             <div class="flex items-center justify-between gap-4 flex-wrap">
               <div class="min-w-[260px] flex-1">
-                <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Station</label>
+                <label class="text-xs font-bold text-gray-500 uppercase block mb-2">{{ $t('channels.stationLabel') }}</label>
                 <v-text-field
                   v-model="stationSearch"
                   density="compact"
                   variant="outlined"
                   hide-details
                   clearable
-                  placeholder="Search station by name..."
+                  :placeholder="$t('channels.searchStationPlaceholder')"
                 />
               </div>
 
               <div class="min-w-[260px]">
-                <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Selected</label>
+                <label class="text-xs font-bold text-gray-500 uppercase block mb-2">{{ $t('channels.selectedLabel') }}</label>
 
                 <!-- River + Station + Reading -->
                 <div class="text-sm text-gray-700">
@@ -60,10 +60,10 @@
             </div>
 
             <div class="mt-5 h-[calc(100%-88px)] overflow-y-auto pr-1">
-              <div v-if="loading" class="text-sm text-gray-600">Loading stations…</div>
+              <div v-if="loading" class="text-sm text-gray-600">{{ $t('channels.loadingStations') }}</div>
 
               <div v-else-if="filteredStations.length === 0" class="text-sm text-gray-600">
-                No stations found.
+                {{ $t('channels.noStationsFound') }}
               </div>
 
               <!-- SMALLER + CENTERED GRID + UP TO 5 COLUMNS -->
@@ -127,14 +127,14 @@
         >
           <div class="p-5">
             <div class="flex items-center justify-between">
-              <h2 class="text-sm font-semibold text-gray-900">Rivers</h2>
+              <h2 class="text-sm font-semibold text-gray-900">{{ $t('channels.riversTitle') }}</h2>
 
               <button
                 class="text-sm text-gray-600 hover:text-gray-900"
                 type="button"
                 @click="riverDrawer = false"
               >
-                Close
+                {{ $t('common.close') }}
               </button>
             </div>
 
@@ -145,7 +145,7 @@
                 variant="outlined"
                 hide-details
                 clearable
-                placeholder="Search river…"
+                :placeholder="$t('channels.searchRiverPlaceholder')"
               />
             </div>
 
@@ -158,7 +158,7 @@
                 type="button"
                 @click="selectRiver('')"
               >
-                All rivers
+                {{ $t('channels.allRiversButton') }}
               </button>
             </div>
 
@@ -190,6 +190,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 type PegelTimeseries = 'W' | 'Q' | 'T'
 
@@ -203,6 +204,8 @@ type StationRow = {
 }
 
 const router = useRouter()
+
+const { t } = useI18n()
 
 const loading = ref(false)
 const stations = ref<StationRow[]>([])
@@ -492,7 +495,7 @@ const handleStationClick = (uuid: string): void => {
     if (!ok) {
       selectedTimeseries.value = ''
       selectionError.value =
-        'Selected reading is not available for this station. Please pick an available one.'
+        t('channels.errors.readingNotAvailable')
       vibrate(uuid)
     }
   }
@@ -505,7 +508,7 @@ const handleTimeseriesPick = (uuid: string, ts: PegelTimeseries, isAvailable: bo
   selectedStationUuid.value = uuid
 
   if (!isAvailable) {
-    selectionError.value = 'That reading is not available for this station.'
+    selectionError.value = t('channels.errors.readingNotAvailableShort')
     vibrate(uuid)
     return
   }
@@ -529,7 +532,7 @@ const handleVisualize = (): void => {
 
   if (!st || !ts) {
     if (st) vibrate(st.uuid)
-    selectionError.value = 'Please select a station and one available reading (W, Q, or T).'
+    selectionError.value = t('channels.errors.selectStationAndReading')
     return
   }
 
@@ -551,12 +554,12 @@ onMounted(async () => {
     stations.value = await loadStationsFromPublic()
     if (stations.value.length === 0) {
       selectionError.value =
-        'Stations file loaded but no valid rows found. Ensure rows contain at least shortname + uuid.'
+         t('channels.errors.noValidStations')
     }
   } catch (e) {
     console.warn(e)
     selectionError.value =
-      'Failed to load stations from /public. Add stations.json or stations.xlsx (or inside /public/stations/).'
+      t('channels.errors.failedToLoadStations')
     stations.value = []
   } finally {
     loading.value = false

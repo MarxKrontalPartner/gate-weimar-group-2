@@ -25,7 +25,7 @@
               class="cursor-pointer bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center justify-center hover:bg-gray-100 transition"
             >
               <div class="text-4xl font-light text-indigo-600">+</div>
-              <p class="mt-2 text-gray-600">New Project</p>
+              <p class="mt-2 text-gray-600">{{ $t('dashboard.newProject') }}</p>
             </div>
           </div>
         </div>
@@ -36,11 +36,11 @@
   <!-- CREATE PROJECT MODAL -->
   <div v-if="showCreate" class="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
     <div class="bg-white p-6 w-full max-w-md rounded-xl shadow-xl">
-      <h2 class="text-xl font-semibold mb-4">Create Project</h2>
+      <h2 class="text-xl font-semibold mb-4">{{ $t('dashboard.createProject') }}</h2>
 
       <input
         v-model="newProjectName"
-        placeholder="Project name"
+        :placeholder="$t('dashboard.projectNamePlaceholder')"
         class="w-full px-4 py-2 border border-gray-200 rounded-lg mb-4 focus:ring focus:ring-indigo-300"
       />
 
@@ -51,7 +51,7 @@
           @click="closeModal"
           class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 hover:shadow-md transition-all duration-200"
         >
-          Cancel
+          {{ $t('common.cancel') }}
         </button>
         <button
           @click="createProject"
@@ -63,7 +63,7 @@
               : 'bg-gray-400 cursor-not-allowed'
           "
         >
-          Create
+          {{ $t('dashboard.createButton') }}
         </button>
       </div>
     </div>

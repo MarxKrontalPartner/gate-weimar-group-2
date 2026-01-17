@@ -21,7 +21,7 @@
                     : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Viewer
+                {{ $t('projectDetails.tabs.viewer') }}
               </button>
 
               <!-- 2. Editor Tab -->
@@ -35,7 +35,7 @@
                     : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Editor
+                {{ $t('projectDetails.tabs.editor') }}
               </button>
 
               <!-- 3. Settings Tab -->
@@ -49,7 +49,7 @@
                     : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                 "
               >
-                Settings
+                {{ $t('projectDetails.tabs.settings') }}
               </button>
             </div>
           </div>
@@ -60,7 +60,7 @@
               @click="goToChartEditor"
               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-2"
             >
-              <span>+</span> Add Panel
+              <span>+</span> {{ $t('projectDetails.buttons.addPanel') }}
             </button>
           </div>
         </header>
@@ -74,7 +74,7 @@
               class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50"
             >
               <div class="text-gray-400 mb-4">
-                No panels to display. Switch to Editor mode to add one.
+                {{ $t('projectDetails.messages.noPanels') }}
               </div>
             </div>
 
@@ -109,17 +109,17 @@
 
                     <div class="text-xs leading-5">
                       <div>
-                        <span class="font-medium">Station:</span>
+                        <span class="font-medium">{{ $t('projectDetails.labels.station') }}:</span>
                         {{ getPanelInfo(panel).stationName }}
                       </div>
                       <div>
                         <span class="font-medium">UUID:</span> {{ getPanelInfo(panel).uuid }}
                       </div>
                       <div>
-                        <span class="font-medium">River:</span> {{ getPanelInfo(panel).river }}
+                        <span class="font-medium">{{ $t('projectDetails.labels.river') }}:</span> {{ getPanelInfo(panel).river }}
                       </div>
                       <div>
-                        <span class="font-medium">Timeseries:</span>
+                        <span class="font-medium">{{ $t('projectDetails.labels.timeseries') }}:</span>
                         {{ getPanelInfo(panel).timeseries }}
                       </div>
                     </div>
@@ -166,7 +166,7 @@
 
                       <div class="text-xs leading-5">
                         <div>
-                          <span class="font-medium">Station:</span>
+                          <span class="font-medium">{{ $t('projectDetails.labels.station') }}:</span>
                           {{ getPanelInfo(expandedPanel).stationName }}
                         </div>
                         <div>
@@ -174,11 +174,11 @@
                           {{ getPanelInfo(expandedPanel).uuid }}
                         </div>
                         <div>
-                          <span class="font-medium">River:</span>
+                          <span class="font-medium">{{ $t('projectDetails.labels.river') }}:</span>
                           {{ getPanelInfo(expandedPanel).river }}
                         </div>
                         <div>
-                          <span class="font-medium">Timeseries:</span>
+                          <span class="font-medium">{{ $t('projectDetails.labels.timeseries') }}:</span>
                           {{ getPanelInfo(expandedPanel).timeseries }}
                         </div>
                       </div>
@@ -214,7 +214,7 @@
               v-if="panels.length === 0"
               class="flex flex-col items-center justify-center h-96 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50"
             >
-              <v-btn color="primary" @click="goToChartEditor">Create First Panel</v-btn>
+              <v-btn color="primary" @click="goToChartEditor">{{ $t('projectDetails.buttons.createFirstPanel') }}</v-btn>
             </div>
 
             <!-- Editable Grid -->
@@ -231,21 +231,21 @@
                   <button
                     @click="editPanel(panel.id)"
                     class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-blue-600"
-                    title="Edit Panel"
+                    :title="$t('projectDetails.tooltips.editPanel')"
                   >
                     <v-icon icon="mdi-pencil" size="small"></v-icon>
                   </button>
                   <button
                     @click="handleDuplicatePanel(panel)"
                     class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-green-600"
-                    title="Duplicate Panel"
+                    :title="$t('projectDetails.tooltips.duplicatePanel')"
                   >
                     <v-icon icon="mdi-content-copy" size="small"></v-icon>
                   </button>
                   <button
                     @click="handleDeletePanel(panel.id)"
                     class="p-1.5 hover:bg-gray-100 rounded text-gray-600 hover:text-red-600"
-                    title="Delete Panel"
+                    :title="$t('projectDetails.tooltips.deletePanel')"
                   >
                     <v-icon icon="mdi-trash-can-outline" size="small"></v-icon>
                   </button>
@@ -317,6 +317,10 @@ import ProjectSettings from '@/components/project/ProjectSettings.vue'
 import type { Project, Membership, User, ChartDataPoint } from '@/types/project.types'
 import type { PegelTimeseries, PegelTimeseriesMeta } from '@/composables/useDataFetcher'
 
+// locales
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 const router = useRouter()
 const route = useRoute()
 const { fetchData } = useDataFetcher()
@@ -344,7 +348,7 @@ const editPanel = (panelId: string) => {
 }
 
 const handleDeletePanel = async (panelId: string) => {
-  if (confirm('Are you sure you want to delete this panel?')) {
+  if (confirm(t('projectDetails.confirmations.deletePanel'))) {
     await deletePanelFromProject(panelId)
     await refreshPanels()
   }
@@ -355,7 +359,7 @@ const handleDuplicatePanel = async (panel: DashboardPanel) => {
   const duplicatedPanel: DashboardPanel = {
     ...panel,
     id: Date.now().toString(), // Generate new unique ID
-    title: `${panel.title} (Copy)`,
+    title: `${panel.title} ${t('projectDetails.labels.copySuffix')}`,
     chartOptions: { ...panel.chartOptions },
     queryConfig: panel.queryConfig ? { ...panel.queryConfig } : undefined,
   }
@@ -420,7 +424,7 @@ const buildPegelChartOptions = (
   if (!qc || qc.sourceType !== 'PEGEL') return base
 
   const defaultTitle =
-    qc.timeseries === 'W' ? 'Water Level' : qc.timeseries === 'Q' ? 'Discharge' : 'Temperature'
+    qc.timeseries === 'W' ? t('projectDetails.chartTitles.W') : qc.timeseries === 'Q' ? t('projectDetails.chartTitles.Q') : t('projectDetails.chartTitles.T')
 
   const defaultUnit = qc.timeseries === 'W' ? 'cm' : qc.timeseries === 'Q' ? 'm³/s' : '°C'
 
@@ -440,7 +444,7 @@ const buildPegelChartOptions = (
     title: { text: titleText },
     subtitle: { text: subtitleText },
     axes: [
-      { type: 'time', position: 'bottom', title: { text: 'Time' } },
+      { type: 'time', position: 'bottom', title: { text: t('projectDetails.chartLabels.time') } },
       {
         type: 'number',
         position: 'left',
@@ -462,7 +466,7 @@ const buildPegelChartOptions = (
         strokeWidth: 2,
         tooltip: {
           renderer: ({ datum }: { datum: ChartDataPoint }) => ({
-            title: datum.time instanceof Date ? datum.time.toLocaleString() : 'Time',
+            title: datum.time instanceof Date ? datum.time.toLocaleString() : t('projectDetails.chartLabels.time'),
             content: `${datum.value} ${unitText}`,
           }),
         },
