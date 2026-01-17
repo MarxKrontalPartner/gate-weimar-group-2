@@ -17,6 +17,11 @@
           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
         />
 
+        <!-- Error Message -->
+        <p v-if="error" class="text-red-600 text-sm text-center bg-red-50 py-2 px-3 rounded-lg">
+          {{ error }}
+        </p>
+
         <button
           @click="login"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition"
@@ -36,5 +41,5 @@
 <script setup lang="ts">
 import { useLogin } from '@/composables/useLogin'
 
-const { username, password, login } = useLogin()
+const { username, password, error, login } = useLogin()
 </script>
