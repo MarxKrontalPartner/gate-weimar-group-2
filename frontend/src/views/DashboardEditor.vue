@@ -94,7 +94,9 @@
                 <template v-if="dataSourceType === 'PEGEL'">
                   <!-- River search (water field in JSON) -->
                   <div class="col-span-4">
-                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">River</label>
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                      >River</label
+                    >
                     <v-text-field
                       v-model="riverSearch"
                       density="compact"
@@ -109,94 +111,96 @@
                     </p>
                   </div>
 
-                <!-- Station search (separate input) -->
-                <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
-                    Search Station
-                  </label>
-                  <v-text-field
-                    v-model="stationSearch"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                    clearable
-                    placeholder="Type station shortname..."
-                    @click:clear="clearStationSearch"
-                  />
-                </div>
-
-                <!-- Station dropdown (must always show shortname, not UUID) -->
-                <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
-                    >Station</label
-                  >
-                  <v-autocomplete
-                    v-model="selectedStationUuid"
-                    :items="stationsForDropdown"
-                    item-title="shortname"
-                    item-value="uuid"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                    clearable
-                    placeholder="Select station..."
-                  />
-                  <div v-if="selectedStationName" class="text-xs text-gray-500 mt-1">
-                    Selected: <span class="font-medium">{{ selectedStationName }}</span>
+                  <!-- Station search (separate input) -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
+                      Search Station
+                    </label>
+                    <v-text-field
+                      v-model="stationSearch"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      clearable
+                      placeholder="Type station shortname..."
+                      @click:clear="clearStationSearch"
+                    />
                   </div>
-                </div>
 
-                <!-- UUID input -->
-                <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">UUID</label>
-                  <v-text-field
-                    v-model="stationUuidInput"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                    placeholder="Enter station UUID"
-                  />
-                </div>
+                  <!-- Station dropdown (must always show shortname, not UUID) -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                      >Station</label
+                    >
+                    <v-autocomplete
+                      v-model="selectedStationUuid"
+                      :items="stationsForDropdown"
+                      item-title="shortname"
+                      item-value="uuid"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      clearable
+                      placeholder="Select station..."
+                    />
+                    <div v-if="selectedStationName" class="text-xs text-gray-500 mt-1">
+                      Selected: <span class="font-medium">{{ selectedStationName }}</span>
+                    </div>
+                  </div>
 
-                <!-- Timeseries -->
-                <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
-                    Timeseries
-                  </label>
-                  <v-select
-                    v-model="pegelTimeseries"
-                    :items="[
-                      { title: 'W (Water Level)', value: 'W' },
-                      { title: 'Q (Discharge)', value: 'Q' },
-                      { title: 'T (Temperature)', value: 'T' },
-                    ]"
-                    item-title="title"
-                    item-value="value"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                  />
-                </div>
+                  <!-- UUID input -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">UUID</label>
+                    <v-text-field
+                      v-model="stationUuidInput"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      placeholder="Enter station UUID"
+                    />
+                  </div>
 
-                <!-- Period -->
-                <div class="col-span-4">
-                  <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Period</label>
-                  <v-select
-                    v-model="pegelPeriod"
-                    :items="[
-                      { title: '1 day', value: 'P1D' },
-                      { title: '3 days', value: 'P3D' },
-                      { title: '7 days', value: 'P7D' },
-                      { title: '14 days', value: 'P14D' },
-                      { title: '30 days', value: 'P30D' },
-                    ]"
-                    item-title="title"
-                    item-value="value"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                  />
-                </div>
+                  <!-- Timeseries -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
+                      Timeseries
+                    </label>
+                    <v-select
+                      v-model="pegelTimeseries"
+                      :items="[
+                        { title: 'W (Water Level)', value: 'W' },
+                        { title: 'Q (Discharge)', value: 'Q' },
+                        { title: 'T (Temperature)', value: 'T' },
+                      ]"
+                      item-title="title"
+                      item-value="value"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                    />
+                  </div>
+
+                  <!-- Period -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                      >Period</label
+                    >
+                    <v-select
+                      v-model="pegelPeriod"
+                      :items="[
+                        { title: '1 day', value: 'P1D' },
+                        { title: '3 days', value: 'P3D' },
+                        { title: '7 days', value: 'P7D' },
+                        { title: '14 days', value: 'P14D' },
+                        { title: '30 days', value: 'P30D' },
+                      ]"
+                      item-title="title"
+                      item-value="value"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                    />
+                  </div>
                 </template>
 
                 <!-- ========== JSON FILE FIELDS (shown when STATIC_JSON selected) ========== -->
@@ -708,12 +712,9 @@ watch(
 )
 
 // Watch JSON datasource fields
-watch(
-  [dataSourceType, jsonUrl, jsonMappingX, jsonMappingY],
-  () => {
-    void refreshPreview()
-  },
-)
+watch([dataSourceType, jsonUrl, jsonMappingX, jsonMappingY], () => {
+  void refreshPreview()
+})
 
 const chartOptions = computed(() => {
   const base = createChartConfig(selectedChart.value, panelTitle.value, previewData.value)
