@@ -3,35 +3,31 @@
     "title": "Login",
     "username": "Username",
     "password": "Password",
-    "button" : "Login",
+    "button": "Login",
     "noaccount": "Don't have an account? ",
     "signup": "Sign up"
   },
-
   "appBar": {
     "accountMenu": {
       "logout": "Logout"
     }
   },
-
   "signup": {
     "title": "Sign Up",
     "username": "Username",
     "password": "Password",
     "confirmPassword": "Confirm Password",
-    "button" : "Create Account",
+    "button": "Create Account",
     "haveaccount": "Already have an account? ",
     "login": "Login"
   },
-
-  "navigationdrawer" : {
+  "navigationdrawer": {
     "monitoring": "Monitoring",
     "channels": "Channels",
     "settings": "Settings",
     "dashboard": "Dashboard"
   },
-
-    "panelEditor": {
+  "panelEditor": {
     "untitledPanel": "Untitled Panel",
     "loadingData": "Loading data...",
     "updatePanel": "Update Panel",
@@ -66,12 +62,10 @@
     "P14D": "14 days",
     "P30D": "30 days"
   },
-
   "common": {
     "cancel": "Cancel",
     "close": "Close"
   },
-
   "_comment": "DashboardView translations",
   "dashboard": {
     "owner": "Owner",
@@ -80,8 +74,7 @@
     "projectNamePlaceholder": "Project name",
     "createButton": "Create"
   },
-
-    "projectDetails": {
+  "projectDetails": {
     "tabs": {
       "viewer": "Viewer",
       "editor": "Editor",
@@ -102,14 +95,13 @@
       "station": "Station",
       "river": "River",
       "timeseries": "Timeseries",
-      "copySuffix": "(Copy)" 
+      "copySuffix": "(Copy)"
     },
     "chartTitles": {
       "W": "Water Level",
-      "Q": "Discharge", 
+      "Q": "Discharge",
       "T": "Temperature"
     },
-    
     "chartLabels": {
       "time": "Time"
     },
@@ -118,27 +110,23 @@
       "duplicatePanel": "Duplicate Panel",
       "deletePanel": "Delete Panel"
     },
-        "settings": {
+    "settings": {
       "sections": {
         "rename": "Rename Project",
         "members": "Project Members",
         "delete": "Delete Project"
       },
-      
       "searchPlaceholder": "Search username...",
-      
       "table": {
         "username": "Username",
         "role": "Role",
         "actions": "Actions"
       },
-      
       "roles": {
         "owner": "Owner",
         "editor": "Editor",
         "viewer": "Viewer"
       },
-      
       "buttons": {
         "save": "Save",
         "addAsViewer": "Add as viewer",
@@ -147,7 +135,6 @@
         "cancel": "Cancel",
         "delete": "Delete"
       },
-      
       "deleteModal": {
         "title": "Confirm Project Deletion",
         "confirmMessage": "To confirm deletion, please type the project name:",
@@ -155,8 +142,7 @@
       }
     }
   },
-  
-    "channels": {
+  "channels": {
     "title": "Channels",
     "description": "Select a station and one available reading (W, Q, or T). Optionally filter by river.",
     "selectByRiver": "Select by river",
@@ -167,11 +153,9 @@
     "loadingStations": "Loading stations…",
     "noStationsFound": "No stations found.",
     "availableLabel": "Available:",
-    
     "riversTitle": "Rivers",
     "searchRiverPlaceholder": "Search river…",
     "allRiversButton": "All rivers",
-    
     "errors": {
       "readingNotAvailable": "Selected reading is not available for this station. Please pick an available one.",
       "readingNotAvailableShort": "That reading is not available for this station.",
@@ -180,9 +164,9 @@
       "failedToLoadStations": "Failed to load stations from /public. Add stations.json or stations.xlsx (or inside /public/stations/)."
     }
   },
-
   "settings": {
     "title": "Settings",
+    "description": "Configure your application preferences",
     "tabs": {
       "general": "General",
       "users": "Users",

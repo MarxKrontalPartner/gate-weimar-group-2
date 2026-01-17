@@ -22,6 +22,28 @@
       <v-icon class="text-primary">mdi-home-outline</v-icon>
     </v-btn>
 
+    <!-- LANGUAGE SWITCHER -->
+    <v-btn v-if="showMenuButton" icon color="background">
+      <v-icon class="text-primary">mdi-translate</v-icon>
+      <v-menu activator="parent">
+        <v-list density="compact">
+          <v-list-item
+            v-for="lang in languages"
+            :key="lang.code"
+            :value="lang.code"
+            :class="{ 'bg-blue-50': currentLanguage === lang.code }"
+            @click="changeLanguage(lang.code)"
+          >
+            <v-list-item-title class="flex items-center gap-2">
+              <span>{{ lang.flag }}</span>
+              <span>{{ lang.name }}</span>
+              <v-icon v-if="currentLanguage === lang.code" size="small" class="ml-auto text-blue-600">mdi-check</v-icon>
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </v-btn>
+
     <!-- ACCOUNT MENU (only show when authenticated) -->
     <v-btn v-if="showMenuButton" icon color="background">
       <v-icon class="text-primary">mdi-account-circle-outline</v-icon>
@@ -33,8 +55,10 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, onMounted } from 'vue'
 import { useTheme } from 'vuetify'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import logoLight from '@/assets/MKP_Logo_Webseite.svg'
 import logoDark from '@/assets/MKP_Logo_Webseite_inverted.svg'
 
@@ -49,8 +73,27 @@ const props = defineProps({
 
 const theme = useTheme()
 const router = useRouter()
+const { locale } = useI18n()
 
-const accountMenuItems = (t: any) => [
+// Language options
+const languages = [
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+]
+
+const currentLanguage = ref('en')
+
+onMounted(() => {
+  currentLanguage.value = localStorage.getItem('app_language') || 'en'
+})
+
+const changeLanguage = (code: string) => {
+  currentLanguage.value = code
+  locale.value = code
+  localStorage.setItem('app_language', code)
+}
+
+const accountMenuItems = (t: (key: string) => string) => [
   {
     title: t('appBar.accountMenu.logout'),
     value: 'logout',
@@ -89,3 +132,4 @@ const logout = () => {
   transition: background-color 0.2s ease !important;
 }
 </style>
+

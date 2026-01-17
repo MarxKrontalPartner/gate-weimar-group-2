@@ -3,18 +3,16 @@
     "title": "Anmeldung",
     "username": "Benutzername",
     "password": "Passwort",
-    "button" : "Anmelden",
+    "button": "Anmelden",
     "noaccount": "Sie haben noch kein Konto? ",
     "signup": "Registrieren"
   },
-
   "appBar": {
     "accountMenu": {
       "logout": "Abmelden"
     }
   },
-
-    "signup": {
+  "signup": {
     "title": "Registrieren",
     "username": "Benutzername",
     "password": "Passwort",
@@ -23,15 +21,13 @@
     "haveaccount": "Bereits ein Konto?",
     "login": "Anmelden"
   },
-
-    "navigationdrawer": {
+  "navigationdrawer": {
     "monitoring": "Überwachung",
     "channels": "Kanäle",
     "settings": "Einstellungen",
     "dashboard": "Dashboard"
   },
-
-    "panelEditor": {
+  "panelEditor": {
     "untitledPanel": "Unbenanntes Panel",
     "loadingData": "Lade Daten...",
     "updatePanel": "Panel aktualisieren",
@@ -66,12 +62,10 @@
     "P14D": "14 Tage",
     "P30D": "30 Tage"
   },
-
   "common": {
     "cancel": "Abbrechen",
     "close": "Schließen"
   },
- 
   "_comment": "DashboardView translations",
   "dashboard": {
     "owner": "Besitzer",
@@ -80,22 +74,20 @@
     "projectNamePlaceholder": "Projektname",
     "createButton": "Erstellen"
   },
-  
   "projectView": {
-  "tabs": {
-    "viewer": "Betrachter",
-    "editor": "Editor",
-    "settings": "Einstellungen",
-    "members": "Mitglieder"
+    "tabs": {
+      "viewer": "Betrachter",
+      "editor": "Editor",
+      "settings": "Einstellungen",
+      "members": "Mitglieder"
+    },
+    "addPanel": "Panel hinzufügen",
+    "noPanelsViewer": "Keine Panels vorhanden. Wechseln Sie in den Editor-Modus, um eines hinzuzufügen.",
+    "createFirstPanel": "Erstes Panel erstellen",
+    "editPanel": "Panel bearbeiten",
+    "deletePanel": "Panel löschen",
+    "deleteConfirm": "Sind Sie sicher, dass Sie dieses Panel löschen möchten?"
   },
-  "addPanel": "Panel hinzufügen",
-  "noPanelsViewer": "Keine Panels vorhanden. Wechseln Sie in den Editor-Modus, um eines hinzuzufügen.",
-  "createFirstPanel": "Erstes Panel erstellen",
-  "editPanel": "Panel bearbeiten",
-  "deletePanel": "Panel löschen",
-  "deleteConfirm": "Sind Sie sicher, dass Sie dieses Panel löschen möchten?"
-  },
-
   "projectDetails": {
     "tabs": {
       "viewer": "Betrachter",
@@ -138,21 +130,17 @@
         "members": "Projektmitglieder",
         "delete": "Projekt löschen"
       },
-      
       "searchPlaceholder": "Benutzername suchen...",
-      
       "table": {
         "username": "Benutzername",
         "role": "Rolle",
         "actions": "Aktionen"
       },
-      
       "roles": {
         "owner": "Besitzer",
         "editor": "Editor",
         "viewer": "Betrachter"
       },
-      
       "buttons": {
         "save": "Speichern",
         "addAsViewer": "Als Betrachter hinzufügen",
@@ -161,7 +149,6 @@
         "cancel": "Abbrechen",
         "delete": "Löschen"
       },
-      
       "deleteModal": {
         "title": "Projektlöschung bestätigen",
         "confirmMessage": "Zur Bestätigung der Löschung geben Sie bitte den Projektnamen ein:",
@@ -169,7 +156,6 @@
       }
     }
   },
-
   "channels": {
     "title": "Kanäle",
     "description": "Wählen Sie eine Station und eine verfügbare Messung (W, Q oder T). Optional nach Fluss filtern.",
@@ -181,11 +167,9 @@
     "loadingStations": "Lade Stationen…",
     "noStationsFound": "Keine Stationen gefunden.",
     "availableLabel": "Verfügbar:",
-    
     "riversTitle": "Flüsse",
     "searchRiverPlaceholder": "Fluss suchen…",
     "allRiversButton": "Alle Flüsse",
-    
     "errors": {
       "readingNotAvailable": "Die ausgewählte Messung ist für diese Station nicht verfügbar. Bitte wählen Sie eine verfügbare Messung.",
       "readingNotAvailableShort": "Diese Messung ist für diese Station nicht verfügbar.",
@@ -194,9 +178,9 @@
       "failedToLoadStations": "Stationen konnten nicht von /public geladen werden. Fügen Sie stations.json oder stations.xlsx hinzu (oder in /public/stations/)."
     }
   },
-
   "settings": {
     "title": "Einstellungen",
+    "description": "Konfigurieren Sie Ihre Anwendungseinstellungen",
     "tabs": {
       "general": "Allgemein",
       "users": "Benutzer",
