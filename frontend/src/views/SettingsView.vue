@@ -139,4 +139,4 @@ const saveGeneral = () => {
 .btn-primary:hover {
   background: #1d4ed8;
 }
-</style>s
+</style>
