@@ -23,6 +23,11 @@
           ]"
         />
 
+        <!-- Error Message -->
+        <p v-if="error" :class="['text-sm text-center py-2 px-3 rounded-lg', isDark ? 'text-red-400 bg-red-900/30' : 'text-red-600 bg-red-50']">
+          {{ error }}
+        </p>
+
         <button
           @click="login"
           class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition"
@@ -47,6 +52,7 @@ import { useLogin } from '@/composables/useLogin'
 const theme = useTheme()
 const isDark = computed(() => theme.global.current.value.dark)
 
-const { username, password, login } = useLogin()
+const { username, password, error, login } = useLogin()
 </script>
+
 

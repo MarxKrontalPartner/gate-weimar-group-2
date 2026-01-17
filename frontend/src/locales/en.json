@@ -32,6 +32,7 @@
     "loadingData": "Loading data...",
     "updatePanel": "Update Panel",
     "applyToDashboard": "Apply to Dashboard",
+    "dataSource": "Data Source",
     "river": "River",
     "searchRiver": "Type river name (water)...",
     "selectRiverFirst": "Select a station (by name) or enter a UUID after filtering by river.",

@@ -56,10 +56,7 @@
                       <p class="text-sm font-medium">{{ $t('panelEditor.noDataAvailable') }}</p>
                       <p class="text-xs mt-1">
                         <strong>{{ selectedStationName || pegelStation }}</strong>
-                              {{ $t('panelEditor.noDataMessage', { 
-                                station: selectedStationName || pegelStation, 
-                                timeseries: pegelTimeseries 
-                              }) }}
+                        {{ $t('panelEditor.noDataMessage', { station: selectedStationName || pegelStation, timeseries: pegelTimeseries }) }}
                       </p>
                     </div>
                   </template>
@@ -70,95 +67,181 @@
             <!-- BOTTOM: QUERY CONFIGURATION -->
             <div class="p-6">
               <div class="grid grid-cols-12 gap-6">
-                <!-- River search (water field in JSON) -->
-                <div class="col-span-4">
-                  <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.river') }}</label>
-                  <v-text-field
-                    v-model="riverSearch"
+                <!-- Datasource Type Selector -->
+                <div class="col-span-12">
+                  <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.dataSource') }}</label>
+                  <v-select
+                    v-model="dataSourceType"
+                    :items="[
+                      { title: 'Pegel Online', value: 'PEGEL' },
+                      { title: 'JSON File', value: 'STATIC_JSON' },
+                    ]"
+                    item-title="title"
+                    item-value="value"
                     density="compact"
                     variant="outlined"
                     hide-details
-                    clearable
-                    :placeholder="$t('panelEditor.searchRiver')"
-                    @click:clear="clearRiverSearch"
-                  />
-                  <p v-if="riverNeedsStationSelection" class="text-xs text-red-500 mt-1">
-                    {{ $t('panelEditor.selectRiverFirst') }}
-                  </p>
-                </div>
-
-                <!-- Station search (separate input) -->
-                <div class="col-span-4">
-                  <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.searchStation') }}</label>
-                  <v-text-field
-                    v-model="stationSearch"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                    clearable
-                    :placeholder="$t('panelEditor.searchStationPlaceholder')"
-                    @click:clear="clearStationSearch"
+                    theme="light"
+                    :menu-props="{ theme: 'mkpLightTheme', class: 'mkp-dropdown-list' }"
                   />
                 </div>
 
-                <!-- Station dropdown (must always show shortname, not UUID) -->
-                <div class="col-span-4">
-                  <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.station') }}</label>
-                  <v-autocomplete
-                    v-model="selectedStationUuid"
-                    :items="stationsForDropdown"
-                    item-title="shortname"
-                    item-value="uuid"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                    clearable
-                    :placeholder="$t('panelEditor.selectStation')"
-                  />
-                  <div v-if="selectedStationName" :class="['text-xs mt-1', isDark ? 'text-gray-400' : 'text-gray-500']">
-                    {{ $t('panelEditor.selected') }} <span class="font-medium">{{ selectedStationName }}</span>
+                <!-- ========== PEGEL FIELDS (shown when PEGEL selected) ========== -->
+                <template v-if="dataSourceType === 'PEGEL'">
+                  <!-- River search (water field in JSON) -->
+                  <div class="col-span-4">
+                    <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.river') }}</label>
+                    <v-text-field
+                      v-model="riverSearch"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      clearable
+                      :placeholder="$t('panelEditor.searchRiver')"
+                      @click:clear="clearRiverSearch"
+                    />
+                    <p v-if="riverNeedsStationSelection" class="text-xs text-red-500 mt-1">
+                      {{ $t('panelEditor.selectRiverFirst') }}
+                    </p>
                   </div>
-                </div>
 
-                <!-- UUID input -->
-                <div class="col-span-4">
-                  <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.uuid') }}</label>
-                  <v-text-field
-                    v-model="stationUuidInput"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                    :placeholder="$t('panelEditor.uuidPlaceholder')"
-                  />
-                </div>
+                  <!-- Station search (separate input) -->
+                  <div class="col-span-4">
+                    <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.searchStation') }}</label>
+                    <v-text-field
+                      v-model="stationSearch"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      clearable
+                      :placeholder="$t('panelEditor.searchStationPlaceholder')"
+                      @click:clear="clearStationSearch"
+                    />
+                  </div>
 
-                <!-- Timeseries -->
-                <div class="col-span-4">
-                  <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.timeseries') }}</label>
-                  <v-select
-                    v-model="pegelTimeseries"
-                    :items="timeseriesOptions"
-                    item-title="title"
-                    item-value="value"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                  />
-                </div>
+                  <!-- Station dropdown (must always show shortname, not UUID) -->
+                  <div class="col-span-4">
+                    <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.station') }}</label>
+                    <v-autocomplete
+                      v-model="selectedStationUuid"
+                      :items="stationsForDropdown"
+                      item-title="shortname"
+                      item-value="uuid"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      clearable
+                      :placeholder="$t('panelEditor.selectStation')"
+                    />
+                    <div v-if="selectedStationName" :class="['text-xs mt-1', isDark ? 'text-gray-400' : 'text-gray-500']">
+                      {{ $t('panelEditor.selected') }} <span class="font-medium">{{ selectedStationName }}</span>
+                    </div>
+                  </div>
 
-                <!-- Period -->
-                <div class="col-span-4">
-                  <label :class="['text-xs font-bold uppercase block mb-2', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.period') }}</label>
-                  <v-select
-                    v-model="pegelPeriod"
-                    :items="periodOptions"
-                    item-title="title"
-                    item-value="value"
-                    density="compact"
-                    variant="outlined"
-                    hide-details
-                  />
-                </div>
+                  <!-- UUID input -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">UUID</label>
+                    <v-text-field
+                      v-model="stationUuidInput"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      placeholder="Enter station UUID"
+                    />
+                  </div>
+
+                  <!-- Timeseries -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
+                      Timeseries
+                    </label>
+                    <v-select
+                      v-model="pegelTimeseries"
+                      :items="[
+                        { title: 'W (Water Level)', value: 'W' },
+                        { title: 'Q (Discharge)', value: 'Q' },
+                        { title: 'T (Temperature)', value: 'T' },
+                      ]"
+                      item-title="title"
+                      item-value="value"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                    />
+                  </div>
+
+                  <!-- Period -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                      >Period</label
+                    >
+                    <v-select
+                      v-model="pegelPeriod"
+                      :items="[
+                        { title: '1 day', value: 'P1D' },
+                        { title: '3 days', value: 'P3D' },
+                        { title: '7 days', value: 'P7D' },
+                        { title: '14 days', value: 'P14D' },
+                        { title: '30 days', value: 'P30D' },
+                      ]"
+                      item-title="title"
+                      item-value="value"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                    />
+                  </div>
+                </template>
+
+                <!-- ========== JSON FILE FIELDS (shown when STATIC_JSON selected) ========== -->
+                <template v-if="dataSourceType === 'STATIC_JSON'">
+                  <!-- JSON File Selector -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                      >Select JSON File</label
+                    >
+                    <v-select
+                      v-model="jsonUrl"
+                      :items="jsonFileOptions"
+                      item-title="name"
+                      item-value="path"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      theme="light"
+                      :menu-props="{ theme: 'mkpLightTheme', class: 'mkp-dropdown-list' }"
+                      placeholder="Select a JSON file..."
+                    />
+                  </div>
+
+                  <!-- X-axis Field Mapping -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                      >X-axis Field (Time)</label
+                    >
+                    <v-text-field
+                      v-model="jsonMappingX"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      placeholder="timestamp"
+                    />
+                  </div>
+
+                  <!-- Y-axis Field Mapping -->
+                  <div class="col-span-4">
+                    <label class="text-xs font-bold text-gray-500 uppercase block mb-2"
+                      >Y-axis Field (Value)</label
+                    >
+                    <v-text-field
+                      v-model="jsonMappingY"
+                      density="compact"
+                      variant="outlined"
+                      hide-details
+                      placeholder="value"
+                    />
+                  </div>
+                </template>
 
                 <!-- INFO section removed (as requested) -->
               </div>
@@ -167,11 +250,11 @@
 
           <!-- RIGHT: VISUAL SETTINGS -->
           <div
-            :class="['w-80 border-l overflow-y-auto flex flex-col shrink-0', isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200']"
+            class="w-80 bg-white border-l border-gray-200 overflow-y-auto flex flex-col shrink-0"
           >
-            <div :class="['p-4 border-b', isDark ? 'border-gray-700' : 'border-gray-100']">
-              <h3 :class="['text-xs font-bold uppercase tracking-wide mb-3', isDark ? 'text-white' : 'text-gray-900']">
-                {{ $t('panelEditor.visualization') }}
+            <div class="p-4 border-b border-gray-100">
+              <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
+                Visualization
               </h3>
               <div class="grid grid-cols-2 gap-2">
                 <div
@@ -180,7 +263,7 @@
                   @click="selectedChart = type.name"
                   :class="[
                     'cursor-pointer border rounded p-3 flex flex-col items-center justify-center transition hover:bg-blue-50',
-                    selectedChart === type.name ? 'border-blue-500 bg-blue-50' : isDark ? 'border-gray-600' : 'border-gray-200',
+                    selectedChart === type.name ? 'border-blue-500 bg-blue-50' : 'border-gray-200',
                   ]"
                 >
                   <v-icon
@@ -199,12 +282,12 @@
               </div>
             </div>
 
-            <div :class="['p-4 border-b', isDark ? 'border-gray-700' : 'border-gray-100']">
-              <h3 :class="['text-xs font-bold uppercase tracking-wide mb-3', isDark ? 'text-white' : 'text-gray-900']">
-                {{ $t('panelEditor.panelOptions') }}
+            <div class="p-4 border-b border-gray-100">
+              <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wide mb-3">
+                Panel Options
               </h3>
               <div class="mb-4">
-                <label :class="['text-xs mb-1 block', isDark ? 'text-gray-400' : 'text-gray-500']">{{ $t('panelEditor.panelTitle') }}</label>
+                <label class="text-xs text-gray-500 mb-1 block">Panel Title</label>
                 <v-text-field
                   v-model="panelTitle"
                   density="compact"
@@ -224,12 +307,11 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTheme } from 'vuetify'
+import { useI18n } from 'vue-i18n'
 
 import { createChartConfig } from '@/utils/chartFactory'
 import { useDashboardPanels } from '@/composables/useDashboardPanels'
 import { fetchPegelTimeseriesMeta, useDataFetcher } from '@/composables/useDataFetcher'
-
-import { useI18n } from 'vue-i18n'
 
 import type { ChartDataPoint } from '@/types/project.types'
 import type {
@@ -238,6 +320,10 @@ import type {
   PegelTimeseriesMeta,
   QueryConfig,
 } from '@/composables/useDataFetcher'
+
+const { t } = useI18n()
+const theme = useTheme()
+const isDark = computed(() => theme.global.current.value.dark)
 
 /**
  * Query state used to build the Pegel request
@@ -250,11 +336,7 @@ const pegelMeta = ref<PegelTimeseriesMeta | null>(null)
 
 const router = useRouter()
 const route = useRoute()
-const theme = useTheme()
-const isDark = computed(() => theme.global.current.value.dark)
 const { fetchData, loading: isLoadingData } = useDataFetcher()
-
-const { t, locale } = useI18n()
 
 /**
  * ✅ NEW: type guards for query params (keeps TS + lint happy)
@@ -293,13 +375,33 @@ const isEditMode = !!editingPanelId
 const selectedChart = ref('Time series')
 const panelTitle = ref('New Panel')
 
+// Datasource Type Selector
+type DataSourceType = 'PEGEL' | 'STATIC_JSON'
+const dataSourceType = ref<DataSourceType>('PEGEL')
+
+// JSON File Configuration
+type JsonFileOption = { name: string; path: string }
+const jsonFileOptions = ref<JsonFileOption[]>([])
+const jsonUrl = ref<string>('/data/my-timeseries.json')
+const jsonMappingX = ref<string>('timestamp')
+const jsonMappingY = ref<string>('value')
+
 // Query Configuration State
-const queryConfig = computed<QueryConfig>(() => ({
-  sourceType: 'PEGEL',
-  station: pegelStation.value.trim(),
-  timeseries: pegelTimeseries.value,
-  period: pegelPeriod.value,
-}))
+const queryConfig = computed<QueryConfig>(() => {
+  if (dataSourceType.value === 'STATIC_JSON') {
+    return {
+      sourceType: 'STATIC_JSON',
+      url: jsonUrl.value,
+      mapping: { x: jsonMappingX.value, y: jsonMappingY.value },
+    }
+  }
+  return {
+    sourceType: 'PEGEL',
+    station: pegelStation.value.trim(),
+    timeseries: pegelTimeseries.value,
+    period: pegelPeriod.value,
+  }
+})
 
 type StationOption = {
   shortname: string
@@ -392,6 +494,20 @@ const loadStations = async (): Promise<void> => {
   stations.value = (await res.json()) as StationOption[]
 }
 
+const loadJsonFiles = async (): Promise<void> => {
+  try {
+    const res = await fetch('/data/index.json')
+    jsonFileOptions.value = (await res.json()) as JsonFileOption[]
+    // Set default selection if available
+    if (jsonFileOptions.value.length > 0 && !jsonUrl.value) {
+      jsonUrl.value = jsonFileOptions.value[0]?.path ?? ''
+    }
+  } catch (e) {
+    console.warn('Failed to load JSON file index', e)
+    jsonFileOptions.value = []
+  }
+}
+
 const clearStationSearch = (): void => {
   stationSearch.value = ''
 }
@@ -402,22 +518,6 @@ const clearRiverSearch = (): void => {
 
 // Prevent watcher ping-pong loops
 const isSyncingStation = ref(false)
-
-// Computed properties for i18n dropdown options
-const timeseriesOptions = computed(() => [
-  { title: t('timeseries.W'), value: 'W' },
-  { title: t('timeseries.Q'), value: 'Q' },
-  { title: t('timeseries.T'), value: 'T' },
-])
-
-const periodOptions = computed(() => [
-  { title: t('periods.P1D'), value: 'P1D' },
-  { title: t('periods.P3D'), value: 'P3D' },
-  { title: t('periods.P7D'), value: 'P7D' },
-  { title: t('periods.P14D'), value: 'P14D' },
-  { title: t('periods.P30D'), value: 'P30D' },
-])
-
 
 const applyStationSelection = (uuid: string): void => {
   const id = uuid.trim()
@@ -533,6 +633,7 @@ watch(
 // Load existing panel data if in edit mode
 onMounted(async () => {
   await loadStations()
+  await loadJsonFiles()
 
   /**
    * ✅ NEW: Apply query params when opening from Channels page.
@@ -548,17 +649,27 @@ onMounted(async () => {
       panelTitle.value = existingPanel.title
       selectedChart.value = existingPanel.type
 
-      if (existingPanel.queryConfig && existingPanel.queryConfig.sourceType === 'PEGEL') {
-        const qc = existingPanel.queryConfig
-        pegelStation.value = qc.station
-        pegelTimeseries.value = qc.timeseries
-        pegelPeriod.value = qc.period
+      if (existingPanel.queryConfig) {
+        // Set datasource type first
+        dataSourceType.value = existingPanel.queryConfig.sourceType as DataSourceType
 
-        // sync UI fields from saved UUID
-        stationUuidInput.value = qc.station
-        const match = stations.value.find((s) => String(s.uuid) === qc.station)
-        if (match) {
-          selectedStationUuid.value = String(match.uuid)
+        if (existingPanel.queryConfig.sourceType === 'PEGEL') {
+          const qc = existingPanel.queryConfig
+          pegelStation.value = qc.station
+          pegelTimeseries.value = qc.timeseries
+          pegelPeriod.value = qc.period
+
+          // sync UI fields from saved UUID
+          stationUuidInput.value = qc.station
+          const match = stations.value.find((s) => String(s.uuid) === qc.station)
+          if (match) {
+            selectedStationUuid.value = String(match.uuid)
+          }
+        } else if (existingPanel.queryConfig.sourceType === 'STATIC_JSON') {
+          const qc = existingPanel.queryConfig
+          jsonUrl.value = qc.url
+          jsonMappingX.value = qc.mapping.x
+          jsonMappingY.value = qc.mapping.y
         }
       }
 
@@ -589,14 +700,53 @@ watch([pegelStation, pegelTimeseries], () => {
 watch(
   [pegelStation, pegelTimeseries, pegelPeriod],
   () => {
-    void refreshPreview()
+    if (dataSourceType.value === 'PEGEL') {
+      void refreshPreview()
+    }
   },
   { immediate: true },
 )
 
+// Watch JSON datasource fields
+watch([dataSourceType, jsonUrl, jsonMappingX, jsonMappingY], () => {
+  void refreshPreview()
+})
+
 const chartOptions = computed(() => {
   const base = createChartConfig(selectedChart.value, panelTitle.value, previewData.value)
 
+  // Handle JSON datasource labels
+  if (dataSourceType.value === 'STATIC_JSON') {
+    const baseSeries = Array.isArray((base as Record<string, unknown>).series)
+      ? ((base as Record<string, unknown>).series as unknown[])
+      : []
+
+    return {
+      ...base,
+      title: { text: panelTitle.value || 'JSON Data' },
+      subtitle: { text: `Source: ${jsonUrl.value}` },
+      axes: [
+        { type: 'time', position: 'bottom', title: { text: jsonMappingX.value } },
+        { type: 'number', position: 'left', title: { text: jsonMappingY.value } },
+      ],
+      series: baseSeries.map((s) => {
+        const seriesObj = s as Record<string, unknown>
+        return {
+          ...seriesObj,
+          marker: { enabled: false },
+          strokeWidth: 2,
+          tooltip: {
+            renderer: ({ datum }: { datum: ChartDataPoint }) => ({
+              title: datum.time instanceof Date ? datum.time.toLocaleString() : 'Time',
+              content: `${datum.value}`,
+            }),
+          },
+        }
+      }),
+    }
+  }
+
+  // Original Pegel datasource labels
   const defaultTitle =
     pegelTimeseries.value === 'W'
       ? 'Water Level'
@@ -664,3 +814,64 @@ const handleApply = async () => {
   router.push(`/projects/${projectId}`)
 }
 </script>
+
+<style>
+/* Force light theme on ALL v-select and v-menu dropdown menus */
+.v-menu > .v-overlay__content,
+.v-menu > .v-overlay__content > .v-card,
+.v-menu > .v-overlay__content > .v-sheet,
+.v-menu > .v-overlay__content > .v-list {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+.v-menu .v-list {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+.v-menu .v-list-item {
+  color: #1f2937 !important;
+  background-color: transparent !important;
+}
+
+.v-menu .v-list-item:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.v-menu .v-list-item--active {
+  background-color: #e5e7eb !important;
+}
+
+.v-menu .v-list-item__content {
+  color: #1f2937 !important;
+}
+
+/* Target the overlay container itself */
+.v-overlay--active .v-overlay__content .v-list {
+  background-color: #ffffff !important;
+}
+
+/* Vuetify 3 specific selectors */
+.v-select__content .v-list {
+  background-color: #ffffff !important;
+}
+
+.v-select__content .v-list-item {
+  color: #1f2937 !important;
+}
+
+/* Force specific styling for our dropdowns */
+.mkp-dropdown-list .v-list-item {
+  color: #1f2937 !important;
+}
+
+.mkp-dropdown-list .v-list-item:hover,
+.mkp-dropdown-list .v-list-item--active:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.mkp-dropdown-list .v-list-item__overlay {
+  opacity: 0 !important;
+}
+</style>

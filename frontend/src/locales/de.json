@@ -32,6 +32,7 @@
     "loadingData": "Lade Daten...",
     "updatePanel": "Panel aktualisieren",
     "applyToDashboard": "Zum Dashboard hinzufügen",
+    "dataSource": "Datenquelle",
     "river": "Fluss",
     "searchRiver": "Flussname eingeben (water)...",
     "selectRiverFirst": "Wählen Sie eine Station (nach Namen) oder geben Sie eine UUID ein, nachdem Sie nach Fluss gefiltert haben.",
