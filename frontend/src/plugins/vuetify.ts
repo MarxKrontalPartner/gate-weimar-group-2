@@ -8,9 +8,16 @@ export default createVuetify({
   components,
   directives,
   theme: {
-    defaultTheme: 'mkpLightTheme', // <-- FORCE LIGHT THEME
+    defaultTheme: 'mkpLightTheme',
     themes: {
-      mkpLightTheme: MKPThemes.mkpLightTheme,
+      mkpLightTheme: {
+        ...MKPThemes.mkpLightTheme,
+        dark: false,
+      },
+      mkpDarkTheme: {
+        ...MKPThemes.mkpDarkTheme,
+        dark: true,
+      },
     },
   },
   defaults: {
