@@ -26,7 +26,8 @@ yarn-error.log
 Thumbs.db
 
 # ========== GRAFANA  ==========
-data/
+/data/plugins
+data/p
 grafana/
 *.db
 plugins/

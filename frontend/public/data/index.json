@@ -1,0 +1,10 @@
+[
+    {
+        "name": "my-timeseries.json",
+        "path": "/data/my-timeseries.json"
+    },
+    {
+        "name": "temperature-sensor.json",
+        "path": "/data/temperature-sensor.json"
+    }
+]
