@@ -615,15 +615,46 @@ const buildPegelChartOptions = (
 
 // Function to Hydrate Panels
 const hydratePanelsWithData = async () => {
+  // Helper function to convert period to days
+  const periodToDays = (period: PegelPeriod): number => {
+    switch (period) {
+      case 'P1D':
+        return 1
+      case 'P3D':
+        return 3
+      case 'P7D':
+        return 7
+      case 'P14D':
+        return 14
+      case 'P30D':
+        return 30
+      default:
+        return 7
+    }
+  }
+
   for (const panel of panels.value) {
     // 1. Check if panel has configuration
     if (panel.queryConfig) {
       // 2. Build query config with global period override if applicable
       let effectiveConfig = panel.queryConfig
-      if (globalPeriod.value !== 'default' && panel.queryConfig.sourceType === 'PEGEL') {
-        effectiveConfig = {
-          ...panel.queryConfig,
-          period: globalPeriod.value,
+
+      if (globalPeriod.value !== 'default') {
+        if (panel.queryConfig.sourceType === 'PEGEL') {
+          // For PEGEL, use the period directly
+          effectiveConfig = {
+            ...panel.queryConfig,
+            period: globalPeriod.value,
+          }
+        } else if (
+          panel.queryConfig.sourceType === 'STATIC_JSON' ||
+          panel.queryConfig.sourceType === 'REST_API'
+        ) {
+          // For JSON/REST API, convert period to filterDays
+          effectiveConfig = {
+            ...panel.queryConfig,
+            filterDays: periodToDays(globalPeriod.value),
+          }
         }
       }
 
