@@ -493,7 +493,7 @@ const buildPegelChartOptions = (
   data: ChartDataPoint[],
   meta: PegelTimeseriesMeta | null,
 ): unknown => {
-  const base = createChartConfig(panel.type, panel.title, data)
+  const base = createChartConfig(panel.type, panel.title, data, isDark.value)
 
   const qc = panel.queryConfig
   if (!qc || qc.sourceType !== 'PEGEL') return base
@@ -518,23 +518,37 @@ const buildPegelChartOptions = (
     ? ((base as Record<string, unknown>).series as unknown[])
     : []
 
+  // Theme-aware colors for custom axes
+  const textColor = isDark.value ? '#e5e7eb' : '#374151'
+  const secondaryTextColor = isDark.value ? '#9ca3af' : '#6b7280'
+  const gridColor = isDark.value ? '#4b5563' : '#e5e7eb'
+
   return {
     ...base,
-    title: { text: titleText },
-    subtitle: { text: subtitleText },
+    title: { text: titleText, color: textColor },
+    subtitle: { text: subtitleText, color: secondaryTextColor },
     axes: [
-      { type: 'time', position: 'bottom', title: { text: t('projectDetails.chartLabels.time') } },
+      { 
+        type: 'time', 
+        position: 'bottom', 
+        title: { text: t('projectDetails.chartLabels.time'), color: secondaryTextColor },
+        label: { color: secondaryTextColor },
+        line: { color: gridColor },
+      },
       {
         type: 'number',
         position: 'left',
-        title: { text: `${titleText} (${unitText})` },
+        title: { text: `${titleText} (${unitText})`, color: secondaryTextColor },
         label: {
+          color: secondaryTextColor,
           formatter: ({ value }: { value: number }) => {
             // Round to avoid floating point precision issues like 48.800000000000004
             const rounded = Math.round(value * 100) / 100
             return rounded.toString()
           },
         },
+        line: { color: gridColor },
+        gridLine: { style: [{ stroke: gridColor, lineDash: [4, 2] }] },
       },
     ],
     series: baseSeries.map((s) => {
@@ -582,7 +596,7 @@ const hydratePanelsWithData = async () => {
           meta,
         ) as DashboardPanel['chartOptions']
       } else {
-        panel.chartOptions = createChartConfig(panel.type, panel.title, realData)
+        panel.chartOptions = createChartConfig(panel.type, panel.title, realData, isDark.value)
       }
     }
   }
