@@ -129,6 +129,15 @@
       "duplicatePanel": "Panel duplizieren",
       "deletePanel": "Panel löschen"
     },
+    "timeRange": {
+      "label": "Zeitraum",
+      "useDefault": "Standard",
+      "1day": "1 Tag",
+      "3days": "3 Tage",
+      "7days": "7 Tage",
+      "14days": "14 Tage",
+      "30days": "30 Tage"
+    },
     "settings": {
       "sections": {
         "rename": "Projekt umbenennen",

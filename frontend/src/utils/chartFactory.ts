@@ -36,11 +36,13 @@ const generateCategoryData = () => {
  * @param type - The type of chart selected in the dropdown ('Time series', 'Bar chart', etc.)
  * @param title - The user-defined title
  * @param realData - The array returned from useDataFetcher [{time: Date, value: number}, ...] or null
+ * @param isDark - Whether dark mode is active (for theming text colors)
  */
 export const createChartConfig = (
   type: string,
   title: string,
   realData: ChartDataPoint[] | null = null,
+  isDark: boolean = false,
 ) => {
   // A. DETERMINE DATA SOURCE
   // If realData is provided from the API/JSON, use it.
@@ -57,9 +59,14 @@ export const createChartConfig = (
     }
   }
 
+  // Theme-aware colors
+  const textColor = isDark ? '#e5e7eb' : '#374151' // gray-200 for dark, gray-700 for light
+  const secondaryTextColor = isDark ? '#9ca3af' : '#6b7280' // gray-400 for dark, gray-500 for light
+  const gridColor = isDark ? '#4b5563' : '#e5e7eb' // gray-600 for dark, gray-200 for light
+
   // C. COMMON CONFIGURATION
   const commonOptions = {
-    title: { text: title || 'Untitled Panel' },
+    title: { text: title || 'Untitled Panel', color: textColor },
     padding: { top: 20, right: 20, bottom: 20, left: 20 },
     data: chartData,
     background: { fill: 'transparent' }, // Ensures it blends with cards
@@ -90,12 +97,16 @@ export const createChartConfig = (
           {
             type: 'time',
             position: 'bottom',
-            label: { format: '%H:%M' }, // Hour:Minute format
+            label: { format: '%H:%M', color: secondaryTextColor }, // Hour:Minute format
             tick: { count: 6 },
+            line: { color: gridColor },
           },
           {
             type: 'number',
             position: 'left',
+            label: { color: secondaryTextColor },
+            line: { color: gridColor },
+            gridLine: { style: [{ stroke: gridColor, lineDash: [4, 2] }] },
           },
         ],
       }
@@ -124,11 +135,15 @@ export const createChartConfig = (
           {
             type: xAxisType,
             position: 'bottom',
-            label: { rotation: -45 }, // Rotate labels to fit timestamps
+            label: { rotation: -45, color: secondaryTextColor }, // Rotate labels to fit timestamps
+            line: { color: gridColor },
           },
           {
             type: 'number',
             position: 'left',
+            label: { color: secondaryTextColor },
+            line: { color: gridColor },
+            gridLine: { style: [{ stroke: gridColor, lineDash: [4, 2] }] },
           },
         ],
       }

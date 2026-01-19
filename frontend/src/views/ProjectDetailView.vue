@@ -63,6 +63,31 @@
             </div>
           </div>
 
+          <!-- Time Range Selector (Viewer only) -->
+          <div v-if="activeTab === 'viewer'" class="flex items-center gap-3">
+            <v-icon
+              icon="mdi-clock-outline"
+              size="small"
+              :class="isDark ? 'text-gray-400' : 'text-gray-500'"
+            />
+            <v-select
+              v-model="globalPeriod"
+              :items="periodOptions"
+              item-title="title"
+              item-value="value"
+              density="compact"
+              variant="outlined"
+              hide-details
+              style="width: 180px"
+              class="time-range-select"
+              :theme="isDark ? 'mkpDarkTheme' : 'mkpLightTheme'"
+              :menu-props="{
+                theme: isDark ? 'mkpDarkTheme' : 'mkpLightTheme',
+                class: 'time-range-dropdown',
+              }"
+            />
+          </div>
+
           <!-- Add Panel Button  -->
           <div v-if="activeTab === 'editor'">
             <button
@@ -96,7 +121,7 @@
             </div>
 
             <!-- Read-Only Grid -->
-            <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
               <div
                 v-for="panel in panels"
                 :key="panel.id"
@@ -268,7 +293,7 @@
             </div>
 
             <!-- Editable Grid -->
-            <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
               <div
                 v-for="panel in panels"
                 :key="panel.id"
@@ -446,7 +471,20 @@ const handleDuplicatePanel = async (panel: DashboardPanel) => {
   }
 }
 
-const timeRange = ref('24h') // Usually connected to a dropdown in the UI
+// Global time period override for viewer
+type PegelPeriod = 'P1D' | 'P3D' | 'P7D' | 'P14D' | 'P30D'
+const globalPeriod = ref<PegelPeriod | 'default'>('default')
+
+const periodOptions = [
+  { title: t('projectDetails.timeRange.useDefault'), value: 'default' },
+  { title: t('projectDetails.timeRange.1day'), value: 'P1D' },
+  { title: t('projectDetails.timeRange.3days'), value: 'P3D' },
+  { title: t('projectDetails.timeRange.7days'), value: 'P7D' },
+  { title: t('projectDetails.timeRange.14days'), value: 'P14D' },
+  { title: t('projectDetails.timeRange.30days'), value: 'P30D' },
+]
+
+const timeRange = ref('24h') // Legacy, kept for compatibility
 
 // ---- NEW: Load stations.json for stationName + river in viewer tooltip ----
 type StationOption = {
@@ -492,8 +530,9 @@ const buildPegelChartOptions = (
   panel: DashboardPanel,
   data: ChartDataPoint[],
   meta: PegelTimeseriesMeta | null,
+  overridePeriod?: PegelPeriod | 'default',
 ): unknown => {
-  const base = createChartConfig(panel.type, panel.title, data)
+  const base = createChartConfig(panel.type, panel.title, data, isDark.value)
 
   const qc = panel.queryConfig
   if (!qc || qc.sourceType !== 'PEGEL') return base
@@ -510,31 +549,48 @@ const buildPegelChartOptions = (
   const station = findStationByUuid(qc.station)
   const stationLabel = station ? String(station.shortname) : qc.station
 
+  // Use override period if set, otherwise use panel's configured period
+  const displayPeriod = overridePeriod && overridePeriod !== 'default' ? overridePeriod : qc.period
+
   const titleText = meta?.longname ?? defaultTitle
   const unitText = meta?.unit ?? defaultUnit
-  const subtitleText = `${stationLabel} · ${qc.timeseries} · ${qc.period}`
+  const subtitleText = `${stationLabel} · ${qc.timeseries} · ${displayPeriod}`
 
   const baseSeries = Array.isArray((base as Record<string, unknown>).series)
     ? ((base as Record<string, unknown>).series as unknown[])
     : []
 
+  // Theme-aware colors for custom axes
+  const textColor = isDark.value ? '#e5e7eb' : '#374151'
+  const secondaryTextColor = isDark.value ? '#9ca3af' : '#6b7280'
+  const gridColor = isDark.value ? '#4b5563' : '#e5e7eb'
+
   return {
     ...base,
-    title: { text: titleText },
-    subtitle: { text: subtitleText },
+    title: { text: titleText, color: textColor },
+    subtitle: { text: subtitleText, color: secondaryTextColor },
     axes: [
-      { type: 'time', position: 'bottom', title: { text: t('projectDetails.chartLabels.time') } },
+      {
+        type: 'time',
+        position: 'bottom',
+        title: { text: t('projectDetails.chartLabels.time'), color: secondaryTextColor },
+        label: { color: secondaryTextColor },
+        line: { color: gridColor },
+      },
       {
         type: 'number',
         position: 'left',
-        title: { text: `${titleText} (${unitText})` },
+        title: { text: `${titleText} (${unitText})`, color: secondaryTextColor },
         label: {
+          color: secondaryTextColor,
           formatter: ({ value }: { value: number }) => {
             // Round to avoid floating point precision issues like 48.800000000000004
             const rounded = Math.round(value * 100) / 100
             return rounded.toString()
           },
         },
+        line: { color: gridColor },
+        gridLine: { style: [{ stroke: gridColor, lineDash: [4, 2] }] },
       },
     ],
     series: baseSeries.map((s) => {
@@ -559,11 +615,51 @@ const buildPegelChartOptions = (
 
 // Function to Hydrate Panels
 const hydratePanelsWithData = async () => {
+  // Helper function to convert period to days
+  const periodToDays = (period: PegelPeriod): number => {
+    switch (period) {
+      case 'P1D':
+        return 1
+      case 'P3D':
+        return 3
+      case 'P7D':
+        return 7
+      case 'P14D':
+        return 14
+      case 'P30D':
+        return 30
+      default:
+        return 7
+    }
+  }
+
   for (const panel of panels.value) {
     // 1. Check if panel has configuration
     if (panel.queryConfig) {
-      // 2. Fetch Data using the Service
-      const realData = await fetchData(panel.queryConfig, timeRange.value)
+      // 2. Build query config with global period override if applicable
+      let effectiveConfig = panel.queryConfig
+
+      if (globalPeriod.value !== 'default') {
+        if (panel.queryConfig.sourceType === 'PEGEL') {
+          // For PEGEL, use the period directly
+          effectiveConfig = {
+            ...panel.queryConfig,
+            period: globalPeriod.value,
+          }
+        } else if (
+          panel.queryConfig.sourceType === 'STATIC_JSON' ||
+          panel.queryConfig.sourceType === 'REST_API'
+        ) {
+          // For JSON/REST API, convert period to filterDays
+          effectiveConfig = {
+            ...panel.queryConfig,
+            filterDays: periodToDays(globalPeriod.value),
+          }
+        }
+      }
+
+      // 3. Fetch Data using the Service
+      const realData = await fetchData(effectiveConfig, timeRange.value)
 
       // ---- NEW: If PEGEL, apply same chart styling as editor ----
       if (panel.queryConfig.sourceType === 'PEGEL') {
@@ -580,9 +676,10 @@ const hydratePanelsWithData = async () => {
           panel,
           realData,
           meta,
+          globalPeriod.value,
         ) as DashboardPanel['chartOptions']
       } else {
-        panel.chartOptions = createChartConfig(panel.type, panel.title, realData)
+        panel.chartOptions = createChartConfig(panel.type, panel.title, realData, isDark.value)
       }
     }
   }
@@ -662,6 +759,13 @@ watch(
 )
 
 /**
+ * ✅ NEW: When globalPeriod changes, re-fetch all panel data
+ */
+watch(globalPeriod, async () => {
+  await hydratePanelsWithData()
+})
+
+/**
  * ✅ FIX (required): When changing project id, also refresh and update active project id.
  */
 watch(
@@ -688,3 +792,27 @@ onMounted(async () => {
   await hydratePanelsWithData()
 })
 </script>
+
+<style>
+/* Time Range Dropdown - Fix dark hover visibility */
+.time-range-dropdown .v-list {
+  background-color: #ffffff !important;
+}
+
+.time-range-dropdown .v-list-item {
+  color: #1f2937 !important;
+}
+
+.time-range-dropdown .v-list-item:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.time-range-dropdown .v-list-item--active {
+  background-color: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+.time-range-dropdown .v-list-item__overlay {
+  opacity: 0 !important;
+}
+</style>

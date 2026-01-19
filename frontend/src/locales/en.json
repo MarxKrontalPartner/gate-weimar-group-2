@@ -115,6 +115,15 @@
       "duplicatePanel": "Duplicate Panel",
       "deletePanel": "Delete Panel"
     },
+    "timeRange": {
+      "label": "Time Range",
+      "useDefault": "Default",
+      "1day": "1 day",
+      "3days": "3 days",
+      "7days": "7 days",
+      "14days": "14 days",
+      "30days": "30 days"
+    },
     "settings": {
       "sections": {
         "rename": "Rename Project",

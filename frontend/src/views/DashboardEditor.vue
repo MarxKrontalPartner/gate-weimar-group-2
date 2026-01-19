@@ -890,7 +890,17 @@ watch(
 )
 
 const chartOptions = computed(() => {
-  const base = createChartConfig(selectedChart.value, panelTitle.value, previewData.value)
+  const base = createChartConfig(
+    selectedChart.value,
+    panelTitle.value,
+    previewData.value,
+    isDark.value,
+  )
+
+  // Theme-aware colors
+  const textColor = isDark.value ? '#e5e7eb' : '#374151'
+  const secondaryTextColor = isDark.value ? '#9ca3af' : '#6b7280'
+  const gridColor = isDark.value ? '#4b5563' : '#e5e7eb'
 
   // Handle JSON datasource labels
   if (dataSourceType.value === 'STATIC_JSON') {
@@ -900,10 +910,23 @@ const chartOptions = computed(() => {
 
     return {
       ...base,
-      title: { text: panelTitle.value || 'JSON Data' },
+      title: { text: panelTitle.value || 'JSON Data', color: textColor },
       axes: [
-        { type: 'time', position: 'bottom', title: { text: jsonMappingX.value } },
-        { type: 'number', position: 'left', title: { text: jsonMappingY.value } },
+        {
+          type: 'time',
+          position: 'bottom',
+          title: { text: jsonMappingX.value, color: secondaryTextColor },
+          label: { color: secondaryTextColor },
+          line: { color: gridColor },
+        },
+        {
+          type: 'number',
+          position: 'left',
+          title: { text: jsonMappingY.value, color: secondaryTextColor },
+          label: { color: secondaryTextColor },
+          line: { color: gridColor },
+          gridLine: { style: [{ stroke: gridColor, lineDash: [4, 2] }] },
+        },
       ],
       series: baseSeries.map((s) => {
         const seriesObj = s as Record<string, unknown>
@@ -944,11 +967,24 @@ const chartOptions = computed(() => {
 
   return {
     ...base,
-    title: { text: titleText },
-    subtitle: { text: subtitleText },
+    title: { text: titleText, color: textColor },
+    subtitle: { text: subtitleText, color: secondaryTextColor },
     axes: [
-      { type: 'time', position: 'bottom', title: { text: 'Time' } },
-      { type: 'number', position: 'left', title: { text: `${titleText} (${unitText})` } },
+      {
+        type: 'time',
+        position: 'bottom',
+        title: { text: 'Time', color: secondaryTextColor },
+        label: { color: secondaryTextColor },
+        line: { color: gridColor },
+      },
+      {
+        type: 'number',
+        position: 'left',
+        title: { text: `${titleText} (${unitText})`, color: secondaryTextColor },
+        label: { color: secondaryTextColor },
+        line: { color: gridColor },
+        gridLine: { style: [{ stroke: gridColor, lineDash: [4, 2] }] },
+      },
     ],
     series: baseSeries.map((s) => {
       const seriesObj = s as Record<string, unknown>
@@ -1021,6 +1057,11 @@ const handleApply = async () => {
 
 .v-menu .v-list-item__content {
   color: #1f2937 !important;
+}
+
+/* Fix dark overlay on hover */
+.v-menu .v-list-item__overlay {
+  opacity: 0 !important;
 }
 
 /* Target the overlay container itself */
