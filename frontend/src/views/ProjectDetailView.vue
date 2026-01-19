@@ -121,7 +121,7 @@
             </div>
 
             <!-- Read-Only Grid -->
-            <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
               <div
                 v-for="panel in panels"
                 :key="panel.id"
@@ -293,7 +293,7 @@
             </div>
 
             <!-- Editable Grid -->
-            <div v-else class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-10">
+            <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
               <div
                 v-for="panel in panels"
                 :key="panel.id"
